@@ -1,63 +1,83 @@
 <mat-card>
-    <mat-card-title class="mat-card-title mat-card-title-large mat-card-title-center">Registro de Activos Fijos</mat-card-title>
+  <mat-card-title class="mat-card-title mat-card-title-large mat-card-title-center">Registro de Activos Fijos</mat-card-title>
 </mat-card>
 
 <mat-card>
-    <mat-card-content>
-        <form class="example-form">
-            <table class="example-full-width"><tr>
-              <td><mat-form-field class="example-full-width">
-                <mat-label>Nombre Activo Fijo</mat-label>
-                <input matInput placeholder="Nombre Activo">
-              </mat-form-field></td>
-              <mat-form-field floatLabel="always">
-                <mat-label>Precio</mat-label>
-                <input matInput type="number" class="example-right-align" placeholder="0">
-                <span matTextPrefix>$&nbsp;</span>
-                <span matTextSuffix>.00</span>
-              </mat-form-field>
-            </tr></table>
-          
-            <p>
-              <mat-form-field class="example-full-width">
-                <mat-label>Descripción del Activo</mat-label>
-                <textarea matInput placeholder="Descripción del activo fijo"></textarea>
-              </mat-form-field>
-            </p>
-          
-            <table class="example-full-width" cellspacing="0"><tr>
-                <mat-form-field>
-                  <mat-label>Ciudades</mat-label>
-                  <mat-select >
-                    <mat-option value="option1">La Paz</mat-option>
-                    <mat-option value="option2" disabled>Cochabamba</mat-option>
-                    <mat-option value="option3">Santa Cruz</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              <td><mat-form-field class="example-full-width">
-                <mat-label>Calle</mat-label>
-                <input matInput placeholder="Calle">
-              </mat-form-field></td>
-              <td><mat-form-field class="example-full-width">
-                <mat-label>Avenida</mat-label>
-                <input matInput placeholder="Avenida">
-              </mat-form-field></td>
-              <mat-form-field>
-                <mat-label>Bloque</mat-label>
-                <mat-select>
-                  <mat-option value="option1">Bloque C</mat-option>
-                  <mat-option value="option2">Bloque</mat-option>
-                  <mat-option value="option3">Bloque</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </tr></table>
-          </form>
-          
-    </mat-card-content>
-   <!-- <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="guardar()">Guardar</button>
-      <button mat-button (click)="cancelar()">Cancelar</button>
-    </mat-card-actions>-->
-  </mat-card>
-  
-
+  <mat-card-content>
+    <form class="example-form" [formGroup]="formulario">
+      <table class="example-full-width">
+        <tr>
+          <td>
+            <mat-form-field>
+              <mat-label>Nombre Activo Fijo</mat-label>
+              <input matInput placeholder="Nombre Activo" formControlName="nombreActivo">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Precio</mat-label>
+              <input matInput type="number" class="example-right-align" placeholder="0" formControlName="precio">
+              <span matTextPrefix>$&nbsp;</span>
+              <span matTextSuffix>.00</span>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    
+      <p>
+        <mat-form-field>
+          <mat-label>Descripción del Activo</mat-label>
+          <textarea matInput placeholder="Descripción del activo fijo" formControlName="descripcion"></textarea>
+        </mat-form-field>
+      </p>
+    
+      <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    
+      <table cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field>
+              <mat-label>Departamento</mat-label>
+              <select matNativeControl required>
+                <option value="1">La Paz</option>
+                <option value="2">Cochabamba</option>
+                <option value="3">SantaCruz</option>
+              </select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Calle</mat-label>
+              <input matInput placeholder="Calle" formControlName="calle">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Avenida</mat-label>
+              <input matInput placeholder="Avenida" formControlName="avenida">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <mat-label>Bloque</mat-label>
+              <select matNativeControl required>
+                <option value="1b">Bloquea</option>
+                <option value="2b">bloqueb</option>
+                <option value="3b">bloquec</option>
+              </select>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>    
+  </mat-card-content>
+  <!-- <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="guardar()">Guardar</button>
+    <button mat-button (click)="cancelar()">Cancelar</button>
+  </mat-card-actions>-->
+</mat-card>

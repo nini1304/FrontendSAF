@@ -8,10 +8,13 @@ import { RegistroProductoComponent } from './components/registro-producto/regist
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { ActivoListComponent } from './components/activo-list/activo-list.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -32,9 +35,13 @@ import { ActivoListComponent } from './components/activo-list/activo-list.compon
     MatFormFieldModule,
     MatIconModule,
     MatSelectModule,
-    
+    MatDatepickerModule,
+    MatNativeDateModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' }}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
