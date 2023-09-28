@@ -27,6 +27,8 @@ export class RegistroProductoComponent{
       calle: new FormControl(''),
       avenida: new FormControl(''),
       bloque: new FormControl(''),
+      porcentaje: new FormControl(''),
+      fechaRe: new FormControl(''),
     });
   }
   
