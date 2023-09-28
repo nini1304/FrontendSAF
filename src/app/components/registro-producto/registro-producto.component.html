@@ -18,7 +18,6 @@
               <mat-label>Precio</mat-label>
               <input matInput type="number" class="example-right-align" placeholder="0" formControlName="precio">
               <span matTextPrefix>$&nbsp;</span>
-              <span matTextSuffix>.00</span>
             </mat-form-field>
           </td>
           <td>
@@ -26,7 +25,6 @@
               <mat-label>Porcentaje</mat-label>
               <input matInput type="number" class="example-right-align" formControlName="porcentaje">
               <span matTextPrefix>%&nbsp;</span>
-              <span matTextSuffix>00</span>
             </mat-form-field>
           </td>
         </tr>
@@ -97,5 +95,9 @@
         </tr>
       </table>
     </form>    
+    <div class="example-button-row">
+      <button mat-raised-button color="primary">Registro</button>
+      <button mat-raised-button color="warn">Cancelar</button>
+    </div>
   </mat-card-content>
 </mat-card>
