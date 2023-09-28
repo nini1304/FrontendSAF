@@ -3,11 +3,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { MatFormField, MatFormFieldControl } from '@angular/material/form-field';
 
-interface Ciudad {
-  value: string;
-  viewValue: string;
-}
-
 @Component({
   selector: 'app-registro-producto',
   templateUrl: './registro-producto.component.html',
@@ -42,9 +37,4 @@ export class RegistroProductoComponent{
     // Habilita solo días de lunes a viernes (0 = domingo, 6 = sábado)
     return day !== 0 && day !== 6;
   };
-  ciudades: Ciudad[]=[
-    {value: '1', viewValue: 'La Paz'},
-    {value: '2', viewValue: 'Cochabamba'},
-    {value: '3', viewValue: 'Santa Cruz'},
-  ]
 }
