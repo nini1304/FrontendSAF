@@ -11,7 +11,7 @@ export class ActivosService {
   constructor(private http: HttpClient) {}
 
   getActivos(): Observable<ActivoFijo[]>{
-    return this.http.get<any>('/api/v1/activos-fijos').pipe(
+    return this.http.get<any>('http://localhost:1234/api/v1/activos-fijos/registrar').pipe(
       map(response => response.content)
     )
   }
