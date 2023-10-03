@@ -188,6 +188,7 @@ export class RegistroProductoComponent{
     return this.options6.filter(option => option.toLowerCase().includes(filterValue));
   }
   guardarDatos() {
+    console.log('guardar datos')
     const nombre = this.nuevoactivoForm.value.nombre;
     const valor = this.nuevoactivoForm.value.valor;
     // @ts-ignore
@@ -203,7 +204,19 @@ export class RegistroProductoComponent{
     const estado = this.estadosDto.find((estado: EstadosDto) => estado.nombre === this.nuevoactivoForm.value.myControl5)?.id;
     const condicion = this.condicionDto.find((condicion: CondicionDto) => condicion.nombre === this.nuevoactivoForm.value.myControl6)?.id;
     // @ts-ignore
-    this.activoservice.registrarActivo(nombre, valor, fechaa, descripcion,porcentaje, tipo, marca, ubicacion, personal, estado, condicion);
+    this.activoservice.registrarActivo(nombre, valor, fechaa, descripcion,porcentaje, tipo, marca, ubicacion, personal, estado, condicion)
+      .subscribe(
+        (respuesta) => {
+          // La respuesta del servicio se maneja aquí
+          console.log(respuesta);
+          // Puedes realizar otras acciones después de un registro exitoso, como redireccionar a una página.
+        },
+        (error) => {
+          // Manejo de errores
+          console.error(error);
+          // Puedes mostrar un mensaje de error al usuario si es necesario.
+        }
+      );
 
 
   }
