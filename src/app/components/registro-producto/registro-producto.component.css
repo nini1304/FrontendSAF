@@ -1,96 +1,42 @@
-.mat-card-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #000000;
-    text-align: center;
-    background-color: #f0f0f0;
-    padding: 10px;
-    border-radius: 5px;
-  }
-.mat-card-centered{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
-mat-card {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
-  
-mat-card-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    background-color: #000000;
+
+.container {
+  margin-left: 450px;
+  align-content: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-mat-form-field {
-    width: 100%;
-    margin-bottom: 20px;
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }
-mat-select {
-    width: 100%;
+
+.mat-form-field {
+  width: 100%;
 }
-  
-example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
+
+.col {
+  flex: 1;
+  margin-right: 10px;
 }
-  
-.example-full-width {
-    width: 100%;
+
+.button {
+  margin-top: 20px;
 }
-  
-.example-additional-selection {
-    opacity: 0.75;
-    font-size: 0.75em;
- }
- .example-container mat-form-field + mat-form-field {
-    margin-left: 8px;
-  }
-  
-  .example-right-align {
-    text-align: right;
-  }
-  
-  input.example-right-align::-webkit-outer-spin-button,
-  input.example-right-align::-webkit-inner-spin-button {
-    display: none;
-  }
-  section {
-    display: table;
-  }
-  
-  .example-label {
-    display: table-cell;
-    font-size: 14px;
-    margin-left: 8px;
-    min-width: 120px;
-  }
-  
-  .example-button-row {
-    display: table-cell;
-    max-width: 600px;
-  }
-  
-  .example-button-row .mat-mdc-button-base {
-    margin: 8px 8px 8px 0;
-  }
-  
-  .example-flex-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  
-  .example-button-container {
-    display: flex;
-    justify-content: center;
-    width: 120px;
-  }
-  
+
+

@@ -1,103 +1,94 @@
-<mat-card>
-  <mat-card-title class="mat-card-title mat-card-title-large mat-card-title-center">Registro de Activos Fijos</mat-card-title>
-</mat-card>
-
-<mat-card>
-  <mat-card-content>
-    <form class="example-form" [formGroup]="formulario">
-      <table class="example-full-width">
-        <tr>
-          <td>
-            <mat-form-field>
-              <mat-label>Nombre Activo Fijo</mat-label>
-              <input matInput placeholder="Nombre Activo" formControlName="nombreActivo">
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>Precio</mat-label>
-              <input matInput type="number" class="example-right-align" placeholder="0" formControlName="precio">
-              <span matTextPrefix>$&nbsp;</span>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>Porcentaje</mat-label>
-              <input matInput type="number" class="example-right-align" formControlName="porcentaje">
-              <span matTextPrefix>%&nbsp;</span>
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-    
-      <p>
-        <mat-form-field>
-          <mat-label>Descripción del Activo</mat-label>
-          <textarea matInput placeholder="Descripción del activo fijo" formControlName="descripcion"></textarea>
-        </mat-form-field>
-      </p>
-
-      <table [cellSpacing]="2">
-        <tr>
-          <td>
-            <mat-form-field>
-              <mat-label>Fecha de compra</mat-label>
-              <input matInput [matDatepicker]="picker" formControlName="fecha">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>Fecha de registro</mat-label>
-              <input matInput [matDatepicker]="picker1" formControlName="fechaRe">
-              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-              <mat-datepicker #picker1></mat-datepicker>
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-    
-      <table cellspacing="2">
-        <tr>
-          <td>
-            <mat-form-field>
-              <mat-label>Departamento</mat-label>
-              <select matNativeControl required>
-                <option value="1">La Paz</option>
-                <option value="2">Cochabamba</option>
-                <option value="3">SantaCruz</option>
-              </select>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>Calle</mat-label>
-              <input matInput placeholder="Calle" formControlName="calle">
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>Avenida</mat-label>
-              <input matInput placeholder="Avenida" formControlName="avenida">
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field>
-              <mat-label>Bloque</mat-label>
-              <select matNativeControl required>
-                <option value="1b">Bloquea</option>
-                <option value="2b">bloqueb</option>
-                <option value="3b">bloquec</option>
-              </select>
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-    </form>    
-    <div class="example-button-row">
-      <button mat-raised-button color="primary">Registro</button>
-      <button mat-raised-button color="warn">Cancelar</button>
+<body>
+<div class="container">
+  <form [formGroup]="nuevoactivoForm" (ngSubmit)="guardarDatos()">
+    <div class="form-row">
+      <mat-form-field class="col">
+        <mat-label>Nombre del Activo Fijo:</mat-label>
+        <input formControlName="nombre" matInput>
+      </mat-form-field>
+      <mat-form-field class="col">
+        <mat-label>Valor:</mat-label>
+        <input formControlName="valor" matInput>
+      </mat-form-field>
+      <mat-form-field class="col">
+        <mat-label>Fecha de Compra:</mat-label>
+        <input matInput [matDatepicker]="datepicker">
+        <mat-hint>YYYY/MM/DD</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+        <mat-datepicker #datepicker></mat-datepicker>
+      </mat-form-field>
     </div>
-  </mat-card-content>
-</mat-card>
+    <div class="form-row">
+      <!-- Campos de Descripcion, Tipo y Marca aquí -->
+      <mat-form-field class="col">
+        <mat-label>Descripcion:</mat-label>
+        <textarea matInput formControlName="descripcion"></textarea>
+      </mat-form-field>
+      <mat-form-field class="col">
+        <mat-label>Porcentaje de Depreciacion:</mat-label>
+        <input formControlName="porcentaje" matInput>
+      </mat-form-field>
+      <mat-form-field class="col">
+        <mat-label>Tipo de Activo:</mat-label>
+        <input type="text" aria-label="Tipo de Activo:" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <mat-form-field class="col">
+        <mat-label>Marca:</mat-label>
+        <input type="text" aria-label="Marca:" matInput [formControl]="myControl2" [matAutocomplete]="auto2">
+        <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="form-row">
+      <!-- Campos de Ubicacion, Personal, Estado y Condicion aquí -->
+      <mat-form-field class="col">
+        <mat-label>Ubicacion:</mat-label>
+        <input type="text" aria-label="Ubicacion:" matInput [formControl]="myControl3" [matAutocomplete]="auto3">
+        <mat-autocomplete autoActiveFirstOption #auto3="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <mat-form-field class="col">
+        <mat-label>Personal al que pertenece:</mat-label>
+        <input type="text" aria-label="Personal al que pertenece:" matInput [formControl]="myControl4"
+               [matAutocomplete]="auto4">
+        <mat-autocomplete autoActiveFirstOption #auto4="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <mat-form-field class="col">
+        <mat-label>Estado:</mat-label>
+        <input type="text" aria-label="Estado:" matInput [formControl]="myControl5" [matAutocomplete]="auto5">
+        <mat-autocomplete autoActiveFirstOption #auto5="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <mat-form-field class="col">
+        <mat-label>Condicion:</mat-label>
+        <input type="text" aria-label="Condicion:" matInput [formControl]="myControl6" [matAutocomplete]="auto6">
+        <mat-autocomplete autoActiveFirstOption #auto6="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <button style=" background-color: #F39F5A; color: white; border-color: white" mat-button (click)="guardarDatos()" class="button">Guardar</button>
+  </form>
+</div>
+</body>
+

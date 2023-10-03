@@ -5,7 +5,7 @@ import { MainComponent } from './components/main/main.component';
 import { ActivoListComponent } from './components/activo-list/activo-list.component';
 
 const routes: Routes = [
-  { path: 'registro-producto', component: RegistroProductoComponent },
+  { path: 'registro-activo', component: RegistroProductoComponent },
   { path: 'lista-activos', component: ActivoListComponent },
   { path: '', component: MainComponent}
 ];

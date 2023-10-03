@@ -13,13 +13,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { ActivoListComponent } from './components/activo-list/activo-list.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import {MAT_DATE_FORMATS, MatNativeDateModule} from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
-
-
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -43,10 +44,14 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     MatInputModule,
     MatDividerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    MatAutocompleteModule,
+    HttpClientModule,
+    MatDatepickerModule,
   ],
   providers: [
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' }}
+
   ],
   bootstrap: [AppComponent]
 })
