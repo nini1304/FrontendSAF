@@ -55,6 +55,7 @@ export class RegistroProductoComponent{
       nombre: [''],
       valor: [''],
       descripcion: [''],
+      porcentaje: [''],
       myControl: [''],
       myControl2: [''],
       myControl3: [''],
