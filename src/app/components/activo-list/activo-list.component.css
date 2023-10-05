@@ -159,3 +159,36 @@
 .date-filter mat-form-field {
   margin-right: 10px;
 }
+
+.search-bar {
+  width: 300px; 
+  margin: 25px;
+}
+.mat-form-field {
+  background-color: #f0f0f0; 
+  border-radius: 10px; 
+}
+
+.mat-icon {
+  color: #555; 
+}
+.mat-input-element{
+  font-size: 25px;
+}
+
+.search-and-select{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 26px;
+}
+
+.select-field{
+  width: 300px;
+  margin-right: 10px;
+}
+
+.mat-select-panel .mat-option{
+  font-size: 25px;
+}
