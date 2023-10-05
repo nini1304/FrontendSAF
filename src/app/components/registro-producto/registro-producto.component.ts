@@ -189,20 +189,20 @@ export class RegistroProductoComponent{
   }
   guardarDatos() {
     console.log('guardar datos')
-    const nombre = this.nuevoactivoForm.value['nombre'];
-    const valor = this.nuevoactivoForm.value['valor'];
+    const nombre = this.nuevoactivoForm.get('nombre')?.value;
+    const valor = this.nuevoactivoForm.get('valor')?.value;
     // @ts-ignore
     const fecha = this.datepickerInput.value;
     // @ts-ignore
     const fechaa = fecha.toString();
-    const descripcion = this.nuevoactivoForm.value['descripcion'];
-    const porcentaje = this.nuevoactivoForm.value['porcentaje'];
-    const tipo = this.tipoactivoDto.find((tipo: TipoactivoDto) => tipo.nombre === this.nuevoactivoForm.value['myControl'])?.id;
-    const marca = this.marcasDto.find((marca: MarcasDto) => marca.nombre === this.nuevoactivoForm.value['myControl2'])?.id;
-    const ubicacion = this.ubicacionesDto.find((ubi: UbicacionesDto) => ubi.nombre === this.nuevoactivoForm.value['myControl3'])?.id;
-    const personal = this.personalDto.find((personal: PersonalDto) => personal.nombre === this.nuevoactivoForm.value['myControl4'])?.id;
-    const estado = this.estadosDto.find((estado: EstadosDto) => estado.nombre === this.nuevoactivoForm.value['myControl5'])?.id;
-    const condicion = this.condicionDto.find((condicion: CondicionDto) => condicion.nombre === this.nuevoactivoForm.value['myControl6'])?.id;
+    const descripcion = this.nuevoactivoForm.get('descripcion')?.value;
+    const porcentaje = this.nuevoactivoForm.get('porcentaje')?.value;
+    const tipo = this.tipoactivoDto.find((tipo: TipoactivoDto) => tipo.nombre === this.myControl.value)?.id;
+    const marca = this.marcasDto.find((marca: MarcasDto) => marca.nombre === this.myControl2.value)?.id;
+    const ubicacion = this.ubicacionesDto.find((ubi: UbicacionesDto) => ubi.nombre === this.myControl3.value)?.id;
+    const personal = this.personalDto.find((personal: PersonalDto) => personal.nombre === this.myControl4.value)?.id;
+    const estado = this.estadosDto.find((estado: EstadosDto) => estado.nombre === this.myControl5.value)?.id;
+    const condicion = this.condicionDto.find((condicion: CondicionDto) => condicion.nombre === this.myControl6.value)?.id;
     // @ts-ignore
     this.activoservice.registrarActivo(nombre, valor, fechaa, descripcion,porcentaje, tipo, marca, ubicacion, personal, estado, condicion)
       .subscribe(
