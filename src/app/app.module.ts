@@ -21,6 +21,8 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {HttpClientModule} from "@angular/common/http";
+import { ListaActivosComponent } from './components/lista-activos/lista-activos.component';
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import {HttpClientModule} from "@angular/common/http";
     AppComponent,
     MainComponent,
     RegistroProductoComponent,
-    ActivoListComponent
+    ActivoListComponent,
+    ListaActivosComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import {HttpClientModule} from "@angular/common/http";
     MatAutocompleteModule,
     HttpClientModule,
     MatDatepickerModule,
+    MatTableModule,
   ],
   providers: [
 
