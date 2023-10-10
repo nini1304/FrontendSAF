@@ -23,6 +23,7 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {HttpClientModule} from "@angular/common/http";
 import { ListaActivosComponent } from './components/lista-activos/lista-activos.component';
 import {MatTableModule} from "@angular/material/table";
+import { ActualizacionActivosComponent } from './components/actualizacion-activos/actualizacion-activos.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {MatTableModule} from "@angular/material/table";
     MainComponent,
     RegistroProductoComponent,
     ActivoListComponent,
-    ListaActivosComponent
+    ListaActivosComponent,
+    ActualizacionActivosComponent
   ],
   imports: [
     BrowserModule,
