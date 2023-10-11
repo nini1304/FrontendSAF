@@ -11,6 +11,9 @@ export class ActivosService {
 
   constructor(private http: HttpClient) {}
 
+  public getActivosFijos(): Observable<any> {
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/actF`);
+  }
   public getTiposActivo(): Observable<any> {
     return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/tipo`);
   }
