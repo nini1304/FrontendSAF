@@ -78,27 +78,41 @@
 <div class="tabla">
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <!-- Position Column -->
-  <ng-container matColumnDef="position">
+  <ng-container matColumnDef="Nro">
     <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
   </ng-container>
 
   <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+  <ng-container matColumnDef="Nombre">
+    <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
   </ng-container>
 
   <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+  <ng-container matColumnDef="Valor">
+    <mat-header-cell *matHeaderCellDef> Valor </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.valor}} </mat-cell>
   </ng-container>
 
   <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+  <ng-container matColumnDef="FechaCompra">
+    <mat-header-cell *matHeaderCellDef> Fecha Compra </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.fechaCompra}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="UbicacionCompra">
+    <mat-header-cell *matHeaderCellDef> Ubicación </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.ubicacionId}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="UbicacionActual">
+    <mat-header-cell *matHeaderCellDef> Ubicacion Actual </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.condicionId}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Acciones">
+    <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+    <mat-cell *matCellDef="let element">Boton  </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

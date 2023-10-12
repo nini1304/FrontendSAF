@@ -1,18 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import {Observable, map, from} from 'rxjs';
 import {environment} from "../../environments/environment";
-
+import {ActivoFijoDto} from "../dto/activofijo.dto";
 @Injectable({
   providedIn: 'root'
 })
+
 export class ActivosService {
   BACK_URL = environment.url;
 
   constructor(private http: HttpClient) {}
 
-  public getActivosFijos(): Observable<any> {
-    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/actF`);
+  public getActivosFijos(): Observable<ActivoFijoDto[]> {
+    return this.http.get<ActivoFijoDto[]>(`${this.BACK_URL}/api/v1/activos-fijos/actF`);
   }
   public getTiposActivo(): Observable<any> {
     return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/tipo`);
