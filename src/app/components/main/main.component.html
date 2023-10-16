@@ -1,4 +1,38 @@
-<div class="navbar">
-  <a href="/lista-activos">Lista de Activos</a>
-  <a href="/registro-activo">Registrar Activo</a>
+<body>
+<div>
+  <mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+<!--      <p>Auto-resizing sidenav</p>-->
+<!--      <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>-->
+<!--      <button (click)="showFiller = !showFiller" mat-raised-button>-->
+<!--        Toggle extra text-->
+<!--      </button>-->
+      <div class="menu">
+        <mat-icon [routerLink]="['lista-activos']" class="menuitem">playlist_add_check</mat-icon>Lista de Activos Fijos
+      </div>
+      <br>
+      <div class="menu">
+      <mat-icon [routerLink]="['registro-activo']" class="menuitem">playlist_add</mat-icon>Crear Activo Fijo
+      </div>
+      <br>
+      <div class="menu">
+        <mat-icon [routerLink]="['movimientos-en-activos']" class="menuitem">timeline</mat-icon>Movimientos en Activos Fijos
+      </div>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+      <div class="icono">
+      <mat-icon (click)="drawer.toggle()">home</mat-icon>
+      <p>Menu</p>
+      </div>
+<!--      <button type="button" mat-button (click)="drawer.toggle()">-->
+<!--        Toggle sidenav-->
+<!--      </button>-->
+      <h1>Bienvenido al Sistema de Activos Fijos</h1>
+      <p>Administrando tus activos de forma eficiente y profesional.</p>
+    </div>
+
+  </mat-drawer-container>
 </div>
+
+</body>

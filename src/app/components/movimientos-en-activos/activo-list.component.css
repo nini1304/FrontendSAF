@@ -1,8 +1,3 @@
-/*@font-face {*/
-/*  font-family: 'NiniFont'; !* Puedes nombrar la fuente como desees *!*/
-/*  src: url('../../../assets/Haarlem Deco DEMO.ttf') format('truetype'); !* Ruta correcta a tu archivo de fuente *!*/
-/*  !* Agrega otros formatos de fuente aquí si es necesario (woff, woff2, etc.) *!*/
-/*}*/
 .mat-mdc-table {
   width: 100%;
   max-height: 500px;
@@ -20,12 +15,11 @@
   text-align: center;
 }
 h1{
-  font-family: Arial, sans-serif;
+  font-family: 'NiniFont', sans-serif;
   font-size: 50px;
-  color: white;
 }
 h2{
-  font-family: Arial, sans-serif;
+  font-family: 'NiniFont', sans-serif;
   font-size: 25px;
 
 }
@@ -40,11 +34,8 @@ h2{
   display: inline-block; /* Muestra los combo boxes en línea */
 }
 body{
-  /*background-image: url("../../../assets/wallpaperof.jpg");*/
   background: linear-gradient(to bottom, #9A1663, #E0144C, #FF5858);
-  height: 100vh;
-  margin: 0;
-  /*background-size: cover;*/
+  background-size: cover;
 }
 .todo{
   margin-top: 50px;
@@ -55,9 +46,8 @@ body{
   border-color: black;
   border-width: 6px;
   border-style: solid;
-  height: 600px;
 
 }
 .mat-elevation-z8{
-  height: 350px;
+
 }

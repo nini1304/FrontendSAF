@@ -11,7 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
-import { ActivoListComponent } from './components/activo-list/activo-list.component';
+import { ActivoListComponent } from './components/movimientos-en-activos/activo-list.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MAT_DATE_FORMATS, MatNativeDateModule} from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
@@ -24,6 +24,8 @@ import {HttpClientModule} from "@angular/common/http";
 import { ListaActivosComponent } from './components/lista-activos/lista-activos.component';
 import {MatTableModule} from "@angular/material/table";
 import { ActualizacionActivosComponent } from './components/actualizacion-activos/actualizacion-activos.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
+
 
 
 @NgModule({
@@ -55,6 +57,7 @@ import { ActualizacionActivosComponent } from './components/actualizacion-activo
     HttpClientModule,
     MatDatepickerModule,
     MatTableModule,
+    MatSidenavModule,
   ],
   providers: [
 

@@ -1,6 +1,6 @@
 <body>
 <div class="container">
-  <form [formGroup]="nuevoactivoForm" (ngSubmit)="guardarDatos()">
+  <form class="formulario" [formGroup]="nuevoactivoForm" (ngSubmit)="guardarDatos()">
     <div class="form-row">
       <mat-form-field class="col">
         <mat-label>Nombre del Activo Fijo:</mat-label>
@@ -23,10 +23,6 @@
       <mat-form-field class="col">
         <mat-label>Descripcion:</mat-label>
         <textarea matInput formControlName="descripcion"></textarea>
-      </mat-form-field>
-      <mat-form-field class="col">
-        <mat-label>Porcentaje de Depreciacion:</mat-label>
-        <input formControlName="porcentaje" matInput>
       </mat-form-field>
       <mat-form-field class="col">
         <mat-label>Tipo de Activo:</mat-label>
