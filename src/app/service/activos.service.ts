@@ -21,6 +21,12 @@ export class ActivosService {
   public getMarcas(): Observable<any> {
     return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/marca`);
   }
+  public getBloques(): Observable<any> {
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/bloque`);
+  }
+  public getCiudades(): Observable<any> {
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/ciudad`);
+  }
   public getUbicaciones(): Observable<any> {
     return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/ubicacion`);
   }
@@ -33,7 +39,7 @@ export class ActivosService {
   public getCondicion(): Observable<any> {
     return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/cond`);
   }
-  public registrarActivo(nombre: string, valor:string, fecha:string, descripcion:string,porcentaje:number, tipo:number, marca: number, ubicacion:number,personal:number,estado:number,condicion:number):
+  public registrarActivo(nombre: string, valor:string, fecha:string, descripcion:string, tipo:number, marca: number, calle:string,avenida:string,bloque:number,ciudad:number,personal:number,estado:number,condicion:number):
     Observable<any> {
     const body = {
       nombre: nombre,
@@ -42,13 +48,16 @@ export class ActivosService {
       descripcion: descripcion,
       tipo: tipo,
       marca: marca,
-      ubicacion: ubicacion,
+      calle: calle,
+      avenida: avenida,
+      bloque: bloque,
+      ciudad: ciudad,
       personal: personal,
       estado: estado,
       condicion: condicion
     };
 
-    return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/registrar?nombre=${nombre}&valor=${valor}&fechaCompra=${fecha}&descripcion=${descripcion}&porcentajeDepreciacion=${porcentaje}&tipoActivoId=${tipo}&marcaId=${marca}&ubicacionId=${ubicacion}&personalId=${personal}&estadoId=${estado}&condicionId=${condicion}&estado=true`, body);
+    return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/registrar?nombre=${nombre}&valor=${valor}&fechaCompra=${fecha}&descripcion=${descripcion}&tipoActivoId=${tipo}&marcaId=${marca}&calle=${calle}&avenida=${avenida}&bloqueId=${bloque}&ciudadId=${ciudad}&personalId=${personal}&estadoId=${estado}&condicionId=${condicion}&estado=true`, body);
   }
 
   obtenerActivo(id: number): Observable<any>{

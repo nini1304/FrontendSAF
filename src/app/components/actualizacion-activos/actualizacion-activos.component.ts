@@ -7,7 +7,6 @@ import { EstadosDto } from 'src/app/dto/estados.dto';
 import { MarcasDto } from 'src/app/dto/marcas.dto';
 import { PersonalDto } from 'src/app/dto/personal.dto';
 import { TipoactivoDto } from 'src/app/dto/tipoactivo.dto';
-import { UbicacionesDto } from 'src/app/dto/ubicaciones.dto';
 import { ActivosService } from 'src/app/service/activos.service';
 import { Observable } from 'rxjs';
 
@@ -41,12 +40,11 @@ export class ActualizacionActivosComponent {
   activoForm: FormGroup;
   tipoactivoDto: TipoactivoDto[] = [];
   marcasDto: MarcasDto[] = [];
-  ubicacionesDto: UbicacionesDto[] = [];
   personalDto: PersonalDto[] = [];
   estadosDto: EstadosDto[] = [];
   condicionDto: CondicionDto[] = [];
 
-  
+
   constructor(
     private formBuilder: FormBuilder,
     private activoservice: ActivosService,
@@ -68,7 +66,7 @@ export class ActualizacionActivosComponent {
   }
 
   ngOnInit() {
-    const activoId = this.route.snapshot.paramMap.get('id'); 
+    const activoId = this.route.snapshot.paramMap.get('id');
     if (activoId !== null) {
       // Convertir activoId a número si es una cadena válida
       const id = parseInt(activoId, 10);

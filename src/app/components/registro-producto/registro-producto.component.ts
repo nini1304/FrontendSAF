@@ -7,10 +7,11 @@ import {map, Observable, startWith} from "rxjs";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {ActivosService} from "../../service/activos.service";
 import {MarcasDto} from "../../dto/marcas.dto";
-import {UbicacionesDto} from "../../dto/ubicaciones.dto";
 import {PersonalDto} from "../../dto/personal.dto";
 import {EstadosDto} from "../../dto/estados.dto";
 import {CondicionDto} from "../../dto/condicion.dto";
+import {BloquesDto} from "../../dto/bloques.dto";
+import {CiudadesDto} from "../../dto/ciudades.dto";
 
 @Component({
   selector: 'app-registro-producto',
@@ -23,7 +24,8 @@ export class RegistroProductoComponent{
   nuevoactivoForm: FormGroup;
   tipoactivoDto: TipoactivoDto[] = [];
   marcasDto: MarcasDto[] = [];
-  ubicacionesDto: UbicacionesDto[] = [];
+  bloquesDto: BloquesDto[] = [];
+  ciudadesDto: CiudadesDto[] = [];
   personalDto: PersonalDto[] = [];
   estadosDto: EstadosDto[] = [];
   condicionDto: CondicionDto[] = [];
@@ -46,6 +48,9 @@ export class RegistroProductoComponent{
   myControl6 = new FormControl('');
   options6: String[] = [];
   filteredOptions6: Observable<String[]> | undefined;
+  myControl7 = new FormControl('');
+  options7: String[] = [];
+  filteredOptions7: Observable<String[]> | undefined;
 
 
 
@@ -55,13 +60,15 @@ export class RegistroProductoComponent{
       nombre: [''],
       valor: [''],
       descripcion: [''],
-      porcentaje: [''],
+      calle: [''],
+      avenida: [''],
       myControl: [''],
       myControl2: [''],
       myControl3: [''],
       myControl4: [''],
       myControl5: [''],
       myControl6: [''],
+      myControl7: [''],
 
     });
   }
@@ -97,14 +104,28 @@ export class RegistroProductoComponent{
 
 
     })
-    this.activoservice.getUbicaciones().subscribe({
-      next: (data: UbicacionesDto[]) => {
+    this.activoservice.getBloques().subscribe({
+      next: (data: BloquesDto[]) => {
         console.log(data);
-        this.ubicacionesDto = data;
-        this.options3 = this.ubicacionesDto.map(ubi => ubi.nombre);
+        this.bloquesDto = data;
+        this.options3 = this.bloquesDto.map(bloque => bloque.nombre);
         this.filteredOptions3 = this.myControl3.valueChanges.pipe(
           startWith(''),
           map(value => this._filter3(value || '')),
+        );
+
+      }
+
+
+    })
+    this.activoservice.getCiudades().subscribe({
+      next: (data: CiudadesDto[]) => {
+        console.log(data);
+        this.ciudadesDto = data;
+        this.options4 = this.ciudadesDto.map(ciudad => ciudad.nombre);
+        this.filteredOptions4 = this.myControl4.valueChanges.pipe(
+          startWith(''),
+          map(value => this._filter4(value || '')),
         );
 
       }
@@ -115,10 +136,10 @@ export class RegistroProductoComponent{
       next: (data: PersonalDto[]) => {
         console.log(data);
         this.personalDto = data;
-        this.options4 = this.personalDto.map(personal => personal.nombre);
-        this.filteredOptions4 = this.myControl4.valueChanges.pipe(
+        this.options5 = this.personalDto.map(personal => personal.nombre);
+        this.filteredOptions5 = this.myControl5.valueChanges.pipe(
           startWith(''),
-          map(value => this._filter4(value || '')),
+          map(value => this._filter5(value || '')),
         );
 
       }
@@ -129,10 +150,10 @@ export class RegistroProductoComponent{
       next: (data: EstadosDto[]) => {
         console.log(data);
         this.estadosDto = data;
-        this.options5 = this.estadosDto.map(estado => estado.nombre);
-        this.filteredOptions5 = this.myControl5.valueChanges.pipe(
+        this.options6 = this.estadosDto.map(estado => estado.nombre);
+        this.filteredOptions6 = this.myControl6.valueChanges.pipe(
           startWith(''),
-          map(value => this._filter5(value || '')),
+          map(value => this._filter6(value || '')),
         );
 
       }
@@ -143,10 +164,10 @@ export class RegistroProductoComponent{
       next: (data: CondicionDto[]) => {
         console.log(data);
         this.condicionDto = data;
-        this.options6 = this.condicionDto.map(condicion => condicion.nombre);
-        this.filteredOptions6 = this.myControl6.valueChanges.pipe(
+        this.options7 = this.condicionDto.map(condicion => condicion.nombre);
+        this.filteredOptions7 = this.myControl7.valueChanges.pipe(
           startWith(''),
-          map(value => this._filter6(value || '')),
+          map(value => this._filter7(value || '')),
         );
 
       }
@@ -187,6 +208,11 @@ export class RegistroProductoComponent{
 
     return this.options6.filter(option => option.toLowerCase().includes(filterValue));
   }
+  private _filter7(value: string): String[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options7.filter(option => option.toLowerCase().includes(filterValue));
+  }
   guardarDatos() {
     console.log('guardar datos')
     const nombre = this.nuevoactivoForm.get('nombre')?.value;
@@ -196,27 +222,24 @@ export class RegistroProductoComponent{
     // @ts-ignore
     const fechaa = fecha.toString();
     const descripcion = this.nuevoactivoForm.get('descripcion')?.value;
-    const porcentaje = this.nuevoactivoForm.get('porcentaje')?.value;
     const tipo = this.tipoactivoDto.find((tipo: TipoactivoDto) => tipo.nombre === this.myControl.value)?.id;
     const marca = this.marcasDto.find((marca: MarcasDto) => marca.nombre === this.myControl2.value)?.id;
-    const ubicacion = this.ubicacionesDto.find((ubi: UbicacionesDto) => ubi.nombre === this.myControl3.value)?.id;
-    const personal = this.personalDto.find((personal: PersonalDto) => personal.nombre === this.myControl4.value)?.id;
-    const estado = this.estadosDto.find((estado: EstadosDto) => estado.nombre === this.myControl5.value)?.id;
-    const condicion = this.condicionDto.find((condicion: CondicionDto) => condicion.nombre === this.myControl6.value)?.id;
+    const calle = this.nuevoactivoForm.get('calle')?.value;
+    const avenida = this.nuevoactivoForm.get('avenida')?.value;
+    const bloque = this.bloquesDto.find((bloque: BloquesDto) => bloque.nombre === this.myControl3.value)?.id;
+    const ciudad = this.ciudadesDto.find((ciudad: CiudadesDto) => ciudad.nombre === this.myControl4.value)?.id;
+    const personal = this.personalDto.find((personal: PersonalDto) => personal.nombre === this.myControl5.value)?.id;
+    const estado = this.estadosDto.find((estado: EstadosDto) => estado.nombre === this.myControl6.value)?.id;
+    const condicion = this.condicionDto.find((condicion: CondicionDto) => condicion.nombre === this.myControl7.value)?.id;
     // @ts-ignore
-    this.activoservice.registrarActivo(nombre, valor, fechaa, descripcion,porcentaje, tipo, marca, ubicacion, personal, estado, condicion)
-      .subscribe(
-        (respuesta) => {
-          // La respuesta del servicio se maneja aquí
-          console.log(respuesta);
-          // Puedes realizar otras acciones después de un registro exitoso, como redireccionar a una página.
-        },
-        (error) => {
-          // Manejo de errores
-          console.error(error);
-          // Puedes mostrar un mensaje de error al usuario si es necesario.
-        }
-      );
+    this.activoservice.registrarActivo(nombre, valor, fechaa, descripcion, tipo, marca, calle,avenida,bloque,ciudad, personal, estado, condicion) .subscribe({
+      next: (data) => {
+        console.log(data);
+
+
+      }
+
+    });
 
 
   }

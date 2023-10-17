@@ -1,39 +1,61 @@
 
-body {
+.example-container {
+  height: 100vh;
+  background: linear-gradient(to bottom, #9A1663, #E0144C, #FF5858);
+}
+.example-sidenav {
+  padding: 20px;
+}
+.example-sidenav-content {
+  height: 100%;
+}
+.menuitem{
+  margin-right: 10px;
+}
+.menu{
+  display: flex;
+  font-family: Arial, sans-serif;
+  color:black;
+}
+.icono{
+  color: white;
+  display: flex;
+  font-family: Arial, sans-serif;
+  font-size: 1.2em;
+}
+.todoelform{
+  margin-top: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
+  background-color: white;
+  border-radius: 25px;
+  border-color: black;
+  border-width: 6px;
+  border-style: solid;
+  margin-right: 200px;
+  margin-left: 200px;
 }
-
-.container {
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.titulo{
+  text-align: center;
+  font-family: Arial, sans-serif;
+  color: white;
+  margin-top: 40px;
 }
 .formulario{
-  align-content: center;
-
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 680px;
 }
 .form-row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
-}
-
-.mat-form-field {
-  width: 100%;
+  margin-bottom: 2%;
 }
 
 .col {
-  flex: 1;
-  margin-right: 10px;
+  margin-right: 2%;
 }
 
-.button {
-  margin-top: 20px;
-}
 
 

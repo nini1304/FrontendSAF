@@ -8,22 +8,29 @@
 <!--        Toggle extra text-->
 <!--      </button>-->
       <div class="menu">
-        <mat-icon [routerLink]="['lista-activos']" class="menuitem">playlist_add_check</mat-icon>Lista de Activos Fijos
+        <mat-icon [routerLink]="['']" class="menuitem">home</mat-icon>Lista de Activos Fijos
       </div>
       <br>
       <div class="menu">
-      <mat-icon [routerLink]="['registro-activo']" class="menuitem">playlist_add</mat-icon>Crear Activo Fijo
+        <mat-icon [routerLink]="['/registro-activo']" class="menuitem">playlist_add</mat-icon>Crear Activo Fijo
       </div>
       <br>
       <div class="menu">
-        <mat-icon [routerLink]="['movimientos-en-activos']" class="menuitem">timeline</mat-icon>Movimientos en Activos Fijos
+        <mat-icon [routerLink]="['/actualizar-activo']" class="menuitem">edit</mat-icon>Crear Activo Fijo
+      </div>
+      <br>
+      <div class="menu">
+        <mat-icon [routerLink]="['/lista-activos']" class="menuitem">playlist_add_check</mat-icon>Lista de Activos Fijos
+      </div>
+      <br>
+      <div class="menu">
+        <mat-icon [routerLink]="['/movimientos-en-activos']" class="menuitem">timeline</mat-icon>Movimientos en Activos Fijos
       </div>
     </mat-drawer>
 
     <div class="example-sidenav-content">
       <div class="icono">
-      <mat-icon (click)="drawer.toggle()">home</mat-icon>
-      <p>Menu</p>
+      <mat-icon (click)="drawer.toggle()">menu</mat-icon>
       </div>
 <!--      <button type="button" mat-button (click)="drawer.toggle()">-->
 <!--        Toggle sidenav-->
