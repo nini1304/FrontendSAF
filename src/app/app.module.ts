@@ -25,6 +25,7 @@ import { ListaActivosComponent } from './components/lista-activos/lista-activos.
 import {MatTableModule} from "@angular/material/table";
 import { ActualizacionActivosComponent } from './components/actualizacion-activos/actualizacion-activos.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
+import {CommonModule} from "@angular/common";
 
 
 
@@ -58,6 +59,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     MatDatepickerModule,
     MatTableModule,
     MatSidenavModule,
+    CommonModule,
   ],
   providers: [
 

@@ -12,7 +12,6 @@ import {EstadosDto} from "../../dto/estados.dto";
 import {CondicionDto} from "../../dto/condicion.dto";
 import {BloquesDto} from "../../dto/bloques.dto";
 import {CiudadesDto} from "../../dto/ciudades.dto";
-import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-registro-producto',
@@ -55,7 +54,7 @@ export class RegistroProductoComponent{
 
 
 
-  constructor(private datePipe: DatePipe,private formBuilder: FormBuilder, private activoservice: ActivosService,
+  constructor(private formBuilder: FormBuilder, private activoservice: ActivosService,
               private fb: FormBuilder) {
     this.nuevoactivoForm = this.fb.group({
       nombre: [''],
@@ -221,7 +220,7 @@ export class RegistroProductoComponent{
     // @ts-ignore
     const fecha = this.datepickerInput.value;
     // @ts-ignore
-    const fechaa = this.datePipe.transform(fecha, 'dd-MM-yyyy');
+    const fechaa = fecha.toDateString();
     const descripcion = this.nuevoactivoForm.get('descripcion')?.value;
     const tipo = this.tipoactivoDto.find((tipo: TipoactivoDto) => tipo.nombre === this.myControl.value)?.id;
     const marca = this.marcasDto.find((marca: MarcasDto) => marca.nombre === this.myControl2.value)?.id;
