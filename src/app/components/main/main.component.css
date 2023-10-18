@@ -28,7 +28,7 @@ p {
 .icono{
   color: white;
   display: flex;
-  font-family: Arial, sans-serif;
+  margin-left: 10px;
 }
 .menuitem{
   margin-right: 10px;

@@ -20,11 +20,11 @@
 .icono{
   color: white;
   display: flex;
-  font-family: Arial, sans-serif;
-  font-size: 1.2em;
+  margin-left: 10px;
+
 }
 .todoelform{
-  margin-top: 40px;
+  margin-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,15 +36,14 @@
   margin-right: 200px;
   margin-left: 200px;
 }
-.titulo{
+h1{
   text-align: center;
   font-family: Arial, sans-serif;
-  color: white;
-  margin-top: 40px;
+  color: black;
 }
 .formulario{
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   width: 680px;
 }
 .form-row {

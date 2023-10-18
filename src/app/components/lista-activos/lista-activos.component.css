@@ -3,62 +3,108 @@
 /*  src: url('../../../assets/Haarlem Deco DEMO.ttf') format('truetype'); !* Ruta correcta a tu archivo de fuente *!*/
 /*  !* Agrega otros formatos de fuente aquí si es necesario (woff, woff2, etc.) *!*/
 /*}*/
-.mat-mdc-table {
-  width: 100%;
-  max-height: 500px;
-  overflow: auto;
-}
+/*.mat-mdc-table {*/
+/*  width: 100%;*/
+/*  max-height: 500px;*/
+/*  overflow: auto;*/
+/*}*/
 
-.mat-column-name {
-  height: 100px;
-}
-.tabla{
-  margin-left: 50px;
-  margin-right: 50px;
-}
-.titulo{
-  text-align: center;
-}
-h1{
-  font-family: Arial, sans-serif;
-  font-size: 50px;
-  color: white;
-}
-h2{
-  font-family: Arial, sans-serif;
-  font-size: 25px;
+/*.mat-column-name {*/
+/*  height: 100px;*/
+/*}*/
+/*.tabla{*/
+/*  margin-left: 50px;*/
+/*  margin-right: 50px;*/
+/*}*/
+/*.titulo{*/
+/*  text-align: center;*/
+/*}*/
+/*h1{*/
+/*  font-family: Arial, sans-serif;*/
+/*  font-size: 50px;*/
+/*  color: white;*/
+/*}*/
+/*h2{*/
+/*  font-family: Arial, sans-serif;*/
+/*  font-size: 25px;*/
 
-}
-.filtro-container {
-  margin-left: 100px;
-  display: flex; /* Establece el contenedor como flexbox */
-}
+/*}*/
+/*.filtro-container {*/
+/*  margin-left: 100px;*/
+/*  display: flex; !* Establece el contenedor como flexbox *!*/
+/*}*/
 
-.filtro {
-  margin-top: 50px;
-  margin-right: 20px; /* Espacio entre cada combo box */
-  display: inline-block; /* Muestra los combo boxes en línea */
-}
-body{
-  /*background-image: url("../../../assets/wallpaperof.jpg");*/
-  background: linear-gradient(to bottom, #9A1663, #E0144C, #FF5858);
+/*.filtro {*/
+/*  margin-top: 50px;*/
+/*  margin-right: 20px; !* Espacio entre cada combo box *!*/
+/*  display: inline-block; !* Muestra los combo boxes en línea *!*/
+/*}*/
+/*body{*/
+/*  !*background-image: url("../../../assets/wallpaperof.jpg");*!*/
+/*  background: linear-gradient(to bottom, #9A1663, #E0144C, #FF5858);*/
+/*  height: 100vh;*/
+/*  margin: 0;*/
+/*  !*background-size: cover;*!*/
+/*}*/
+/*.todo{*/
+/*  margin-top: 50px;*/
+/*  margin-left: 25px;*/
+/*  margin-right: 25px;*/
+/*  background-color: white;*/
+/*  border-radius: 25px;*/
+/*  border-color: black;*/
+/*  border-width: 6px;*/
+/*  border-style: solid;*/
+/*  height: 600px;*/
+
+/*}*/
+/*.mat-elevation-z8{*/
+/*  height: 350px;*/
+/*}*/
+.example-container {
   height: 100vh;
-  margin: 0;
-  /*background-size: cover;*/
+  background: linear-gradient(to bottom, #9A1663, #E0144C, #FF5858);
+}
+.example-sidenav {
+  padding: 20px;
+}
+.menuitem{
+  margin-right: 10px;
+}
+.menu{
+  display: flex;
+  font-family: Arial, sans-serif;
+  color:black;
+}
+.example-sidenav-content {
+  height: 100%;
+}
+.icono{
+  color: white;
+  display: flex;
+  margin-left: 10px;
+
 }
 .todo{
-  margin-top: 50px;
-  margin-left: 25px;
-  margin-right: 25px;
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: white;
   border-radius: 25px;
   border-color: black;
   border-width: 6px;
   border-style: solid;
-  height: 600px;
+  margin-right: 200px;
+  margin-left: 200px;
+}
+h1{
+  text-align: center;
 
 }
-.mat-elevation-z8{
-  height: 350px;
+.tabla{
+  margin-top: 20px;
+  margin-bottom: 40px;
+  width: 780px;
 }
 

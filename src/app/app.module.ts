@@ -26,6 +26,7 @@ import {MatTableModule} from "@angular/material/table";
 import { ActualizacionActivosComponent } from './components/actualizacion-activos/actualizacion-activos.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {CommonModule} from "@angular/common";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 
@@ -38,29 +39,30 @@ import {CommonModule} from "@angular/common";
     ListaActivosComponent,
     ActualizacionActivosComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    FormsModule,
-    MatInputModule,
-    MatDividerModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatAutocompleteModule,
-    HttpClientModule,
-    MatDatepickerModule,
-    MatTableModule,
-    MatSidenavModule,
-    CommonModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        FormsModule,
+        MatInputModule,
+        MatDividerModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatAutocompleteModule,
+        HttpClientModule,
+        MatDatepickerModule,
+        MatTableModule,
+        MatSidenavModule,
+        CommonModule,
+        MatPaginatorModule,
+    ],
   providers: [
 
   ],
