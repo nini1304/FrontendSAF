@@ -17,6 +17,7 @@
 h1{
   font-family: 'NiniFont', sans-serif;
   font-size: 50px;
+  color: white;
 }
 h2{
   font-family: 'NiniFont', sans-serif;
@@ -48,6 +49,19 @@ body{
   border-style: solid;
 
 }
+
 .mat-elevation-z8{
 
 }
+.example-sidenav {
+  padding: 20px;
+}
+.menuitem{
+  margin-right: 10px;
+}
+.menu{
+  display: flex;
+  font-family: Arial, sans-serif;
+  color:black;
+}
+

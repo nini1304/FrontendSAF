@@ -1,15 +1,43 @@
 <body>
+
+<mat-drawer #drawer class="example-sidenav" mode="side">
+  <!--      <p>Auto-resizing sidenav</p>-->
+  <!--      <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>-->
+  <!--      <button (click)="showFiller = !showFiller" mat-raised-button>-->
+  <!--        Toggle extra text-->
+  <!--      </button>-->
+  <div class="menu">
+    <mat-icon [routerLink]="['']" class="menuitem">home</mat-icon>Inicio
+  </div>
+  <br>
+  <div class="menu">
+    <mat-icon [routerLink]="['/registro-activo']" class="menuitem">playlist_add</mat-icon>Crear Activo Fijo
+  </div>
+  <br>
+  <div class="menu">
+    <mat-icon [routerLink]="['/actualizar-activo']" class="menuitem">edit</mat-icon>Crear Activo Fijo
+  </div>
+  <br>
+  <div class="menu">
+    <mat-icon [routerLink]="['/lista-activos']" class="menuitem">playlist_add_check</mat-icon>Lista de Activos Fijos
+  </div>
+  <br>
+  <div class="menu">
+    <mat-icon [routerLink]="['/movimientos-en-activos']" class="menuitem">timeline</mat-icon>Movimientos en Activos Fijos
+  </div>
+</mat-drawer>
+
 <br>
 <br>
 <div class="titulo">
-  <h1>LISTA DE ACTIVOS FIJOS</h1>
+  <h1>MOVIMIENTO DE ACTIVOS FIJOS</h1>
 </div>
 <div class="todo">
   <div class="filtro-container">
     <div class="filtro">
       <h2>Tipo de Activo Fijo:</h2>
       <mat-form-field class="example-full-width">
-        <mat-label>Number</mat-label>
+        <mat-label>Tipo</mat-label>
         <input type="text"
                placeholder="Pick one"
                aria-label="Number"
@@ -26,7 +54,7 @@
     <div class="filtro">
       <h2>Marca de Activo Fijo:</h2>
       <mat-form-field class="example-full-width">
-        <mat-label>Number</mat-label>
+        <mat-label>Marca</mat-label>
         <input type="text"
                placeholder="Pick one"
                aria-label="Number"
@@ -43,7 +71,7 @@
     <div class="filtro">
       <h2>Estado de Activo Fijo:</h2>
       <mat-form-field class="example-full-width">
-        <mat-label>Number</mat-label>
+        <mat-label>Estado</mat-label>
         <input type="text"
                placeholder="Pick one"
                aria-label="Number"
@@ -60,7 +88,7 @@
     <div class="filtro">
       <h2>Mes:</h2>
       <mat-form-field class="example-full-width">
-        <mat-label>Number</mat-label>
+        <mat-label>Mes</mat-label>
         <input type="text"
                placeholder="Pick one"
                aria-label="Number"
@@ -106,22 +134,20 @@
         <mat-cell *matCellDef="let element"> {{element.ubicacionId}} </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="UbicacionActual">
-        <mat-header-cell *matHeaderCellDef> Ubicacion Actual </mat-header-cell>
+      <ng-container matColumnDef="Condicion">
+        <mat-header-cell *matHeaderCellDef> Condición </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.condicionId}} </mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="Acciones">
-        <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
-        <mat-cell *matCellDef="let element">Boton  </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>
   <br>
   <br>
 </div>
+
 </body>
 
 

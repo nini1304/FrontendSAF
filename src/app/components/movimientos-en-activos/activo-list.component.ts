@@ -12,7 +12,7 @@ import {map, Observable, startWith} from "rxjs";
 })
 export class ActivoListComponent {
   Listactivo: any;
-  displayedColumns = ['Nro', 'Nombre','Valor','FechaCompra','UbicacionCompra','UbicacionActual','Acciones'];
+  displayedColumns = ['Nro', 'Nombre','Valor','FechaCompra','UbicacionCompra','Condicion'];
   dataSource!: MatTableDataSource<ActivoFijoDto>;
   constructor(private activosService:ActivosService) {
   }
