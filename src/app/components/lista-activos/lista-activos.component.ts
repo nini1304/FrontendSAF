@@ -4,6 +4,8 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
 import {ActivoslistaDto} from "../../dto/activoslista.dto";
+import {MatDialog} from "@angular/material/dialog";
+import {MasInformacionComponent} from "../mas-informacion/mas-informacion.component";
 
 
 
@@ -19,7 +21,7 @@ import {ActivoslistaDto} from "../../dto/activoslista.dto";
 export class ListaActivosComponent {
   activoslistaDto: ActivoslistaDto[] = [];
 
-  displayedColumns: string[] = ['id', 'nombre', 'valor', 'fecha', 'descripcion', 'tipo', 'marca', 'ubicacion', 'personal', 'estado', 'condicion'];
+  displayedColumns: string[] = ['id', 'nombre', 'valor', 'fecha', 'tipo', 'masinfo'];
   dataSource: MatTableDataSource<ActivoslistaDto>;
 
   // dataSource: MatTableDataSource<UserData>;
@@ -27,12 +29,19 @@ export class ListaActivosComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
 
-  constructor(private activoservice: ActivosService) {
+  constructor(private activoservice: ActivosService, public dialog: MatDialog) {
     // Create 100 users
     // const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.activoslistaDto);
+
+  }
+  openDialog(descripcion: string, marca: string, calle: string, avenida: string, bloque:string, ciudad: string,personal:string, estado:string, condicion:string) : void {
+    const dialogRef = this.dialog.open(MasInformacionComponent, {
+      // width: '250px',
+      data: {descripcion: descripcion, marca: marca, calle: calle, avenida: avenida, bloque: bloque, ciudad: ciudad, personal: personal, estado: estado, condicion: condicion}
+    });
 
   }
 
@@ -67,24 +76,4 @@ export class ListaActivosComponent {
   }
 }
 
-/** Builds and returns a new User. */
-// function createNewUser(id: number): UserData {
-//   const name =
-//     NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-//     ' ' +
-//     NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-//     '.';
-//
-//   return {
-//     id: id.toString(),
-//     name: name,
-//     progress: Math.round(Math.random() * 100).toString(),
-//     fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
-//   };
-//
-//
-//
-//
-//
-//
-// }
+

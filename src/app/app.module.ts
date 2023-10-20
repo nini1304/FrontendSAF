@@ -27,6 +27,7 @@ import { ActualizacionActivosComponent } from './components/actualizacion-activo
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {CommonModule} from "@angular/common";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { MasInformacionComponent } from './components/mas-informacion/mas-informacion.component';
 
 
 
@@ -37,7 +38,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     RegistroProductoComponent,
     ActivoListComponent,
     ListaActivosComponent,
-    ActualizacionActivosComponent
+    ActualizacionActivosComponent,
+    MasInformacionComponent
   ],
     imports: [
         BrowserModule,
