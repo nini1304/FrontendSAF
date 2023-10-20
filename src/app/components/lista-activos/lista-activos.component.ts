@@ -1,56 +1,14 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {FormControl} from "@angular/forms";
-import {map, Observable, startWith} from "rxjs";
 import { ActivosService } from '../../service/activos.service';
-import { ActivoFijoDto } from '../../dto/activofijo.dto';
 import {MatTableDataSource} from "@angular/material/table";
-import {getXHRResponse} from "rxjs/internal/ajax/getXHRResponse";
 import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
 import {ActivoslistaDto} from "../../dto/activoslista.dto";
-import {TipoactivoDto} from "../../dto/tipoactivo.dto";
-
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  fruit: string;
-}
-
-const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
-];
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
 
 
-/** Error when invalid control is dirty, touched, or submitted. */
+
+
+
 
 
 @Component({
@@ -77,11 +35,18 @@ export class ListaActivosComponent {
     this.dataSource = new MatTableDataSource(this.activoslistaDto);
 
   }
-  ngOnInit() {
+
+
+  ngAfterViewInit() {
     this.activoservice.getListaActivosFijos().subscribe({
       next: (data: ActivoslistaDto []) => {
         console.log(data);
         this.activoslistaDto = data;
+        this.dataSource = new MatTableDataSource(this.activoslistaDto);
+        // @ts-ignore
+        this.dataSource.paginator = this.paginator;
+        // @ts-ignore
+        this.dataSource.sort = this.sort;
 
 
 
@@ -89,14 +54,6 @@ export class ListaActivosComponent {
 
 
     })
-
-  }
-
-  ngAfterViewInit() {
-    // @ts-ignore
-    this.dataSource.paginator = this.paginator;
-    // @ts-ignore
-    this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {
