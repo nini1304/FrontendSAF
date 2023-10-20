@@ -4,11 +4,13 @@ export interface ActivoslistaDto {
   valor: number;
   fechaCompra: Date;
   descripcion: string;
-  tipoObjetoId: number;
-  marcaId: number;
-  ubicacionId: number;
-  personalId: number;
-  estadoId: number;
-  condicionId: number;
-  estado: boolean;
+  tipoActivoNombre: string;
+  marcaNombre: string;
+  calle: string;
+  avenida: string;
+  bloqueNombre: string;
+  ciudadNombre: string;
+  personalNombre: string;
+  estadoNombre: string;
+  condicionNombre: string;
 }

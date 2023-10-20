@@ -8,6 +8,7 @@ import {getXHRResponse} from "rxjs/internal/ajax/getXHRResponse";
 import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
 import {ActivoslistaDto} from "../../dto/activoslista.dto";
+import {TipoactivoDto} from "../../dto/tipoactivo.dto";
 
 export interface UserData {
   id: string;
@@ -68,12 +69,27 @@ export class ListaActivosComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
 
-  constructor() {
+  constructor(private activoservice: ActivosService) {
     // Create 100 users
     // const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.activoslistaDto);
+
+  }
+  ngOnInit() {
+    this.activoservice.getListaActivosFijos().subscribe({
+      next: (data: ActivoslistaDto []) => {
+        console.log(data);
+        this.activoslistaDto = data;
+
+
+
+      }
+
+
+    })
+
   }
 
   ngAfterViewInit() {
@@ -85,6 +101,7 @@ export class ListaActivosComponent {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
+
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
     if (this.dataSource.paginator) {
