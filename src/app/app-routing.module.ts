@@ -8,7 +8,7 @@ import {ActualizacionActivosComponent} from "./components/actualizacion-activos/
 
 const routes: Routes = [
   { path: 'registro-activo', component: RegistroProductoComponent },
-  { path: 'actualizar-activo', component: ActualizacionActivosComponent },
+  { path: 'actualizar-activo/:id', component: ActualizacionActivosComponent },
   { path: 'lista-activos', component: ListaActivosComponent },
   { path: 'movimientos-en-activos', component: ActivoListComponent },
   { path: '', component: MainComponent}

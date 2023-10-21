@@ -16,10 +16,6 @@
       </div>
       <br>
       <div class="menu">
-        <mat-icon [routerLink]="['/actualizar-activo']" class="menuitem">edit</mat-icon>Crear Activo Fijo
-      </div>
-      <br>
-      <div class="menu">
         <mat-icon [routerLink]="['/lista-activos']" class="menuitem">playlist_add_check</mat-icon>Lista de Activos Fijos
       </div>
       <br>
@@ -78,6 +74,13 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
                 <td mat-cell *matCellDef="let row">
                   <a href="javascript:void(0);" (click)="openDialog(row.descripcion, row.marcaNombre, row.calle, row.avenida, row.bloqueNombre, row.ciudadNombre,row.personalNombre,row.estadoNombre,row.condicionNombre)">Mas informacion</a>
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones </th>
+                <td mat-cell *matCellDef="let row">
+                  <mat-icon (click)="actualizar(row.id)">edit</mat-icon>
+                  <mat-icon>delete</mat-icon>
                 </td>
               </ng-container>
 

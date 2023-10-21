@@ -6,6 +6,8 @@ import {MatPaginator} from "@angular/material/paginator";
 import {ActivoslistaDto} from "../../dto/activoslista.dto";
 import {MatDialog} from "@angular/material/dialog";
 import {MasInformacionComponent} from "../mas-informacion/mas-informacion.component";
+import {ActualizacionActivosComponent} from "../actualizacion-activos/actualizacion-activos.component";
+import {Router} from "@angular/router";
 
 
 
@@ -21,7 +23,7 @@ import {MasInformacionComponent} from "../mas-informacion/mas-informacion.compon
 export class ListaActivosComponent {
   activoslistaDto: ActivoslistaDto[] = [];
 
-  displayedColumns: string[] = ['id', 'nombre', 'valor', 'fecha', 'tipo', 'masinfo'];
+  displayedColumns: string[] = ['id', 'nombre', 'valor', 'fecha', 'tipo', 'masinfo','acciones'];
   dataSource: MatTableDataSource<ActivoslistaDto>;
 
   // dataSource: MatTableDataSource<UserData>;
@@ -29,7 +31,7 @@ export class ListaActivosComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
 
-  constructor(private activoservice: ActivosService, public dialog: MatDialog) {
+  constructor(private activoservice: ActivosService, public dialog: MatDialog, private router: Router) {
     // Create 100 users
     // const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
@@ -42,6 +44,10 @@ export class ListaActivosComponent {
       // width: '250px',
       data: {descripcion: descripcion, marca: marca, calle: calle, avenida: avenida, bloque: bloque, ciudad: ciudad, personal: personal, estado: estado, condicion: condicion}
     });
+
+  }
+  actualizar(id: number) {
+    this.router.navigate(['/actualizar-activo', id]);
 
   }
 
