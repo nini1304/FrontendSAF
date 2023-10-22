@@ -48,9 +48,9 @@ export class ActivoListComponent {
     });
   }
 
-  openDialog2(fecha: string, evento: string, usuario: string):void{
+  openDialog2(fechaRegistro: string, evento: string, usuario: string):void{
     const dialogRef=this.dialog.open(DetallesComponent,{
-      data: {fecha: fecha, evento:evento,usuario:usuario}
+      data: {fechaRegistro: fechaRegistro, evento:evento,usuario:usuario}
     });
   }
 
