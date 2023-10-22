@@ -6,6 +6,7 @@ import {FormControl} from "@angular/forms";
 import {map, Observable, startWith} from "rxjs";
 import {MasInformacionComponent} from "../mas-informacion/mas-informacion.component";
 import {MatDialog} from "@angular/material/dialog";
+import {DetallesComponent} from "../detalles/detalles.component";
 
 @Component({
   selector: 'app-movimientos-en-activos',
@@ -14,7 +15,7 @@ import {MatDialog} from "@angular/material/dialog";
 })
 export class ActivoListComponent {
   Listactivo: any;
-  displayedColumns = ['Nro', 'Nombre','Valor','FechaCompra','TipoActivo','masinfo'];
+  displayedColumns = ['Nro', 'Nombre','Valor','FechaCompra','TipoActivo','masinfo','masinfo2'];
   dataSource!: MatTableDataSource<ActivoFijoDto>;
   constructor(private activosService:ActivosService, public dialog: MatDialog,) {
   }
@@ -44,6 +45,12 @@ export class ActivoListComponent {
     const dialogRef = this.dialog.open(MasInformacionComponent, {
       // width: '250px',
       data: {descripcion: descripcion, marca: marca, calle: calle, avenida: avenida, bloque: bloque, ciudad: ciudad, personal: personal, estado: estado, condicion: condicion}
+    });
+  }
+
+  openDialog2(fechaRegistro: string, evento: string, usuario: string):void{
+    const dialogRef=this.dialog.open(DetallesComponent,{
+      data: {fechaRegistro: fechaRegistro, evento:evento,usuario:usuario}
     });
   }
 

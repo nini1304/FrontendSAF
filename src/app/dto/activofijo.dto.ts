@@ -3,6 +3,7 @@ export interface ActivoFijoDto{
   nombre: String;
   valor: number;
   fechaCompra?: string;
+  fechaRegistro?: string;
   descripcion: string;
   //private Integer porcentajeDepreciacion;
   tipoObjeto: number;
@@ -12,4 +13,6 @@ export interface ActivoFijoDto{
   estadoId: number;
   condicionId: number;
   estado: boolean;
+  usuario: string;
+  evento: string;
 }
