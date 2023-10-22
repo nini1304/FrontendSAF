@@ -1,54 +1,18 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {FormControl} from "@angular/forms";
-import {map, Observable, startWith} from "rxjs";
 import { ActivosService } from '../../service/activos.service';
-import { ActivoFijoDto } from '../../dto/activofijo.dto';
 import {MatTableDataSource} from "@angular/material/table";
-import {getXHRResponse} from "rxjs/internal/ajax/getXHRResponse";
 import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
-
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  fruit: string;
-}
-
-const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
-];
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
+import {ActivoslistaDto} from "../../dto/activoslista.dto";
+import {MatDialog} from "@angular/material/dialog";
+import {MasInformacionComponent} from "../mas-informacion/mas-informacion.component";
+import {ActualizacionActivosComponent} from "../actualizacion-activos/actualizacion-activos.component";
+import {Router} from "@angular/router";
 
 
-/** Error when invalid control is dirty, touched, or submitted. */
+
+
+
 
 
 @Component({
@@ -57,30 +21,59 @@ const NAMES: string[] = [
   styleUrls: ['./lista-activos.component.css']
 })
 export class ListaActivosComponent {
+  activoslistaDto: ActivoslistaDto[] = [];
 
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
-  dataSource: MatTableDataSource<UserData>;
+  displayedColumns: string[] = ['id', 'nombre', 'valor', 'fecha', 'tipo', 'masinfo','acciones'];
+  dataSource: MatTableDataSource<ActivoslistaDto>;
+
+  // dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
 
-  constructor() {
+  constructor(private activoservice: ActivosService, public dialog: MatDialog, private router: Router) {
     // Create 100 users
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
+    // const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
+    this.dataSource = new MatTableDataSource(this.activoslistaDto);
+
+  }
+  openDialog(descripcion: string, marca: string, calle: string, avenida: string, bloque:string, ciudad: string,personal:string, estado:string, condicion:string) : void {
+    const dialogRef = this.dialog.open(MasInformacionComponent, {
+      // width: '250px',
+      data: {descripcion: descripcion, marca: marca, calle: calle, avenida: avenida, bloque: bloque, ciudad: ciudad, personal: personal, estado: estado, condicion: condicion}
+    });
+
+  }
+  actualizar(id: number) {
+    this.router.navigate(['/actualizar-activo', id]);
+
   }
 
+
   ngAfterViewInit() {
-    // @ts-ignore
-    this.dataSource.paginator = this.paginator;
-    // @ts-ignore
-    this.dataSource.sort = this.sort;
+    this.activoservice.getListaActivosFijos().subscribe({
+      next: (data: ActivoslistaDto []) => {
+        console.log(data);
+        this.activoslistaDto = data;
+        this.dataSource = new MatTableDataSource(this.activoslistaDto);
+        // @ts-ignore
+        this.dataSource.paginator = this.paginator;
+        // @ts-ignore
+        this.dataSource.sort = this.sort;
+
+
+
+      }
+
+
+    })
   }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
+
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
     if (this.dataSource.paginator) {
@@ -89,24 +82,4 @@ export class ListaActivosComponent {
   }
 }
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-    '.';
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
-  };
-
-
-
-
-
-
-}

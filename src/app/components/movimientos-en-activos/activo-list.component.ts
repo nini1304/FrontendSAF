@@ -4,6 +4,8 @@ import {ActivoFijoDto} from "../../dto/activofijo.dto";
 import {ActivosService} from "../../service/activos.service";
 import {FormControl} from "@angular/forms";
 import {map, Observable, startWith} from "rxjs";
+import {MasInformacionComponent} from "../mas-informacion/mas-informacion.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-movimientos-en-activos',
@@ -12,9 +14,9 @@ import {map, Observable, startWith} from "rxjs";
 })
 export class ActivoListComponent {
   Listactivo: any;
-  displayedColumns = ['Nro', 'Nombre','Valor','FechaCompra','UbicacionCompra','Condicion'];
+  displayedColumns = ['Nro', 'Nombre','Valor','FechaCompra','TipoActivo','masinfo'];
   dataSource!: MatTableDataSource<ActivoFijoDto>;
-  constructor(private activosService:ActivosService) {
+  constructor(private activosService:ActivosService, public dialog: MatDialog,) {
   }
   myControl = new FormControl('');
   options: string[] = ['One', 'Two', 'Three'];
@@ -37,6 +39,12 @@ export class ActivoListComponent {
     }).catch(e => console.error(e));
 
     return respuesta;
+  }
+  openDialog(descripcion: string, marca: string, calle: string, avenida: string, bloque:string, ciudad: string,personal:string, estado:string, condicion:string) : void {
+    const dialogRef = this.dialog.open(MasInformacionComponent, {
+      // width: '250px',
+      data: {descripcion: descripcion, marca: marca, calle: calle, avenida: avenida, bloque: bloque, ciudad: ciudad, personal: personal, estado: estado, condicion: condicion}
+    });
   }
 
   private _filter(value: string): string[] {

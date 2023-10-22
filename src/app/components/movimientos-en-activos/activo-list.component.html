@@ -103,7 +103,7 @@
       </mat-form-field>
     </div>
   </div>
-  <div class="tabla">
+  <div class="tabla" style="text-align: center">
     <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Position Column -->
       <ng-container matColumnDef="Nro">
@@ -129,14 +129,16 @@
         <mat-cell *matCellDef="let element"> {{element.fechaCompra}} </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="UbicacionCompra">
-        <mat-header-cell *matHeaderCellDef> Ubicación </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.ubicacionId}} </mat-cell>
+      <ng-container matColumnDef="TipoActivo">
+        <mat-header-cell *matHeaderCellDef> Tipo de Objeto </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.tipoActivoNombre}} </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="Condicion">
-        <mat-header-cell *matHeaderCellDef> Condición </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.condicionId}} </mat-cell>
+      <ng-container matColumnDef="masinfo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones</th>
+        <td mat-cell *matCellDef="let row">
+          <a href="javascript:void(0);" (click)="openDialog(row.descripcion, row.marcaNombre, row.calle, row.avenida, row.bloqueNombre, row.ciudadNombre,row.personalNombre,row.estadoNombre,row.condicionNombre)">Mas informacion</a>
+        </td>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
