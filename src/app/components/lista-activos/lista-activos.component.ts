@@ -47,6 +47,7 @@ export class ListaActivosComponent {
 
   }
   actualizar(id: number) {
+    console.log(id)
     this.router.navigate(['/actualizar-activo', id]);
 
   }
