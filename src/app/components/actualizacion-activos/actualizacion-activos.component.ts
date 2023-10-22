@@ -78,6 +78,7 @@ export class ActualizacionActivosComponent {
     const id = params['id'];
     this.cargarDatosActivo(id);
    });
+   
    this.activoservice.getTiposActivo().subscribe({
     next: (data: TipoactivoDto[]) => {
       console.log(data);
