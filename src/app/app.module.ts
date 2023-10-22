@@ -29,6 +29,7 @@ import {CommonModule} from "@angular/common";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { MasInformacionComponent } from './components/mas-informacion/mas-informacion.component';
 import { DetallesComponent } from './components/detalles/detalles.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 
@@ -41,7 +42,8 @@ import { DetallesComponent } from './components/detalles/detalles.component';
     ListaActivosComponent,
     ActualizacionActivosComponent,
     MasInformacionComponent,
-    DetallesComponent
+    DetallesComponent,
+    LoginComponent
   ],
     imports: [
         BrowserModule,

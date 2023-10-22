@@ -39,6 +39,14 @@ export class ListaActivosComponent {
     this.dataSource = new MatTableDataSource(this.activoslistaDto);
 
   }
+  borrarls(){
+    localStorage.clear();
+    if (localStorage.length === 0) {
+      console.log("LocalStorage ha sido limpiado correctamente.");
+    } else {
+      console.log("No se pudo limpiar el LocalStorage.");
+    }
+  }
   openDialog(descripcion: string, marca: string, calle: string, avenida: string, bloque:string, ciudad: string,personal:string, estado:string, condicion:string) : void {
     const dialogRef = this.dialog.open(MasInformacionComponent, {
       // width: '250px',
