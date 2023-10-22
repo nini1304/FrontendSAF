@@ -1,125 +1,125 @@
-<div class="titulo">
-  <h1>ACTUALIZAR ACTIVO FIJO</h1>
-</div>
-<div class="todoelform">
-  <form class="formulario" [formGroup]="nuevoactivoForm">
-    <h2>Datos Iniciales:</h2>
-    <div class="form-row">
-      <mat-form-field class="col">
-        <mat-label>Nombre del Activo Fijo:</mat-label>
-        <input formControlName="nombre" matInput>
-      </mat-form-field>
-      <mat-form-field class="col">
-        <mat-label>Valor:</mat-label>
-        <input type="number" formControlName="valor" matInput>
-        <mat-hint>En Bolivianos</mat-hint>
-      </mat-form-field>
-      <mat-form-field class="col">
-        <mat-label>Fecha de Compra:</mat-label>
-        <input matInput [matDatepicker]="datepicker">
-        <mat-hint>DD/MM/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
-        <mat-datepicker #datepicker></mat-datepicker>
-      </mat-form-field>
-    </div>
-    <div class="form-row">
-      <!-- Campos de Descripcion, Tipo y Marca aquí -->
-      <mat-form-field class="col">
-        <mat-label>Descripcion:</mat-label>
-        <textarea matInput formControlName="descripcion"></textarea>
-      </mat-form-field>
-      <mat-form-field class="col">
-        <mat-label>Tipo de Activo:</mat-label>
-        <input type="text" aria-label="Tipo de Activo:" matInput [formControl]="myControl" [matAutocomplete]="auto">
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-      <mat-form-field class="col">
-        <mat-label>Marca:</mat-label>
-        <input type="text" aria-label="Marca:" matInput [formControl]="myControl2" [matAutocomplete]="auto2">
-        <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions2 | async" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-    </div>
-    <h2>Datos de Ubicacion:</h2>
-    <div class="form-row">
-      <mat-form-field class="col">
-        <mat-label>Calle:</mat-label>
-        <input formControlName="calle" matInput>
-      </mat-form-field>
-      <mat-form-field class="col">
-        <mat-label>Avenida:</mat-label>
-        <input formControlName="avenida" matInput>
-      </mat-form-field>
-    </div>
-    <div class="form-row">
-      <mat-form-field class="col">
-        <mat-label>Bloque:</mat-label>
-        <input type="text"
-               aria-label="Bloque:"
-               matInput
-               [formControl]="myControl3"
-               [matAutocomplete]="auto3">
-        <mat-autocomplete autoActiveFirstOption #auto3="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions3 | async" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-      <mat-form-field class="col">
-        <mat-label>Ciudad:</mat-label>
-        <input type="text"
-               aria-label="Ciudad:"
-               matInput
-               [formControl]="myControl4"
-               [matAutocomplete]="auto4">
-        <mat-autocomplete autoActiveFirstOption #auto4="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions4 | async" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-    </div>
-    <h2>Datos Finales:</h2>
-    <div class="form-row">
-      <mat-form-field class="col">
-        <mat-label>Personal:</mat-label>
-        <input type="text" aria-label="Personal al que pertenece:" matInput [formControl]="myControl5"
-               [matAutocomplete]="auto5">
-        <mat-autocomplete autoActiveFirstOption #auto5="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions5 | async" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-        <mat-hint>Personal al que pertenece</mat-hint>
-      </mat-form-field>
-      <mat-form-field class="col">
-        <mat-label>Estado:</mat-label>
-        <input type="text" aria-label="Estado:" matInput [formControl]="myControl6" [matAutocomplete]="auto6">
-        <mat-autocomplete autoActiveFirstOption #auto6="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions6 | async" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-      <mat-form-field class="col">
-        <mat-label>Condicion:</mat-label>
-        <input type="text" aria-label="Condicion:" matInput [formControl]="myControl7" [matAutocomplete]="auto7">
-        <mat-autocomplete autoActiveFirstOption #auto7="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions7 | async" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-      </div>
-      <div class="botones">
-        <button mat-raised-button color="primary" (click)="actualizarDato()">Actualizar</button>
-      </div>
-    </form>
-  </div>
+<!--<div class="titulo">-->
+<!--  <h1>ACTUALIZAR ACTIVO FIJO</h1>-->
+<!--</div>-->
+<!--<div class="todoelform">-->
+<!--  <form class="formulario" [formGroup]="nuevoactivoForm">-->
+<!--    <h2>Datos Iniciales:</h2>-->
+<!--    <div class="form-row">-->
+<!--      <mat-form-field class="col">-->
+<!--        <mat-label>Nombre del Activo Fijo:</mat-label>-->
+<!--        <input formControlName="nombre" matInput>-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field class="col">-->
+<!--        <mat-label>Valor:</mat-label>-->
+<!--        <input type="number" formControlName="valor" matInput>-->
+<!--        <mat-hint>En Bolivianos</mat-hint>-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field class="col">-->
+<!--        <mat-label>Fecha de Compra:</mat-label>-->
+<!--        <input matInput [matDatepicker]="datepicker">-->
+<!--        <mat-hint>DD/MM/YYYY</mat-hint>-->
+<!--        <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>-->
+<!--        <mat-datepicker #datepicker></mat-datepicker>-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--    <div class="form-row">-->
+<!--      &lt;!&ndash; Campos de Descripcion, Tipo y Marca aquí &ndash;&gt;-->
+<!--      <mat-form-field class="col">-->
+<!--        <mat-label>Descripcion:</mat-label>-->
+<!--        <textarea matInput formControlName="descripcion"></textarea>-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field class="col">-->
+<!--        <mat-label>Tipo de Activo:</mat-label>-->
+<!--        <input type="text" aria-label="Tipo de Activo:" matInput [formControl]="myControl" [matAutocomplete]="auto">-->
+<!--        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">-->
+<!--          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">-->
+<!--            {{option}}-->
+<!--          </mat-option>-->
+<!--        </mat-autocomplete>-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field class="col">-->
+<!--        <mat-label>Marca:</mat-label>-->
+<!--        <input type="text" aria-label="Marca:" matInput [formControl]="myControl2" [matAutocomplete]="auto2">-->
+<!--        <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete">-->
+<!--          <mat-option *ngFor="let option of filteredOptions2 | async" [value]="option">-->
+<!--            {{option}}-->
+<!--          </mat-option>-->
+<!--        </mat-autocomplete>-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--    <h2>Datos de Ubicacion:</h2>-->
+<!--    <div class="form-row">-->
+<!--      <mat-form-field class="col">-->
+<!--        <mat-label>Calle:</mat-label>-->
+<!--        <input formControlName="calle" matInput>-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field class="col">-->
+<!--        <mat-label>Avenida:</mat-label>-->
+<!--        <input formControlName="avenida" matInput>-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--    <div class="form-row">-->
+<!--      <mat-form-field class="col">-->
+<!--        <mat-label>Bloque:</mat-label>-->
+<!--        <input type="text"-->
+<!--               aria-label="Bloque:"-->
+<!--               matInput-->
+<!--               [formControl]="myControl3"-->
+<!--               [matAutocomplete]="auto3">-->
+<!--        <mat-autocomplete autoActiveFirstOption #auto3="matAutocomplete">-->
+<!--          <mat-option *ngFor="let option of filteredOptions3 | async" [value]="option">-->
+<!--            {{option}}-->
+<!--          </mat-option>-->
+<!--        </mat-autocomplete>-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field class="col">-->
+<!--        <mat-label>Ciudad:</mat-label>-->
+<!--        <input type="text"-->
+<!--               aria-label="Ciudad:"-->
+<!--               matInput-->
+<!--               [formControl]="myControl4"-->
+<!--               [matAutocomplete]="auto4">-->
+<!--        <mat-autocomplete autoActiveFirstOption #auto4="matAutocomplete">-->
+<!--          <mat-option *ngFor="let option of filteredOptions4 | async" [value]="option">-->
+<!--            {{option}}-->
+<!--          </mat-option>-->
+<!--        </mat-autocomplete>-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--    <h2>Datos Finales:</h2>-->
+<!--    <div class="form-row">-->
+<!--      <mat-form-field class="col">-->
+<!--        <mat-label>Personal:</mat-label>-->
+<!--        <input type="text" aria-label="Personal al que pertenece:" matInput [formControl]="myControl5"-->
+<!--               [matAutocomplete]="auto5">-->
+<!--        <mat-autocomplete autoActiveFirstOption #auto5="matAutocomplete">-->
+<!--          <mat-option *ngFor="let option of filteredOptions5 | async" [value]="option">-->
+<!--            {{option}}-->
+<!--          </mat-option>-->
+<!--        </mat-autocomplete>-->
+<!--        <mat-hint>Personal al que pertenece</mat-hint>-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field class="col">-->
+<!--        <mat-label>Estado:</mat-label>-->
+<!--        <input type="text" aria-label="Estado:" matInput [formControl]="myControl6" [matAutocomplete]="auto6">-->
+<!--        <mat-autocomplete autoActiveFirstOption #auto6="matAutocomplete">-->
+<!--          <mat-option *ngFor="let option of filteredOptions6 | async" [value]="option">-->
+<!--            {{option}}-->
+<!--          </mat-option>-->
+<!--        </mat-autocomplete>-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field class="col">-->
+<!--        <mat-label>Condicion:</mat-label>-->
+<!--        <input type="text" aria-label="Condicion:" matInput [formControl]="myControl7" [matAutocomplete]="auto7">-->
+<!--        <mat-autocomplete autoActiveFirstOption #auto7="matAutocomplete">-->
+<!--          <mat-option *ngFor="let option of filteredOptions7 | async" [value]="option">-->
+<!--            {{option}}-->
+<!--          </mat-option>-->
+<!--        </mat-autocomplete>-->
+<!--      </mat-form-field>-->
+<!--      </div>-->
+<!--      <div class="botones">-->
+<!--        <button mat-raised-button color="primary" (click)="actualizarDato()">Actualizar</button>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--  </div>-->
