@@ -68,5 +68,40 @@ export class ActivosService {
     const url = `${this.BACK_URL}/api/v1/activos-fijos/obtener/${id}`;
     return this.http.get<any>(url);
   }
+  public actualizarActivo(
+    id: number,
+    nombre: string,
+    valor: string,
+    fecha: string,
+    descripcion: string,
+    tipo: string,
+    marca: string,
+    calle: string,
+    avenida: string,
+    bloque: string,
+    ciudad: string,
+    personal: string,
+    estado: string,
+    condicion: string
+  ): Observable<any> {
+    const url = `${this.BACK_URL}/api/v1/activos-fijos/actualizar/${id}`;
+
+    const body = {
+      nombre: nombre,
+      valor: valor,
+      fecha: fecha,
+      descripcion: descripcion,
+      tipo: tipo,
+      marca: marca,
+      calle: calle,
+      avenida: avenida,
+      bloque: bloque,
+      ciudad: ciudad,
+      personal: personal,
+      estado: estado,
+      condicion: condicion
+    };
+    return this.http.put<any>(url, body);
+  }
 }
 
