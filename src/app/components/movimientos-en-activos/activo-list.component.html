@@ -1,4 +1,7 @@
 <body>
+<div>
+  <mat-drawer-container class="example-container" autosize>
+
 <mat-drawer #drawer class="example-sidenav" mode="side">
   <div class="menu">
     <mat-icon [routerLink]="['menu']" class="menuitem">home</mat-icon>Inicio
@@ -21,87 +24,15 @@
   </div>
 
 </mat-drawer>
-<br>
-<br>
-<div class="icono">
-  <mat-icon (click)="drawer.toggle()">menu</mat-icon>
-</div>
-<div class="titulo">
-  <h1>MOVIMIENTO DE ACTIVOS FIJOS</h1>
-</div>
-<div class="todo">
 
-  <div class="filtro-container">
-    <div class="filtro">
-      <h2>Tipo de Activo Fijo:</h2>
-      <mat-form-field class="example-full-width">
-        <mat-label>Tipo</mat-label>
-        <input type="text"
-               placeholder="Pick one"
-               aria-label="Number"
-               matInput
-               [formControl]="myControl"
-               [matAutocomplete]="auto">
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-    </div>
-    <div class="filtro">
-      <h2>Marca de Activo Fijo:</h2>
-      <mat-form-field class="example-full-width">
-        <mat-label>Marca</mat-label>
-        <input type="text"
-               placeholder="Pick one"
-               aria-label="Number"
-               matInput
-               [formControl]="myControl"
-               [matAutocomplete]="auto">
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-    </div>
-    <div class="filtro">
-      <h2>Estado de Activo Fijo:</h2>
-      <mat-form-field class="example-full-width">
-        <mat-label>Estado</mat-label>
-        <input type="text"
-               placeholder="Pick one"
-               aria-label="Number"
-               matInput
-               [formControl]="myControl"
-               [matAutocomplete]="auto">
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-    </div>
-    <div class="filtro">
-      <h2>Mes:</h2>
-      <mat-form-field class="example-full-width">
-        <mat-label>Mes</mat-label>
-        <input type="text"
-               placeholder="Pick one"
-               aria-label="Number"
-               matInput
-               [formControl]="myControl"
-               [matAutocomplete]="auto">
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-    </div>
+<div class="example-sidenav-content">
+  <div class="icono">
+    <mat-icon (click)="drawer.toggle()">menu</mat-icon>
   </div>
-  <div class="tabla" style="text-align: center">
+  <div class="todo">
+  <div class="tabla">
+    <h1>Movimientos y cambios</h1>
+
     <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Position Column -->
       <ng-container matColumnDef="Nro">
@@ -153,7 +84,9 @@
   <br>
   <br>
 </div>
-
+</div>
+  </mat-drawer-container>
+</div>
 </body>
 
 
