@@ -34,6 +34,7 @@ h2{
   margin-right: 20px; /* Espacio entre cada combo box */
   display: inline-block; /* Muestra los combo boxes en línea */
 }
+
 body{
   background: linear-gradient(to bottom, #9A1663, #E0144C, #FF5858);
   background-size: cover;
@@ -49,12 +50,14 @@ body{
   border-style: solid;
 
 }
-
-.mat-elevation-z8{
-
-}
 .example-sidenav {
   padding: 20px;
+}
+
+.icono{
+  color: white;
+  display: flex;
+  margin-left: 10px;
 }
 .menuitem{
   margin-right: 10px;

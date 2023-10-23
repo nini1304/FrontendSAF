@@ -1,10 +1,36 @@
 <body>
+<mat-drawer #drawer class="example-sidenav" mode="side">
+  <div class="menu">
+    <mat-icon [routerLink]="['menu']" class="menuitem">home</mat-icon>Inicio
+  </div>
+  <br>
+  <div class="menu">
+    <mat-icon [routerLink]="['/registro-activo']" class="menuitem">playlist_add</mat-icon>Crear Activo Fijo
+  </div>
+  <br>
+  <div class="menu">
+    <mat-icon [routerLink]="['/lista-activos']" class="menuitem">playlist_add_check</mat-icon>Lista de Activos Fijos
+  </div>
+  <br>
+  <div class="menu">
+    <mat-icon [routerLink]="['/movimientos-en-activos']" class="menuitem">timeline</mat-icon>Movimientos en Activos Fijos
+  </div>
+  <br>
+  <div class="menu">
+    <mat-icon (click)="borrarls()" [routerLink]="['']" class="menuitem">exit_to_app</mat-icon>Cerrar Sesión
+  </div>
+
+</mat-drawer>
 <br>
 <br>
+<div class="icono">
+  <mat-icon (click)="drawer.toggle()">menu</mat-icon>
+</div>
 <div class="titulo">
   <h1>MOVIMIENTO DE ACTIVOS FIJOS</h1>
 </div>
 <div class="todo">
+
   <div class="filtro-container">
     <div class="filtro">
       <h2>Tipo de Activo Fijo:</h2>
