@@ -47,7 +47,14 @@ export class ActivoListComponent {
       data: {descripcion: descripcion, marca: marca, calle: calle, avenida: avenida, bloque: bloque, ciudad: ciudad, personal: personal, estado: estado, condicion: condicion}
     });
   }
-
+  borrarls(){
+    localStorage.clear();
+    if (localStorage.length === 0) {
+      console.log("LocalStorage ha sido limpiado correctamente.");
+    } else {
+      console.log("No se pudo limpiar el LocalStorage.");
+    }
+  }
   openDialog2(fechaRegistro: string, evento: string, usuario: string):void{
     const dialogRef=this.dialog.open(DetallesComponent,{
       data: {fechaRegistro: fechaRegistro, evento:evento,usuario:usuario}

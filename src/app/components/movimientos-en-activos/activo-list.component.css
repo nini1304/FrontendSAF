@@ -8,16 +8,15 @@
   height: 100px;
 }
 .tabla{
-  margin-left: 50px;
-  margin-right: 60px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  width: 850px;
 }
 .titulo{
   text-align: center;
 }
 h1{
-  font-family: 'NiniFont', sans-serif;
-  font-size: 50px;
-  color: white;
+  text-align: center;
 }
 h2{
   font-family: 'NiniFont', sans-serif;
@@ -34,27 +33,32 @@ h2{
   margin-right: 20px; /* Espacio entre cada combo box */
   display: inline-block; /* Muestra los combo boxes en línea */
 }
-body{
+.example-container {
+  height: 100vh;
   background: linear-gradient(to bottom, #9A1663, #E0144C, #FF5858);
-  background-size: cover;
 }
+
 .todo{
-  margin-top: 50px;
-  margin-left: 25px;
-  margin-right: 25px;
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: white;
   border-radius: 25px;
   border-color: black;
   border-width: 6px;
   border-style: solid;
-
-}
-
-.mat-elevation-z8{
-
+  margin-right: 200px;
+  margin-left: 200px;
 }
 .example-sidenav {
   padding: 20px;
+}
+
+.icono{
+  color: white;
+  display: flex;
+  margin-left: 10px;
 }
 .menuitem{
   margin-right: 10px;
@@ -63,5 +67,8 @@ body{
   display: flex;
   font-family: Arial, sans-serif;
   color:black;
+}
+.example-sidenav-content {
+  height: 100%;
 }
 

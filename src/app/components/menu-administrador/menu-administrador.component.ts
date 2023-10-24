@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  selector: 'app-menu-administrador',
+  templateUrl: './menu-administrador.component.html',
+  styleUrls: ['./menu-administrador.component.css']
 })
-export class MainComponent {
+export class MenuAdministradorComponent {
   showFiller = false;
   borrarls(){
     localStorage.clear();

@@ -1,0 +1,20 @@
+<body>
+<div class="contenedor">
+  <h1>Login</h1>
+  <form [formGroup]="loginForm" class="formulario">
+    <mat-form-field>
+      <mat-label>Ingrese su usuario: </mat-label>
+      <input matInput formControlName="usuario" required>
+      <mat-error *ngIf="loginForm.get('usuario')?.invalid">Debes ingresar un usuario valido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Ingrese su contraseña: </mat-label>
+      <input matInput formControlName="contraseña" required>
+      <mat-error *ngIf="loginForm.get('contraseña')?.invalid">Debes ingresar una contraseña valida</mat-error>
+    </mat-form-field>
+    <button type="submit" (click)="ingresar()" style="background-color: #FF5858; border-color: black;" mat-raised-button >Ingresar</button>
+  </form>
+</div>
+</body>
+

@@ -213,6 +213,15 @@ export class RegistroProductoComponent{
 
     return this.options7.filter(option => option.toLowerCase().includes(filterValue));
   }
+
+  borrarls(){
+    localStorage.clear();
+    if (localStorage.length === 0) {
+      console.log("LocalStorage ha sido limpiado correctamente.");
+    } else {
+      console.log("No se pudo limpiar el LocalStorage.");
+    }
+  }
   guardarDatos() {
     console.log('guardar datos')
     const nombre = this.nuevoactivoForm.get('nombre')?.value;
