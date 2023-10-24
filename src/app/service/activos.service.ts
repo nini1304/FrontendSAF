@@ -103,5 +103,13 @@ export class ActivosService {
     };
     return this.http.put<any>(url, body);
   }
+  public login(usuario: string, contraseña: string): Observable<any> {
+    const url = `${this.BACK_URL}/api/v1/usuarios/login?user=${usuario}&password=${contraseña}`;
+    const body = {
+      usuario: usuario,
+      contraseña: contraseña
+    };
+    return this.http.post<any>(url, body);
+  }
 }
 

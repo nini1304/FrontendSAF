@@ -30,6 +30,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import { MasInformacionComponent } from './components/mas-informacion/mas-informacion.component';
 import { DetallesComponent } from './components/detalles/detalles.component';
 import { LoginComponent } from './components/login/login.component';
+import { MenuAdministradorComponent } from './components/menu-administrador/menu-administrador.component';
 
 
 
@@ -43,7 +44,8 @@ import { LoginComponent } from './components/login/login.component';
     ActualizacionActivosComponent,
     MasInformacionComponent,
     DetallesComponent,
-    LoginComponent
+    LoginComponent,
+    MenuAdministradorComponent
   ],
     imports: [
         BrowserModule,
