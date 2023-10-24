@@ -120,8 +120,9 @@
                 </mat-autocomplete>
               </mat-form-field>
             </div>
-            <button type="submit" style=" background-color: #F39F5A; color: white; border-color: white" mat-button (click)="actualizarActivo()" class="button">Guardar</button>
-            <button type="submit" style=" background-color: #C70039; color: white; border-color: white" mat-button (click)="cancelar()" class="button">Cancelar</button>
+            <button type="submit" class="boton-estilo" style=" background-color: #F39F5A; color: white; border-color: white" mat-button (click)="actualizarActivo()" class="button">Guardar</button>
+            <button type="submit" class="boton-estilo" style=" background-color: #C70039; color: white; border-color: white" mat-button (click)="cancelar()" class="button">Cancelar</button>
+            <button type="submit" class="boton-estilo" style=" background-color: #511845; color: white; border-color: white" mat-button (click)="regresar()" class="button">Regresar</button>
           </form>
         </div>
         <div class="mensaje-actualizacion" *ngIf="updateMessage">

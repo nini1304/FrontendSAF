@@ -262,13 +262,15 @@ export class ActualizacionActivosComponent {
           console.log(data);
           this.updateMessage = 'Activo Actualizado con exito';
           alert(this.updateMessage);
+          this.router.navigate(['/lista-activos']);
         }
       })
     })
-    this.router.navigate(['/lista-activos']);
-
   }
   cancelar() {
     this.activoForm.reset();
+  }
+  regresar(){
+    this.router.navigate(['/lista-activos']);
   }
 }
