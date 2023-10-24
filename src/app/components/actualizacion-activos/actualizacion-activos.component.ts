@@ -260,10 +260,11 @@ export class ActualizacionActivosComponent {
       this.activoservice.actualizarActivo(id, nombre, valor, fecha, descripcion, tipo, marca, calle, avenida, bloque, ciudad, personal, estado, condicion).subscribe({
         next: (data) => {
           console.log(data);
+          this.updateMessage = 'Activo Actualizado con exito';
+          alert(this.updateMessage);
         }
       })
     })
-    this.updateMessage = 'Activo Actualizado con exito';
     this.router.navigate(['/lista-activos']);
 
   }

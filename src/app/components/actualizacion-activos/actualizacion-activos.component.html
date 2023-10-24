@@ -1,8 +1,9 @@
 <body>
-      <div class="example-sidenav-content">
+    <mat-drawer-container class="example-container" autosize>
+  
         <div class="todoelform">
           <form class="formulario" [formGroup]="activoForm">
-            <h1>Registro de Activo Fijo</h1>
+            <h1>Actualización de Activo Fijo</h1>
             <h2>Datos Iniciales:</h2>
             <div class="form-row">
               <mat-form-field class="col">
@@ -122,10 +123,10 @@
             <button type="submit" style=" background-color: #F39F5A; color: white; border-color: white" mat-button (click)="actualizarActivo()" class="button">Guardar</button>
             <button type="submit" style=" background-color: #C70039; color: white; border-color: white" mat-button (click)="cancelar()" class="button">Cancelar</button>
           </form>
-        </div>    
+        </div>
         <div class="mensaje-actualizacion" *ngIf="updateMessage">
           {{ updateMessage }}
-        </div>        
-      </div>
+        </div>
+    </mat-drawer-container>
     </body>
     
