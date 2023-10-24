@@ -36,6 +36,10 @@
   <div class="todo">
   <div class="tabla">
     <h1>Movimientos y cambios</h1>
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field>
 
     <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Position Column -->
