@@ -26,6 +26,7 @@ p {
   padding: 20px;
 }
 .icono{
+  margin-top: 10px;
   color: white;
   display: flex;
   margin-left: 10px;
@@ -33,10 +34,19 @@ p {
 .menuitem{
   margin-right: 10px;
 }
-.menu{
+.menu {
   display: flex;
   font-family: Arial, sans-serif;
-  color:black;
+  color: black;
+}
+.imagen{
+  width: 30px;
+  height: 30px;
+  margin-left:10px;
+}
+.empresa{
+  margin-left:10px;
+
 }
 
 

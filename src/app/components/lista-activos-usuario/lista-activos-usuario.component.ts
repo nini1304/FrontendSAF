@@ -1,30 +1,23 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import { ActivosService } from '../../service/activos.service';
-import {MatTableDataSource} from "@angular/material/table";
-import {MatSort} from "@angular/material/sort";
-import {MatPaginator} from "@angular/material/paginator";
+import {Component, ViewChild} from '@angular/core';
 import {ActivoslistaDto} from "../../dto/activoslista.dto";
+import {MatTableDataSource} from "@angular/material/table";
+import {MatPaginator} from "@angular/material/paginator";
+import {MatSort} from "@angular/material/sort";
+import {ActivosService} from "../../service/activos.service";
 import {MatDialog} from "@angular/material/dialog";
-import {MasInformacionComponent} from "../mas-informacion/mas-informacion.component";
-import {ActualizacionActivosComponent} from "../actualizacion-activos/actualizacion-activos.component";
 import {Router} from "@angular/router";
-
-
-
-
-
-
+import {MasInformacionComponent} from "../mas-informacion/mas-informacion.component";
 
 @Component({
-  selector: 'app-lista-activos',
-  templateUrl: './lista-activos.component.html',
-  styleUrls: ['./lista-activos.component.css']
+  selector: 'app-lista-activos-usuario',
+  templateUrl: './lista-activos-usuario.component.html',
+  styleUrls: ['./lista-activos-usuario.component.css']
 })
-export class ListaActivosComponent {
+export class ListaActivosUsuarioComponent {
   nombre = localStorage.getItem('nombre');
   activoslistaDto: ActivoslistaDto[] = [];
 
-  displayedColumns: string[] = ['id', 'nombre', 'valor', 'fecha', 'tipo', 'masinfo','acciones'];
+  displayedColumns: string[] = ['id', 'nombre', 'valor', 'fecha', 'tipo', 'masinfo'];
   dataSource: MatTableDataSource<ActivoslistaDto>;
 
   // dataSource: MatTableDataSource<UserData>;
@@ -90,6 +83,5 @@ export class ListaActivosComponent {
       this.dataSource.paginator.firstPage();
     }
   }
+
 }
-
-

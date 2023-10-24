@@ -48,6 +48,7 @@ export class LoginComponent {
       },error: (error: any) => {
         console.log(error);
         alert("Usuario o contraseña incorrectos");
+        location.reload();
 
       }
 

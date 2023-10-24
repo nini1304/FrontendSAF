@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent {
+  nombre = localStorage.getItem('nombre');
+  nempresa = localStorage.getItem('nempresa');
+  logo = localStorage.getItem('logo');
   showFiller = false;
   borrarls(){
     localStorage.clear();

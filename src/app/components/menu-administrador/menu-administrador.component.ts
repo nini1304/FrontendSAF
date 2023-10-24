@@ -6,6 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./menu-administrador.component.css']
 })
 export class MenuAdministradorComponent {
+
+  nombre = localStorage.getItem('nombre');
+
+  nempresa = localStorage.getItem('nempresa');
+  logo = localStorage.getItem('logo');
+
   showFiller = false;
   borrarls(){
     localStorage.clear();

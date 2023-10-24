@@ -2,7 +2,11 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <div class="menu">
-      <mat-icon [routerLink]="['menu']" class="menuitem">home</mat-icon>Inicio
+      <mat-icon class="menuitem"> person_pin</mat-icon>Bienvenido {{nombre}}
+    </div>
+    <br>
+    <div class="menu">
+      <mat-icon [routerLink]="['/menu-administrador']" class="menuitem">home</mat-icon>Inicio
     </div>
     <br>
     <div class="menu">

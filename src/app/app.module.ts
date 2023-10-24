@@ -31,6 +31,8 @@ import { MasInformacionComponent } from './components/mas-informacion/mas-inform
 import { DetallesComponent } from './components/detalles/detalles.component';
 import { LoginComponent } from './components/login/login.component';
 import { MenuAdministradorComponent } from './components/menu-administrador/menu-administrador.component';
+import { ListaActivosUsuarioComponent } from './components/lista-activos-usuario/lista-activos-usuario.component';
+import { MovimientosAtivosUsuarioComponent } from './components/movimientos-ativos-usuario/movimientos-ativos-usuario.component';
 
 
 
@@ -45,7 +47,9 @@ import { MenuAdministradorComponent } from './components/menu-administrador/menu
     MasInformacionComponent,
     DetallesComponent,
     LoginComponent,
-    MenuAdministradorComponent
+    MenuAdministradorComponent,
+    ListaActivosUsuarioComponent,
+    MovimientosAtivosUsuarioComponent
   ],
     imports: [
         BrowserModule,

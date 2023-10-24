@@ -3,19 +3,19 @@
   <mat-drawer-container class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav" mode="side">
       <div class="menu">
-        <mat-icon [routerLink]="['menu']" class="menuitem">home</mat-icon>Inicio
+        <mat-icon class="menuitem"> person_pin</mat-icon>Bienvenido {{nombre}}
       </div>
       <br>
       <div class="menu">
-        <mat-icon [routerLink]="['/registro-activo']" class="menuitem">playlist_add</mat-icon>Crear Activo Fijo
+        <mat-icon [routerLink]="['/menu']" class="menuitem">home</mat-icon>Inicio
       </div>
       <br>
       <div class="menu">
-        <mat-icon [routerLink]="['/lista-activos']" class="menuitem">playlist_add_check</mat-icon>Lista de Activos Fijos
+        <mat-icon [routerLink]="['/lista-activos-usuario']" class="menuitem">playlist_add_check</mat-icon>Lista de Activos Fijos
       </div>
       <br>
       <div class="menu">
-        <mat-icon [routerLink]="['/movimientos-en-activos']" class="menuitem">timeline</mat-icon>Movimientos en Activos Fijos
+        <mat-icon [routerLink]="['/movimientos-activos-usuario']" class="menuitem">timeline</mat-icon>Movimientos en Activos Fijos
       </div>
       <br>
       <div class="menu">
@@ -26,6 +26,8 @@
     <div class="example-sidenav-content">
       <div class="icono">
         <mat-icon (click)="drawer.toggle()">menu</mat-icon>
+        <h2 class="empresa">{{nempresa}}</h2>
+        <img class="imagen" src="{{logo}}">
       </div>
       <h1>Bienvenido al Sistema de Activos Fijos</h1>
       <p>Administrando tus activos de forma eficiente y profesional.</p>

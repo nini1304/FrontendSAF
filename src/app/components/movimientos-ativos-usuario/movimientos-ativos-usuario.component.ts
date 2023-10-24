@@ -2,18 +2,18 @@ import { Component } from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {ActivoFijoDto} from "../../dto/activofijo.dto";
 import {ActivosService} from "../../service/activos.service";
+import {MatDialog} from "@angular/material/dialog";
 import {FormControl} from "@angular/forms";
 import {map, Observable, startWith} from "rxjs";
 import {MasInformacionComponent} from "../mas-informacion/mas-informacion.component";
-import {MatDialog} from "@angular/material/dialog";
 import {DetallesComponent} from "../detalles/detalles.component";
 
 @Component({
-  selector: 'app-movimientos-en-activos',
-  templateUrl: './activo-list.component.html',
-  styleUrls: ['./activo-list.component.css']
+  selector: 'app-movimientos-ativos-usuario',
+  templateUrl: './movimientos-ativos-usuario.component.html',
+  styleUrls: ['./movimientos-ativos-usuario.component.css']
 })
-export class ActivoListComponent {
+export class MovimientosAtivosUsuarioComponent {
   nombre = localStorage.getItem('nombre');
 
   Listactivo: any;

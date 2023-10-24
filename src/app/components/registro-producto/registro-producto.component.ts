@@ -21,6 +21,8 @@ import {CiudadesDto} from "../../dto/ciudades.dto";
 export class RegistroProductoComponent{
   @ViewChild(MatDatepickerInput) datepickerInput: MatDatepickerInput<Date> | undefined;
 
+  nombre = localStorage.getItem('nombre');
+
   nuevoactivoForm: FormGroup;
   tipoactivoDto: TipoactivoDto[] = [];
   marcasDto: MarcasDto[] = [];
@@ -244,6 +246,13 @@ export class RegistroProductoComponent{
     this.activoservice.registrarActivo(nombre, valor, fechaa, descripcion, tipo, marca, calle,avenida,bloque,ciudad, personal, estado, condicion) .subscribe({
       next: (data) => {
         console.log(data);
+        alert('Activo registrado correctamente');
+        window.location.href = '/lista-activos';
+
+
+      },error: (error: any) => {
+        console.log(error);
+        alert('Error al registrar activo');
 
 
       }
