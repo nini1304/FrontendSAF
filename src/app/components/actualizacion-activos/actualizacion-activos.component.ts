@@ -18,6 +18,7 @@ import { BloquesDto } from 'src/app/dto/bloques.dto';
   styleUrls: ['./actualizacion-activos.component.css']
 })
 export class ActualizacionActivosComponent {
+  updateMessage: string='';
   @ViewChild(MatDatepickerInput) datepickerInput: MatDatepickerInput<Date> | undefined;
 
   myControl = new FormControl('');
@@ -56,6 +57,7 @@ export class ActualizacionActivosComponent {
     private formBuilder: FormBuilder,
     private activoservice: ActivosService,
     private route: ActivatedRoute,
+    private router: Router
   ) {
     this.activoForm = this.formBuilder.group({
       nombre: [''],
@@ -261,5 +263,11 @@ export class ActualizacionActivosComponent {
         }
       })
     })
+    this.updateMessage = 'Activo Actualizado con exito';
+    this.router.navigate(['/lista-activos']);
+
+  }
+  cancelar() {
+    this.activoForm.reset();
   }
 }

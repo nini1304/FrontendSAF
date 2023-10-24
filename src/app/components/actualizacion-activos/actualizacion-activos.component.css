@@ -38,6 +38,13 @@
   .button {
     margin-top: 20px;
   }
+
+  .mensaje-actualizacion {
+    background-color: #900C3F; /* Color de fondo verde */
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
   
   
   

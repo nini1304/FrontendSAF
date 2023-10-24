@@ -1,27 +1,5 @@
 <body>
-    <mat-drawer-container class="example-container" autosize>
-      <mat-drawer #drawer class="example-sidenav" mode="side">
-        <div class="menu">
-          <mat-icon [routerLink]="['']" class="menuitem">home</mat-icon>Inicio
-        </div>
-        <br>
-        <div class="menu">
-          <mat-icon [routerLink]="['/registro-activo']" class="menuitem">playlist_add</mat-icon>Crear Activo Fijo
-        </div>
-        <br>
-        <div class="menu">
-          <mat-icon [routerLink]="['/lista-activos']" class="menuitem">playlist_add_check</mat-icon>Lista de Activos Fijos
-        </div>
-        <br>
-        <div class="menu">
-          <mat-icon [routerLink]="['/movimientos-en-activos']" class="menuitem">timeline</mat-icon>Movimientos en Activos Fijos
-        </div>
-      </mat-drawer>
-    
       <div class="example-sidenav-content">
-        <div class="icono">
-          <mat-icon (click)="drawer.toggle()">menu</mat-icon>
-        </div>
         <div class="todoelform">
           <form class="formulario" [formGroup]="activoForm">
             <h1>Registro de Activo Fijo</h1>
@@ -142,11 +120,12 @@
               </mat-form-field>
             </div>
             <button type="submit" style=" background-color: #F39F5A; color: white; border-color: white" mat-button (click)="actualizarActivo()" class="button">Guardar</button>
+            <button type="submit" style=" background-color: #C70039; color: white; border-color: white" mat-button (click)="cancelar()" class="button">Cancelar</button>
           </form>
-        </div>
-    
+        </div>    
+        <div class="mensaje-actualizacion" *ngIf="updateMessage">
+          {{ updateMessage }}
+        </div>        
       </div>
-    
-    </mat-drawer-container>
     </body>
     
