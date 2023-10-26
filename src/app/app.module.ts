@@ -32,6 +32,9 @@ import { LoginComponent } from './components/login/login.component';
 import { MenuPoweruserComponent } from './components/menu-poweruser/menu-poweruser.component';
 import { MenuUserComponent } from './components/menu-user/menu-user.component';
 import { ListaUserComponent } from './components/lista-user/lista-user.component';
+import { MenuAdministradorComponent } from './components/menu-administrador/menu-administrador.component';
+import { ListaAdministradorComponent } from './components/lista-administrador/lista-administrador.component';
+import { MovimientosAdministradorComponent } from './components/movimientos-administrador/movimientos-administrador.component';
 
 
 @NgModule({
@@ -47,6 +50,9 @@ import { ListaUserComponent } from './components/lista-user/lista-user.component
     MenuPoweruserComponent,
     MenuUserComponent,
     ListaUserComponent,
+    MenuAdministradorComponent,
+    ListaAdministradorComponent,
+    MovimientosAdministradorComponent,
 
   ],
     imports: [

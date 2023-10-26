@@ -8,6 +8,11 @@ import {ActualizarPoweruserComponent} from "./components/actualizar-poweruser/ac
 import {MovimientosPoweruserComponent} from "./components/movimientos-poweruser/movimientos-poweruser.component";
 import {MenuUserComponent} from "./components/menu-user/menu-user.component";
 import {ListaUserComponent} from "./components/lista-user/lista-user.component";
+import {MenuAdministradorComponent} from "./components/menu-administrador/menu-administrador.component";
+import {ListaAdministradorComponent} from "./components/lista-administrador/lista-administrador.component";
+import {
+  MovimientosAdministradorComponent
+} from "./components/movimientos-administrador/movimientos-administrador.component";
 
 
 const routes: Routes = [
@@ -19,6 +24,9 @@ const routes: Routes = [
   { path: 'movimientos-poweruser', component: MovimientosPoweruserComponent},
   { path: 'menu-user', component: MenuUserComponent},
   { path: 'lista-user', component: ListaUserComponent},
+  { path: 'menu-admin', component: MenuAdministradorComponent},
+  { path: 'lista-admin', component: ListaAdministradorComponent},
+  { path: 'movimientos-admin', component: MovimientosAdministradorComponent},
 
 
 ];
