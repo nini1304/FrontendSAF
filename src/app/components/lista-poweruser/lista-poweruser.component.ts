@@ -1,23 +1,30 @@
-import {Component, ViewChild} from '@angular/core';
-import {ActivoslistaDto} from "../../dto/activoslista.dto";
+import {Component, OnInit, ViewChild} from '@angular/core';
+import { ActivosService } from '../../service/activos.service';
 import {MatTableDataSource} from "@angular/material/table";
-import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
-import {ActivosService} from "../../service/activos.service";
+import {MatPaginator} from "@angular/material/paginator";
+import {ActivoslistaDto} from "../../dto/activoslista.dto";
 import {MatDialog} from "@angular/material/dialog";
-import {Router} from "@angular/router";
 import {MasInformacionComponent} from "../mas-informacion/mas-informacion.component";
+import {ActualizarPoweruserComponent} from "../actualizar-poweruser/actualizar-poweruser.component";
+import {Router} from "@angular/router";
+
+
+
+
+
+
 
 @Component({
-  selector: 'app-lista-activos-usuario',
-  templateUrl: './lista-activos-usuario.component.html',
-  styleUrls: ['./lista-activos-usuario.component.css']
+  selector: 'app-lista-poweruser',
+  templateUrl: './lista-poweruser.component.html',
+  styleUrls: ['./lista-poweruser.component.css']
 })
-export class ListaActivosUsuarioComponent {
+export class ListaPoweruserComponent {
   nombre = localStorage.getItem('nombre');
   activoslistaDto: ActivoslistaDto[] = [];
 
-  displayedColumns: string[] = ['id', 'nombre', 'valor', 'fecha', 'tipo', 'masinfo'];
+  displayedColumns: string[] = ['id', 'nombre', 'valor', 'fecha', 'tipo', 'masinfo','acciones'];
   dataSource: MatTableDataSource<ActivoslistaDto>;
 
   // dataSource: MatTableDataSource<UserData>;
@@ -50,7 +57,7 @@ export class ListaActivosUsuarioComponent {
   }
   actualizar(id: number) {
     console.log(id)
-    this.router.navigate(['/actualizar-activo', id]);
+    this.router.navigate(['/actualizar-poweruser', id]);
 
   }
 
@@ -83,5 +90,6 @@ export class ListaActivosUsuarioComponent {
       this.dataSource.paginator.firstPage();
     }
   }
-
 }
+
+
