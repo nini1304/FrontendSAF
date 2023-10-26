@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>Detalles Activo Fijo</h1>
+<div mat-dialog-content>
+  <h2>Elija el Mes:</h2>
+  <mat-form-field>
+    <mat-label>Choose an option</mat-label>
+    <mat-select [(ngModel)]="mesSeleccionado">
+      <mat-option value="JANUARY">Enero</mat-option>
+      <mat-option value="FEBRUARY">Febrero</mat-option>
+      <mat-option value="MARCH">Marzo</mat-option>
+      <mat-option value="APRIL">Abril</mat-option>
+      <mat-option value="MAY">Mayo</mat-option>
+      <mat-option value="JUNE">Junio</mat-option>
+      <mat-option value="JULY">Julio</mat-option>
+      <mat-option value="AUGUST">Agosto</mat-option>
+      <mat-option value="SEPTEMBER">Septiembre</mat-option>
+      <mat-option value="OCTOBER">Octubre</mat-option>
+      <mat-option value="NOVEMBER">Noviembre</mat-option>
+      <mat-option value="DECEMBER">Diciembre</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <h2>Elija el Año:</h2>
+  <mat-form-field>
+    <mat-label>Choose an option</mat-label>
+    <mat-select [(ngModel)]="anioSeleccionado">
+      <mat-option value="2021">2021</mat-option>
+      <mat-option value="2022">2022</mat-option>
+      <mat-option value="2023">2023</mat-option>
+      <mat-option value="2024">2024</mat-option>
+
+    </mat-select>
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button color="primary" (click)="depreciar()">Depreciar</button>
+  <button mat-button mat-dialog-close color="warn">Cerrar</button>
+</div>

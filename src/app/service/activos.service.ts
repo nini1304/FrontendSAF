@@ -15,8 +15,11 @@ export class ActivosService {
   public getActivosFijos(): Observable<ActivoFijoDto[]> {
     return this.http.get<ActivoFijoDto[]>(`${this.BACK_URL}/api/v1/activos-fijos-H/actFH`);
   }
+  public getActivosDepreciados(mes:string, anio: number): Observable<any> {
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/actF?mes=${mes}&anio=${anio}`);
+  }
   public getListaActivosFijos(): Observable<any> {
-    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/actF`);
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/actF2`);
   }
 
   public getTiposActivo(): Observable<any> {

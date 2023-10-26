@@ -42,8 +42,16 @@ h1{
   margin-top: 10px;
   margin-bottom: 40px;
 }
+/*.filtro{*/
+/*  margin-top: 40px;*/
+/*}*/
+.boton{
+  margin-left:360px;
+
+}
 .mat-mdc-form-field {
-  margin-top: 40px;
   font-size: 14px;
   width: 400px;
+  margin-top: 40px;
+
 }

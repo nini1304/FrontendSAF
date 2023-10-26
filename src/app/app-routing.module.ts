@@ -15,6 +15,7 @@ import {
 } from "./components/movimientos-administrador/movimientos-administrador.component";
 import {MenuEncargadoComponent} from "./components/menu-encargado/menu-encargado.component";
 import {ListaEncargadoComponent} from "./components/lista-encargado/lista-encargado.component";
+import {ListaDepreciadaComponent} from "./components/lista-depreciada/lista-depreciada.component";
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'movimientos-admin', component: MovimientosAdministradorComponent},
   { path: 'menu-encargado', component: MenuEncargadoComponent},
   { path: 'lista-encargado', component: ListaEncargadoComponent},
+  { path: 'lista-depre/:mes/:anio', component: ListaDepreciadaComponent},
 
 
 ];

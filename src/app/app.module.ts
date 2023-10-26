@@ -37,6 +37,8 @@ import { ListaAdministradorComponent } from './components/lista-administrador/li
 import { MovimientosAdministradorComponent } from './components/movimientos-administrador/movimientos-administrador.component';
 import { MenuEncargadoComponent } from './components/menu-encargado/menu-encargado.component';
 import { ListaEncargadoComponent } from './components/lista-encargado/lista-encargado.component';
+import { DepreciarComponent } from './components/depreciar/depreciar.component';
+import { ListaDepreciadaComponent } from './components/lista-depreciada/lista-depreciada.component';
 
 
 @NgModule({
@@ -57,6 +59,8 @@ import { ListaEncargadoComponent } from './components/lista-encargado/lista-enca
     MovimientosAdministradorComponent,
     MenuEncargadoComponent,
     ListaEncargadoComponent,
+    DepreciarComponent,
+    ListaDepreciadaComponent,
 
   ],
     imports: [
