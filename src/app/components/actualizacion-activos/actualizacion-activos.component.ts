@@ -220,18 +220,17 @@ export class ActualizacionActivosComponent {
         this.activoForm.setValue({
           nombre: data.nombre,
           valor: data.valor,
+          fecha: data.fechaCompra,
           descripcion: data.descripcion,
           tipo: data.tipo,
           marca: data.marca,
-          ubicacion: data.ubicacion,
-          personal: data.personal,
-          estado: data.estado,
-          condicion: data.condicion,
           calle: data.calle,
           avenida: data.avenida,
-          bloque: data.bloque,
+          boqlue: data.bloque,
           ciudad: data.ciudad,
-          fecha: data.fechaCompra
+          personal: data.personal,
+          estado: data.estado,
+          condicion: data.condicion
         })
       }
     })
@@ -241,18 +240,17 @@ export class ActualizacionActivosComponent {
     // Obtener el ID del activo a actualizar de la URL
     const nombre = this.activoForm.get('nombre')?.value;
     const valor = this.activoForm.get('valor')?.value;
+    const fecha = this.activoForm.get('fecha')?.value;
     const descripcion = this.activoForm.get('descripcion')?.value;
     const tipo = this.activoForm.get('tipo')?.value;
     const marca = this.activoForm.get('marca')?.value;
-    const ubicacion = this.activoForm.get('ubicacion')?.value;
-    const personal = this.activoForm.get('personal')?.value;
-    const estado = this.activoForm.get('estado')?.value;
-    const condicion = this.activoForm.get('condicion')?.value;
     const calle = this.activoForm.get('calle')?.value;
     const avenida = this.activoForm.get('avenida')?.value;
     const bloque = this.activoForm.get('bloque')?.value;
     const ciudad = this.activoForm.get('ciudad')?.value;
-    const fecha = this.activoForm.get('fecha')?.value;
+    const personal = this.activoForm.get('personal')?.value;
+    const estado = this.activoForm.get('estado')?.value;
+    const condicion = this.activoForm.get('condicion')?.value;
 
 
     this.route.params.subscribe(params =>{
