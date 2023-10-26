@@ -237,6 +237,7 @@ export class ActualizarPoweruserComponent {
   }
 
   actualizarActivo() {
+    const id = this.route.snapshot.params['id'];
     // Obtener el ID del activo a actualizar de la URL
     const nombre = this.activoForm.get('nombre')?.value;
     const valor = this.activoForm.get('valor')?.value;
