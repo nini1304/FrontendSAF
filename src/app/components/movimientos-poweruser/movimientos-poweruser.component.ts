@@ -10,11 +10,11 @@ import {DetallesComponent} from "../detalles/detalles.component";
 import {MatPaginator} from "@angular/material/paginator";
 
 @Component({
-  selector: 'app-movimientos-en-activos',
-  templateUrl: './activo-list.component.html',
-  styleUrls: ['./activo-list.component.css']
+  selector: 'app-movimientos-poweruser',
+  templateUrl: './movimientos-poweruser.component.html',
+  styleUrls: ['./movimientos-poweruser.component.css']
 })
-export class ActivoListComponent {
+export class MovimientosPoweruserComponent {
   nombre = localStorage.getItem('nombre');
 
   Listactivo: any;

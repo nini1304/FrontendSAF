@@ -14,11 +14,11 @@ import {BloquesDto} from "../../dto/bloques.dto";
 import {CiudadesDto} from "../../dto/ciudades.dto";
 
 @Component({
-  selector: 'app-registro-producto',
-  templateUrl: './registro-producto.component.html',
-  styleUrls: ['./registro-producto.component.css'],
+  selector: 'app-registrar-poweruser',
+  templateUrl: './registrar-poweruser.component.html',
+  styleUrls: ['./registrar-poweruser.component.css'],
 })
-export class RegistroProductoComponent{
+export class RegistrarPoweruserComponent {
   @ViewChild(MatDatepickerInput) datepickerInput: MatDatepickerInput<Date> | undefined;
 
   nombre = localStorage.getItem('nombre');
@@ -247,7 +247,7 @@ export class RegistroProductoComponent{
       next: (data) => {
         console.log(data);
         alert('Activo registrado correctamente');
-        window.location.href = '/lista-activos';
+        window.location.href = '/lista-poweruser';
 
 
       },error: (error: any) => {

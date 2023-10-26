@@ -37,9 +37,9 @@ export class LoginComponent {
           localStorage.setItem('nempresa', this.loginDto.nombreEmpresa);
           localStorage.setItem('logo', this.loginDto.logo);
           if (this.loginDto.idRol === 1){
-            window.location.href = '/menu-administrador';
+            window.location.href = '/menu-poweruser';
           }else if (this.loginDto.idRol === 2){
-            window.location.href = '/menu';
+            window.location.href = '';
 
           }
 

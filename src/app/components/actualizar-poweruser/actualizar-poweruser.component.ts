@@ -13,11 +13,11 @@ import { CiudadesDto } from 'src/app/dto/ciudades.dto';
 import { BloquesDto } from 'src/app/dto/bloques.dto';
 
 @Component({
-  selector: 'app-actualizacion-activos',
-  templateUrl: './actualizacion-activos.component.html',
-  styleUrls: ['./actualizacion-activos.component.css']
+  selector: 'app-actualizar-poweruser',
+  templateUrl: './actualizar-poweruser.component.html',
+  styleUrls: ['./actualizar-poweruser.component.css']
 })
-export class ActualizacionActivosComponent {
+export class ActualizarPoweruserComponent {
   updateMessage: string='';
   @ViewChild(MatDatepickerInput) datepickerInput: MatDatepickerInput<Date> | undefined;
 
@@ -80,7 +80,7 @@ export class ActualizacionActivosComponent {
     const id = params['id'];
     this.cargarDatosActivo(id);
    });
-   
+
    this.activoservice.getTiposActivo().subscribe({
     next: (data: TipoactivoDto[]) => {
       console.log(data);
@@ -262,7 +262,7 @@ export class ActualizacionActivosComponent {
           console.log(data);
           this.updateMessage = 'Activo Actualizado con exito';
           alert(this.updateMessage);
-          this.router.navigate(['/lista-activos']);
+          this.router.navigate(['/lista-poweruser']);
         }
       })
     })
@@ -271,6 +271,6 @@ export class ActualizacionActivosComponent {
     this.activoForm.reset();
   }
   regresar(){
-    this.router.navigate(['/lista-activos']);
+    this.router.navigate(['/lista-poweruser']);
   }
 }

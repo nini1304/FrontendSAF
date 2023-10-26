@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ActualizacionActivosComponent } from './actualizacion-activos.component';
+import { ActualizarPoweruserComponent } from './actualizar-poweruser.component';
 
 describe('ActualizacionActivosComponent', () => {
-  let component: ActualizacionActivosComponent;
-  let fixture: ComponentFixture<ActualizacionActivosComponent>;
+  let component: ActualizarPoweruserComponent;
+  let fixture: ComponentFixture<ActualizarPoweruserComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ActualizacionActivosComponent ]
+      declarations: [ ActualizarPoweruserComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ActualizacionActivosComponent);
+    fixture = TestBed.createComponent(ActualizarPoweruserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

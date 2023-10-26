@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ActivoListComponent } from './activo-list.component';
+import { MovimientosPoweruserComponent } from './movimientos-poweruser.component';
 
 describe('ActivoListComponent', () => {
-  let component: ActivoListComponent;
-  let fixture: ComponentFixture<ActivoListComponent>;
+  let component: MovimientosPoweruserComponent;
+  let fixture: ComponentFixture<MovimientosPoweruserComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ActivoListComponent ]
+      declarations: [ MovimientosPoweruserComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ActivoListComponent);
+    fixture = TestBed.createComponent(MovimientosPoweruserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

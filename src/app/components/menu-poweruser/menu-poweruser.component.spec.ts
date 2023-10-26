@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListaActivosComponent } from './lista-activos.component';
+import { MenuPoweruserComponent } from './menu-poweruser.component';
 
-describe('ListaActivosComponent', () => {
-  let component: ListaActivosComponent;
-  let fixture: ComponentFixture<ListaActivosComponent>;
+describe('MenuAdministradorComponent', () => {
+  let component: MenuPoweruserComponent;
+  let fixture: ComponentFixture<MenuPoweruserComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListaActivosComponent ]
+      declarations: [ MenuPoweruserComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ListaActivosComponent);
+    fixture = TestBed.createComponent(MenuPoweruserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
