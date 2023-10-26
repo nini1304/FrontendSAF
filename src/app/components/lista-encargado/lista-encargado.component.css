@@ -1,0 +1,47 @@
+.example-container {
+  height: 100vh;
+  background-image: url("../../../assets/wallpaper.jpg");
+  background-size: cover;
+}
+.example-sidenav {
+  padding: 20px;
+}
+.menuitem{
+  margin-right: 10px;
+}
+.menu{
+  display: flex;
+  font-family: Arial, sans-serif;
+  color:black;
+}
+.example-sidenav-content {
+  height: 100%;
+}
+.icono{
+  margin-top: 10px;
+  color: white;
+  display: flex;
+  margin-left: 10px;
+
+}
+.todo{
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 200px;
+  margin-left: 200px;
+}
+h1{
+  text-align: center;
+  color: white;
+  font-family: Arial, sans-serif;
+
+}
+.tabla{
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+.filtro{
+  margin-top: 40px;
+}

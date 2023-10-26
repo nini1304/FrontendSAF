@@ -13,6 +13,8 @@ import {ListaAdministradorComponent} from "./components/lista-administrador/list
 import {
   MovimientosAdministradorComponent
 } from "./components/movimientos-administrador/movimientos-administrador.component";
+import {MenuEncargadoComponent} from "./components/menu-encargado/menu-encargado.component";
+import {ListaEncargadoComponent} from "./components/lista-encargado/lista-encargado.component";
 
 
 const routes: Routes = [
@@ -27,6 +29,8 @@ const routes: Routes = [
   { path: 'menu-admin', component: MenuAdministradorComponent},
   { path: 'lista-admin', component: ListaAdministradorComponent},
   { path: 'movimientos-admin', component: MovimientosAdministradorComponent},
+  { path: 'menu-encargado', component: MenuEncargadoComponent},
+  { path: 'lista-encargado', component: ListaEncargadoComponent},
 
 
 ];

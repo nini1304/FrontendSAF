@@ -43,6 +43,8 @@ export class LoginComponent {
 
           }else if (this.loginDto.idRol === 3) {
             window.location.href = '/menu-admin';
+          }else if (this.loginDto.idRol === 4) {
+            window.location.href = '/menu-encargado';
           }
 
         }

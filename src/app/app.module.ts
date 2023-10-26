@@ -35,6 +35,8 @@ import { ListaUserComponent } from './components/lista-user/lista-user.component
 import { MenuAdministradorComponent } from './components/menu-administrador/menu-administrador.component';
 import { ListaAdministradorComponent } from './components/lista-administrador/lista-administrador.component';
 import { MovimientosAdministradorComponent } from './components/movimientos-administrador/movimientos-administrador.component';
+import { MenuEncargadoComponent } from './components/menu-encargado/menu-encargado.component';
+import { ListaEncargadoComponent } from './components/lista-encargado/lista-encargado.component';
 
 
 @NgModule({
@@ -53,6 +55,8 @@ import { MovimientosAdministradorComponent } from './components/movimientos-admi
     MenuAdministradorComponent,
     ListaAdministradorComponent,
     MovimientosAdministradorComponent,
+    MenuEncargadoComponent,
+    ListaEncargadoComponent,
 
   ],
     imports: [
