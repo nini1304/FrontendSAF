@@ -35,7 +35,8 @@ h2{
 }
 .example-container {
   height: 100vh;
-  background: linear-gradient(to bottom, #9A1663, #E0144C, #FF5858);
+  background-image: url("../../../assets/wallpaper.jpg");
+  background-size: cover;
 }
 
 .todo{
@@ -45,9 +46,6 @@ h2{
   align-items: center;
   background-color: white;
   border-radius: 25px;
-  border-color: black;
-  border-width: 6px;
-  border-style: solid;
   margin-right: 200px;
   margin-left: 200px;
 }

@@ -30,6 +30,8 @@ import { MasInformacionComponent } from './components/mas-informacion/mas-inform
 import { DetallesComponent } from './components/detalles/detalles.component';
 import { LoginComponent } from './components/login/login.component';
 import { MenuPoweruserComponent } from './components/menu-poweruser/menu-poweruser.component';
+import { MenuUserComponent } from './components/menu-user/menu-user.component';
+import { ListaUserComponent } from './components/lista-user/lista-user.component';
 
 
 @NgModule({
@@ -43,6 +45,8 @@ import { MenuPoweruserComponent } from './components/menu-poweruser/menu-powerus
     DetallesComponent,
     LoginComponent,
     MenuPoweruserComponent,
+    MenuUserComponent,
+    ListaUserComponent,
 
   ],
     imports: [

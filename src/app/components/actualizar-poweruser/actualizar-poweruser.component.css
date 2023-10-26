@@ -1,7 +1,8 @@
 
 .example-container {
   height: 100vh;
-  background: linear-gradient(to bottom, #9A1663, #E0144C, #FF5858);
+  background-image: url("../../../assets/wallpaper.jpg");
+  background-size: cover;
 }
 .example-sidenav {
   padding: 20px;
@@ -31,9 +32,6 @@
   align-items: center;
   background-color: white;
   border-radius: 25px;
-  border-color: black;
-  border-width: 6px;
-  border-style: solid;
   margin-right: 200px;
   margin-left: 200px;
 }
@@ -65,15 +63,15 @@ h1{
 }
 
 .boton-estilo {
-  margin-right: 10px; 
+  margin-right: 10px;
   border-color: white;
-  padding: 10px 20px; 
-  border-radius: 5px; 
-  font-weight: bold; 
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
 }
 
 .boton-estilo:hover {
-  background-color: #900C3F; 
+  background-color: #900C3F;
 }
 
 
@@ -81,6 +79,5 @@ h1{
 
 
 
-  
-  
-  
+
+
