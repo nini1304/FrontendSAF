@@ -78,7 +78,7 @@ export class ActualizarPoweruserComponent {
   ngOnInit() {
    this.route.params.subscribe(params =>{
     const id = params['id'];
-    this.cargarDatosActivo(id);
+
    });
 
    this.activoservice.getTiposActivo().subscribe({
@@ -214,30 +214,7 @@ export class ActualizarPoweruserComponent {
     return this.options7.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  cargarDatosActivo(id: number){
-    this.activoservice.obtenerActivo(id).subscribe({
-      next: (data: any) => {
-        this.activoForm.setValue({
-          nombre: data.nombre,
-          valor: data.valor,
-          fecha: data.fechaCompra,
-          descripcion: data.descripcion,
-          tipo: data.tipo,
-          marca: data.marca,
-          calle: data.calle,
-          avenida: data.avenida,
-          boqlue: data.bloque,
-          ciudad: data.ciudad,
-          personal: data.personal,
-          estado: data.estado,
-          condicion: data.condicion
-        })
-      }
-    })
-  }
-
   actualizarActivo() {
-    const id = this.route.snapshot.params['id'];
     // Obtener el ID del activo a actualizar de la URL
     const nombre = this.activoForm.get('nombre')?.value;
     const valor = this.activoForm.get('valor')?.value;

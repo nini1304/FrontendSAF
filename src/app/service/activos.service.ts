@@ -67,10 +67,6 @@ export class ActivosService {
     return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/registrar?nombre=${nombre}&valor=${valor}&fechaCompra=${fecha}&descripcion=${descripcion}&tipoActivoId=${tipo}&marcaId=${marca}&calle=${calle}&avenida=${avenida}&bloqueId=${bloque}&ciudadId=${ciudad}&personalId=${personal}&estadoId=${estado}&condicionId=${condicion}&estado=true`, body);
   }
 
-  obtenerActivo(id: number): Observable<any>{
-    const url = `${this.BACK_URL}/api/v1/activos-fijos/obtener/${id}`;
-    return this.http.get<any>(url);
-  }
   public actualizarActivo(
     id: number,
     nombre: string,
