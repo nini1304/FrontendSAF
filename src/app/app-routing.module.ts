@@ -6,6 +6,8 @@ import {RegistrarPoweruserComponent} from "./components/registrar-poweruser/regi
 import {ListaPoweruserComponent} from "./components/lista-poweruser/lista-poweruser.component";
 import {ActualizarPoweruserComponent} from "./components/actualizar-poweruser/actualizar-poweruser.component";
 import {MovimientosPoweruserComponent} from "./components/movimientos-poweruser/movimientos-poweruser.component";
+import {MenuUserComponent} from "./components/menu-user/menu-user.component";
+import {ListaUserComponent} from "./components/lista-user/lista-user.component";
 
 
 const routes: Routes = [
@@ -15,6 +17,8 @@ const routes: Routes = [
   { path: 'lista-poweruser', component: ListaPoweruserComponent},
   { path: 'actualizar-poweruser/:id', component: ActualizarPoweruserComponent},
   { path: 'movimientos-poweruser', component: MovimientosPoweruserComponent},
+  { path: 'menu-user', component: MenuUserComponent},
+  { path: 'lista-user', component: ListaUserComponent},
 
 
 ];

@@ -39,7 +39,7 @@ export class LoginComponent {
           if (this.loginDto.idRol === 1){
             window.location.href = '/menu-poweruser';
           }else if (this.loginDto.idRol === 2){
-            window.location.href = '';
+            window.location.href = '/menu-user';
 
           }
 
