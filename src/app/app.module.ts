@@ -39,6 +39,7 @@ import { MenuEncargadoComponent } from './components/menu-encargado/menu-encarga
 import { ListaEncargadoComponent } from './components/lista-encargado/lista-encargado.component';
 import { DepreciarComponent } from './components/depreciar/depreciar.component';
 import { ListaDepreciadaComponent } from './components/lista-depreciada/lista-depreciada.component';
+import { RegistroUsuarioComponent } from './components/registro-usuario/registro-usuario.component';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { ListaDepreciadaComponent } from './components/lista-depreciada/lista-de
     ListaEncargadoComponent,
     DepreciarComponent,
     ListaDepreciadaComponent,
+    RegistroUsuarioComponent,
 
   ],
     imports: [

@@ -46,6 +46,12 @@ export class ActivosService {
   public getCondicion(): Observable<any> {
     return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/cond`);
   }
+  public getRol(): Observable<any>{
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/rol`);
+  }
+  public getEmpresa(): Observable<any>{
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/empresa`);
+  }
   public registrarActivo(nombre: string, valor:string, fecha:string, descripcion:string, tipo:number, marca: number, calle:string,avenida:string,bloque:number,ciudad:number,personal:number,estado:number,condicion:number):
     Observable<any> {
     const body = {
@@ -65,6 +71,18 @@ export class ActivosService {
     };
 
     return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/registrar?nombre=${nombre}&valor=${valor}&fechaCompra=${fecha}&descripcion=${descripcion}&tipoActivoId=${tipo}&marcaId=${marca}&calle=${calle}&avenida=${avenida}&bloqueId=${bloque}&ciudadId=${ciudad}&personalId=${personal}&estadoId=${estado}&condicionId=${condicion}&estado=true`, body);
+  }
+  public registrarUsuario(nombre: string, username: string, password: string, empresa: number | undefined, rol: number | undefined):
+    Observable<any> {
+    const body = {
+      nombre: nombre,
+      username: username,
+      password: password,
+      empresa: empresa,
+      rol: rol,
+    };
+
+    return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/registrar?nombre=${nombre}&username=${username}&password=${password}&empresaId=${empresa}&rolId=${rol}`, body);
   }
 
   public actualizarActivo(

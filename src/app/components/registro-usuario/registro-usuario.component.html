@@ -1,0 +1,73 @@
+<body>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <div class="menu">
+      <mat-icon class="menuitem"> person_pin</mat-icon>Bienvenid@ {{nombre}}
+    </div>
+    <br>
+    <div class="menu">
+      <mat-icon [routerLink]="['/menu-poweruser']" class="menuitem">home</mat-icon>Inicio
+    </div>
+    <br>
+    <div class="menu">
+      <mat-icon [routerLink]="['/registro-usuario']" class="menuitem">contacts</mat-icon>Registro de Usuario
+    </div>
+    <br>
+    <div class="menu">
+      <mat-icon [routerLink]="['/registrar-poweruser']" class="menuitem">playlist_add</mat-icon>Crear Activo Fijo
+    </div>
+    <br>
+    <div class="menu">
+      <mat-icon [routerLink]="['/lista-poweruser']" class="menuitem">playlist_add_check</mat-icon>Lista de Activos Fijos
+    </div>
+    <br>
+    <div class="menu">
+      <mat-icon [routerLink]="['/movimientos-poweruser']" class="menuitem">timeline</mat-icon>Movimientos en Activos Fijos
+    </div>
+    <br>
+    <div class="menu">
+      <mat-icon (click)="borrarls()" [routerLink]="['']" class="menuitem">exit_to_app</mat-icon>Cerrar Sesión
+    </div>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <div class="icono">
+      <mat-icon (click)="drawer.toggle()">menu</mat-icon>
+    </div>
+    <div class="todoelform">
+      <form class="formulario" [formGroup]="nuevoUsuarioForm">
+        <h1>Registro de Usuario</h1>
+        <h2>Datos Iniciales:</h2>
+        <div class="form-row">
+          <mat-form-field class="col">
+            <mat-label>Nombre Completo:</mat-label>
+            <input formControlName="nombre" matInput>
+          </mat-form-field>
+          <mat-form-field class="col">
+            <mat-label>Nombre de usuario:</mat-label>
+            <input formControlName="username" matInput>
+          </mat-form-field>
+          <mat-form-field class="col">
+            <mat-label>Contraseña:</mat-label>
+            <input formControlName="password" matInput>
+          </mat-form-field>
+        </div>
+        <h2>Información:</h2>
+        <div class="form-row">
+          <mat-form-field class="col">
+            <mat-label>Empresa:</mat-label>
+            <input formControlName="username" matInput>
+          </mat-form-field>
+          <mat-form-field class="col">
+            <mat-label>Rol en la empresa:</mat-label>
+            <input formControlName="password" matInput>
+          </mat-form-field>
+        </div>
+        <button type="submit" style=" background-color: #F39F5A; color: white; border-color: white" mat-button (click)="guardarDatos()" class="button">Guardar</button>
+      </form>
+    </div>
+
+  </div>
+
+</mat-drawer-container>
+</body>

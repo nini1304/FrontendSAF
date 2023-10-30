@@ -16,6 +16,7 @@ import {
 import {MenuEncargadoComponent} from "./components/menu-encargado/menu-encargado.component";
 import {ListaEncargadoComponent} from "./components/lista-encargado/lista-encargado.component";
 import {ListaDepreciadaComponent} from "./components/lista-depreciada/lista-depreciada.component";
+import {RegistroUsuarioComponent} from "./components/registro-usuario/registro-usuario.component";
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'menu-encargado', component: MenuEncargadoComponent},
   { path: 'lista-encargado', component: ListaEncargadoComponent},
   { path: 'lista-depre/:mes/:anio', component: ListaDepreciadaComponent},
+  { path: 'registro-usuario', component: RegistroUsuarioComponent},
 
 
 ];
