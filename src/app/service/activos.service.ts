@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {Observable, map, from} from 'rxjs';
 import {environment} from "../../environments/environment";
 import {ActivoFijoDto} from "../dto/activofijo.dto";
+import {DepreciacionDto} from "../dto/depreciacion.dto";
 @Injectable({
   providedIn: 'root'
 })
@@ -127,6 +128,14 @@ export class ActivosService {
       contraseña: contraseña
     };
     return this.http.post<any>(url, body);
+  }
+  public generarReporteE(depreciacion:DepreciacionDto []): Observable<any> {
+    return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/excel?nombreArchivo=activosFijos.xlsx`,depreciacion );
+
+  }
+  public generarReporteP(depreciacion:DepreciacionDto[]): Observable<any> {
+    return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/pdf?nombreArchivo=activosFijos.pdf`,depreciacion );
+
   }
 }
 

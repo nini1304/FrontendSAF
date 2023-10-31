@@ -31,7 +31,8 @@
             <mat-label >Busca Aqui</mat-label>
             <input  matInput (keyup)="applyFilter($event)"  #input>
           </mat-form-field>
-          <button  mat-button color="warn" class="boton" (click)="guardarDatos()">Generar Reporte</button>
+          <button  mat-button color="warn" class="boton" (click)="generarReporteE()">Generar Reporte en Excel</button>
+          <button  mat-button color="warn" class="boton2" (click)="generarReporteP()">Generar Reporte en PDF</button>
           <button  mat-button color="warn" class="boton2" (click)="aceptar()">Aceptar</button>
 
           <div class="mat-elevation-z8" >
