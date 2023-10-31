@@ -46,8 +46,11 @@ h1{
 /*  margin-top: 40px;*/
 /*}*/
 .boton{
-  margin-left:360px;
+  margin-left:160px;
 
+}
+.boton2{
+  margin-left:10px;
 }
 .mat-mdc-form-field {
   font-size: 14px;

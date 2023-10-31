@@ -1,5 +1,4 @@
 import {Component, ViewChild} from '@angular/core';
-import {ActivoslistaDto} from "../../dto/activoslista.dto";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
@@ -7,17 +6,17 @@ import {ActivosService} from "../../service/activos.service";
 import {MatDialog} from "@angular/material/dialog";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MasInformacionComponent} from "../mas-informacion/mas-informacion.component";
-import {DepreciarComponent} from "../depreciar/depreciar.component";
 import {DepreciacionDto} from "../../dto/depreciacion.dto";
 
 @Component({
-  selector: 'app-lista-depreciada',
-  templateUrl: './lista-depreciada.component.html',
-  styleUrls: ['./lista-depreciada.component.css']
+  selector: 'app-listadepre-encargado',
+  templateUrl: './listadepre-encargado.component.html',
+  styleUrls: ['./listadepre-encargado.component.css']
 })
-export class ListaDepreciadaComponent {
+export class ListadepreEncargadoComponent {
   nombre = localStorage.getItem('nombre');
   depreciacionDto: DepreciacionDto[] = [];
+  datosGuardados: DepreciacionDto[] = [];
 
   mes: string = '';
   anio: number = 0;
@@ -53,13 +52,21 @@ export class ListaDepreciadaComponent {
     });
 
   }
+  guardarDatos() {
+    // Si hay un filtro aplicado, guardar los datos filtrados
+    if (this.dataSource.filter) {
+      this.datosGuardados = this.dataSource.filteredData;
+    } else {
+      // Si no hay filtro, guardar todos los datos de la tabla
+      this.datosGuardados = this.depreciacionDto;
+    }
+
+    // Aquí puedes hacer lo que quieras con this.datosGuardados,
+    // como enviarlo a través de un servicio o realizar otras operaciones.
+    console.log('Datos guardados:', this.datosGuardados);
+  }
   aceptar(){
     window.location.href = '/lista-encargado';
-  }
-  actualizar(id: number) {
-    console.log(id)
-    this.router.navigate(['/actualizar-poweruser', id]);
-
   }
 
 

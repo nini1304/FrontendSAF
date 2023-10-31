@@ -38,12 +38,13 @@
       <div class="todo">
 
         <div class="tabla">
-          <h1>Lista de Activos Fijos</h1>
+          <h1>Lista de Activos Fijos Depreciados</h1>
           <mat-form-field class="filtro">
             <mat-label >Busca Aqui</mat-label>
             <input  matInput (keyup)="applyFilter($event)"  #input>
           </mat-form-field>
-          <button  mat-button color="warn" class="boton" (click)="abrirDepreciar()">Depreciar</button>
+          <button  mat-button color="warn" class="boton" (click)="guardarDatos()">Generar Reporte</button>
+          <button  mat-button color="warn" class="boton2" (click)="aceptar()">Aceptar</button>
 
           <div class="mat-elevation-z8" >
             <table mat-table [dataSource]="dataSource" matSort >
@@ -78,17 +79,24 @@
                 <td mat-cell *matCellDef="let row"> {{row.tipoActivoNombre}} </td>
               </ng-container>
 
+              <ng-container matColumnDef="porcentaje">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Porcentaje De Depreciacion </th>
+                <td mat-cell *matCellDef="let row"> {{row.porcentajeDepreciacion}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="valord">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Valor De Depreciacion </th>
+                <td mat-cell *matCellDef="let row"> {{row.valorDepreciacion}} </td>
+              </ng-container>
+              <ng-container matColumnDef="valora">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Valor Actual Activo </th>
+                <td mat-cell *matCellDef="let row"> {{row.valorActual}} </td>
+              </ng-container>
+
               <ng-container matColumnDef="masinfo">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
                 <td mat-cell *matCellDef="let row">
                   <a href="javascript:void(0);" (click)="openDialog(row.descripcion, row.marcaNombre, row.calle, row.avenida, row.bloqueNombre, row.ciudadNombre,row.personalNombre,row.estadoNombre,row.condicionNombre)">Mas informacion</a>
-                </td>
-              </ng-container>
-              <ng-container matColumnDef="acciones">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones </th>
-                <td mat-cell *matCellDef="let row">
-                  <mat-icon (click)="actualizar(row.id)">edit</mat-icon>
-                  <mat-icon>delete</mat-icon>
                 </td>
               </ng-container>
 

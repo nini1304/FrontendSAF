@@ -3,11 +3,13 @@ import { ActivosService } from '../../service/activos.service';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
-import {ActivoslistaDto} from "../../dto/activoslista.dto";
 import {MatDialog} from "@angular/material/dialog";
 import {MasInformacionComponent} from "../mas-informacion/mas-informacion.component";
-import {ActualizarPoweruserComponent} from "../actualizar-poweruser/actualizar-poweruser.component";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {DepreciacionDto} from "../../dto/depreciacion.dto";
+import {ActivoslistaDto} from "../../dto/activoslista.dto";
+import {DepreciarEncargadoComponent} from "../depreciar-encargado/depreciar-encargado.component";
+import {DepreciarPoweruserComponent} from "../depreciar-poweruser/depreciar-poweruser.component";
 
 
 
@@ -54,6 +56,9 @@ export class ListaPoweruserComponent {
       data: {descripcion: descripcion, marca: marca, calle: calle, avenida: avenida, bloque: bloque, ciudad: ciudad, personal: personal, estado: estado, condicion: condicion}
     });
 
+  }
+  abrirDepreciar(){
+    this.dialog.open(DepreciarPoweruserComponent);
   }
   actualizar(id: number) {
     console.log(id)

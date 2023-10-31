@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DepreciarComponent } from './depreciar.component';
+import { DepreciarEncargadoComponent } from './depreciar-encargado.component';
 
 describe('DepreciarComponent', () => {
-  let component: DepreciarComponent;
-  let fixture: ComponentFixture<DepreciarComponent>;
+  let component: DepreciarEncargadoComponent;
+  let fixture: ComponentFixture<DepreciarEncargadoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DepreciarComponent ]
+      declarations: [ DepreciarEncargadoComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DepreciarComponent);
+    fixture = TestBed.createComponent(DepreciarEncargadoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

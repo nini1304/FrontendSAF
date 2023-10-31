@@ -1,37 +1,40 @@
 import {Component, ViewChild} from '@angular/core';
-import {ActivoslistaDto} from "../../dto/activoslista.dto";
+import {DepreciacionDto} from "../../dto/depreciacion.dto";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {ActivosService} from "../../service/activos.service";
 import {MatDialog} from "@angular/material/dialog";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {MasInformacionComponent} from "../mas-informacion/mas-informacion.component";
-import {DepreciarEncargadoComponent} from "../depreciar-encargado/depreciar-encargado.component";
 
 @Component({
-  selector: 'app-lista-encargado',
-  templateUrl: './lista-encargado.component.html',
-  styleUrls: ['./lista-encargado.component.css']
+  selector: 'app-listadepre-poweruser',
+  templateUrl: './listadepre-poweruser.component.html',
+  styleUrls: ['./listadepre-poweruser.component.css']
 })
-export class ListaEncargadoComponent {
+export class ListadeprePoweruserComponent {
   nombre = localStorage.getItem('nombre');
-  activoslistaDto: ActivoslistaDto[] = [];
+  depreciacionDto: DepreciacionDto[] = [];
+  datosGuardados: DepreciacionDto[] = [];
 
-  displayedColumns: string[] = ['id', 'nombre', 'valor', 'fecha', 'tipo', 'masinfo'];
-  dataSource: MatTableDataSource<ActivoslistaDto>;
+  mes: string = '';
+  anio: number = 0;
+
+  displayedColumns: string[] = ['id', 'nombre', 'valor', 'fecha', 'tipo', 'porcentaje','valord','valora','masinfo'];
+  dataSource: MatTableDataSource<DepreciacionDto>;
 
   // dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
 
-  constructor(private activoservice: ActivosService, public dialog: MatDialog, private router: Router) {
+  constructor(private activoservice: ActivosService, public dialog: MatDialog, private router: Router, private route: ActivatedRoute) {
     // Create 100 users
     // const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(this.activoslistaDto);
+    this.dataSource = new MatTableDataSource(this.depreciacionDto);
 
   }
   borrarls(){
@@ -49,17 +52,36 @@ export class ListaEncargadoComponent {
     });
 
   }
-  abrirDepreciar(){
-    this.dialog.open(DepreciarEncargadoComponent);
+
+  guardarDatos() {
+    // Si hay un filtro aplicado, guardar los datos filtrados
+    if (this.dataSource.filter) {
+      this.datosGuardados = this.dataSource.filteredData;
+    } else {
+      // Si no hay filtro, guardar todos los datos de la tabla
+      this.datosGuardados = this.depreciacionDto;
+    }
+
+    // Aquí puedes hacer lo que quieras con this.datosGuardados,
+    // como enviarlo a través de un servicio o realizar otras operaciones.
+    console.log('Datos guardados:', this.datosGuardados);
+  }
+  aceptar(){
+    window.location.href = '/lista-poweruser';
   }
 
 
   ngAfterViewInit() {
-    this.activoservice.getListaActivosFijos().subscribe({
-      next: (data: ActivoslistaDto []) => {
+    this.route.params.subscribe(params => {
+      // this.id = +params['id'];
+      this.mes = params['mes'];
+      this.anio = +params['anio'];
+    });
+    this.activoservice.getActivosDepreciados(this.mes, this.anio).subscribe({
+      next: (data: DepreciacionDto []) => {
         console.log(data);
-        this.activoslistaDto = data;
-        this.dataSource = new MatTableDataSource(this.activoslistaDto);
+        this.depreciacionDto = data;
+        this.dataSource = new MatTableDataSource(this.depreciacionDto);
         // @ts-ignore
         this.dataSource.paginator = this.paginator;
         // @ts-ignore

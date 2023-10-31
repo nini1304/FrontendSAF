@@ -31,7 +31,8 @@
             <mat-label >Busca Aqui</mat-label>
             <input  matInput (keyup)="applyFilter($event)"  #input>
           </mat-form-field>
-          <button  mat-button color="warn" class="boton" (click)="aceptar()">Aceptar</button>
+          <button  mat-button color="warn" class="boton" (click)="guardarDatos()">Generar Reporte</button>
+          <button  mat-button color="warn" class="boton2" (click)="aceptar()">Aceptar</button>
 
           <div class="mat-elevation-z8" >
             <table mat-table [dataSource]="dataSource" matSort >

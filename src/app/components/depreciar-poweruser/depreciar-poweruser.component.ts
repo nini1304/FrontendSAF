@@ -3,18 +3,18 @@ import {ActivosService} from "../../service/activos.service";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-depreciar',
-  templateUrl: './depreciar.component.html',
-  styleUrls: ['./depreciar.component.css']
+  selector: 'app-depreciar-poweruser',
+  templateUrl: './depreciar-poweruser.component.html',
+  styleUrls: ['./depreciar-poweruser.component.css']
 })
-export class DepreciarComponent {
+export class DepreciarPoweruserComponent {
   mesSeleccionado: string = '';
   anioSeleccionado: string = '';
   constructor(private service: ActivosService, private router: Router) {
   }
   depreciar(){
     const anio = parseInt(this.anioSeleccionado);
-    this.router.navigate(['/lista-depre', this.mesSeleccionado,anio]);
+    this.router.navigate(['/listadepre-poweruser', this.mesSeleccionado,anio]);
 
 
   }
