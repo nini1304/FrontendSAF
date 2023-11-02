@@ -88,22 +88,20 @@ export class ActivosService {
 
   public actualizarActivo(
     id: number,
-    nombre: string,
-    valor: string,
-    fecha: string,
-    descripcion: string,
-    tipo: string,
-    marca: string,
-    calle: string,
-    avenida: string,
-    bloque: string,
-    ciudad: string,
-    personal: string,
-    estado: string,
-    condicion: string
+    nombre: string, 
+    valor:number, 
+    fecha:string, 
+    descripcion:string, 
+    tipo:number, 
+    marca: number, 
+    calle:string,
+    avenida:string,
+    bloque:number,
+    ciudad:number,
+    personal:number,
+    estado:number,
+    condicion:number
   ): Observable<any> {
-    const url = `${this.BACK_URL}/api/v1/activos-fijos/actualizar/${id}`;
-
     const body = {
       nombre: nombre,
       valor: valor,
@@ -119,7 +117,9 @@ export class ActivosService {
       estado: estado,
       condicion: condicion
     };
-    return this.http.put<any>(url, body);
+    console.log(body);
+    console.log(id, " hola");
+    return this.http.put<any>(`${this.BACK_URL}/api/v1/activos-fijos/actualizar/${id}?nombre=${nombre}&valor=${valor}&fechaCompra=${fecha}&descripcion=${descripcion}&tipoActivoId=${tipo}&marcaId=${marca}&calle=${calle}&avenida=${avenida}&bloqueId=${bloque}&ciudadId=${ciudad}&personalId=${personal}&estadoId=${estado}&condicionId=${condicion}&estado=true`, body);
   }
   public login(usuario: string, contraseña: string): Observable<any> {
     const url = `${this.BACK_URL}/api/v1/usuarios/login?user=${usuario}&password=${contraseña}`;

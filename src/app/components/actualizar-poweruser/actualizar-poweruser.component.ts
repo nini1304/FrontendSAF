@@ -19,8 +19,8 @@ import { BloquesDto } from 'src/app/dto/bloques.dto';
 })
 export class ActualizarPoweruserComponent {
   updateMessage: string='';
-  @ViewChild(MatDatepickerInput) datepickerInput: MatDatepickerInput<Date> | undefined;
 
+  @ViewChild(MatDatepickerInput) datepickerInput: MatDatepickerInput<Date> | undefined;
   myControl = new FormControl('');
   options: String[] = [];
   filteredOptions: Observable<String[]> | undefined;
@@ -43,6 +43,7 @@ export class ActualizarPoweruserComponent {
   options7: String[] = [];
   filteredOptions7: Observable<String[]> | undefined;
 
+  nombre = localStorage.getItem('nombre');
   activoForm: FormGroup;
   tipoactivoDto: TipoactivoDto[] = [];
   marcasDto: MarcasDto[] = [];
@@ -218,28 +219,40 @@ export class ActualizarPoweruserComponent {
     // Obtener el ID del activo a actualizar de la URL
     const nombre = this.activoForm.get('nombre')?.value;
     const valor = this.activoForm.get('valor')?.value;
-    const fecha = this.activoForm.get('fecha')?.value;
+    const fechaa = this.datepickerInput?.value;
+    const fecha = fechaa?.toDateString();
     const descripcion = this.activoForm.get('descripcion')?.value;
-    const tipo = this.activoForm.get('tipo')?.value;
-    const marca = this.activoForm.get('marca')?.value;
+    const tipo = this.tipoactivoDto.find((tipo: TipoactivoDto) => tipo.nombre === this.myControl.value)?.id;
+    const marca = this.marcasDto.find((marca: MarcasDto) => marca.nombre === this.myControl2.value)?.id;
     const calle = this.activoForm.get('calle')?.value;
     const avenida = this.activoForm.get('avenida')?.value;
-    const bloque = this.activoForm.get('bloque')?.value;
-    const ciudad = this.activoForm.get('ciudad')?.value;
-    const personal = this.activoForm.get('personal')?.value;
-    const estado = this.activoForm.get('estado')?.value;
-    const condicion = this.activoForm.get('condicion')?.value;
+    const bloque = this.bloquesDto.find((bloque: BloquesDto) => bloque.nombre === this.myControl3.value)?.id;
+    const ciudad = this.ciudadesDto.find((ciudad: CiudadesDto) => ciudad.nombre === this.myControl4.value)?.id;
+    const personal = this.personalDto.find((personal: PersonalDto) => personal.nombre === this.myControl5.value)?.id;
+    const estado = this.estadosDto.find((estado: EstadosDto) => estado.nombre === this.myControl6.value)?.id;
+    const condicion = this.condicionDto.find((condicion: CondicionDto) => condicion.nombre === this.myControl7.value)?.id;
+
+   if (!nombre || isNaN(valor) || !fecha || !tipo || !marca || !calle || !bloque || !ciudad || !personal || !estado || !condicion) {
+      this.updateMessage = 'Por favor complete todos los campos obligatorios.';
+      return;
+    }
 
 
     this.route.params.subscribe(params =>{
       const id = params['id'];
+      console.log(id);
       this.activoservice.actualizarActivo(id, nombre, valor, fecha, descripcion, tipo, marca, calle, avenida, bloque, ciudad, personal, estado, condicion).subscribe({
         next: (data) => {
           console.log(data);
           this.updateMessage = 'Activo Actualizado con exito';
           alert(this.updateMessage);
           this.router.navigate(['/lista-poweruser']);
+        },
+        error: (error) => {
+          console.log(error);
+          this.updateMessage = 'Error al actualizar el activo';
         }
+        
       })
     })
   }
