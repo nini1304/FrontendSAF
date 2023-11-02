@@ -56,11 +56,21 @@
         <div class="form-row">
           <mat-form-field class="col">
             <mat-label>Empresa:</mat-label>
-            <input formControlName="username" matInput>
+            <input type="text" aria-lebel="Empresa: " matInput [formControl]="myControl2" [matAutocomplete]="auto2" formControlName="myControl2">
+            <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions2 | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
           </mat-form-field>
           <mat-form-field class="col">
             <mat-label>Rol en la empresa:</mat-label>
-            <input formControlName="password" matInput>
+            <input type="text" aria-label="Rol en la Empresa" matInput [formControl]="myControl" [matAutocomplete]="auto" formControlName="myControl">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
           </mat-form-field>
         </div>
         <button type="submit" style=" background-color: #F39F5A; color: white; border-color: white" mat-button (click)="guardarDatos()" class="button">Guardar</button>

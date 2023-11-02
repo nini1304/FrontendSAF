@@ -48,10 +48,10 @@ export class ActivosService {
     return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/cond`);
   }
   public getRol(): Observable<any>{
-    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/rol`);
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/usuarios/rol`);
   }
   public getEmpresa(): Observable<any>{
-    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/empresa`);
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/usuarios/empresa`);
   }
   public registrarActivo(nombre: string, valor:string, fecha:string, descripcion:string, tipo:number, marca: number, calle:string,avenida:string,bloque:number,ciudad:number,personal:number,estado:number,condicion:number):
     Observable<any> {
@@ -73,7 +73,7 @@ export class ActivosService {
 
     return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/registrar?nombre=${nombre}&valor=${valor}&fechaCompra=${fecha}&descripcion=${descripcion}&tipoActivoId=${tipo}&marcaId=${marca}&calle=${calle}&avenida=${avenida}&bloqueId=${bloque}&ciudadId=${ciudad}&personalId=${personal}&estadoId=${estado}&condicionId=${condicion}&estado=true`, body);
   }
-  public registrarUsuario(nombre: string, username: string, password: string, empresa: number | undefined, rol: number | undefined):
+  public registrarUsuario(nombre: string, username: string, password: string, empresa: number , rol: number):
     Observable<any> {
     const body = {
       nombre: nombre,
@@ -83,7 +83,7 @@ export class ActivosService {
       rol: rol,
     };
 
-    return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/registrar?nombre=${nombre}&username=${username}&password=${password}&empresaId=${empresa}&rolId=${rol}`, body);
+    return this.http.post<any>(`${this.BACK_URL}/api/v1/usuarios/registrar?nombre=${nombre}&username=${username}&password=${password}&empresaId=${empresa}&rolId=${rol}`, body);
   }
 
   public actualizarActivo(
@@ -118,7 +118,6 @@ export class ActivosService {
       condicion: condicion
     };
     console.log(body);
-    console.log(id, " hola");
     return this.http.put<any>(`${this.BACK_URL}/api/v1/activos-fijos/actualizar/${id}?nombre=${nombre}&valor=${valor}&fechaCompra=${fecha}&descripcion=${descripcion}&tipoActivoId=${tipo}&marcaId=${marca}&calle=${calle}&avenida=${avenida}&bloqueId=${bloque}&ciudadId=${ciudad}&personalId=${personal}&estadoId=${estado}&condicionId=${condicion}&estado=true`, body);
   }
   public login(usuario: string, contraseña: string): Observable<any> {

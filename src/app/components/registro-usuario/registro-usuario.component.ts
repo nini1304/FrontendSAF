@@ -1,13 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {MatDatepickerInput} from "@angular/material/datepicker";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {TipoactivoDto} from "../../dto/tipoactivo.dto";
-import {MarcasDto} from "../../dto/marcas.dto";
-import {BloquesDto} from "../../dto/bloques.dto";
-import {CiudadesDto} from "../../dto/ciudades.dto";
-import {PersonalDto} from "../../dto/personal.dto";
-import {EstadosDto} from "../../dto/estados.dto";
-import {CondicionDto} from "../../dto/condicion.dto";
 import {map, Observable, startWith} from "rxjs";
 import {ActivosService} from "../../service/activos.service";
 import {EmpresaDto} from "../../dto/empresa.dto";
@@ -49,13 +42,16 @@ export class RegistroUsuarioComponent {
       next: (data: RolDto[]) => {
         console.log(data);
         this.rolDto = data;
-        this.options = this.rolDto.map(rol => rol.nombre);
+        this.options = this.rolDto.map((rol) => rol.nombre);
         this.filteredOptions = this.myControl.valueChanges.pipe(
           startWith(''),
           map(value => this._filter(value || '')),
         );
-
+        console.log(this.options);
+  
       }
+  
+  
     })
     this.activoservice.getEmpresa().subscribe({
       next: (data: EmpresaDto[]) => {
@@ -64,14 +60,15 @@ export class RegistroUsuarioComponent {
         this.options2 = this.empresaDto.map(empresa => empresa.nombre);
         this.filteredOptions2 = this.myControl2.valueChanges.pipe(
           startWith(''),
-          map(value => this._filter(value || '')),
+          map(value => this._filter2(value || '')),
         );
-
+        console.log(this.options2);
+  
       }
+  
+  
     })
-
   }
-
 
   private _filter(value: string): String[] {
     const filterValue = value.toLowerCase();
@@ -80,7 +77,7 @@ export class RegistroUsuarioComponent {
   }
   private _filter2(value: string): String[] {
     const filterValue = value.toLowerCase();
-
+    
     return this.options2.filter(option => option.toLowerCase().includes(filterValue));
   }
 
@@ -99,6 +96,11 @@ export class RegistroUsuarioComponent {
     const password = this.nuevoUsuarioForm.get('password')?.value;
     const empresa = this.empresaDto.find((empresa: EmpresaDto) => empresa.nombre === this.myControl2.value)?.id;
     const rol = this.rolDto.find((rol:RolDto) => rol.nombre === this.myControl.value)?.id;
+
+    if (!nombre || !username || !password || !empresa || !rol) {
+      alert('Por favor ingrese todos los datos');
+      return;
+    }
 
     this.activoservice.registrarUsuario(nombre, username, password, empresa, rol) .subscribe({
       next: (data) => {
