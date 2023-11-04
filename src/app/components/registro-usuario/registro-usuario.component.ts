@@ -38,20 +38,20 @@ export class RegistroUsuarioComponent {
   }
 
   ngOnInit() {
-    this.activoservice.getRol().subscribe({
+    this.activoservice.getRoles().subscribe({
       next: (data: RolDto[]) => {
         console.log(data);
         this.rolDto = data;
-        this.options = this.rolDto.map((rol) => rol.nombre);
+        this.options = this.rolDto.map((rol) => rol.rol);
         this.filteredOptions = this.myControl.valueChanges.pipe(
           startWith(''),
           map(value => this._filter(value || '')),
         );
         console.log(this.options);
-  
+
       }
-  
-  
+
+
     })
     this.activoservice.getEmpresa().subscribe({
       next: (data: EmpresaDto[]) => {
@@ -63,10 +63,10 @@ export class RegistroUsuarioComponent {
           map(value => this._filter2(value || '')),
         );
         console.log(this.options2);
-  
+
       }
-  
-  
+
+
     })
   }
 
@@ -77,7 +77,7 @@ export class RegistroUsuarioComponent {
   }
   private _filter2(value: string): String[] {
     const filterValue = value.toLowerCase();
-    
+
     return this.options2.filter(option => option.toLowerCase().includes(filterValue));
   }
 
@@ -95,9 +95,9 @@ export class RegistroUsuarioComponent {
     const username = this.nuevoUsuarioForm.get('username')?.value;
     const password = this.nuevoUsuarioForm.get('password')?.value;
     const empresa = this.empresaDto.find((empresa: EmpresaDto) => empresa.nombre === this.myControl2.value)?.id;
-    const rol = this.rolDto.find((rol:RolDto) => rol.nombre === this.myControl.value)?.id;
+    const rol = this.rolDto.find((rol:RolDto) => rol.rol === this.myControl.value)?.id;
 
-    if (!nombre || !username || !password || !empresa || !rol) {
+    if (nombre || username || password || !empresa || !rol) {
       alert('Por favor ingrese todos los datos');
       return;
     }

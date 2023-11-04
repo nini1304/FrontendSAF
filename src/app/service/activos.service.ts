@@ -47,7 +47,7 @@ export class ActivosService {
   public getCondicion(): Observable<any> {
     return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/cond`);
   }
-  public getRol(): Observable<any>{
+  public getRoles(): Observable<any>{
     return this.http.get<any>(`${this.BACK_URL}/api/v1/usuarios/rol`);
   }
   public getEmpresa(): Observable<any>{
@@ -80,7 +80,7 @@ export class ActivosService {
       username: username,
       password: password,
       empresa: empresa,
-      rol: rol,
+      rol: rol
     };
 
     return this.http.post<any>(`${this.BACK_URL}/api/v1/usuarios/registrar?nombre=${nombre}&username=${username}&password=${password}&empresaId=${empresa}&rolId=${rol}`, body);
@@ -88,12 +88,12 @@ export class ActivosService {
 
   public actualizarActivo(
     id: number,
-    nombre: string, 
-    valor:number, 
-    fecha:string, 
-    descripcion:string, 
-    tipo:number, 
-    marca: number, 
+    nombre: string,
+    valor:number,
+    fecha:string,
+    descripcion:string,
+    tipo:number,
+    marca: number,
     calle:string,
     avenida:string,
     bloque:number,
