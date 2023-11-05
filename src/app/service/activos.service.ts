@@ -82,8 +82,8 @@ export class ActivosService {
       empresa: empresa,
       rol: rol
     };
-
-    return this.http.post<any>(`${this.BACK_URL}/api/v1/usuarios/registrar?nombre=${nombre}&username=${username}&password=${password}&empresaId=${empresa}&rolId=${rol}`, body);
+                          // POST http://localhost:1234/api/v1/usuarios/registrar?nombre=Juan&username=juan.perez&password=1234&idRol=1&idEmpresa=1&estado=true
+    return this.http.post<any>(`${this.BACK_URL}/api/v1/usuarios/registrar?nombre=${nombre}&username=${username}&password=${password}&idRol=${rol}&idEmpresa=${empresa}&estado=true`, body);
   }
 
   public actualizarActivo(

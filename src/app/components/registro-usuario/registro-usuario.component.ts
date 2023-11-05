@@ -43,6 +43,7 @@ export class RegistroUsuarioComponent {
         console.log(data);
         this.rolDto = data;
         this.options = this.rolDto.map((rol) => rol.rol);
+        console.log('holi'+this.rolDto.map((rol) => rol.idRol));
         this.filteredOptions = this.myControl.valueChanges.pipe(
           startWith(''),
           map(value => this._filter(value || '')),
@@ -95,33 +96,22 @@ export class RegistroUsuarioComponent {
     const username = this.nuevoUsuarioForm.get('username')?.value;
     const password = this.nuevoUsuarioForm.get('password')?.value;
     const empresa = this.empresaDto.find((empresa: EmpresaDto) => empresa.nombre === this.myControl2.value)?.id;
-    const rol = this.rolDto.find((rol:RolDto) => rol.rol === this.myControl.value)?.id;
+    console.log(this.empresaDto.find((empresa: EmpresaDto) => empresa.nombre === this.myControl2.value)?.id)
+    console.log(this.rolDto.find((rol:RolDto) => rol.rol === this.myControl.value)?.idRol)
+    const rol = this.rolDto.find((rol:RolDto) => rol.rol === this.myControl.value)?.idRol;
 
-    if (nombre || username || password || !empresa || !rol) {
-      alert('Por favor ingrese todos los datos');
-      return;
-    }
-
+    // @ts-ignore
     this.activoservice.registrarUsuario(nombre, username, password, empresa, rol) .subscribe({
       next: (data) => {
         console.log(data);
         alert('Activo registrado correctamente');
 
-
-
       },error: (error: any) => {
         console.log(error);
         alert('Error al registrar activo');
-
-
       }
-
     });
-
-
   }
-
-
 }
 
 
