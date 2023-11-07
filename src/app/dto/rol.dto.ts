@@ -1,4 +1,4 @@
 export interface RolDto{
-  id: number;
+  idRol: number;
   rol: string;
 }

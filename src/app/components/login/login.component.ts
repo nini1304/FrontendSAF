@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {LoginDto} from "../../dto/login.dto";
 import {ActivosService} from "../../service/activos.service";
+import {map, Observable, startWith} from "rxjs";
+import {EmpresaDto} from "../../dto/empresa.dto";
+import {TipoactivoDto} from "../../dto/tipoactivo.dto";
 
 @Component({
   selector: 'app-login',
@@ -10,21 +13,52 @@ import {ActivosService} from "../../service/activos.service";
 })
 export class LoginComponent {
   loginDto: LoginDto = {} as LoginDto;
+  empresaDto: EmpresaDto[] = [];
   loginForm: FormGroup;
   // usuario = new FormControl('', [Validators.required]);
+
+  myControl = new FormControl('');
+  options: String[] = [];
+  filteredOptions: Observable<String[]> | undefined;
 
   constructor(private formBuilder: FormBuilder,
               private fb: FormBuilder, private service: ActivosService) {
     this.loginForm = this.fb.group({
+      myControl: [''],
       usuario: new FormControl('', [Validators.required]),
-      contraseña: new FormControl('', [Validators.required]),
+      contrasenia: new FormControl('', [Validators.required]),
     });
 
   }
+  ngOnInit() {
+    this.service.getEmpresas().subscribe({
+      next: (data: EmpresaDto[]) => {
+        console.log(data);
+        this.empresaDto = data;
+        this.options = this.empresaDto.map(emp => emp.nombre);
+        this.filteredOptions = this.myControl.valueChanges.pipe(
+          startWith(''),
+          map(value => this._filter(value || '')),
+        );
+
+      }
+
+
+    })
+
+  }
+
+  private _filter(value: string): String[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
   ingresar() {
+    const idempresa = this.empresaDto.find((emp: EmpresaDto) => emp.nombre === this.myControl.value)?.id;
     const usuario = this.loginForm.get('usuario')?.value;
-    const contraseña = this.loginForm.get('contraseña')?.value;
-    this.service.login(usuario, contraseña).subscribe({
+    const contrasenia = this.loginForm.get('contrasenia')?.value;
+    // @ts-ignore
+    this.service.login(usuario, contrasenia,idempresa).subscribe({
       next: (data: LoginDto) => {
         console.log(data);
 
@@ -51,7 +85,7 @@ export class LoginComponent {
 
       },error: (error: any) => {
         console.log(error);
-        alert("Usuario o contraseña incorrectos");
+        alert("Usuario o contraseña incorrectos/empresa incorrecta");
         location.reload();
 
       }

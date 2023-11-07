@@ -18,6 +18,8 @@ import {ListaEncargadoComponent} from "./components/lista-encargado/lista-encarg
 import {ListadepreEncargadoComponent} from "./components/listadepre-encargado/listadepre-encargado.component";
 import {RegistroUsuarioComponent} from "./components/registro-usuario/registro-usuario.component";
 import {ListadeprePoweruserComponent} from "./components/listadepre-poweruser/listadepre-poweruser.component";
+import {ListadeUsuariosComponent} from "./components/listade-usuarios/listade-usuarios.component";
+import {RegistrarAdministradorComponent} from "./components/registrar-administrador/registrar-administrador.component";
 
 
 const routes: Routes = [
@@ -28,15 +30,18 @@ const routes: Routes = [
   { path: 'listadepre-poweruser/:mes/:anio', component: ListadeprePoweruserComponent},
   { path: 'actualizar-poweruser/:id', component: ActualizarPoweruserComponent},
   { path: 'movimientos-poweruser', component: MovimientosPoweruserComponent},
+  { path: 'registrar-usuario', component: RegistroUsuarioComponent},
+  { path: 'listade-usuarios', component: ListadeUsuariosComponent},
   { path: 'menu-user', component: MenuUserComponent},
   { path: 'lista-user', component: ListaUserComponent},
   { path: 'menu-admin', component: MenuAdministradorComponent},
+  { path: 'registrar-admin', component: RegistrarAdministradorComponent},
   { path: 'lista-admin', component: ListaAdministradorComponent},
   { path: 'movimientos-admin', component: MovimientosAdministradorComponent},
   { path: 'menu-encargado', component: MenuEncargadoComponent},
   { path: 'lista-encargado', component: ListaEncargadoComponent},
   { path: 'listadepre-encargado/:mes/:anio', component: ListadepreEncargadoComponent},
-  { path: 'registrar-usuario', component: RegistroUsuarioComponent},
+
 
 
 ];

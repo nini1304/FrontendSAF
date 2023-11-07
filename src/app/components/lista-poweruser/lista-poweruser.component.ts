@@ -65,10 +65,30 @@ export class ListaPoweruserComponent {
     this.router.navigate(['/actualizar-poweruser', id]);
 
   }
+  eliminar(id: number) {
+    this.activoservice.deleteActivo(id).subscribe({
+      next: (data) => {
+        console.log(data);
+        alert('Estado de activo cambiado correctamente');
+        location.reload();
+
+
+      },error: (error: any) => {
+        console.log(error);
+        alert('Error al cambiar estado de activo');
+
+
+      }
+
+    });
+  }
 
 
   ngAfterViewInit() {
-    this.activoservice.getListaActivosFijos().subscribe({
+    const idempresa = localStorage.getItem('idempresa');
+    // @ts-ignore
+    const idemp = parseInt(idempresa);
+    this.activoservice.getListaActivosFijos(idemp).subscribe({
       next: (data: ActivoslistaDto []) => {
         console.log(data);
         this.activoslistaDto = data;

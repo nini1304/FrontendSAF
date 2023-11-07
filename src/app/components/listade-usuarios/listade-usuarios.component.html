@@ -7,11 +7,23 @@
       </div>
       <br>
       <div class="menu">
-        <mat-icon [routerLink]="['/menu-encargado']" class="menuitem">home</mat-icon>Inicio
+        <mat-icon [routerLink]="['/menu-poweruser']" class="menuitem">home</mat-icon>Inicio
       </div>
       <br>
       <div class="menu">
-        <mat-icon [routerLink]="['/lista-encargado']" class="menuitem">playlist_add_check</mat-icon>Lista de Activos Fijos
+        <mat-icon [routerLink]="['/registrar-poweruser']" class="menuitem">playlist_add</mat-icon>Crear Activo Fijo
+      </div>
+      <br>
+      <div class="menu">
+        <mat-icon [routerLink]="['/lista-poweruser']" class="menuitem">playlist_add_check</mat-icon>Lista de Activos Fijos
+      </div>
+      <br>
+      <div class="menu">
+        <mat-icon [routerLink]="['/movimientos-poweruser']" class="menuitem">timeline</mat-icon>Movimientos en Activos Fijos
+      </div>
+      <br>
+      <div class="menu">
+        <mat-icon [routerLink]="['/registrar-usuario']" class="menuitem">person_add</mat-icon>Registrar Usuario
       </div>
       <br>
       <div class="menu">
@@ -26,20 +38,19 @@
       <div class="todo">
 
         <div class="tabla">
-          <h1>Lista de Activos Fijos</h1>
+          <h1>Lista de Usuarios</h1>
           <mat-form-field class="filtro">
             <mat-label >Busca Aqui</mat-label>
             <input  matInput (keyup)="applyFilter($event)"  #input>
           </mat-form-field>
-          <button  mat-button color="warn" class="boton" (click)="abrirDepreciar()">Depreciar</button>
 
           <div class="mat-elevation-z8" >
             <table mat-table [dataSource]="dataSource" matSort >
 
               <!-- ID Column -->
-              <ng-container matColumnDef="id" >
+              <ng-container matColumnDef="idUsuario" >
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.idUsuario}} </td>
               </ng-container>
 
               <!-- Progress Column -->
@@ -49,28 +60,26 @@
               </ng-container>
 
               <!-- Name Column -->
-              <ng-container matColumnDef="valor">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Valor en Bolivianos </th>
-                <td mat-cell *matCellDef="let row"> {{row.valor}} </td>
+              <ng-container matColumnDef="username">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario </th>
+                <td mat-cell *matCellDef="let row"> {{row.username}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="password">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario </th>
+                <td mat-cell *matCellDef="let row"> {{row.password}} </td>
               </ng-container>
 
               <!-- Fruit Column -->
-              <ng-container matColumnDef="fecha">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha De Compra </th>
-                <td mat-cell *matCellDef="let row"> {{row.fechaCompra}} </td>
+              <ng-container matColumnDef="idRol">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Rol en Empresa </th>
+                <td mat-cell *matCellDef="let row"> {{row.idRol}} </td>
               </ng-container>
 
 
-              <ng-container matColumnDef="tipo">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo De Objeto </th>
-                <td mat-cell *matCellDef="let row"> {{row.tipoActivoNombre}} </td>
-              </ng-container>
-
-              <ng-container matColumnDef="masinfo">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
-                <td mat-cell *matCellDef="let row">
-                  <a href="javascript:void(0);" (click)="openDialog(row.descripcion, row.marcaNombre, row.calle, row.avenida, row.bloqueNombre, row.ciudadNombre,row.personalNombre,row.estadoNombre,row.condicionNombre)">Mas informacion</a>
-                </td>
+              <ng-container matColumnDef="idEmpresa">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Empresa </th>
+                <td mat-cell *matCellDef="let row"> {{row.idEmpresa}} </td>
               </ng-container>
 
 

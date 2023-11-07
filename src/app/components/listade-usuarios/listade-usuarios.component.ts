@@ -7,31 +7,32 @@ import {ActivosService} from "../../service/activos.service";
 import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {MasInformacionComponent} from "../mas-informacion/mas-informacion.component";
-import {DepreciarEncargadoComponent} from "../depreciar-encargado/depreciar-encargado.component";
+import {DepreciarPoweruserComponent} from "../depreciar-poweruser/depreciar-poweruser.component";
+import {UsuarioDto} from "../../dto/usuario.dto";
 
 @Component({
-  selector: 'app-lista-encargado',
-  templateUrl: './lista-encargado.component.html',
-  styleUrls: ['./lista-encargado.component.css']
+  selector: 'app-listade-usuarios',
+  templateUrl: './listade-usuarios.component.html',
+  styleUrls: ['./listade-usuarios.component.css']
 })
-export class ListaEncargadoComponent {
+export class ListadeUsuariosComponent {
   nombre = localStorage.getItem('nombre');
-  activoslistaDto: ActivoslistaDto[] = [];
+  usuarioDto: UsuarioDto[] = [];
 
-  displayedColumns: string[] = ['id', 'nombre', 'valor', 'fecha', 'tipo', 'masinfo'];
-  dataSource: MatTableDataSource<ActivoslistaDto>;
+  displayedColumns: string[] = ['idUsuario', 'nombre', 'username','password', 'idRol', 'idEmpresa'];
+  dataSource: MatTableDataSource<UsuarioDto>;
 
   // dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
 
-  constructor(private activoservice: ActivosService, public dialog: MatDialog, private router: Router) {
+  constructor(private activoservice: ActivosService, public dialog: MatDialog) {
     // Create 100 users
     // const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(this.activoslistaDto);
+    this.dataSource = new MatTableDataSource(this.usuarioDto);
 
   }
   borrarls(){
@@ -42,27 +43,14 @@ export class ListaEncargadoComponent {
       console.log("No se pudo limpiar el LocalStorage.");
     }
   }
-  openDialog(descripcion: string, marca: string, calle: string, avenida: string, bloque:string, ciudad: string,personal:string, estado:string, condicion:string) : void {
-    const dialogRef = this.dialog.open(MasInformacionComponent, {
-      // width: '250px',
-      data: {descripcion: descripcion, marca: marca, calle: calle, avenida: avenida, bloque: bloque, ciudad: ciudad, personal: personal, estado: estado, condicion: condicion}
-    });
-
-  }
-  abrirDepreciar(){
-    this.dialog.open(DepreciarEncargadoComponent);
-  }
 
 
   ngAfterViewInit() {
-    const idempresa = localStorage.getItem('idempresa');
-    // @ts-ignore
-    const idemp = parseInt(idempresa);
-    this.activoservice.getListaActivosFijos(idemp).subscribe({
-      next: (data: ActivoslistaDto []) => {
+    this.activoservice.getUsuario().subscribe({
+      next: (data: UsuarioDto[]) => {
         console.log(data);
-        this.activoslistaDto = data;
-        this.dataSource = new MatTableDataSource(this.activoslistaDto);
+        this.usuarioDto = data;
+        this.dataSource = new MatTableDataSource(this.usuarioDto);
         // @ts-ignore
         this.dataSource.paginator = this.paginator;
         // @ts-ignore

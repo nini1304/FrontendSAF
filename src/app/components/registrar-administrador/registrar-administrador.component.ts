@@ -1,24 +1,22 @@
-import {Component, Inject, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import {MatDatepicker, MatDatepickerInput} from '@angular/material/datepicker';
-import { MatFormField, MatFormFieldControl } from '@angular/material/form-field';
+import {Component, ViewChild} from '@angular/core';
+import {MatDatepickerInput} from "@angular/material/datepicker";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {TipoactivoDto} from "../../dto/tipoactivo.dto";
-import {map, Observable, startWith} from "rxjs";
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {ActivosService} from "../../service/activos.service";
 import {MarcasDto} from "../../dto/marcas.dto";
+import {BloquesDto} from "../../dto/bloques.dto";
+import {CiudadesDto} from "../../dto/ciudades.dto";
 import {PersonalDto} from "../../dto/personal.dto";
 import {EstadosDto} from "../../dto/estados.dto";
 import {CondicionDto} from "../../dto/condicion.dto";
-import {BloquesDto} from "../../dto/bloques.dto";
-import {CiudadesDto} from "../../dto/ciudades.dto";
+import {map, Observable, startWith} from "rxjs";
+import {ActivosService} from "../../service/activos.service";
 
 @Component({
-  selector: 'app-registrar-poweruser',
-  templateUrl: './registrar-poweruser.component.html',
-  styleUrls: ['./registrar-poweruser.component.css'],
+  selector: 'app-registrar-administrador',
+  templateUrl: './registrar-administrador.component.html',
+  styleUrls: ['./registrar-administrador.component.css']
 })
-export class RegistrarPoweruserComponent {
+export class RegistrarAdministradorComponent {
   @ViewChild(MatDatepickerInput) datepickerInput: MatDatepickerInput<Date> | undefined;
 
   nombre = localStorage.getItem('nombre');
@@ -264,6 +262,5 @@ export class RegistrarPoweruserComponent {
 
 
   }
-
 
 }

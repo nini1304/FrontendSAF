@@ -1,7 +1,24 @@
 <body>
 <div class="contenedor">
   <h1>Login</h1>
+
   <form [formGroup]="loginForm" class="formulario">
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Empresa:</mat-label>
+        <input type="text"
+               aria-label="Number"
+               matInput
+               [formControl]="myControl"
+               [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+
     <mat-form-field>
       <mat-label>Ingrese su usuario: </mat-label>
       <input matInput formControlName="usuario" required>
@@ -10,10 +27,13 @@
 
     <mat-form-field>
       <mat-label>Ingrese su contraseña: </mat-label>
-      <input matInput type="password" formControlName="contraseña" required>
-      <mat-error *ngIf="loginForm.get('contraseña')?.invalid">Debes ingresar una contraseña valida</mat-error>
+      <input matInput type="password" formControlName="contrasenia" required>
+      <mat-error *ngIf="loginForm.get('contrasenia')?.invalid">Debes ingresar una contraseña valida</mat-error>
     </mat-form-field>
+     <div class="button">
     <button type="submit" (click)="ingresar()" style="background-color: #FF5858; color: white;" mat-raised-button >Ingresar</button>
+     </div>
+
   </form>
 </div>
 </body>
