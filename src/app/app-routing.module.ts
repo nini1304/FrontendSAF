@@ -18,6 +18,7 @@ import {ListaEncargadoComponent} from "./components/lista-encargado/lista-encarg
 import {ListadepreEncargadoComponent} from "./components/listadepre-encargado/listadepre-encargado.component";
 import {RegistroUsuarioComponent} from "./components/registro-usuario/registro-usuario.component";
 import {ListadeprePoweruserComponent} from "./components/listadepre-poweruser/listadepre-poweruser.component";
+import {ListadeUsuariosComponent} from "./components/listade-usuarios/listade-usuarios.component";
 
 
 const routes: Routes = [
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'lista-encargado', component: ListaEncargadoComponent},
   { path: 'listadepre-encargado/:mes/:anio', component: ListadepreEncargadoComponent},
   { path: 'registrar-usuario', component: RegistroUsuarioComponent},
+  { path: 'listade-usuarios', component: ListadeUsuariosComponent},
 
 
 ];

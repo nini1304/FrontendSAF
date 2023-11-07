@@ -42,6 +42,7 @@ import { ListadepreEncargadoComponent } from './components/listadepre-encargado/
 import { RegistroUsuarioComponent } from './components/registro-usuario/registro-usuario.component';
 import { ListadeprePoweruserComponent } from './components/listadepre-poweruser/listadepre-poweruser.component';
 import { DepreciarPoweruserComponent } from './components/depreciar-poweruser/depreciar-poweruser.component';
+import { ListadeUsuariosComponent } from './components/listade-usuarios/listade-usuarios.component';
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { DepreciarPoweruserComponent } from './components/depreciar-poweruser/de
     RegistroUsuarioComponent,
     ListadeprePoweruserComponent,
     DepreciarPoweruserComponent,
+    ListadeUsuariosComponent,
 
   ],
     imports: [

@@ -4,6 +4,7 @@ import {Observable, map, from} from 'rxjs';
 import {environment} from "../../environments/environment";
 import {ActivoFijoDto} from "../dto/activofijo.dto";
 import {DepreciacionDto} from "../dto/depreciacion.dto";
+import {UsuarioDto} from "../dto/usuario.dto";
 @Injectable({
   providedIn: 'root'
 })
@@ -52,6 +53,9 @@ export class ActivosService {
   }
   public getEmpresa(): Observable<any>{
     return this.http.get<any>(`${this.BACK_URL}/api/v1/usuarios/empresa`);
+  }
+  public getUsuario(): Observable<any>{
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/usuarios/listar`);
   }
   public registrarActivo(nombre: string, valor:string, fecha:string, descripcion:string, tipo:number, marca: number, calle:string,avenida:string,bloque:number,ciudad:number,personal:number,estado:number,condicion:number):
     Observable<any> {
