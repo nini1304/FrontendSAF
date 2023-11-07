@@ -55,7 +55,10 @@ export class ListaEncargadoComponent {
 
 
   ngAfterViewInit() {
-    this.activoservice.getListaActivosFijos().subscribe({
+    const idempresa = localStorage.getItem('idempresa');
+    // @ts-ignore
+    const idemp = parseInt(idempresa);
+    this.activoservice.getListaActivosFijos(idemp).subscribe({
       next: (data: ActivoslistaDto []) => {
         console.log(data);
         this.activoslistaDto = data;

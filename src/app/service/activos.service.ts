@@ -17,11 +17,11 @@ export class ActivosService {
   public getActivosFijos(): Observable<ActivoFijoDto[]> {
     return this.http.get<ActivoFijoDto[]>(`${this.BACK_URL}/api/v1/activos-fijos-H/actFH`);
   }
-  public getActivosDepreciados(mes:string, anio: number): Observable<any> {
-    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/actF?mes=${mes}&anio=${anio}`);
+  public getActivosDepreciados(mes:string, anio: number, idemp:number): Observable<any> {
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/actF?mes=${mes}&anio=${anio}&idEmp=${idemp}`);
   }
-  public getListaActivosFijos(): Observable<any> {
-    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/actF2`);
+  public getListaActivosFijos(idemp:number): Observable<any> {
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/actF2?idEmp=${idemp}`);
   }
 
   public getTiposActivo(): Observable<any> {
@@ -36,9 +36,7 @@ export class ActivosService {
   public getCiudades(): Observable<any> {
     return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/ciudad`);
   }
-  public getUbicaciones(): Observable<any> {
-    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/ubicacion`);
-  }
+
   public getPersonal(): Observable<any> {
     return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/personal`);
   }
@@ -57,7 +55,7 @@ export class ActivosService {
   public getUsuario(): Observable<any>{
     return this.http.get<any>(`${this.BACK_URL}/api/v1/usuarios/listar`);
   }
-  public registrarActivo(nombre: string, valor:string, fecha:string, descripcion:string, tipo:number, marca: number, calle:string,avenida:string,bloque:number,ciudad:number,personal:number,estado:number,condicion:number):
+  public registrarActivo(nombre: string, valor:string, fecha:string, descripcion:string, tipo:number, marca: number, calle:string,avenida:string,bloque:number,ciudad:number,personal:number,estado:number,condicion:number,idemp:number):
     Observable<any> {
     const body = {
       nombre: nombre,
@@ -72,10 +70,11 @@ export class ActivosService {
       ciudad: ciudad,
       personal: personal,
       estado: estado,
-      condicion: condicion
+      condicion: condicion,
+      idemp: idemp
     };
 
-    return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/registrar?nombre=${nombre}&valor=${valor}&fechaCompra=${fecha}&descripcion=${descripcion}&tipoActivoId=${tipo}&marcaId=${marca}&calle=${calle}&avenida=${avenida}&bloqueId=${bloque}&ciudadId=${ciudad}&personalId=${personal}&estadoId=${estado}&condicionId=${condicion}&estado=true`, body);
+    return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/registrar?nombre=${nombre}&valor=${valor}&fechaCompra=${fecha}&descripcion=${descripcion}&tipoActivoId=${tipo}&marcaId=${marca}&calle=${calle}&avenida=${avenida}&bloqueId=${bloque}&ciudadId=${ciudad}&personalId=${personal}&estadoId=${estado}&condicionId=${condicion}&estado=true&idEmp=${idemp}`, body);
   }
   public registrarUsuario(nombre: string, username: string, password: string, empresa: number , rol: number):
     Observable<any> {
@@ -124,8 +123,8 @@ export class ActivosService {
     console.log(body);
     return this.http.put<any>(`${this.BACK_URL}/api/v1/activos-fijos/actualizar/${id}?nombre=${nombre}&valor=${valor}&fechaCompra=${fecha}&descripcion=${descripcion}&tipoActivoId=${tipo}&marcaId=${marca}&calle=${calle}&avenida=${avenida}&bloqueId=${bloque}&ciudadId=${ciudad}&personalId=${personal}&estadoId=${estado}&condicionId=${condicion}&estado=true`, body);
   }
-  public login(usuario: string, contrasenia: string): Observable<any> {
-    const url = `${this.BACK_URL}/api/v1/usuarios/login?user=${usuario}&password=${contrasenia}`;
+  public login(usuario: string, contrasenia: string, idemp:number): Observable<any> {
+    const url = `${this.BACK_URL}/api/v1/usuarios/login?user=${usuario}&password=${contrasenia}&empId=${idemp}`;
     const body = {
       usuario: usuario,
       contrasenia: contrasenia
@@ -139,6 +138,16 @@ export class ActivosService {
   public generarReporteP(depreciacion:DepreciacionDto[]): Observable<any> {
     return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/pdf?nombreArchivo=activosFijos.pdf`,depreciacion );
 
+  }
+  public deleteActivo(id: number): Observable<any> {
+    const body = {
+      id: id
+    };
+    return this.http.put<any>(`${this.BACK_URL}/api/v1/activos-fijos/disable?id=${id}`,body );
+
+  }
+  public getEmpresas():Observable<any>{
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/usuarios/empresa`);
   }
 
 }

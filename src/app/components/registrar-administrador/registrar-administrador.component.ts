@@ -240,8 +240,11 @@ export class RegistrarAdministradorComponent {
     const personal = this.personalDto.find((personal: PersonalDto) => personal.nombre === this.myControl5.value)?.id;
     const estado = this.estadosDto.find((estado: EstadosDto) => estado.nombre === this.myControl6.value)?.id;
     const condicion = this.condicionDto.find((condicion: CondicionDto) => condicion.nombre === this.myControl7.value)?.id;
+    const idempresa = localStorage.getItem('idempresa');
     // @ts-ignore
-    this.activoservice.registrarActivo(nombre, valor, fechaa, descripcion, tipo, marca, calle,avenida,bloque,ciudad, personal, estado, condicion) .subscribe({
+    const idemp = parseInt(idempresa);
+    // @ts-ignore
+    this.activoservice.registrarActivo(nombre, valor, fechaa, descripcion, tipo, marca, calle,avenida,bloque,ciudad, personal, estado, condicion,idemp) .subscribe({
       next: (data) => {
         console.log(data);
         alert('Activo registrado correctamente');
