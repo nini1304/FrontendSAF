@@ -124,11 +124,11 @@ export class ActivosService {
     console.log(body);
     return this.http.put<any>(`${this.BACK_URL}/api/v1/activos-fijos/actualizar/${id}?nombre=${nombre}&valor=${valor}&fechaCompra=${fecha}&descripcion=${descripcion}&tipoActivoId=${tipo}&marcaId=${marca}&calle=${calle}&avenida=${avenida}&bloqueId=${bloque}&ciudadId=${ciudad}&personalId=${personal}&estadoId=${estado}&condicionId=${condicion}&estado=true`, body);
   }
-  public login(usuario: string, contraseña: string): Observable<any> {
-    const url = `${this.BACK_URL}/api/v1/usuarios/login?user=${usuario}&password=${contraseña}`;
+  public login(usuario: string, contrasenia: string): Observable<any> {
+    const url = `${this.BACK_URL}/api/v1/usuarios/login?user=${usuario}&password=${contrasenia}`;
     const body = {
       usuario: usuario,
-      contraseña: contraseña
+      contrasenia: contrasenia
     };
     return this.http.post<any>(url, body);
   }
@@ -140,5 +140,6 @@ export class ActivosService {
     return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/pdf?nombreArchivo=activosFijos.pdf`,depreciacion );
 
   }
+
 }
 
