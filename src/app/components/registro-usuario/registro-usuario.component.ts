@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {MatDatepickerInput} from "@angular/material/datepicker";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {map, Observable, startWith} from "rxjs";
+import { ActivatedRoute, Router } from '@angular/router';
 import {ActivosService} from "../../service/activos.service";
 import {EmpresaDto} from "../../dto/empresa.dto";
 import {RolDto} from "../../dto/rol.dto";
@@ -26,7 +27,8 @@ export class RegistroUsuarioComponent {
   filteredOptions2: Observable<String[]> | undefined;
 
   constructor(private formBuilder: FormBuilder, private activoservice: ActivosService,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private router: Router) {
     this.nuevoUsuarioForm = this.fb.group({
       nombre: [''],
       username: [''],
@@ -90,14 +92,14 @@ export class RegistroUsuarioComponent {
     }
   }
   guardarDatos() {
-    console.log('guardar datos')
     const nombre = this.nuevoUsuarioForm.get('nombre')?.value;
     const username = this.nuevoUsuarioForm.get('username')?.value;
     const password = this.nuevoUsuarioForm.get('password')?.value;
     const empresa = this.empresaDto.find((empresa: EmpresaDto) => empresa.nombre === this.myControl2.value)?.id;
     const rol = this.rolDto.find((rol:RolDto) => rol.rol === this.myControl.value)?.id;
-
-    if (nombre || username || password || !empresa || !rol) {
+    console.log(nombre, username, password, empresa, rol)
+    if (!nombre || !username || !password || !empresa || !rol) {
+      console.log(nombre, username, password, empresa, rol)
       alert('Por favor ingrese todos los datos');
       return;
     }
@@ -106,9 +108,7 @@ export class RegistroUsuarioComponent {
       next: (data) => {
         console.log(data);
         alert('Activo registrado correctamente');
-
-
-
+        this.router.navigate(['/home']);
       },error: (error: any) => {
         console.log(error);
         alert('Error al registrar activo');
