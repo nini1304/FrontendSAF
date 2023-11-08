@@ -73,16 +73,8 @@
               <!-- Fruit Column -->
               <ng-container matColumnDef="idRol">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Rol en Empresa </th>
-                <td mat-cell *matCellDef="let row"> {{row.idRol}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.Rol}} </td>
               </ng-container>
-
-
-              <ng-container matColumnDef="idEmpresa">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Empresa </th>
-                <td mat-cell *matCellDef="let row"> {{row.idEmpresa}} </td>
-              </ng-container>
-
-
 
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
 import {MasInformacionComponent} from "../mas-informacion/mas-informacion.component";
 import {DepreciarPoweruserComponent} from "../depreciar-poweruser/depreciar-poweruser.component";
 import {UsuarioDto} from "../../dto/usuario.dto";
+import { UsuarioListaDto } from 'src/app/dto/usuarioLista.dto';
 
 @Component({
   selector: 'app-listade-usuarios',
@@ -17,10 +18,10 @@ import {UsuarioDto} from "../../dto/usuario.dto";
 })
 export class ListadeUsuariosComponent {
   nombre = localStorage.getItem('nombre');
-  usuarioDto: UsuarioDto[] = [];
+  usuariolistaDto: UsuarioListaDto[] = [];
 
-  displayedColumns: string[] = ['idUsuario', 'nombre', 'username','password', 'idRol', 'idEmpresa'];
-  dataSource: MatTableDataSource<UsuarioDto>;
+  displayedColumns: string[] = ['idUsuario', 'nombre', 'username','password', 'Rol'];
+  dataSource: MatTableDataSource<UsuarioListaDto>;
 
   // dataSource: MatTableDataSource<UserData>;
 
@@ -32,7 +33,7 @@ export class ListadeUsuariosComponent {
     // const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(this.usuarioDto);
+    this.dataSource = new MatTableDataSource(this.usuariolistaDto);
 
   }
   borrarls(){
@@ -46,22 +47,18 @@ export class ListadeUsuariosComponent {
 
 
   ngAfterViewInit() {
-    this.activoservice.getUsuario().subscribe({
-      next: (data: UsuarioDto[]) => {
+    const idEmpresa = localStorage.getItem('idempresa');
+    const idemp = parseInt(idEmpresa!);
+    this.activoservice.getListaUsuario(idemp).subscribe({
+      next: (data: UsuarioListaDto []) => {
         console.log(data);
-        this.usuarioDto = data;
-        this.dataSource = new MatTableDataSource(this.usuarioDto);
-        // @ts-ignore
-        this.dataSource.paginator = this.paginator;
-        // @ts-ignore
-        this.dataSource.sort = this.sort;
-
-
-
+        this.usuariolistaDto = data;
+        this.dataSource = new MatTableDataSource(this.usuariolistaDto);
+        this.dataSource.paginator = this.paginator!;
+        this.dataSource.sort = this.sort!;
       }
-
-
     })
+
   }
 
   applyFilter(event: Event) {

@@ -52,8 +52,8 @@ export class ActivosService {
   public getEmpresa(): Observable<any>{
     return this.http.get<any>(`${this.BACK_URL}/api/v1/usuarios/empresa`);
   }
-  public getUsuario(): Observable<any>{
-    return this.http.get<any>(`${this.BACK_URL}/api/v1/usuarios/listar`);
+  public getListaUsuario(idemp:number): Observable<any>{
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/usuarios/listaUsuario?idEmp=${idemp}`);
   }
   public registrarActivo(nombre: string, valor:string, fecha:string, descripcion:string, tipo:number, marca: number, calle:string,avenida:string,bloque:number,ciudad:number,personal:number,estado:number,condicion:number,idemp:number):
     Observable<any> {
