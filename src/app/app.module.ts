@@ -44,6 +44,7 @@ import { ListadeprePoweruserComponent } from './components/listadepre-poweruser/
 import { DepreciarPoweruserComponent } from './components/depreciar-poweruser/depreciar-poweruser.component';
 import { ListadeUsuariosComponent } from './components/listade-usuarios/listade-usuarios.component';
 import { RegistrarAdministradorComponent } from './components/registrar-administrador/registrar-administrador.component';
+import { ActualizarUsuarioComponent } from './components/actualizar-usuario/actualizar-usuario.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { RegistrarAdministradorComponent } from './components/registrar-administ
     DepreciarPoweruserComponent,
     ListadeUsuariosComponent,
     RegistrarAdministradorComponent,
+    ActualizarUsuarioComponent,
 
   ],
     imports: [

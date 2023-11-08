@@ -20,6 +20,7 @@ import {RegistroUsuarioComponent} from "./components/registro-usuario/registro-u
 import {ListadeprePoweruserComponent} from "./components/listadepre-poweruser/listadepre-poweruser.component";
 import {ListadeUsuariosComponent} from "./components/listade-usuarios/listade-usuarios.component";
 import {RegistrarAdministradorComponent} from "./components/registrar-administrador/registrar-administrador.component";
+import {ActualizarUsuarioComponent} from "./components/actualizar-usuario/actualizar-usuario.component";
 
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'movimientos-poweruser', component: MovimientosPoweruserComponent},
   { path: 'registrar-usuario', component: RegistroUsuarioComponent},
   { path: 'listade-usuarios', component: ListadeUsuariosComponent},
+  { path: 'actualizar-usuario/:id', component: ActualizarUsuarioComponent},
   { path: 'menu-user', component: MenuUserComponent},
   { path: 'lista-user', component: ListaUserComponent},
   { path: 'menu-admin', component: MenuAdministradorComponent},

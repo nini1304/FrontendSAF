@@ -88,6 +88,22 @@ export class ActivosService {
                           // POST http://localhost:1234/api/v1/usuarios/registrar?nombre=Juan&username=juan.perez&password=1234&idRol=1&idEmpresa=1&estado=true
     return this.http.post<any>(`${this.BACK_URL}/api/v1/usuarios/registrar?nombre=${nombre}&username=${username}&password=${password}&idRol=${rol}&idEmpresa=${empresa}&estado=true`, body);
   }
+  public actualizarUsuario(
+    id: number,
+    nombre: string,
+    username: string,
+    password: string,
+    rolNombre:string
+  ): Observable<any> {
+    const body = {
+      nombre: nombre,
+      username: username,
+      password: password,
+      rolNombre: rolNombre
+    };
+    console.log(body);
+    return this.http.put<any>(`${this.BACK_URL}/api/v1/activos-fijos/actualizar/${id}?nombre=${nombre}`, body);
+  }
 
   public actualizarActivo(
     id: number,
@@ -140,6 +156,13 @@ export class ActivosService {
 
   }
   public deleteActivo(id: number): Observable<any> {
+    const body = {
+      id: id
+    };
+    return this.http.put<any>(`${this.BACK_URL}/api/v1/activos-fijos/disable?id=${id}`,body );
+
+  }
+  public deleteUsuario(id: number): Observable<any> {
     const body = {
       id: id
     };

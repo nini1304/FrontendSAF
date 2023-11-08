@@ -50,7 +50,7 @@
               <!-- ID Column -->
               <ng-container matColumnDef="idUsuario" >
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-                <td mat-cell *matCellDef="let row"> {{row.idUsuario}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
               </ng-container>
 
               <!-- Progress Column -->
@@ -65,15 +65,19 @@
                 <td mat-cell *matCellDef="let row"> {{row.username}} </td>
               </ng-container>
 
-              <ng-container matColumnDef="password">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario </th>
-                <td mat-cell *matCellDef="let row"> {{row.password}} </td>
-              </ng-container>
 
               <!-- Fruit Column -->
               <ng-container matColumnDef="idRol">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Rol en Empresa </th>
-                <td mat-cell *matCellDef="let row"> {{row.Rol}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.rolNombre}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones </th>
+                <td mat-cell *matCellDef="let row">
+                  <mat-icon (click)="actualizar(row.id)">edit</mat-icon>
+                  <mat-icon (click)="eliminar(row.id)">delete</mat-icon>
+                </td>
               </ng-container>
 
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
