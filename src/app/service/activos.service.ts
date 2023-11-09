@@ -14,8 +14,8 @@ export class ActivosService {
 
   constructor(private http: HttpClient) {}
 
-  public getActivosFijos(): Observable<ActivoFijoDto[]> {
-    return this.http.get<ActivoFijoDto[]>(`${this.BACK_URL}/api/v1/activos-fijos-H/actFH`);
+  public getActivosFijos(idemp: number): Observable<ActivoFijoDto[]> {
+    return this.http.get<ActivoFijoDto[]>(`${this.BACK_URL}/api/v1/activos-fijos-H/actFHEmpresa?idEmp=${idemp}`);
   }
   public getActivosDepreciados(mes:string, anio: number, idemp:number): Observable<any> {
     return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/actF?mes=${mes}&anio=${anio}&idEmp=${idemp}`);

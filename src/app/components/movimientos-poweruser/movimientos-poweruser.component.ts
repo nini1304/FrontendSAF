@@ -41,7 +41,10 @@ export class MovimientosPoweruserComponent {
     let respuesta;
     console.log("PRIMER METODO");
     //let idProvider:number = parseInt(localStorage.getItem('userId'));
-    await this.activosService.getActivosFijos().toPromise().then((response) => {
+    const idempresa = localStorage.getItem('idempresa');
+    // @ts-ignore
+    const idemp = parseInt(idempresa);
+    await this.activosService.getActivosFijos(idemp).toPromise().then((response) => {
       respuesta = response;
     }).catch(e => console.error(e));
 
