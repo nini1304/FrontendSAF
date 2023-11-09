@@ -102,7 +102,7 @@ export class ActivosService {
       rolNombre: rolNombre
     };
     console.log(body);
-    return this.http.put<any>(`${this.BACK_URL}/api/v1/activos-fijos/actualizar/${id}?nombre=${nombre}`, body);
+    return this.http.put<any>(`${this.BACK_URL}/api/v1/usuarios/actualizar/${id}?nombre=${nombre}&username=${username}&password=${password}`, body);
   }
 
   public actualizarActivo(

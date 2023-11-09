@@ -16,15 +16,11 @@ export class ActualizarUsuarioComponent {
 
 
   nuevoUsuarioForm: FormGroup;
-  empresaDto: EmpresaDto[]=[];
   rolDto: RolDto[]=[];
 
   myControl = new FormControl('');
   options: String[] = [];
   filteredOptions: Observable<String[]> | undefined;
-  myControl2 = new FormControl('');
-  options2: String[] = [];
-  filteredOptions2: Observable<String[]> | undefined;
 
   constructor(private formBuilder: FormBuilder, private activoservice: ActivosService, private router:Router,
               private fb: FormBuilder,private route: ActivatedRoute) {
@@ -32,8 +28,7 @@ export class ActualizarUsuarioComponent {
       nombre: [''],
       username: [''],
       password: [''],
-      myControl: [''],
-      myControl2: [''],
+      myControl: ['']
 
     });
   }
@@ -55,32 +50,12 @@ export class ActualizarUsuarioComponent {
 
 
     })
-    this.activoservice.getEmpresa().subscribe({
-      next: (data: EmpresaDto[]) => {
-        console.log(data);
-        this.empresaDto = data;
-        this.options2 = this.empresaDto.map(empresa => empresa.nombre);
-        this.filteredOptions2 = this.myControl2.valueChanges.pipe(
-          startWith(''),
-          map(value => this._filter2(value || '')),
-        );
-        console.log(this.options2);
-
-      }
-
-
-    })
   }
 
   private _filter(value: string): String[] {
     const filterValue = value.toLowerCase();
 
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
-  }
-  private _filter2(value: string): String[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options2.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   borrarls(){
@@ -96,12 +71,10 @@ export class ActualizarUsuarioComponent {
     const nombre = this.nuevoUsuarioForm.get('nombre')?.value;
     const username = this.nuevoUsuarioForm.get('username')?.value;
     const password = this.nuevoUsuarioForm.get('password')?.value;
-    const empresa = this.empresaDto.find((empresa: EmpresaDto) => empresa.nombre === this.myControl2.value)?.id;
-    console.log(this.empresaDto.find((empresa: EmpresaDto) => empresa.nombre === this.myControl2.value)?.id)
     console.log(this.rolDto.find((rol:RolDto) => rol.rol === this.myControl.value)?.idRol)
     const rol = this.rolDto.find((rol:RolDto) => rol.rol === this.myControl.value)?.idRol;
 
-    if (!nombre || !username|| !password || !empresa || !rol ) {
+    if (!nombre || !username|| !password || !rol ) {
       this.updateMessage = 'Por favor complete todos los campos obligatorios.';
       return;
     }
