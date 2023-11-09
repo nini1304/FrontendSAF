@@ -24,13 +24,22 @@
 
           <mat-form-field class="col">
             <mat-label>Rol en la empresa:</mat-label>
-            <input type="text" aria-label="Rol en la Empresa" matInput [matAutocomplete]="auto" formControlName="myControl">
+            <input type="text" aria-label="Rol en la Empresa" matInput [formControl]="myControl" [matAutocomplete]="auto" formControlName="myControl">
             <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
               <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                 {{option}}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
+<!--          <mat-form-field class="col">-->
+<!--            <mat-label>Rol en la empresa:</mat-label>-->
+<!--            <input type="text" aria-label="Rol en la Empresa" matInput [matAutocomplete]="auto" formControlName="myControl">-->
+<!--            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">-->
+<!--              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">-->
+<!--                {{option}}-->
+<!--              </mat-option>-->
+<!--            </mat-autocomplete>-->
+<!--          </mat-form-field>-->
 
         </div>
         <button type="submit" class="boton-estilo" style=" background-color: #F39F5A; color: white; border-color: white" mat-button (click)="actualizarUsuario()" class="button">Actualizar</button>
