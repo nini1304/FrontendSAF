@@ -93,16 +93,16 @@ export class ActivosService {
     nombre: string,
     username: string,
     password: string,
-    rolNombre:string
+    idRol: number,
   ): Observable<any> {
     const body = {
       nombre: nombre,
       username: username,
       password: password,
-      rolNombre: rolNombre
+      idRol: idRol
     };
     console.log(body);
-    return this.http.put<any>(`${this.BACK_URL}/api/v1/usuarios/actualizar/${id}?nombre=${nombre}&username=${username}&password=${password}`, body);
+    return this.http.put<any>(`${this.BACK_URL}/api/v1/usuarios/actualizar/${id}?nombre=${nombre}&username=${username}&password=${password}&idRol=${idRol}`, body);
   }
 
   public actualizarActivo(

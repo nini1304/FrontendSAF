@@ -83,7 +83,7 @@ export class ActualizarUsuarioComponent {
       const id = params['id'];
       console.log(id);
 // @ts-ignore
-      this.activoservice.actualizarUsuario(nombre, username, password, empresa, rol).subscribe({
+      this.activoservice.actualizarUsuario(nombre, username, password, rol).subscribe({
         next: (data) => {
           console.log(data);
           alert('Usuario actualizado correctamente');

@@ -4,5 +4,4 @@ export interface UsuarioDto{
   username: string;
   password: string;
   idRol: number;
-  idEmpresa: number;
 }
