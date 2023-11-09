@@ -21,6 +21,9 @@ import {ListadeprePoweruserComponent} from "./components/listadepre-poweruser/li
 import {ListadeUsuariosComponent} from "./components/listade-usuarios/listade-usuarios.component";
 import {RegistrarAdministradorComponent} from "./components/registrar-administrador/registrar-administrador.component";
 import {ActualizarUsuarioComponent} from "./components/actualizar-usuario/actualizar-usuario.component";
+import {
+  HistorialdeprePoweruserComponent
+} from "./components/historialdepre-poweruser/historialdepre-poweruser.component";
 
 
 const routes: Routes = [
@@ -29,6 +32,7 @@ const routes: Routes = [
   { path: 'registrar-poweruser', component: RegistrarPoweruserComponent},
   { path: 'lista-poweruser', component: ListaPoweruserComponent},
   { path: 'listadepre-poweruser/:mes/:anio', component: ListadeprePoweruserComponent},
+  { path: 'historialdepre-poweruser', component: HistorialdeprePoweruserComponent },
   { path: 'actualizar-poweruser/:id', component: ActualizarPoweruserComponent},
   { path: 'movimientos-poweruser', component: MovimientosPoweruserComponent},
   { path: 'registrar-usuario', component: RegistroUsuarioComponent},

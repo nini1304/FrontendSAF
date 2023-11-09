@@ -45,6 +45,8 @@ import { DepreciarPoweruserComponent } from './components/depreciar-poweruser/de
 import { ListadeUsuariosComponent } from './components/listade-usuarios/listade-usuarios.component';
 import { RegistrarAdministradorComponent } from './components/registrar-administrador/registrar-administrador.component';
 import { ActualizarUsuarioComponent } from './components/actualizar-usuario/actualizar-usuario.component';
+import { HistorialdeprePoweruserComponent } from './components/historialdepre-poweruser/historialdepre-poweruser.component';
+import { HistorialdepreEncargadoComponent } from './components/historialdepre-encargado/historialdepre-encargado.component';
 
 
 @NgModule({
@@ -73,6 +75,8 @@ import { ActualizarUsuarioComponent } from './components/actualizar-usuario/actu
     ListadeUsuariosComponent,
     RegistrarAdministradorComponent,
     ActualizarUsuarioComponent,
+    HistorialdeprePoweruserComponent,
+    HistorialdepreEncargadoComponent,
 
   ],
     imports: [
