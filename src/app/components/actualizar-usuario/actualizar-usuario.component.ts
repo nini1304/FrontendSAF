@@ -82,19 +82,17 @@ export class ActualizarUsuarioComponent {
     this.route.params.subscribe(params => {
       const id = params['id'];
       console.log(id);
-// @ts-ignore
-      this.activoservice.actualizarUsuario(nombre, username, password, rol).subscribe({
+
+      this.activoservice.actualizarUsuario(id, nombre, username, password, rol).subscribe({
         next: (data) => {
           console.log(data);
           alert('Usuario actualizado correctamente');
-          alert(this.updateMessage);
-          this.router.navigate(['/listade-usuario']);
-
+          this.router.navigate(['/listade-usuarios']);
         }, error: (error: any) => {
           console.log(error);
           alert('Error al actualizar usuario');
         }
-      })
+      });
     });
   }
   regresar(){
