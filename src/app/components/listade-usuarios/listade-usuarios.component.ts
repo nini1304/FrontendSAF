@@ -63,9 +63,15 @@ export class ListadeUsuariosComponent {
     });
   }
 
-  actualizar(id: number) {
+  actualizar(id: number, nombre: string, username: string, password: string ,rol: string) {
     console.log(id)
-    this.router.navigate(['/actualizar-usuario', id]);
+    const queryParams = {
+      nombre: nombre,
+      username: username,
+      password: password,
+      rol: rol
+    };
+    this.router.navigate(['/actualizar-usuario', id], { queryParams: queryParams });
   }
 
 

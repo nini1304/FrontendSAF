@@ -2,7 +2,7 @@
 <mat-drawer-container class="example-container" autosize>
   <div class="example-sidenav-content">
     <div class="todoelform">
-      <form class="formulario" [formGroup]="nuevoUsuarioForm">
+      <form class="formulario" [formGroup]="activoForm">
         <h1>Actualizar Usuario</h1>
         <h2>Datos Iniciales:</h2>
         <div class="form-row">
@@ -24,7 +24,7 @@
 
           <mat-form-field class="col">
             <mat-label>Rol en la empresa:</mat-label>
-            <input type="text" aria-label="Rol en la Empresa" matInput [formControl]="myControl" [matAutocomplete]="auto" formControlName="myControl">
+            <input type="text" aria-label="Rol en la Empresa" matInput [matAutocomplete]="auto" formControlName="myControl">
             <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
               <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                 {{option}}
@@ -36,6 +36,9 @@
         <button type="submit" class="boton-estilo" style=" background-color: #F39F5A; color: white; border-color: white" mat-button (click)="actualizarUsuario()" class="button">Actualizar</button>
         <button type="submit" class="boton-estilo" style=" background-color: #511845; color: white; border-color: white" mat-button (click)="regresar()" class="button">Regresar</button>
       </form>
+    </div>
+    <div class="mensaje-actualizacion" *ngIf="updateMessage">
+      {{ updateMessage }}
     </div>
 
   </div>

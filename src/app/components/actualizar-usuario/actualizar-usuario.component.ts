@@ -13,9 +13,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ActualizarUsuarioComponent {
   updateMessage: string='';
+  activoForm: FormGroup;
 
-
-  nuevoUsuarioForm: FormGroup;
   rolDto: RolDto[]=[];
 
   myControl = new FormControl('');
@@ -23,8 +22,8 @@ export class ActualizarUsuarioComponent {
   filteredOptions: Observable<String[]> | undefined;
 
   constructor(private formBuilder: FormBuilder, private activoservice: ActivosService, private router:Router,
-              private fb: FormBuilder,private route: ActivatedRoute) {
-    this.nuevoUsuarioForm = this.fb.group({
+              private route: ActivatedRoute) {
+    this.activoForm = this.formBuilder.group({
       nombre: [''],
       username: [''],
       password: [''],
@@ -32,8 +31,24 @@ export class ActualizarUsuarioComponent {
 
     });
   }
-
   ngOnInit() {
+
+    this.route.params.subscribe(params =>{
+      const id = params['id'];
+      const nombre = this.route.snapshot.queryParamMap.get('nombre');
+      const username = this.route.snapshot.queryParamMap.get('username');
+      const password = this.route.snapshot.queryParamMap.get('password');
+
+      const rol = this.route.snapshot.queryParamMap.get('rol');
+      console.log("prueba"+rol);
+      this.activoForm.patchValue({
+
+        nombre: nombre,
+        username: username,
+        password: password,
+        myControl: rol
+      });
+    });
     this.activoservice.getRoles().subscribe({
       next: (data: RolDto[]) => {
         console.log(data);
@@ -68,9 +83,9 @@ export class ActualizarUsuarioComponent {
   }
   actualizarUsuario() {
     console.log('guardar datos')
-    const nombre = this.nuevoUsuarioForm.get('nombre')?.value;
-    const username = this.nuevoUsuarioForm.get('username')?.value;
-    const password = this.nuevoUsuarioForm.get('password')?.value;
+    const nombre = this.activoForm.get('nombre')?.value;
+    const username = this.activoForm.get('username')?.value;
+    const password = this.activoForm.get('password')?.value;
     console.log(this.rolDto.find((rol:RolDto) => rol.rol === this.myControl.value)?.idRol)
     const rol = this.rolDto.find((rol:RolDto) => rol.rol === this.myControl.value)?.idRol;
 
