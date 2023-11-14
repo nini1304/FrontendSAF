@@ -135,6 +135,13 @@ export class ListadeprePoweruserComponent {
 
 
 
+
+      },error: (error: any) => {
+        console.log(error);
+        alert('Ya se hizo la depreciacion de este mes en este año. Puede observar los datos en el historial de depreciaciones');
+        window.location.href = '/lista-poweruser';
+
+
       }
 
 
