@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, SimpleChanges, ViewChild} from '@angular/core';
 import {DepreciacionDto} from "../../dto/depreciacion.dto";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
@@ -9,9 +9,13 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {MasInformacionComponent} from "../mas-informacion/mas-informacion.component";
 import {ActivoslistaDto} from "../../dto/activoslista.dto";
 import {DepreciarPoweruserComponent} from "../depreciar-poweruser/depreciar-poweruser.component";
-import {FormControl} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {map, Observable, startWith} from "rxjs";
 import {HistfechaDto} from "../../dto/histfecha.dto";
+import {HisdepreDto} from "../../dto/hisdepre.dto";
+import {BloquesDto} from "../../dto/bloques.dto";
+import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
+import {MatOptionSelectionChange} from "@angular/material/core";
 
 @Component({
   selector: 'app-historialdepre-poweruser',
@@ -20,21 +24,30 @@ import {HistfechaDto} from "../../dto/histfecha.dto";
 })
 export class HistorialdeprePoweruserComponent {
 
+  nombre = localStorage.getItem('nombre');
+  dateForm: FormGroup;
+
   myControl = new FormControl('');
   options: string[] = [];
   filteredOptions: Observable<String[]> | undefined;
-  nombre = localStorage.getItem('nombre');
-  activoslistaDto: ActivoslistaDto[] = [];
+  hisdepreDto: HisdepreDto[] = [];
   histfechaDto: HistfechaDto[] = [];
 
-  displayedColumns: string[] = ['id', 'nombre', 'valor', 'fecha', 'tipo', 'masinfo','acciones'];
-  dataSource: MatTableDataSource<ActivoslistaDto> | undefined;
+  displayedColumns: string[] = ['id', 'nombre', 'valor', 'fecha', 'tipo', 'porcentaje','valord','valora','masinfo'];
+  dataSource: MatTableDataSource<HisdepreDto> = new MatTableDataSource(this.hisdepreDto);
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 
-  constructor(private activoservice: ActivosService, public dialog: MatDialog, private router: Router) {
+  constructor(private activoservice: ActivosService, public dialog: MatDialog, private router: Router, private formBuilder: FormBuilder,
+              private fb: FormBuilder) {
+    this.dateForm = this.fb.group({
+      myControl: [''],
+    });
+
+
 
   }
+
   ngAfterViewInit() {
     this.activoservice.getHisFechas().subscribe({
       next: (data: HistfechaDto []) => {
@@ -52,23 +65,40 @@ export class HistorialdeprePoweruserComponent {
 
 
     })
-    // const idempresa = localStorage.getItem('idempresa');
-    // // @ts-ignore
-    // const idemp = parseInt(idempresa);
-    // this.activoservice.getListaActivosFijos(idemp).subscribe({
-    //   next: (data: ActivoslistaDto []) => {
-    //     console.log(data);
-    //     this.activoslistaDto = data;
-    //     this.dataSource = new MatTableDataSource(this.activoslistaDto);
-    //     // @ts-ignore
-    //     this.dataSource.paginator = this.paginator;
-    //
-    //
-    //
-    //   }
-    //
-    //
-    // })
+  }
+
+  getHistorialDepre(idfiltro:number) {
+    const idempresa = localStorage.getItem('idempresa');
+    // @ts-ignore
+    const idemp = parseInt(idempresa);
+    this.activoservice.getHisDepre(idemp,idfiltro).subscribe({
+      next: (data: HisdepreDto []) => {
+        console.log(data);
+        this.hisdepreDto = data;
+        this.dataSource = new MatTableDataSource(this.hisdepreDto);
+        // @ts-ignore
+        this.dataSource.paginator = this.paginator;
+
+
+
+      }
+
+
+    })
+
+  }
+  change(event: MatOptionSelectionChange) {
+    const selectedValue = event.source.value;
+    const idfecha = this.histfechaDto.find((fecha: HistfechaDto) => fecha.mes + '-' + fecha.anio === selectedValue)?.id;
+    // @ts-ignore
+    this.getHistorialDepre(idfecha);
+  }
+  openDialog(descripcion: string, marca: string, calle: string, avenida: string, bloque:string, ciudad: string,personal:string, estado:string, condicion:string) : void {
+    const dialogRef = this.dialog.open(MasInformacionComponent, {
+      // width: '250px',
+      data: {descripcion: descripcion, marca: marca, calle: calle, avenida: avenida, bloque: bloque, ciudad: ciudad, personal: personal, estado: estado, condicion: condicion}
+    });
+
   }
   borrarls(){
     localStorage.clear();

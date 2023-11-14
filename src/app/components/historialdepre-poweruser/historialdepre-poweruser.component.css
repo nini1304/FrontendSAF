@@ -24,37 +24,16 @@
   margin-left: 10px;
 
 }
-.todo{
+.part{
+  padding: 40px 200px;
   margin-top: 60px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 200px;
-  margin-left: 200px;
+  flex-direction: column;
 }
-h1{
+.part-title{
   text-align: center;
   color: white;
   font-family: Arial, sans-serif;
 
 }
-.tabla{
-  margin-top: 10px;
-  margin-bottom: 40px;
-}
-/*.filtro{*/
-/*  margin-top: 40px;*/
-/*}*/
-.boton{
-  margin-left:10px;
 
-}
-.boton2{
-  margin-left:10px;
-}
-.mat-mdc-form-field {
-  font-size: 14px;
-  width: 260px;
-  margin-top: 40px;
-
-}

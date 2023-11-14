@@ -177,5 +177,10 @@ export class ActivosService {
     return this.http.get<any>(`${this.BACK_URL}/api/v1/depreciados/tiempo`);
   }
 
+  public getHisDepre(idemp:number, idfiltro:number): Observable<any> {
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/depreciados/actD?idEmp=${idemp}&idTie=${idfiltro}`);
+  }
+
+
 }
 
