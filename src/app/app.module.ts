@@ -47,6 +47,7 @@ import { RegistrarAdministradorComponent } from './components/registrar-administ
 import { ActualizarUsuarioComponent } from './components/actualizar-usuario/actualizar-usuario.component';
 import { HistorialdeprePoweruserComponent } from './components/historialdepre-poweruser/historialdepre-poweruser.component';
 import { HistorialdepreEncargadoComponent } from './components/historialdepre-encargado/historialdepre-encargado.component';
+import { ManualPoweruserComponent } from './components/manual-poweruser/manual-poweruser.component';
 
 
 @NgModule({
@@ -77,6 +78,7 @@ import { HistorialdepreEncargadoComponent } from './components/historialdepre-en
     ActualizarUsuarioComponent,
     HistorialdeprePoweruserComponent,
     HistorialdepreEncargadoComponent,
+    ManualPoweruserComponent,
 
   ],
     imports: [
