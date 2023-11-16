@@ -8,7 +8,10 @@
   padding: 20px;
 }
 .example-sidenav-content {
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  width: 100%;
 }
 .menuitem{
   margin-right: 10px;
@@ -21,19 +24,14 @@
 .icono{
   margin-top: 10px;
   color: white;
-  display: flex;
   margin-left: 10px;
 
 }
 .todoelform{
-  margin-top: 10px;
+  margin-top: 2%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
-  border-radius: 25px;
-  margin-right: 200px;
-  margin-left: 200px;
 }
 h1{
   text-align: center;
@@ -41,18 +39,16 @@ h1{
   color: black;
 }
 .formulario{
-  margin-top: 20px;
-  margin-bottom: 20px;
-  width: 680px;
+  width: 60%;
+  padding: 2% 2%;
+  background-color: white;
+  border-radius: 25px;
+
 }
 .form-row {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 2%;
-}
+  gap:2%;
 
-.col {
-  margin-right: 2%;
 }
 
 .mensaje-actualizacion {
@@ -61,9 +57,12 @@ h1{
   text-align: center;
   padding: 10px;
 }
-
+.botones{
+  margin-top: 2%;
+  display:flex;
+  gap: 2%;
+}
 .boton-estilo {
-  margin-right: 10px;
   border-color: white;
   padding: 10px 20px;
   border-radius: 5px;

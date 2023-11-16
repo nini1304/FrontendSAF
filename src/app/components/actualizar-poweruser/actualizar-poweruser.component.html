@@ -1,6 +1,6 @@
 <body>
     <mat-drawer-container class="example-container" autosize>
-  
+
         <div class="todoelform">
           <form class="formulario" [formGroup]="activoForm">
             <h1>Actualización de Activo Fijo</h1>
@@ -58,7 +58,7 @@
                 <mat-label>Avenida:</mat-label>
                 <input formControlName="avenida" matInput>
               </mat-form-field>
-    
+
             </div>
             <div class="form-row">
               <mat-form-field class="col">
@@ -122,9 +122,10 @@
                 </mat-autocomplete>
               </mat-form-field>
             </div>
+            <div class="botones">
             <button type="submit" class="boton-estilo" style=" background-color: #F39F5A; color: white; border-color: white" mat-button (click)="actualizarActivo()" class="button">Guardar</button>
-            <button type="submit" class="boton-estilo" style=" background-color: #C70039; color: white; border-color: white" mat-button (click)="cancelar()" class="button">Cancelar</button>
             <button type="submit" class="boton-estilo" style=" background-color: #511845; color: white; border-color: white" mat-button (click)="regresar()" class="button">Regresar</button>
+            </div>
           </form>
         </div>
         <div class="mensaje-actualizacion" *ngIf="updateMessage">
@@ -132,4 +133,3 @@
         </div>
     </mat-drawer-container>
     </body>
-    
