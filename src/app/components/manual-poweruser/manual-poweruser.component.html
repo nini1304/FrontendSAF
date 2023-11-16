@@ -1,1 +1,70 @@
+<body>
+<div>
+  <mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <div class="menu">
+        <mat-icon class="menuitem"> person_pin</mat-icon>Bienvenid@ {{nombre}}
+      </div>
+      <br>
+      <div class="menu">
+        <mat-icon [routerLink]="['/menu-poweruser']" class="menuitem">home</mat-icon>Inicio
+      </div>
+      <br>
+      <div class="menu">
+        <mat-icon [routerLink]="['/registrar-poweruser']" class="menuitem">playlist_add</mat-icon>Crear Activo Fijo
+      </div>
+      <br>
+      <div class="menu">
+        <mat-icon [routerLink]="['/lista-poweruser']" class="menuitem">format_list_bulleted</mat-icon>Lista de Activos Fijos
+      </div>
+      <br>
+      <div class="menu">
+        <mat-icon [routerLink]="['/movimientos-poweruser']" class="menuitem">timeline</mat-icon>Movimientos en Activos Fijos
+      </div>
+      <br>
+      <div class="menu">
+        <mat-icon [routerLink]="['/historialdepre-poweruser']" class="menuitem">playlist_add_check</mat-icon>Historial de Depreciaciones
+      </div>
+      <br>
+      <div class="menu">
+        <mat-icon [routerLink]="['/registrar-usuario']" class="menuitem">person_add</mat-icon>Registrar Usuario
+      </div>
+      <br>
+      <div class="menu">
+        <mat-icon [routerLink]="['/listade-usuarios']" class="menuitem"> list_alt</mat-icon>Lista de Usuarios
+      </div>
+      <br>
+      <div class="menu">
+        <mat-icon [routerLink]="['/manual-poweruser']" class="menuitem"> help_outline</mat-icon>Ayuda
+      </div>
+      <br>
+      <div class="menu">
+        <mat-icon (click)="borrarls()" [routerLink]="['']" class="menuitem">exit_to_app</mat-icon>Cerrar Sesión
+      </div>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+      <div class="icono">
+        <mat-icon (click)="drawer.toggle()">menu</mat-icon>
+      </div>
+      <div class="part">
+      <h1>Manual de Usuario</h1>
+      <h2>Introducción</h2>
+      <p>Bienvenido al Manual de Usuario de nuestro Sistema de Gestión de Activos Fijos. Este sistema no solo simplifica la administración de tus activos, sino que va más allá al ofrecer una función integral de cálculo de depreciación. Nos complace presentarte una herramienta diseñada para optimizar la gestión de tus recursos, proporcionando un control efectivo sobre la vida útil de tus activos y asegurando una toma de decisiones informada. Descubre cómo este sistema no solo simplificará tu tarea diaria de seguimiento de activos, sino que también te permitirá anticipar y comprender el impacto de la depreciación en tus activos a lo largo del tiempo.</p>
+      <h2>El Sistema de Gestión de Activos Fijos está compuesto por los siguientes roles:</h2>
+      <ul>
+        <li>PowerUser: Tiene acceso a absolutamente todo</li>
+        <li>User: Unicamente puede visualiza los Activos Fijos y nada mas</li>
+        <li>Administrador: Se encarga de las altas, bajas y modificaciones en los Activos Fijos, asi mismo visualizar y verificar dichos cambios</li>
+        <li>Enacrgado: Se encarga de la depreciacion de los Activos Fijos, la generacion de reportes y la visualizacion del historial de depreciaciones realizadas</li>
+        <li>User: Unicamente puede visualizar los Activos Fijos y nada mas</li>
+      </ul>
+      </div>
+
+    </div>
+
+  </mat-drawer-container>
+</div>
+
+</body>
 

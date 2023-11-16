@@ -24,6 +24,7 @@ import {ActualizarUsuarioComponent} from "./components/actualizar-usuario/actual
 import {
   HistorialdeprePoweruserComponent
 } from "./components/historialdepre-poweruser/historialdepre-poweruser.component";
+import {ManualPoweruserComponent} from "./components/manual-poweruser/manual-poweruser.component";
 
 
 const routes: Routes = [
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'registrar-usuario', component: RegistroUsuarioComponent},
   { path: 'listade-usuarios', component: ListadeUsuariosComponent},
   { path: 'actualizar-usuario/:id', component: ActualizarUsuarioComponent},
+  { path: 'manual-poweruser', component: ManualPoweruserComponent},
   { path: 'menu-user', component: MenuUserComponent},
   { path: 'lista-user', component: ListaUserComponent},
   { path: 'menu-admin', component: MenuAdministradorComponent},

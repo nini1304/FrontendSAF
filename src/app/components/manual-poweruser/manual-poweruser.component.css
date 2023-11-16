@@ -1,0 +1,67 @@
+
+
+.example-container {
+  height: 100vh;
+  background-image: url("../../../assets/wallpaper.jpg");
+  background-size: cover;
+}
+
+.example-sidenav-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+.icono{
+  margin-top: 10px;
+  color: white;
+  display: flex;
+  margin-left: 10px;
+}
+.menuitem{
+  margin-right: 10px;
+}
+.menu{
+  display: flex;
+  font-family: Arial, sans-serif;
+  color:black;
+}
+.imagen{
+  width: 30px;
+  height: 30px;
+  margin-left:10px;
+}
+.empresa{
+  margin-left:10px;
+
+}
+.part{
+  display: flex;
+  flex-direction: column;
+  padding: 4% 2%;
+}
+h1{
+  text-align: center;
+  font-size: 2.5em;
+  font-family: Arial, sans-serif;
+  color:white;
+
+}
+h2{
+  margin-top: 2%;
+  font-family: Arial, sans-serif;
+  color:white;
+
+}
+p{
+  font-family: Arial, sans-serif;
+  color:white;
+}
+li{
+  font-family: Arial, sans-serif;
+  color:white;
+}
