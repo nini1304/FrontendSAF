@@ -47,13 +47,15 @@
 
         <div class="tabla">
           <h1>Lista de Activos Fijos Depreciados</h1>
+          <div class="esc-filter">
           <mat-form-field class="filtro">
             <mat-label >Busca Aqui</mat-label>
             <input  matInput (keyup)="applyFilter($event)"  #input>
           </mat-form-field>
           <button  mat-button color="warn" class="boton" (click)="generarReporteE()">Generar Reporte en Excel</button>
-          <button  mat-button color="warn" class="boton2" (click)="generarReporteP()">Generar Reporte en PDF</button>
-          <button  mat-button color="warn" class="boton2" (click)="aceptar()">Aceptar</button>
+          <button  mat-button color="warn" class="boton" (click)="generarReporteP()">Generar Reporte en PDF</button>
+          <button  mat-button color="warn" class="boton" (click)="aceptar()">Aceptar</button>
+            </div>
 
           <div class="mat-elevation-z8" >
             <table mat-table [dataSource]="dataSource" matSort >

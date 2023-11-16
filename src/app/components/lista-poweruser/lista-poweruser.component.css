@@ -15,7 +15,10 @@
   color:black;
 }
 .example-sidenav-content {
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  width: 100%;
 }
 .icono{
   margin-top: 10px;
@@ -24,14 +27,7 @@
   margin-left: 10px;
 
 }
-.todo{
-  margin-top: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 200px;
-  margin-left: 200px;
-}
+
 h1{
   text-align: center;
   color: white;
@@ -39,12 +35,16 @@ h1{
 
 }
 .tabla{
-  margin-top: 10px;
-  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  padding: 6% 6%;
+
+}
+.esc-filter{
+  width: 100%;
 }
 .boton{
-  margin-left:160px;
-
+  margin-left: 4%;
 }
 .mat-mdc-form-field {
   margin-top: 40px;

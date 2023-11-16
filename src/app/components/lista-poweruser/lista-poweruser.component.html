@@ -43,15 +43,15 @@
       <div class="icono">
         <mat-icon (click)="drawer.toggle()">menu</mat-icon>
       </div>
-      <div class="todo">
-
         <div class="tabla">
           <h1>Lista de Activos Fijos</h1>
-          <mat-form-field class="filtro">
+          <div class="esc-filter">
+          <mat-form-field>
             <mat-label >Busca Aqui</mat-label>
             <input  matInput (keyup)="applyFilter($event)"  #input>
           </mat-form-field>
           <button  mat-button color="warn" class="boton" (click)="abrirDepreciar()">Depreciar</button>
+          </div>
 
           <div class="mat-elevation-z8" >
             <table mat-table [dataSource]="dataSource" matSort >
@@ -117,7 +117,7 @@
 
 
         </div>
-      </div>
+
 
 
     </div>

@@ -1,5 +1,7 @@
+.esn-part-text{
+  padding: 16% 6%;
+}
 h1 {
-  margin-top: 250px;
   font-size: 2.5em;
   margin-bottom: 20px;
   text-align: center;
@@ -17,11 +19,13 @@ p {
   height: 100vh;
   background-image: url("../../../assets/wallpaper.jpg");
   background-size: cover;
-
 }
 
 .example-sidenav-content {
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  width: 100%;
 }
 
 .example-sidenav {
