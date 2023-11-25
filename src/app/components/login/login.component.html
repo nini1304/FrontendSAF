@@ -22,15 +22,19 @@
       </mat-form-field>
 
 
-      <mat-form-field class="form-campo">
-        <mat-label>Ingrese su usuario: </mat-label>
+      <mat-form-field class="form-campo" >
+        <mat-label>Ingrese su usuario:</mat-label>
         <input matInput formControlName="usuario" required>
+        <mat-icon matSuffix style="color: black"> person_pin</mat-icon>
         <mat-error *ngIf="loginForm.get('usuario')?.invalid">Debes ingresar un usuario valido</mat-error>
       </mat-form-field>
 
       <mat-form-field class="form-campo">
         <mat-label>Ingrese su contraseña: </mat-label>
-        <input matInput type="password" formControlName="contrasenia" required>
+        <input matInput type="{{ hidePassword ? 'password' : 'text' }}" formControlName="contrasenia" required>
+        <button mat-icon-button matSuffix style="color: black" (click)="togglePasswordVisibility()">
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
         <mat-error *ngIf="loginForm.get('contrasenia')?.invalid">Debes ingresar una contraseña valida</mat-error>
       </mat-form-field>
       <div class="button">

@@ -20,6 +20,7 @@ export class LoginComponent {
   myControl = new FormControl('');
   options: String[] = [];
   filteredOptions: Observable<String[]> | undefined;
+  hidePassword = true;
 
   constructor(private formBuilder: FormBuilder,
               private fb: FormBuilder, private service: ActivosService) {
@@ -46,6 +47,10 @@ export class LoginComponent {
 
     })
 
+  }
+
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
   }
 
   private _filter(value: string): String[] {
