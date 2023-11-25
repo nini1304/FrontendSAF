@@ -1,46 +1,67 @@
-
 body {
-  display: flex;
+  display:flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
-  background-image: url("../../../assets/wallpaper.jpg");
-  background-size: cover;
+  background: linear-gradient(90deg, #e52e71, #ff8a00);
 }
 
-.contenedor {
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  border-radius: 25px;
+.slider-thumb {
+  position: relative;
+  width: 550px; /* Ajusta el ancho del círculo según tus necesidades */
+  height: 550px; /* Ajusta la altura del círculo según tus necesidades */
+  background: #17141d;
+  border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
+  overflow: hidden; /* Añadido para recortar el contenido que se desborda */
+  animation: sliderShape 5s linear infinite;
 }
 
-.formulario {
-  margin-bottom: 20px;
-  margin-right: 20px;
-  margin-left: 20px;
+.slider-thumb .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1; /* Asegura que el contenido esté encima del círculo animado */
+  color: white; /* Añadido para mejorar la visibilidad del texto */
 }
-
-mat-form-field {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-h1 {
-  text-align: center;
-  font-size: 40px;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  font-family: Arial, sans-serif;
-}
-.example-full-width{
-  width: 50%;
-
-}
-.button{
+.logo{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.formulario{
+  display: flex;
+  flex-direction: column;
+}
+.example-full-width{
+  margin-top: 8%;
+  width: 110%;
+}
+.form-campo{
+  margin-top: 4%;
+  width: 110%;
+}
+.button{
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+@keyframes sliderShape {
+  0%, 100% {
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    transform: translate3d(0, 0, 0) rotateZ(0.01deg);
+  }
+  34% {
+    border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+    transform: translate3d(0, 5px, 0) rotateZ(0.01deg);
+  }
+  50% {
+    transform: translate3d(0, 0, 0) rotateZ(0.01deg);
+  }
+  67% {
+    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+    transform: translate3d(0, -3px, 0) rotateZ(0.01deg);
+  }
 }

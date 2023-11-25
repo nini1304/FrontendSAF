@@ -1,8 +1,11 @@
 <body>
-<div class="contenedor">
-  <h1>Login</h1>
+<div class="slider-thumb">
+  <div class="content">
+    <div class="logo">
+      <img src="assets/aux.png">
+    </div>
 
-  <form [formGroup]="loginForm" class="formulario">
+    <form [formGroup]="loginForm" class="formulario">
 
       <mat-form-field class="example-full-width">
         <mat-label>Empresa:</mat-label>
@@ -19,22 +22,22 @@
       </mat-form-field>
 
 
-    <mat-form-field>
-      <mat-label>Ingrese su usuario: </mat-label>
-      <input matInput formControlName="usuario" required>
-      <mat-error *ngIf="loginForm.get('usuario')?.invalid">Debes ingresar un usuario valido</mat-error>
-    </mat-form-field>
+      <mat-form-field class="form-campo">
+        <mat-label>Ingrese su usuario: </mat-label>
+        <input matInput formControlName="usuario" required>
+        <mat-error *ngIf="loginForm.get('usuario')?.invalid">Debes ingresar un usuario valido</mat-error>
+      </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Ingrese su contraseña: </mat-label>
-      <input matInput type="password" formControlName="contrasenia" required>
-      <mat-error *ngIf="loginForm.get('contrasenia')?.invalid">Debes ingresar una contraseña valida</mat-error>
-    </mat-form-field>
-     <div class="button">
-    <button type="submit" (click)="ingresar()" style="background-color: #FF5858; color: white;" mat-raised-button >Ingresar</button>
-     </div>
+      <mat-form-field class="form-campo">
+        <mat-label>Ingrese su contraseña: </mat-label>
+        <input matInput type="password" formControlName="contrasenia" required>
+        <mat-error *ngIf="loginForm.get('contrasenia')?.invalid">Debes ingresar una contraseña valida</mat-error>
+      </mat-form-field>
+      <div class="button">
+        <button type="submit" (click)="ingresar()" style="background-color: #FFD384; color: black;" mat-raised-button >Ingresar</button>
+      </div>
 
-  </form>
+    </form>
+  </div>
 </div>
 </body>
-
