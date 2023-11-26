@@ -1,5 +1,4 @@
 <body>
-<div>
   <mat-drawer-container class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav" mode="side">
       <div class="menu">
@@ -20,19 +19,48 @@
     </mat-drawer>
 
     <div class="example-sidenav-content">
-      <div class="icono">
-        <mat-icon (click)="drawer.toggle()">menu</mat-icon>
-        <h2 class="empresa">{{nempresa}}</h2>
-        <img class="imagen" src="{{logo}}">
+      <div class="part">
+        <div class="part-icono">
+          <mat-icon (click)="drawer.toggle()">menu</mat-icon>
+        </div>
+        <div class="part-text">
+          <h2 class="part-text-empresa">{{nempresa}}</h2>
+          <img class="part-text-imagen" src="{{logo}}">
+        </div>
       </div>
-      <div class="esn-part-text">
-        <h1>Bienvenido al Sistema de Activos Fijos</h1>
-        <p>Administrando tus activos de forma eficiente y profesional.</p>
+      <div class="part2">
+        <h1 class="part2-title">Bienvenido al Sistema de Activos Fijos</h1>
+        <p class="part2-text">Administrando tus activos de forma eficiente y profesional.</p>
+      </div>
+      <div class="part3">
+        <div class="slider-thumb">
+          <div class="content">
+            <div class="part4">
+              <img class="part4-image" src="assets/helpof.png">
+              <h2 class="part4-text-title">Sumérgete en nuestro Manual de Usuario</h2>
+              <p class="part4-text-p">Descubre todas las funcionalidades y secretos de nuestro sistema de activos fijos en nuestro detallado Manual de Usuario. Desde configuraciones básicas hasta consejos avanzados, encontrarás respuestas a tus preguntas y podrás aprovechar al máximo todas las características. Explora a tu propio ritmo y conviértete en un experto en la gestión de activos fijos con nuestra guía completa.</p>
+              <a href="/manual-user">Vistar manual</a>
+            </div>
+
+          </div>
+        </div>
+        <div class="slider-thumb">
+          <div class="content">
+            <div class="part4">
+              <img class="part4-image" src="assets/impof.png">
+              <h2 class="part4-text-title">La Importancia de la Gestión de Activos Fijos</h2>
+              <p class="part4-text-p">La gestión efectiva de activos fijos es esencial para el éxito empresarial. Desde aumentar la eficiencia operativa hasta cumplir con normativas contables, un enfoque sólido en la gestión de activos fijos no solo protege tus inversiones, sino que también impulsa el crecimiento sostenible. Descubre cómo un control preciso de tus activos puede ser la clave para reducir costos, mejorar la planificación y garantizar la salud financiera a largo plazo de tu empresa.</p>
+
+            </div>
+
+
+          </div>
+        </div>
       </div>
 
     </div>
 
   </mat-drawer-container>
-</div>
+
 
 </body>
