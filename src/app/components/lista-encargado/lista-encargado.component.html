@@ -1,6 +1,9 @@
 <body>
-<div>
   <mat-drawer-container class="example-container" autosize>
+    <div class='air air1'></div>
+    <div class='air air2'></div>
+    <div class='air air3'></div>
+    <div class='air air4'></div>
     <mat-drawer #drawer class="example-sidenav" mode="side">
       <div class="menu">
         <mat-icon class="menuitem"> person_pin</mat-icon>Bienvenid@ {{nombre}}
@@ -11,7 +14,11 @@
       </div>
       <br>
       <div class="menu">
-        <mat-icon [routerLink]="['/lista-encargado']" class="menuitem">playlist_add_check</mat-icon>Lista de Activos Fijos
+        <mat-icon [routerLink]="['/lista-encargado']" class="menuitem">format_list_bulleted</mat-icon>Lista de Activos Fijos
+      </div>
+      <br>
+      <div class="menu">
+        <mat-icon [routerLink]="['/historialdepre-encargado']" class="menuitem">playlist_add_check</mat-icon>Historial de Depreciaciones
       </div>
       <br>
       <div class="menu">
@@ -23,15 +30,16 @@
       <div class="icono">
         <mat-icon (click)="drawer.toggle()">menu</mat-icon>
       </div>
-      <div class="todo">
-
-        <div class="tabla">
+      <div class="part">
           <h1>Lista de Activos Fijos</h1>
-          <mat-form-field class="filtro">
+        <div class="esc-filter">
+          <mat-form-field appearance="outline">
             <mat-label >Busca Aqui</mat-label>
             <input  matInput (keyup)="applyFilter($event)"  #input>
+            <mat-icon matSuffix>search</mat-icon>
           </mat-form-field>
-          <button  mat-button color="warn" class="boton" (click)="abrirDepreciar()">Depreciar</button>
+          <h2 class="boton" (click)="abrirDepreciar()">Depreciar</h2>
+        </div>
 
           <div class="mat-elevation-z8" >
             <table mat-table [dataSource]="dataSource" matSort >
@@ -93,9 +101,9 @@
       </div>
 
 
-    </div>
+
 
   </mat-drawer-container>
-</div>
+
 
 </body>
