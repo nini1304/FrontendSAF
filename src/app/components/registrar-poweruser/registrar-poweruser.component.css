@@ -1,25 +1,26 @@
 
 .example-container {
   height: 100vh;
-  background-image: url("../../../assets/wallpaper.jpg");
+  background: linear-gradient(90deg, #e52e71, #ff8a00);
   background-size: cover;
 }
 .example-sidenav {
+  background-color: black;
   padding: 20px;
+}
+.menu{
+  display: flex;
+  color:white;
+}
+.menuitem{
+  margin-right: 10px;
+  color:white;
 }
 .example-sidenav-content {
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
-}
-.menuitem{
-  margin-right: 10px;
-}
-.menu{
-  display: flex;
-  font-family: Arial, sans-serif;
-  color:black;
 }
 .icono{
   margin-top: 10px;
@@ -34,13 +35,18 @@
 }
 h1{
   text-align: center;
-  font-family: Arial, sans-serif;
-  color: black;
+  /*font-family: Arial, sans-serif;*/
+  font-size: 24px;
+  color: white;
+}
+h2{
+  font-size: 16px;
+  color: white;
 }
 .formulario{
   width: 60%;
   padding: 2% 2%;
-  background-color: white;
+  background: linear-gradient(to bottom, #17141d, #3a3650);
   border-radius: 25px;
 
 }
