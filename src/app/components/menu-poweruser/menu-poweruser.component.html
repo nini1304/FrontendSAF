@@ -1,5 +1,4 @@
 <body>
-<div>
   <mat-drawer-container class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav" mode="side">
       <div class="menu">
@@ -44,19 +43,23 @@
     </mat-drawer>
 
     <div class="example-sidenav-content">
-      <div class="icono">
-        <mat-icon (click)="drawer.toggle()">menu</mat-icon>
-        <h2 class="empresa">{{nempresa}}</h2>
-        <img class="imagen" src="{{logo}}">
+      <div class="part">
+        <div class="part-icono">
+          <mat-icon (click)="drawer.toggle()">menu</mat-icon>
+        </div>
+        <div class="part-text">
+          <h2 class="part-text-empresa">{{nempresa}}</h2>
+          <img class="part-text-imagen" src="{{logo}}">
+        </div>
       </div>
-      <div class="esn-part-text">
-        <h1>Bienvenido al Sistema de Activos Fijos</h1>
-        <p>Administrando tus activos de forma eficiente y profesional.</p>
+      <div class="part2">
+        <h1 class="part2-title">Bienvenido al Sistema de Activos Fijos</h1>
+        <p class="part2-text">Administrando tus activos de forma eficiente y profesional.</p>
       </div>
 
     </div>
 
   </mat-drawer-container>
-</div>
+
 
 </body>
