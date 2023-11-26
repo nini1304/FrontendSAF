@@ -1,52 +1,138 @@
-h1 {
-  margin-top: 250px;
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  text-align: center;
-  color: white;
-  font-family: Arial, sans-serif;
-}
-
-p {
-  font-size: 1.2em;
-  text-align: center;
-  color: white;
-  font-family: Arial, sans-serif;
-}
 .example-container {
   height: 100vh;
-  background-image: url("../../../assets/wallpaper.jpg");
+  background: linear-gradient(90deg, #e52e71, #ff8a00);
   background-size: cover;
-
 }
-
-.example-sidenav-content {
-  height: 100%;
-}
-
 .example-sidenav {
+  background-color: black;
   padding: 20px;
-}
-.icono{
-  margin-top: 10px;
-  color: white;
-  display: flex;
-  margin-left: 10px;
-}
-.menuitem{
-  margin-right: 10px;
 }
 .menu{
   display: flex;
-  font-family: Arial, sans-serif;
-  color:black;
+  color:white;
 }
-.imagen{
+.menuitem{
+  margin-right: 10px;
+  color:white;
+}
+.example-sidenav-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.part{
+  display:flex;
+}
+.part-icono{
+  margin-top: 10px;
+  color: white;
+  margin-left: 10px;
+}
+.part-text{
+  display: flex;
+}
+.part-text-empresa{
+  margin-top: 6px;
+  margin-left:10px;
+  font-size: 24px;
+  color: white;
+}
+.part-text-imagen{
+  margin-top: 6px;
   width: 30px;
   height: 30px;
   margin-left:10px;
 }
-.empresa{
-  margin-left:10px;
+.part2{
+  margin-top: 2%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.part2-title{
+  font-size: 48px;
+  color: white;
+}
+.part2-text{
+  font-size: 24px;
+  color: white;
 
 }
+.part3{
+  margin-top: 2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+}
+.slider-thumb {
+  position: relative;
+  width: 600px; /* Ajusta el ancho del círculo según tus necesidades */
+  height: 560px; /* Ajusta la altura del círculo según tus necesidades */
+  background: #17141d;
+  border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
+  overflow: hidden; /* Añadido para recortar el contenido que se desborda */
+  animation: sliderShape 5s linear infinite;
+}
+
+.slider-thumb .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1; /* Asegura que el contenido esté encima del círculo animado */
+  color: white; /* Añadido para mejorar la visibilidad del texto */
+}
+.part4{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.part4-image{
+  width:200px;
+  height:200px;
+}
+.part4-text-title{
+  font-size: 16px;
+  color: white;
+}
+.part4-text-p{
+  width: 380px;
+  font-size: 14px;
+  color: white;
+  text-align: justify;
+}
+@keyframes sliderShape {
+  0%, 100% {
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    transform: translate3d(0, 0, 0) rotateZ(0.01deg);
+  }
+  34% {
+    border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+    transform: translate3d(0, 5px, 0) rotateZ(0.01deg);
+  }
+  50% {
+    transform: translate3d(0, 0, 0) rotateZ(0.01deg);
+  }
+  67% {
+    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+    transform: translate3d(0, -3px, 0) rotateZ(0.01deg);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -25,6 +25,9 @@ import {
   HistorialdeprePoweruserComponent
 } from "./components/historialdepre-poweruser/historialdepre-poweruser.component";
 import {ManualPoweruserComponent} from "./components/manual-poweruser/manual-poweruser.component";
+import {
+  HistorialdepreEncargadoComponent
+} from "./components/historialdepre-encargado/historialdepre-encargado.component";
 
 
 const routes: Routes = [
@@ -49,6 +52,7 @@ const routes: Routes = [
   { path: 'menu-encargado', component: MenuEncargadoComponent},
   { path: 'lista-encargado', component: ListaEncargadoComponent},
   { path: 'listadepre-encargado/:mes/:anio', component: ListadepreEncargadoComponent},
+  { path: 'historialdepre-encargado', component: HistorialdepreEncargadoComponent },
 
 
 
