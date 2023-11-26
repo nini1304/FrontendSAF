@@ -1,18 +1,19 @@
 .example-container {
   height: 100vh;
-  background-image: url("../../../assets/wallpaper.jpg");
+  background: linear-gradient(90deg, #e52e71, #ff8a00);
   background-size: cover;
 }
 .example-sidenav {
+  background-color: black;
   padding: 20px;
-}
-.menuitem{
-  margin-right: 10px;
 }
 .menu{
   display: flex;
-  font-family: Arial, sans-serif;
-  color:black;
+  color:white;
+}
+.menuitem{
+  margin-right: 10px;
+  color:white;
 }
 .example-sidenav-content {
   display: flex;
@@ -23,29 +24,45 @@
 .icono{
   margin-top: 10px;
   color: white;
-  display: flex;
   margin-left: 10px;
 
 }
+.part{
+  display: flex;
+  flex-direction: column;
+  padding: 4% 6%;
 
+}
 h1{
   text-align: center;
   color: white;
-  font-family: Arial, sans-serif;
+  font-size: 48px;
+  /*font-family: Arial, sans-serif;*/
 
 }
-.tabla{
-  display: flex;
-  flex-direction: column;
-  padding: 6% 6%;
 
-}
 .esc-filter{
   width: 100%;
+  display: flex;
+}
+.boton{
+  margin-top: 4%;
+  margin-left: 4%;
+  color: white;
 }
 .mat-mdc-form-field {
-  margin-top: 40px;
-  font-size: 14px;
-  width: 400px;
+  width: 20%;
+  /*margin-top: 40px;*/
+  margin-top: 4%;
 }
+.tabla{
+  background: linear-gradient(to bottom, #17141d, #3a3650);
 
+}
+.tabla-contenido{
+  color: white;
+}
+.tabla-paginacion{
+  background-color: #605c77;
+  color: white;
+}

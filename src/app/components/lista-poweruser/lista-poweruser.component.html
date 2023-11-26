@@ -57,7 +57,7 @@
             <table class="tabla" mat-table [dataSource]="dataSource" matSort >
 
               <!-- ID Column -->
-              <ng-container matColumnDef="id" class="tabla-contenido">
+              <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="tabla-contenido"> ID </th>
                 <td mat-cell *matCellDef="let row" class="tabla-contenido"> {{row.id}} </td>
               </ng-container>
@@ -87,8 +87,8 @@
               </ng-container>
 
               <ng-container matColumnDef="masinfo">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header class="tabla-contenido"> </th>
-                <td mat-cell *matCellDef="let row" class="tabla-contenido">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
+                <td mat-cell *matCellDef="let row" >
                   <a href="javascript:void(0);" (click)="openDialog(row.descripcion, row.marcaNombre, row.calle, row.avenida, row.bloqueNombre, row.ciudadNombre,row.personalNombre,row.estadoNombre,row.condicionNombre)">Mas informacion</a>
                 </td>
               </ng-container>

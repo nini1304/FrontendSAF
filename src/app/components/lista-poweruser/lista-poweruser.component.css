@@ -51,6 +51,7 @@ h1{
   color: white;
 }
 .mat-mdc-form-field {
+  width: 20%;
   /*margin-top: 40px;*/
   margin-top: 4%;
 }
