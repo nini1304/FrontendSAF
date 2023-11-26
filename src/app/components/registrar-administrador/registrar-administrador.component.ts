@@ -248,7 +248,7 @@ export class RegistrarAdministradorComponent {
       next: (data) => {
         console.log(data);
         alert('Activo registrado correctamente');
-        window.location.href = '/lista-poweruser';
+        window.location.href = '/lista-administrador';
 
 
       },error: (error: any) => {
