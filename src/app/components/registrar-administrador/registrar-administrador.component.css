@@ -1,55 +1,61 @@
+
 .example-container {
   height: 100vh;
-  background-image: url("../../../assets/wallpaper.jpg");
+  background: linear-gradient(90deg, #e52e71, #ff8a00);
   background-size: cover;
 }
 .example-sidenav {
+  background-color: black;
   padding: 20px;
-}
-.example-sidenav-content {
-  height: 100%;
-}
-.menuitem{
-  margin-right: 10px;
 }
 .menu{
   display: flex;
-  font-family: Arial, sans-serif;
-  color:black;
+  color:white;
+}
+.menuitem{
+  margin-right: 10px;
+  color:white;
+}
+.example-sidenav-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 .icono{
   margin-top: 10px;
   color: white;
-  display: flex;
   margin-left: 10px;
 
 }
 .todoelform{
-  margin-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
-  border-radius: 25px;
-  margin-right: 200px;
-  margin-left: 200px;
 }
 h1{
   text-align: center;
-  font-family: Arial, sans-serif;
-  color: black;
+  /*font-family: Arial, sans-serif;*/
+  font-size: 24px;
+  color: white;
+}
+h2{
+  font-size: 16px;
+  color: white;
 }
 .formulario{
-  margin-top: 20px;
-  margin-bottom: 20px;
-  width: 680px;
+  width: 60%;
+  padding: 2% 2%;
+  background: linear-gradient(to bottom, #17141d, #3a3650);
+  border-radius: 25px;
+
 }
 .form-row {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 2%;
+  gap:2%;
+
 }
 
-.col {
-  margin-right: 2%;
-}
+
+
+
