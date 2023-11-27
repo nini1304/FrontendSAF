@@ -69,7 +69,7 @@
 .part{
   display: flex;
   flex-direction: column;
-  padding: 4% 6%;
+  padding: 2% 6%;
 
 }
 h1{
@@ -85,14 +85,14 @@ h1{
   display: flex;
 }
 .boton{
-  margin-top: 4%;
+  margin-top: 2%;
   margin-left: 4%;
   color: white;
 }
 .mat-mdc-form-field {
   width: 20%;
   /*margin-top: 40px;*/
-  margin-top: 4%;
+  margin-top: 2%;
 }
 @keyframes wave{
   0%{
