@@ -173,8 +173,8 @@ export class ActivosService {
   public getEmpresas():Observable<any>{
     return this.http.get<any>(`${this.BACK_URL}/api/v1/usuarios/empresa`);
   }
-  public getHisFechas(): Observable<any> {
-    return this.http.get<any>(`${this.BACK_URL}/api/v1/depreciados/tiempo`);
+  public getHisFechas(idemp:number): Observable<any> {
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/depreciados/tiempo?idEmp=${idemp}`);
   }
 
   public getHisDepre(idemp:number, idfiltro:number): Observable<any> {

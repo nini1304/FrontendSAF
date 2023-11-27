@@ -42,7 +42,10 @@ export class HistorialdepreEncargadoComponent {
   }
 
   ngAfterViewInit() {
-    this.activoservice.getHisFechas().subscribe({
+    const idempresa = localStorage.getItem('idempresa');
+    // @ts-ignore
+    const idemp = parseInt(idempresa);
+    this.activoservice.getHisFechas(idemp).subscribe({
       next: (data: HistfechaDto []) => {
         console.log(data);
         this.histfechaDto = data;
