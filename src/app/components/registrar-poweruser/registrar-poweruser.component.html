@@ -42,35 +42,44 @@
     <div class="icono">
       <mat-icon (click)="drawer.toggle()">menu</mat-icon>
     </div>
-    <div class="todoelform">
-      <form class="formulario" [formGroup]="nuevoactivoForm">
-        <h1>Registro de Activo Fijo</h1>
-        <h2>Datos Iniciales:</h2>
-        <div class="form-row">
-          <mat-form-field class="col">
+    <h1>Crear Activo Fijo</h1>
+    <div class="formulario">
+      <form  [formGroup]="nuevoactivoForm">
+      <mat-accordion class="example-headers-align" multi>
+        <mat-expansion-panel style="background: linear-gradient(to bottom, #17141d, #2c2933); ">
+          <mat-expansion-panel-header>
+            <mat-panel-title style="color: white;">
+              Datos Iniciales:
+            </mat-panel-title>
+            <mat-panel-description>
+
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="form-row">
+          <mat-form-field>
             <mat-label>Nombre del Activo Fijo:</mat-label>
             <input formControlName="nombre" matInput>
           </mat-form-field>
-          <mat-form-field class="col">
+
+          <mat-form-field>
             <mat-label>Valor:</mat-label>
             <input type="number" formControlName="valor" matInput>
             <mat-hint style="color: white">En Bolivianos</mat-hint>
           </mat-form-field>
-          <mat-form-field class="col">
+          <mat-form-field>
             <mat-label>Fecha de Compra:</mat-label>
             <input matInput [matDatepicker]="datepicker">
             <mat-hint style="color: white">DD/MM/YYYY</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
             <mat-datepicker #datepicker></mat-datepicker>
           </mat-form-field>
-        </div>
-        <div class="form-row">
-          <!-- Campos de Descripcion, Tipo y Marca aquí -->
-          <mat-form-field class="col">
+          </div>
+          <div class="form-row">
+          <mat-form-field >
             <mat-label>Descripcion:</mat-label>
             <textarea matInput formControlName="descripcion"></textarea>
           </mat-form-field>
-          <mat-form-field class="col">
+          <mat-form-field >
             <mat-label>Tipo de Activo:</mat-label>
             <input type="text" aria-label="Tipo de Activo:" matInput [formControl]="myControl" [matAutocomplete]="auto">
             <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
@@ -79,7 +88,7 @@
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
-          <mat-form-field class="col">
+          <mat-form-field >
             <mat-label>Marca:</mat-label>
             <input type="text" aria-label="Marca:" matInput [formControl]="myControl2" [matAutocomplete]="auto2">
             <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete">
@@ -88,21 +97,30 @@
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
-        </div>
-        <h2>Datos de Ubicacion:</h2>
-        <div class="form-row">
-          <mat-form-field class="col">
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel style="background: linear-gradient(to bottom, #17141d, #2c2933); " >
+          <mat-expansion-panel-header>
+            <mat-panel-title style="color: white;">
+              Datos de Ubicacion:
+            </mat-panel-title>
+            <mat-panel-description>
+<!--              Type the country name-->
+<!--              <mat-icon>map</mat-icon>-->
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="form-row">
+          <mat-form-field>
             <mat-label>Calle:</mat-label>
             <input formControlName="calle" matInput>
           </mat-form-field>
-          <mat-form-field class="col">
+          <mat-form-field>
             <mat-label>Avenida:</mat-label>
             <input formControlName="avenida" matInput>
           </mat-form-field>
-
-        </div>
-        <div class="form-row">
-          <mat-form-field class="col">
+          </div>
+          <div class="form-row">
+          <mat-form-field >
             <mat-label>Bloque:</mat-label>
             <input type="text"
                    aria-label="Bloque:"
@@ -115,7 +133,7 @@
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
-          <mat-form-field class="col">
+          <mat-form-field >
             <mat-label>Ciudad:</mat-label>
             <input type="text"
                    aria-label="Ciudad:"
@@ -128,9 +146,20 @@
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
-        </div>
-        <h2>Datos Finales:</h2>
-        <div class="form-row">
+          </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel style="background: linear-gradient(to bottom, #17141d, #2c2933); ">
+          <mat-expansion-panel-header>
+            <mat-panel-title style="color: white;">
+              Datos Finales:
+            </mat-panel-title>
+            <mat-panel-description>
+<!--              Inform the date you wish to travel-->
+<!--              <mat-icon>date_range</mat-icon>-->
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="form-row">
           <mat-form-field class="col">
             <mat-label>Personal:</mat-label>
             <input type="text" aria-label="Personal al que pertenece:" matInput [formControl]="myControl5"
@@ -160,12 +189,20 @@
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
-        </div>
-        <button type="submit" style=" background-color: #FFD384; color: black; margin-top: 2%;" mat-button (click)="guardarDatos()" class="button">Guardar</button>
+          </div>
+        </mat-expansion-panel>
+
+      </mat-accordion>
       </form>
     </div>
+    <div class="boton">
+      <button type="submit" style=" background-color: #FFD384; color: black; margin-top: 2%;" mat-button (click)="guardarDatos()" class="button">Guardar</button>
+    </div>
 
-  </div>
+    </div>
+
+
+
 
 </mat-drawer-container>
 </body>

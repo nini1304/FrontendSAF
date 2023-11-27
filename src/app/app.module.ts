@@ -48,6 +48,7 @@ import { ActualizarUsuarioComponent } from './components/actualizar-usuario/actu
 import { HistorialdeprePoweruserComponent } from './components/historialdepre-poweruser/historialdepre-poweruser.component';
 import { HistorialdepreEncargadoComponent } from './components/historialdepre-encargado/historialdepre-encargado.component';
 import { ManualPoweruserComponent } from './components/manual-poweruser/manual-poweruser.component';
+import {MatExpansionModule} from "@angular/material/expansion";
 
 
 @NgModule({
@@ -104,6 +105,7 @@ import { ManualPoweruserComponent } from './components/manual-poweruser/manual-p
         MatSidenavModule,
         CommonModule,
         MatPaginatorModule,
+        MatExpansionModule,
     ],
   providers: [
 
