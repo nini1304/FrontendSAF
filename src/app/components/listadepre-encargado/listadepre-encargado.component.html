@@ -1,6 +1,9 @@
 <body>
-<div>
   <mat-drawer-container class="example-container" autosize>
+    <div class='air air1'></div>
+    <div class='air air2'></div>
+    <div class='air air3'></div>
+    <div class='air air4'></div>
     <mat-drawer #drawer class="example-sidenav" mode="side">
       <div class="menu">
         <mat-icon class="menuitem"> person_pin</mat-icon>Bienvenid@ {{nombre}}
@@ -23,18 +26,18 @@
       <div class="icono">
         <mat-icon (click)="drawer.toggle()">menu</mat-icon>
       </div>
-      <div class="todo">
-
-        <div class="tabla">
+      <div class="part">
           <h1>Lista de Activos Fijos Depreciados</h1>
-          <mat-form-field class="filtro">
+        <div class="esc-filter">
+          <mat-form-field  appearance="outline">
             <mat-label >Busca Aqui</mat-label>
             <input  matInput (keyup)="applyFilter($event)"  #input>
+            <mat-icon matSuffix>search</mat-icon>
           </mat-form-field>
-          <button  mat-button color="warn" class="boton" (click)="generarReporteE()">Generar Reporte en Excel</button>
-          <button  mat-button color="warn" class="boton2" (click)="generarReporteP()">Generar Reporte en PDF</button>
-          <button  mat-button color="warn" class="boton2" (click)="aceptar()">Aceptar</button>
-
+        <h2  class="boton" (click)="generarReporteE()">Generar Reporte en Excel</h2>
+        <h2  class="boton" (click)="generarReporteP()">Generar Reporte en PDF</h2>
+        <h2  class="boton" (click)="aceptar()">Aceptar</h2>
+           </div>
           <div class="mat-elevation-z8" >
             <table mat-table [dataSource]="dataSource" matSort >
 
@@ -100,7 +103,7 @@
               </tr>
             </table>
 
-            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+            <mat-paginator [pageSizeOptions]="[5]" aria-label="Select page of users"></mat-paginator>
           </div>
 
 
@@ -109,9 +112,9 @@
       </div>
 
 
-    </div>
+
 
   </mat-drawer-container>
-</div>
+
 
 </body>
