@@ -1,5 +1,9 @@
 <body>
   <mat-drawer-container class="example-container" autosize>
+    <div class='air air1'></div>
+    <div class='air air2'></div>
+    <div class='air air3'></div>
+    <div class='air air4'></div>
     <mat-drawer #drawer class="example-sidenav" mode="side">
       <div class="menu">
         <mat-icon class="menuitem"> person_pin</mat-icon>Bienvenid@ {{nombre}}
@@ -27,16 +31,16 @@
         <mat-icon (click)="drawer.toggle()">menu</mat-icon>
       </div>
       <div class="part">
-        <h1 class="part-title">Historial de Depreciaciones</h1>
-        <div class="part-filter">
+        <h1 >Historial de Depreciaciones</h1>
           <form [formGroup]="dateForm" class="example-form">
-            <mat-form-field class="example-full-width">
+            <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Elija una fecha:</mat-label>
               <input type="text"
                      aria-label="Number"
                      matInput
                      [formControl]="myControl"
                      [matAutocomplete]="auto">
+              <mat-icon matSuffix>update</mat-icon>
               <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
                 <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (onSelectionChange)="change($event)">
                   {{option}}
@@ -44,7 +48,7 @@
               </mat-autocomplete>
             </mat-form-field>
           </form>
-        </div>
+
         <div class="mat-elevation-z8">
           <table mat-table [dataSource]="dataSource">
 
@@ -102,7 +106,7 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
 
-          <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+          <mat-paginator [pageSizeOptions]="[5]"
                          showFirstLastButtons
                          aria-label="Select page of periodic elements">
           </mat-paginator>
