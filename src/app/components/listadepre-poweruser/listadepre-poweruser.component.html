@@ -105,6 +105,10 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Valor Actual Activo </th>
                 <td mat-cell *matCellDef="let row"> {{row.valorActual}} </td>
               </ng-container>
+              <ng-container matColumnDef="mesesr">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Meses Restantes </th>
+                <td mat-cell *matCellDef="let row"> {{row.mesesRestantes}} </td>
+              </ng-container>
 
               <ng-container matColumnDef="masinfo">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>

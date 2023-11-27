@@ -15,13 +15,15 @@ import {MasInformacionComponent} from "../mas-informacion/mas-informacion.compon
 })
 export class ListadeprePoweruserComponent {
   nombre = localStorage.getItem('nombre');
+  logo= localStorage.getItem('logo');
+  empresa = localStorage.getItem('nempresa');
   depreciacionDto: DepreciacionDto[] = [];
   datosGuardados: DepreciacionDto[] = [];
 
   mes: string = '';
   anio: number = 0;
 
-  displayedColumns: string[] = ['id', 'nombre', 'valor', 'fecha', 'tipo', 'porcentaje','valord','valora','masinfo'];
+  displayedColumns: string[] = ['id', 'nombre', 'valor', 'fecha', 'tipo', 'porcentaje','valord','valora','mesesr','masinfo'];
   dataSource: MatTableDataSource<DepreciacionDto>;
 
   // dataSource: MatTableDataSource<UserData>;
@@ -93,7 +95,8 @@ export class ListadeprePoweruserComponent {
     // Aquí puedes hacer lo que quieras con this.datosGuardados,
     // como enviarlo a través de un servicio o realizar otras operaciones.
     console.log('Datos guardados:', this.datosGuardados);
-    this.activoservice.generarReporteP(this.datosGuardados).subscribe({
+    // @ts-ignore
+    this.activoservice.generarReporteP(this.logo,this.nombre,this.empresa,this.datosGuardados).subscribe({
       next: (data) => {
         console.log(data);
         alert('Reporte en PDF generado correctamente');

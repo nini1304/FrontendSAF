@@ -16,4 +16,5 @@ export interface DepreciacionDto {
   porcentajeDepreciacion: number;
   valorDepreciacion: number;
   valorActual: number;
+  mesesRestantes: number;
 }

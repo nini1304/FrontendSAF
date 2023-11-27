@@ -152,8 +152,8 @@ export class ActivosService {
     return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/excel?nombreArchivo=activosFijos.xlsx`,depreciacion );
 
   }
-  public generarReporteP(depreciacion:DepreciacionDto[]): Observable<any> {
-    return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/pdf?nombreArchivo=activosFijos.pdf`,depreciacion );
+  public generarReporteP(logo:string,user:string,empresa:string,depreciacion:DepreciacionDto[]): Observable<any> {
+    return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/pdf?nombreArchivo=activosFijos.pdf&imageUrl=${logo}&username=${user}&empresa=${empresa}`,depreciacion );
 
   }
   public deleteActivo(id: number): Observable<any> {
