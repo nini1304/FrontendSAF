@@ -1,8 +1,7 @@
 body{
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100vh;
+  height: 150vh;
   background: linear-gradient(90deg, #e52e71, #ff8a00);
   background-size: cover;
 }
