@@ -53,6 +53,23 @@ export class ListaAdministradorComponent {
     this.router.navigate(['/actualizar-admin', id]);
 
   }
+  eliminar(id: number) {
+    this.activoservice.deleteActivo(id).subscribe({
+      next: (data) => {
+        console.log(data);
+        alert('Estado de activo cambiado correctamente');
+        location.reload();
+
+
+      },error: (error: any) => {
+        console.log(error);
+        alert('Error al cambiar estado de activo');
+
+
+      }
+
+    });
+  }
 
 
   ngAfterViewInit() {
