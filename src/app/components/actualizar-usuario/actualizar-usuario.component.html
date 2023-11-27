@@ -1,10 +1,8 @@
 <body>
-<mat-drawer-container class="example-container" autosize>
-  <div class="example-sidenav-content">
-    <div class="todoelform">
-      <form class="formulario" [formGroup]="activoForm">
-        <h1>Actualizar Usuario</h1>
-        <h2>Datos Iniciales:</h2>
+<h1>Actualizar Usuario</h1>
+<div class="formulario">
+      <form class="formulario-form" [formGroup]="activoForm">
+        <h2>Datos Personales:</h2>
         <div class="form-row">
           <mat-form-field class="col">
             <mat-label>Nombre Completo:</mat-label>
@@ -19,7 +17,7 @@
             <input formControlName="password" matInput>
           </mat-form-field>
         </div>
-        <h2>Información:</h2>
+        <h2>Información de Empresa:</h2>
         <div class="form-row">
 
           <mat-form-field class="col">
@@ -31,20 +29,11 @@
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
-<!--          <mat-form-field class="col">-->
-<!--            <mat-label>Rol en la empresa:</mat-label>-->
-<!--            <input type="text" aria-label="Rol en la Empresa" matInput [matAutocomplete]="auto" formControlName="myControl">-->
-<!--            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">-->
-<!--              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">-->
-<!--                {{option}}-->
-<!--              </mat-option>-->
-<!--            </mat-autocomplete>-->
-<!--          </mat-form-field>-->
 
         </div>
-        <div class="botones">
-        <button type="submit" class="boton-estilo" style=" background-color: #F39F5A; color: white; border-color: white" mat-button (click)="actualizarUsuario()" class="button">Actualizar</button>
-        <button type="submit" class="boton-estilo" style=" background-color: #511845; color: white; border-color: white" mat-button (click)="regresar()" class="button">Regresar</button>
+        <div class="boton">
+        <button type="submit" class="boton-estilo" style=" background-color: #FFD384; color: black; margin-top: 2%;" mat-button (click)="actualizarUsuario()" >Actualizar</button>
+        <button type="submit" class="boton-estilo" style=" background-color: #940B92; color: black; margin-top: 2%;" mat-button (click)="regresar()" >Regresar</button>
           </div>
       </form>
     </div>
@@ -52,7 +41,5 @@
       {{ updateMessage }}
     </div>
 
-  </div>
 
-</mat-drawer-container>
 </body>
