@@ -104,11 +104,11 @@ export class RegistroUsuarioComponent {
     this.activoservice.registrarUsuario(nombre, username, password, empresa, rol) .subscribe({
       next: (data) => {
         console.log(data);
-        alert('Activo registrado correctamente');
+        alert('Usuario registrado correctamente');
 
       },error: (error: any) => {
         console.log(error);
-        alert('Error al registrar activo');
+        alert('Error al registrar usuario');
       }
     });
   }

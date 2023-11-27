@@ -42,17 +42,18 @@
     <div class="icono">
       <mat-icon (click)="drawer.toggle()">menu</mat-icon>
     </div>
-    <div class="todoelform">
-      <form class="formulario" [formGroup]="nuevoUsuarioForm">
-        <h1>Registro de Usuario</h1>
-        <h2>Datos Iniciales:</h2>
+       <h1>Registro de Usuario</h1>
+      <div class="formulario">
+      <form class="formulario-form"  [formGroup]="nuevoUsuarioForm">
+
+        <h2>Datos Personales:</h2>
         <div class="form-row">
           <mat-form-field class="col">
             <mat-label>Nombre Completo:</mat-label>
             <input formControlName="nombre" matInput>
           </mat-form-field>
           <mat-form-field class="col">
-            <mat-label>Nombre de usuario:</mat-label>
+            <mat-label>Usuario:</mat-label>
             <input formControlName="username" matInput>
           </mat-form-field>
           <mat-form-field class="col">
@@ -60,7 +61,7 @@
             <input formControlName="password" matInput>
           </mat-form-field>
         </div>
-        <h2>Información:</h2>
+        <h2>Información de Empresa:</h2>
         <div class="form-row">
 
           <mat-form-field class="col">
@@ -83,11 +84,15 @@
           </mat-form-field>
 
         </div>
-        <button type="submit" style=" background-color: #F39F5A; color: white; border-color: white" mat-button (click)="guardarDatos()" class="button">Guardar</button>
+        <div class="boton">
+          <button type="submit" style=" background-color: #FFD384; color: black; margin-top: 2%;" mat-button (click)="guardarDatos()" >Guardar</button>
+        </div>
       </form>
+
+      </div>
     </div>
 
-  </div>
+
 
 </mat-drawer-container>
 </body>
