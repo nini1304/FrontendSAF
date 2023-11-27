@@ -1,23 +1,23 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MatDatepickerInput } from '@angular/material/datepicker';
-import { CondicionDto } from 'src/app/dto/condicion.dto';
-import { EstadosDto } from 'src/app/dto/estados.dto';
-import { MarcasDto } from 'src/app/dto/marcas.dto';
-import { PersonalDto } from 'src/app/dto/personal.dto';
-import { TipoactivoDto } from 'src/app/dto/tipoactivo.dto';
-import { ActivosService } from 'src/app/service/activos.service';
-import { Observable, map, startWith } from 'rxjs';
-import { CiudadesDto } from 'src/app/dto/ciudades.dto';
-import { BloquesDto } from 'src/app/dto/bloques.dto';
+import {Component, ViewChild} from '@angular/core';
+import {MatDatepickerInput} from "@angular/material/datepicker";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {map, Observable, startWith} from "rxjs";
+import {TipoactivoDto} from "../../dto/tipoactivo.dto";
+import {MarcasDto} from "../../dto/marcas.dto";
+import {BloquesDto} from "../../dto/bloques.dto";
+import {CiudadesDto} from "../../dto/ciudades.dto";
+import {PersonalDto} from "../../dto/personal.dto";
+import {EstadosDto} from "../../dto/estados.dto";
+import {CondicionDto} from "../../dto/condicion.dto";
+import {ActivosService} from "../../service/activos.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-actualizar-poweruser',
-  templateUrl: './actualizar-poweruser.component.html',
-  styleUrls: ['./actualizar-poweruser.component.css']
+  selector: 'app-actualizar-administrador',
+  templateUrl: './actualizar-administrador.component.html',
+  styleUrls: ['./actualizar-administrador.component.css']
 })
-export class ActualizarPoweruserComponent {
+export class ActualizarAdministradorComponent {
   updateMessage: string='';
 
   @ViewChild(MatDatepickerInput) datepickerInput: MatDatepickerInput<Date> | undefined;
@@ -77,107 +77,107 @@ export class ActualizarPoweruserComponent {
   }
 
   ngOnInit() {
-   this.route.params.subscribe(params =>{
-    const id = params['id'];
+    this.route.params.subscribe(params =>{
+      const id = params['id'];
 
-   });
+    });
 
-   this.activoservice.getTiposActivo().subscribe({
-    next: (data: TipoactivoDto[]) => {
-      console.log(data);
-      this.tipoactivoDto = data;
-      this.options = this.tipoactivoDto.map(tipo => tipo.nombre);
-      this.filteredOptions = this.myControl.valueChanges.pipe(
-        startWith(''),
-        map(value => this._filter(value || '')),
-      );
+    this.activoservice.getTiposActivo().subscribe({
+      next: (data: TipoactivoDto[]) => {
+        console.log(data);
+        this.tipoactivoDto = data;
+        this.options = this.tipoactivoDto.map(tipo => tipo.nombre);
+        this.filteredOptions = this.myControl.valueChanges.pipe(
+          startWith(''),
+          map(value => this._filter(value || '')),
+        );
 
-    }
-
-
-  })
-  this.activoservice.getMarcas().subscribe({
-    next: (data: MarcasDto[]) => {
-      console.log(data);
-      this.marcasDto = data;
-      this.options2 = this.marcasDto.map(marca => marca.nombre);
-      this.filteredOptions2 = this.myControl2.valueChanges.pipe(
-        startWith(''),
-        map(value => this._filter2(value || '')),
-      );
-
-    }
+      }
 
 
-  })
-  this.activoservice.getBloques().subscribe({
-    next: (data: BloquesDto[]) => {
-      console.log(data);
-      this.bloquesDto = data;
-      this.options3 = this.bloquesDto.map(bloque => bloque.nombre);
-      this.filteredOptions3 = this.myControl3.valueChanges.pipe(
-        startWith(''),
-        map(value => this._filter3(value || '')),
-      );
+    })
+    this.activoservice.getMarcas().subscribe({
+      next: (data: MarcasDto[]) => {
+        console.log(data);
+        this.marcasDto = data;
+        this.options2 = this.marcasDto.map(marca => marca.nombre);
+        this.filteredOptions2 = this.myControl2.valueChanges.pipe(
+          startWith(''),
+          map(value => this._filter2(value || '')),
+        );
 
-    }
-
-
-  })
-  this.activoservice.getCiudades().subscribe({
-    next: (data: CiudadesDto[]) => {
-      console.log(data);
-      this.ciudadesDto = data;
-      this.options4 = this.ciudadesDto.map(ciudad => ciudad.nombre);
-      this.filteredOptions4 = this.myControl4.valueChanges.pipe(
-        startWith(''),
-        map(value => this._filter4(value || '')),
-      );
-
-    }
+      }
 
 
-  })
-  this.activoservice.getPersonal().subscribe({
-    next: (data: PersonalDto[]) => {
-      console.log(data);
-      this.personalDto = data;
-      this.options5 = this.personalDto.map(personal => personal.nombre);
-      this.filteredOptions5 = this.myControl5.valueChanges.pipe(
-        startWith(''),
-        map(value => this._filter5(value || '')),
-      );
+    })
+    this.activoservice.getBloques().subscribe({
+      next: (data: BloquesDto[]) => {
+        console.log(data);
+        this.bloquesDto = data;
+        this.options3 = this.bloquesDto.map(bloque => bloque.nombre);
+        this.filteredOptions3 = this.myControl3.valueChanges.pipe(
+          startWith(''),
+          map(value => this._filter3(value || '')),
+        );
 
-    }
-
-
-  })
-  this.activoservice.getEstados().subscribe({
-    next: (data: EstadosDto[]) => {
-      console.log(data);
-      this.estadosDto = data;
-      this.options6 = this.estadosDto.map(estado => estado.nombre);
-      this.filteredOptions6 = this.myControl6.valueChanges.pipe(
-        startWith(''),
-        map(value => this._filter6(value || '')),
-      );
-
-    }
+      }
 
 
-  })
-  this.activoservice.getCondicion().subscribe({
-    next: (data: CondicionDto[]) => {
-      console.log(data);
-      this.condicionDto = data;
-      this.options7 = this.condicionDto.map(condicion => condicion.nombre);
-      this.filteredOptions7 = this.myControl7.valueChanges.pipe(
-        startWith(''),
-        map(value => this._filter7(value || '')),
-      );
-    }
-  })
-}
+    })
+    this.activoservice.getCiudades().subscribe({
+      next: (data: CiudadesDto[]) => {
+        console.log(data);
+        this.ciudadesDto = data;
+        this.options4 = this.ciudadesDto.map(ciudad => ciudad.nombre);
+        this.filteredOptions4 = this.myControl4.valueChanges.pipe(
+          startWith(''),
+          map(value => this._filter4(value || '')),
+        );
+
+      }
+
+
+    })
+    this.activoservice.getPersonal().subscribe({
+      next: (data: PersonalDto[]) => {
+        console.log(data);
+        this.personalDto = data;
+        this.options5 = this.personalDto.map(personal => personal.nombre);
+        this.filteredOptions5 = this.myControl5.valueChanges.pipe(
+          startWith(''),
+          map(value => this._filter5(value || '')),
+        );
+
+      }
+
+
+    })
+    this.activoservice.getEstados().subscribe({
+      next: (data: EstadosDto[]) => {
+        console.log(data);
+        this.estadosDto = data;
+        this.options6 = this.estadosDto.map(estado => estado.nombre);
+        this.filteredOptions6 = this.myControl6.valueChanges.pipe(
+          startWith(''),
+          map(value => this._filter6(value || '')),
+        );
+
+      }
+
+
+    })
+    this.activoservice.getCondicion().subscribe({
+      next: (data: CondicionDto[]) => {
+        console.log(data);
+        this.condicionDto = data;
+        this.options7 = this.condicionDto.map(condicion => condicion.nombre);
+        this.filteredOptions7 = this.myControl7.valueChanges.pipe(
+          startWith(''),
+          map(value => this._filter7(value || '')),
+        );
+      }
+    })
+  }
 
   private _filter(value: string): String[] {
     const filterValue = value.toLowerCase();
@@ -232,7 +232,7 @@ export class ActualizarPoweruserComponent {
     const estado = this.estadosDto.find((estado: EstadosDto) => estado.nombre === this.myControl6.value)?.id;
     const condicion = this.condicionDto.find((condicion: CondicionDto) => condicion.nombre === this.myControl7.value)?.id;
 
-   if (!nombre || isNaN(valor) || !fecha || !tipo || !marca || !calle || !bloque || !ciudad || !personal || !estado || !condicion) {
+    if (!nombre || isNaN(valor) || !fecha || !tipo || !marca || !calle || !bloque || !ciudad || !personal || !estado || !condicion) {
       this.updateMessage = 'Por favor complete todos los campos obligatorios.';
       return;
     }
@@ -246,7 +246,7 @@ export class ActualizarPoweruserComponent {
           console.log(data);
           this.updateMessage = 'Activo actualizado con exito';
           alert(this.updateMessage);
-          this.router.navigate(['/lista-poweruser']);
+          this.router.navigate(['/lista-admin']);
         },
         error: (error) => {
           console.log(error);
@@ -258,6 +258,7 @@ export class ActualizarPoweruserComponent {
   }
 
   regresar(){
-    this.router.navigate(['/lista-poweruser']);
+    this.router.navigate(['/lista-admin']);
   }
+
 }

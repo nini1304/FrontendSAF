@@ -49,6 +49,7 @@ import { HistorialdeprePoweruserComponent } from './components/historialdepre-po
 import { HistorialdepreEncargadoComponent } from './components/historialdepre-encargado/historialdepre-encargado.component';
 import { ManualPoweruserComponent } from './components/manual-poweruser/manual-poweruser.component';
 import {MatExpansionModule} from "@angular/material/expansion";
+import { ActualizarAdministradorComponent } from './components/actualizar-administrador/actualizar-administrador.component';
 
 
 @NgModule({
@@ -80,6 +81,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
     HistorialdeprePoweruserComponent,
     HistorialdepreEncargadoComponent,
     ManualPoweruserComponent,
+    ActualizarAdministradorComponent,
 
   ],
     imports: [

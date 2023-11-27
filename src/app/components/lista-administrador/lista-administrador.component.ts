@@ -50,7 +50,7 @@ export class ListaAdministradorComponent {
   }
   actualizar(id: number) {
     console.log(id)
-    this.router.navigate(['/actualizar-poweruser', id]);
+    this.router.navigate(['/actualizar-admin', id]);
 
   }
 
