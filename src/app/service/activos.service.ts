@@ -41,8 +41,8 @@ export class ActivosService {
   public getPersonal(idemp:number): Observable<any> {
     return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/personal?idEmp=${idemp}`);
   }
-  public getEstados(): Observable<any> {
-    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/estado`);
+  public getEstados(idemp:number): Observable<any> {
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/estado?idEmp=${idemp}`);
   }
   public getCondicion(): Observable<any> {
     return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/cond`);

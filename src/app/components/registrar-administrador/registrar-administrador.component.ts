@@ -149,7 +149,7 @@ export class RegistrarAdministradorComponent {
 
 
     })
-    this.activoservice.getEstados().subscribe({
+    this.activoservice.getEstados(idemp).subscribe({
       next: (data: EstadosDto[]) => {
         console.log(data);
         this.estadosDto = data;
