@@ -48,9 +48,9 @@ export class ListaAdministradorComponent {
     });
 
   }
-  actualizar(id: number) {
+  actualizar(id: number,nombre:string,valor:number,descripcion:string,calle:string,avenida:string) {
     console.log(id)
-    this.router.navigate(['/actualizar-admin', id]);
+    this.router.navigate(['/actualizar-admin', id,nombre,valor,descripcion,calle,avenida]);
 
   }
   eliminar(id: number) {

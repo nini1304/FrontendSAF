@@ -60,28 +60,33 @@ export class ListaPoweruserComponent {
   abrirDepreciar(){
     this.dialog.open(DepreciarPoweruserComponent);
   }
-  actualizar(id: number) {
+  actualizar(id: number,nombre:string,valor:number,descripcion:string,calle:string,avenida:string) {
     console.log(id)
-    this.router.navigate(['/actualizar-poweruser', id]);
+    this.router.navigate(['/actualizar-poweruser', id,nombre,valor,descripcion,calle,avenida]);
 
   }
   eliminar(id: number) {
-    // @ts-ignore
-    this.activoservice.deleteActivo(id,this.nombre).subscribe({
-      next: (data) => {
-        console.log(data);
-        alert('Estado de activo cambiado correctamente');
-        location.reload();
+    // Preguntar al usuario si está seguro de eliminar
+    const confirmacion = confirm('¿Estás seguro de que deseas eliminar este activo?');
 
-
-      },error: (error: any) => {
-        console.log(error);
-        alert('Error al cambiar estado de activo');
-
-
-      }
-
-    });
+    // Si el usuario confirma la eliminación, proceder con la acción
+    if (confirmacion) {
+      // @ts-ignore
+      this.activoservice.deleteActivo(id, this.nombre).subscribe({
+        next: (data) => {
+          console.log(data);
+          alert('Estado de activo cambiado correctamente');
+          location.reload();
+        },
+        error: (error: any) => {
+          console.log(error);
+          alert('Error al cambiar estado de activo');
+        }
+      });
+    } else {
+      // Si el usuario cancela la eliminación, no se hace nada
+      alert('Eliminación cancelada por el usuario');
+    }
   }
 
 

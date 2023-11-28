@@ -14,9 +14,17 @@ export class DepreciarPoweruserComponent {
   constructor(public dialogRef: MatDialogRef<DepreciarPoweruserComponent>,@Inject(MAT_DIALOG_DATA) public data: any,private service: ActivosService, private router: Router) {
   }
   depreciar(){
-    const anio = parseInt(this.anioSeleccionado);
-    this.dialogRef.close();
-    this.router.navigate(['/listadepre-poweruser', this.mesSeleccionado,anio]);
+
+    const confirmacion = confirm('¿Estás seguro de que deseas realizar la depreciacion? Recuerda que solo se puede realizar una vez por mes');
+    if (confirmacion) {
+      this.dialogRef.close();
+      const anio = parseInt(this.anioSeleccionado);
+      this.router.navigate(['/listadepre-poweruser', this.mesSeleccionado,anio]);
+    }else {
+      // Si el usuario cancela la eliminación, no se hace nada
+      alert('Depreciacion cancelada por el usuario');
+    }
+
 
 
   }

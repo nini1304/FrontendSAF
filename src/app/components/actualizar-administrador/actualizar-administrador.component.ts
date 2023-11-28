@@ -79,6 +79,18 @@ export class ActualizarAdministradorComponent {
   ngOnInit() {
     this.route.params.subscribe(params =>{
       const id = params['id'];
+      const nombre = params['nombre'];
+      const valor = params['valor'];
+      const descripcion = params['descripcion'];
+      const calle = params['calle'];
+      const avenida = params['avenida'];
+      this.activoForm.patchValue({
+        nombre: nombre,
+        valor: valor,
+        descripcion: descripcion,
+        calle: calle,
+        avenida: avenida,
+      });
 
     });
 

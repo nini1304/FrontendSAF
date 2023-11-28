@@ -40,7 +40,7 @@ const routes: Routes = [
   { path: 'lista-poweruser', component: ListaPoweruserComponent},
   { path: 'listadepre-poweruser/:mes/:anio', component: ListadeprePoweruserComponent},
   { path: 'historialdepre-poweruser', component: HistorialdeprePoweruserComponent },
-  { path: 'actualizar-poweruser/:id', component: ActualizarPoweruserComponent},
+  { path: 'actualizar-poweruser/:id/:nombre/:valor/:descripcion/:calle/:avenida', component: ActualizarPoweruserComponent},
   { path: 'movimientos-poweruser', component: MovimientosPoweruserComponent},
   { path: 'registrar-usuario', component: RegistroUsuarioComponent},
   { path: 'listade-usuarios', component: ListadeUsuariosComponent},
