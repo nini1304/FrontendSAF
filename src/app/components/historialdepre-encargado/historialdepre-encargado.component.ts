@@ -26,7 +26,7 @@ export class HistorialdepreEncargadoComponent {
   hisdepreDto: HisdepreDto[] = [];
   histfechaDto: HistfechaDto[] = [];
 
-  displayedColumns: string[] = ['id', 'nombre', 'valor', 'fecha', 'tipo', 'porcentaje','valord','valora','masinfo'];
+  displayedColumns: string[] = ['id', 'nombre', 'valor', 'fecha', 'tipo', 'porcentaje','valord','valora','mesesr','autor','masinfo'];
   dataSource: MatTableDataSource<HisdepreDto> = new MatTableDataSource(this.hisdepreDto);
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
