@@ -48,6 +48,7 @@
       </div>
       <div class="part">
           <h1 >Historial de Depreciaciones</h1>
+        <div class="esc-filter">
             <form [formGroup]="dateForm" class="example-form">
               <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Elija una fecha:</mat-label>
@@ -64,6 +65,9 @@
                 </mat-autocomplete>
               </mat-form-field>
             </form>
+          <h2  class="boton" (click)="generarReporteE()">Generar Reporte en Excel</h2>
+          <h2  class="boton" (click)="generarReporteP()">Generar Reporte en PDF</h2>
+          </div>
 
         <div class="mat-elevation-z8">
           <table mat-table [dataSource]="dataSource">
