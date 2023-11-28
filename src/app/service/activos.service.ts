@@ -5,6 +5,7 @@ import {environment} from "../../environments/environment";
 import {ActivoFijoDto} from "../dto/activofijo.dto";
 import {DepreciacionDto} from "../dto/depreciacion.dto";
 import {UsuarioDto} from "../dto/usuario.dto";
+import {HisdepreDto} from "../dto/hisdepre.dto";
 @Injectable({
   providedIn: 'root'
 })
@@ -77,7 +78,7 @@ export class ActivosService {
 
     return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/registrar?nombre=${nombre}&valor=${valor}&fechaCompra=${fecha}&descripcion=${descripcion}&tipoActivoId=${tipo}&marcaId=${marca}&calle=${calle}&avenida=${avenida}&bloqueId=${bloque}&ciudadId=${ciudad}&personalId=${personal}&estadoId=${estado}&condicionId=${condicion}&estado=true&idEmp=${idemp}&username=${username}`, body);
   }
-  public registrarUsuario(nombre: string, username: string, password: string, empresa: number , rol: number):
+  public registrarUsuario(nombre: string, username: string, password: string, empresa: number, rol: number):
     Observable<any> {
     const body = {
       nombre: nombre,
@@ -159,6 +160,14 @@ export class ActivosService {
     return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/pdf?nombreArchivo=activosFijos.pdf&imageUrl=${logo}&username=${user}&empresa=${empresa}`,depreciacion );
 
   }
+  public generarReporteEH(hisdepre:HisdepreDto []): Observable<any> {
+    return this.http.post<any>(`${this.BACK_URL}/api/v1/depreciados/excel?nombreArchivo=activosFijosH.xlsx`,hisdepre );
+
+  }
+  public generarReportePH(logo:string,user:string,empresa:string,hisdepre:HisdepreDto []): Observable<any> {
+    return this.http.post<any>(`${this.BACK_URL}/api/v1/depreciados/pdf?nombreArchivo=activosFijosH.pdf&imageUrl=${logo}&username=${user}&empresa=${empresa}`,hisdepre );
+
+  }
   public deleteActivo(id: number,username:string): Observable<any> {
     const body = {
       id: id,
@@ -171,7 +180,7 @@ export class ActivosService {
     const body = {
       id: id
     };
-    return this.http.put<any>(`${this.BACK_URL}/api/v1/activos-fijos/disable?id=${id}`,body );
+    return this.http.put<any>(`${this.BACK_URL}/api/v1/usuarios/borrar/${id}`,body );
 
   }
   public getEmpresas():Observable<any>{

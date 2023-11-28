@@ -91,20 +91,21 @@ export class RegistroUsuarioComponent {
     }
   }
   guardarDatos() {
+    const idempresa = localStorage.getItem('idempresa');
+    // @ts-ignore
+    const idemp = parseInt(idempresa);
     console.log('guardar datos')
     const nombre = this.nuevoUsuarioForm.get('nombre')?.value;
     const username = this.nuevoUsuarioForm.get('username')?.value;
     const password = this.nuevoUsuarioForm.get('password')?.value;
-    const empresa = this.empresaDto.find((empresa: EmpresaDto) => empresa.nombre === this.myControl2.value)?.id;
-    console.log(this.empresaDto.find((empresa: EmpresaDto) => empresa.nombre === this.myControl2.value)?.id)
-    console.log(this.rolDto.find((rol:RolDto) => rol.rol === this.myControl.value)?.idRol)
     const rol = this.rolDto.find((rol:RolDto) => rol.rol === this.myControl.value)?.idRol;
 
     // @ts-ignore
-    this.activoservice.registrarUsuario(nombre, username, password, empresa, rol) .subscribe({
+    this.activoservice.registrarUsuario(nombre, username, password, idemp, rol) .subscribe({
       next: (data) => {
         console.log(data);
         alert('Usuario registrado correctamente');
+        window.location.href = '/listade-usuarios';
 
       },error: (error: any) => {
         console.log(error);

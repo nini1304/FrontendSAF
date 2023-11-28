@@ -25,6 +25,8 @@ import {MatOptionSelectionChange} from "@angular/material/core";
 export class HistorialdeprePoweruserComponent {
 
   nombre = localStorage.getItem('nombre');
+  logo= localStorage.getItem('logo');
+  empresa = localStorage.getItem('nempresa');
   dateForm: FormGroup;
 
   myControl = new FormControl('');
@@ -92,61 +94,41 @@ export class HistorialdeprePoweruserComponent {
   }
 
   generarReporteE() {
-    // // Si hay un filtro aplicado, guardar los datos filtrados
-    // if (this.dataSource.filter) {
-    //   this.datosGuardados = this.dataSource.filteredData;
-    // } else {
-    //   // Si no hay filtro, guardar todos los datos de la tabla
-    //   this.datosGuardados = this.depreciacionDto;
-    // }
-    //
-    // // Aquí puedes hacer lo que quieras con this.datosGuardados,
-    // // como enviarlo a través de un servicio o realizar otras operaciones.
-    // console.log('Datos guardados:', this.datosGuardados);
-    // this.activoservice.generarReporteE(this.datosGuardados).subscribe({
-    //   next: (data) => {
-    //     console.log(data);
-    //     alert('Reporte en Excel generado correctamente');
-    //
-    //
-    //
-    //   },error: (error: any) => {
-    //     console.log(error);
-    //     alert('Reporte en Excel generado correctamente');
-    //
-    //
-    //   }
-    //
-    // });
+
+    this.activoservice.generarReporteEH(this.hisdepreDto).subscribe({
+      next: (data) => {
+        console.log(data);
+        alert('Reporte en Excel generado correctamente');
+
+
+
+      },error: (error: any) => {
+        console.log(error);
+        alert('Reporte en Excel generado correctamente');
+
+
+      }
+
+    });
   }
   generarReporteP() {
-    // // Si hay un filtro aplicado, guardar los datos filtrados
-    // if (this.dataSource.filter) {
-    //   this.datosGuardados = this.dataSource.filteredData;
-    // } else {
-    //   // Si no hay filtro, guardar todos los datos de la tabla
-    //   this.datosGuardados = this.depreciacionDto;
-    // }
-    //
-    // // Aquí puedes hacer lo que quieras con this.datosGuardados,
-    // // como enviarlo a través de un servicio o realizar otras operaciones.
-    // console.log('Datos guardados:', this.datosGuardados);
-    // // @ts-ignore
-    // this.activoservice.generarReporteP(this.logo,this.nombre,this.empresa,this.datosGuardados).subscribe({
-    //   next: (data) => {
-    //     console.log(data);
-    //     alert('Reporte en PDF generado correctamente');
-    //
-    //
-    //
-    //   },error: (error: any) => {
-    //     console.log(error);
-    //     alert('Reporte en PDF generado correctamente');
-    //
-    //
-    //   }
-    //
-    // });
+
+    // @ts-ignore
+    this.activoservice.generarReportePH(this.logo,this.nombre,this.empresa,this.hisdepreDto).subscribe({
+      next: (data) => {
+        console.log(data);
+        alert('Reporte en PDF generado correctamente');
+
+
+
+      },error: (error: any) => {
+        console.log(error);
+        alert('Reporte en PDF generado correctamente');
+
+
+      }
+
+    });
   }
   change(event: MatOptionSelectionChange) {
     const selectedValue = event.source.value;
