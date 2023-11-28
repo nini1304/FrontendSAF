@@ -17,8 +17,8 @@ export class ActivosService {
   public getActivosFijos(idemp: number): Observable<ActivoFijoDto[]> {
     return this.http.get<ActivoFijoDto[]>(`${this.BACK_URL}/api/v1/activos-fijos-H/actFHEmpresa?idEmp=${idemp}`);
   }
-  public getActivosDepreciados(mes:string, anio: number, idemp:number): Observable<any> {
-    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/actF?mes=${mes}&anio=${anio}&idEmp=${idemp}`);
+  public getActivosDepreciados(mes:string, anio: number, idemp:number, user:string): Observable<any> {
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/actF?mes=${mes}&anio=${anio}&idEmp=${idemp}&username=${user}`);
   }
   public getListaActivosFijos(idemp:number): Observable<any> {
     return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/actF2?idEmp=${idemp}`);
@@ -30,15 +30,15 @@ export class ActivosService {
   public getMarcas(): Observable<any> {
     return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/marca`);
   }
-  public getBloques(): Observable<any> {
-    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/bloque`);
+  public getBloques(idemp:number): Observable<any> {
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/bloque?idEmp=${idemp}`);
   }
-  public getCiudades(): Observable<any> {
-    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/ciudad`);
+  public getCiudades(idemp:number): Observable<any> {
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/ciudad?idEmp=${idemp}`);
   }
 
-  public getPersonal(): Observable<any> {
-    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/personal`);
+  public getPersonal(idemp:number): Observable<any> {
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/personal?idEmp=${idemp}`);
   }
   public getEstados(): Observable<any> {
     return this.http.get<any>(`${this.BACK_URL}/api/v1/activos-fijos/estado`);
@@ -55,7 +55,7 @@ export class ActivosService {
   public getListaUsuario(idemp:number): Observable<any>{
     return this.http.get<any>(`${this.BACK_URL}/api/v1/usuarios/listaUsuario?idEmp=${idemp}`);
   }
-  public registrarActivo(nombre: string, valor:string, fecha:string, descripcion:string, tipo:number, marca: number, calle:string,avenida:string,bloque:number,ciudad:number,personal:number,estado:number,condicion:number,idemp:number):
+  public registrarActivo(nombre: string, valor:string, fecha:string, descripcion:string, tipo:number, marca: number, calle:string,avenida:string,bloque:number,ciudad:number,personal:number,estado:number,condicion:number,idemp:number,username:string):
     Observable<any> {
     const body = {
       nombre: nombre,
@@ -71,10 +71,11 @@ export class ActivosService {
       personal: personal,
       estado: estado,
       condicion: condicion,
-      idemp: idemp
+      idemp: idemp,
+      username:username
     };
 
-    return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/registrar?nombre=${nombre}&valor=${valor}&fechaCompra=${fecha}&descripcion=${descripcion}&tipoActivoId=${tipo}&marcaId=${marca}&calle=${calle}&avenida=${avenida}&bloqueId=${bloque}&ciudadId=${ciudad}&personalId=${personal}&estadoId=${estado}&condicionId=${condicion}&estado=true&idEmp=${idemp}`, body);
+    return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/registrar?nombre=${nombre}&valor=${valor}&fechaCompra=${fecha}&descripcion=${descripcion}&tipoActivoId=${tipo}&marcaId=${marca}&calle=${calle}&avenida=${avenida}&bloqueId=${bloque}&ciudadId=${ciudad}&personalId=${personal}&estadoId=${estado}&condicionId=${condicion}&estado=true&idEmp=${idemp}&username=${username}`, body);
   }
   public registrarUsuario(nombre: string, username: string, password: string, empresa: number , rol: number):
     Observable<any> {
@@ -120,7 +121,8 @@ export class ActivosService {
     ciudad:number,
     personal:number,
     estado:number,
-    condicion:number
+    condicion:number,
+    username:string
   ): Observable<any> {
     const body = {
       nombre: nombre,
@@ -135,10 +137,11 @@ export class ActivosService {
       ciudad: ciudad,
       personal: personal,
       estado: estado,
-      condicion: condicion
+      condicion: condicion,
+      username:username
     };
     console.log(body);
-    return this.http.put<any>(`${this.BACK_URL}/api/v1/activos-fijos/actualizar/${id}?nombre=${nombre}&valor=${valor}&fechaCompra=${fecha}&descripcion=${descripcion}&tipoActivoId=${tipo}&marcaId=${marca}&calle=${calle}&avenida=${avenida}&bloqueId=${bloque}&ciudadId=${ciudad}&personalId=${personal}&estadoId=${estado}&condicionId=${condicion}&estado=true`, body);
+    return this.http.put<any>(`${this.BACK_URL}/api/v1/activos-fijos/actualizar/${id}?nombre=${nombre}&valor=${valor}&fechaCompra=${fecha}&descripcion=${descripcion}&tipoActivoId=${tipo}&marcaId=${marca}&calle=${calle}&avenida=${avenida}&bloqueId=${bloque}&ciudadId=${ciudad}&personalId=${personal}&estadoId=${estado}&condicionId=${condicion}&estado=true&username=${username}`, body);
   }
   public login(usuario: string, contrasenia: string, idemp:number): Observable<any> {
     const url = `${this.BACK_URL}/api/v1/usuarios/login?user=${usuario}&password=${contrasenia}&empId=${idemp}`;
@@ -156,11 +159,12 @@ export class ActivosService {
     return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/pdf?nombreArchivo=activosFijos.pdf&imageUrl=${logo}&username=${user}&empresa=${empresa}`,depreciacion );
 
   }
-  public deleteActivo(id: number): Observable<any> {
+  public deleteActivo(id: number,username:string): Observable<any> {
     const body = {
-      id: id
+      id: id,
+      username:username
     };
-    return this.http.put<any>(`${this.BACK_URL}/api/v1/activos-fijos/disable?id=${id}`,body );
+    return this.http.put<any>(`${this.BACK_URL}/api/v1/activos-fijos/disable?id=${id}&username=${username}`,body );
 
   }
   public deleteUsuario(id: number): Observable<any> {

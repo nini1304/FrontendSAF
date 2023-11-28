@@ -3,9 +3,9 @@ export interface HisdepreDto {
   idActivo: number;
   nombre: string;
   valor: number;
-  fechaCompra: Date;
+  fechaCompra: string;
   descripcion: string;
-  fechaRegistro: Date;
+  fechaRegistro: string;
   tipoActivoNombre: string;
   marcaNombre: string;
   calle: string;
@@ -18,8 +18,9 @@ export interface HisdepreDto {
   porcentajeDepreciacion: number;
   valorDepreciacion: number;
   valorActual: number;
-  fechaDepreciacion: Date;
+  fechaDepreciacion: string;
   usuario: string;
   mes: string;
   anio: string;
+  mesesRestantes: number;
 }

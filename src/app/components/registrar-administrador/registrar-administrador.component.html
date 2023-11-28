@@ -106,8 +106,6 @@
                 <mat-label>Avenida:</mat-label>
                 <input formControlName="avenida" matInput>
               </mat-form-field>
-            </div>
-            <div class="form-row">
               <mat-form-field >
                 <mat-label>Bloque:</mat-label>
                 <input type="text"
@@ -121,7 +119,18 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <mat-form-field >
+            </div>
+            <div class="form-row">
+              <mat-form-field>
+                <mat-label>Oficina/Aula:</mat-label>
+                <input type="text" aria-label="Estado:" matInput [formControl]="myControl6" [matAutocomplete]="auto6">
+                <mat-autocomplete autoActiveFirstOption #auto6="matAutocomplete">
+                  <mat-option *ngFor="let option of filteredOptions6 | async" [value]="option">
+                    {{option}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+              <mat-form-field>
                 <mat-label>Ciudad:</mat-label>
                 <input type="text"
                        aria-label="Ciudad:"
@@ -148,7 +157,7 @@
               </mat-panel-description>
             </mat-expansion-panel-header>
             <div class="form-row">
-              <mat-form-field class="col">
+              <mat-form-field>
                 <mat-label>Personal:</mat-label>
                 <input type="text" aria-label="Personal al que pertenece:" matInput [formControl]="myControl5"
                        [matAutocomplete]="auto5">
@@ -159,16 +168,8 @@
                 </mat-autocomplete>
                 <mat-hint style="color: white">Personal al que pertenece</mat-hint>
               </mat-form-field>
-              <mat-form-field class="col">
-                <mat-label>Estado:</mat-label>
-                <input type="text" aria-label="Estado:" matInput [formControl]="myControl6" [matAutocomplete]="auto6">
-                <mat-autocomplete autoActiveFirstOption #auto6="matAutocomplete">
-                  <mat-option *ngFor="let option of filteredOptions6 | async" [value]="option">
-                    {{option}}
-                  </mat-option>
-                </mat-autocomplete>
-              </mat-form-field>
-              <mat-form-field class="col">
+
+              <mat-form-field>
                 <mat-label>Condicion:</mat-label>
                 <input type="text" aria-label="Condicion:" matInput [formControl]="myControl7" [matAutocomplete]="auto7">
                 <mat-autocomplete autoActiveFirstOption #auto7="matAutocomplete">

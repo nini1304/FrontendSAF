@@ -104,7 +104,10 @@ export class RegistrarAdministradorComponent {
 
 
     })
-    this.activoservice.getBloques().subscribe({
+    const idempresa = localStorage.getItem('idempresa');
+    // @ts-ignore
+    const idemp = parseInt(idempresa);
+    this.activoservice.getBloques(idemp).subscribe({
       next: (data: BloquesDto[]) => {
         console.log(data);
         this.bloquesDto = data;
@@ -118,7 +121,7 @@ export class RegistrarAdministradorComponent {
 
 
     })
-    this.activoservice.getCiudades().subscribe({
+    this.activoservice.getCiudades(idemp).subscribe({
       next: (data: CiudadesDto[]) => {
         console.log(data);
         this.ciudadesDto = data;
@@ -132,7 +135,7 @@ export class RegistrarAdministradorComponent {
 
 
     })
-    this.activoservice.getPersonal().subscribe({
+    this.activoservice.getPersonal(idemp).subscribe({
       next: (data: PersonalDto[]) => {
         console.log(data);
         this.personalDto = data;
@@ -244,7 +247,7 @@ export class RegistrarAdministradorComponent {
     // @ts-ignore
     const idemp = parseInt(idempresa);
     // @ts-ignore
-    this.activoservice.registrarActivo(nombre, valor, fechaa, descripcion, tipo, marca, calle,avenida,bloque,ciudad, personal, estado, condicion,idemp) .subscribe({
+    this.activoservice.registrarActivo(nombre, valor, fechaa, descripcion, tipo, marca, calle,avenida,bloque,ciudad, personal, estado, condicion,idemp,this.nombre) .subscribe({
       next: (data) => {
         console.log(data);
         alert('Activo registrado correctamente');

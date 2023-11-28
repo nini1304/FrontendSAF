@@ -125,7 +125,8 @@ export class ListadepreEncargadoComponent {
     const idempresa = localStorage.getItem('idempresa');
     // @ts-ignore
     const idemp = parseInt(idempresa);
-    this.activoservice.getActivosDepreciados(this.mes, this.anio,idemp).subscribe({
+    // @ts-ignore
+    this.activoservice.getActivosDepreciados(this.mes, this.anio,idemp,this.nombre).subscribe({
       next: (data: DepreciacionDto []) => {
         console.log(data);
         this.depreciacionDto = data;

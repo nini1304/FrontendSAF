@@ -43,7 +43,7 @@ export class ActualizarPoweruserComponent {
   options7: String[] = [];
   filteredOptions7: Observable<String[]> | undefined;
 
-  nombre = localStorage.getItem('nombre');
+  nombreu = localStorage.getItem('nombre');
   activoForm: FormGroup;
   tipoactivoDto: TipoactivoDto[] = [];
   marcasDto: MarcasDto[] = [];
@@ -110,7 +110,10 @@ export class ActualizarPoweruserComponent {
 
 
   })
-  this.activoservice.getBloques().subscribe({
+    const idempresa = localStorage.getItem('idempresa');
+    // @ts-ignore
+    const idemp = parseInt(idempresa);
+  this.activoservice.getBloques(idemp).subscribe({
     next: (data: BloquesDto[]) => {
       console.log(data);
       this.bloquesDto = data;
@@ -124,7 +127,7 @@ export class ActualizarPoweruserComponent {
 
 
   })
-  this.activoservice.getCiudades().subscribe({
+  this.activoservice.getCiudades(idemp).subscribe({
     next: (data: CiudadesDto[]) => {
       console.log(data);
       this.ciudadesDto = data;
@@ -138,7 +141,7 @@ export class ActualizarPoweruserComponent {
 
 
   })
-  this.activoservice.getPersonal().subscribe({
+  this.activoservice.getPersonal(idemp).subscribe({
     next: (data: PersonalDto[]) => {
       console.log(data);
       this.personalDto = data;
@@ -241,7 +244,8 @@ export class ActualizarPoweruserComponent {
     this.route.params.subscribe(params =>{
       const id = params['id'];
       console.log(id);
-      this.activoservice.actualizarActivo(id, nombre, valor, fecha, descripcion, tipo, marca, calle, avenida, bloque, ciudad, personal, estado, condicion).subscribe({
+      // @ts-ignore
+      this.activoservice.actualizarActivo(id, nombre, valor, fecha, descripcion, tipo, marca, calle, avenida, bloque, ciudad, personal, estado, condicion,this.nombreu).subscribe({
         next: (data) => {
           console.log(data);
           this.updateMessage = 'Activo actualizado con exito';

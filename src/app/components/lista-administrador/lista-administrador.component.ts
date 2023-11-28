@@ -54,7 +54,8 @@ export class ListaAdministradorComponent {
 
   }
   eliminar(id: number) {
-    this.activoservice.deleteActivo(id).subscribe({
+    // @ts-ignore
+    this.activoservice.deleteActivo(id,this.nombre).subscribe({
       next: (data) => {
         console.log(data);
         alert('Estado de activo cambiado correctamente');

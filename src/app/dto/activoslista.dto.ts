@@ -2,7 +2,7 @@ export interface ActivoslistaDto {
   id: number;
   nombre: string;
   valor: number;
-  fechaCompra: Date;
+  fechaCompra: string;
   descripcion: string;
   tipoActivoNombre: string;
   marcaNombre: string;
