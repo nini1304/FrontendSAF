@@ -51,7 +51,7 @@ const routes: Routes = [
   { path: 'menu-admin', component: MenuAdministradorComponent},
   { path: 'registrar-admin', component: RegistrarAdministradorComponent},
   { path: 'lista-admin', component: ListaAdministradorComponent},
-  { path: 'actualizar-admin/:id', component:ActualizarAdministradorComponent},
+  { path: 'actualizar-admin/:id/:nombre/:valor/:descripcion/:calle/:avenida', component:ActualizarAdministradorComponent},
   { path: 'movimientos-admin', component: MovimientosAdministradorComponent},
   { path: 'menu-encargado', component: MenuEncargadoComponent},
   { path: 'lista-encargado', component: ListaEncargadoComponent},
