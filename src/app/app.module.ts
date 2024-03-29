@@ -50,6 +50,7 @@ import { HistorialdepreEncargadoComponent } from './components/historialdepre-en
 import { ManualPoweruserComponent } from './components/manual-poweruser/manual-poweruser.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import { ActualizarAdministradorComponent } from './components/actualizar-administrador/actualizar-administrador.component';
+import { GestionarRolesComponent } from './components/gestionar-roles/gestionar-roles.component';
 
 
 
@@ -83,6 +84,7 @@ import { ActualizarAdministradorComponent } from './components/actualizar-admini
     HistorialdepreEncargadoComponent,
     ManualPoweruserComponent,
     ActualizarAdministradorComponent,
+    GestionarRolesComponent,
 
 
   ],
