@@ -1,0 +1,16 @@
+<div class="part">
+  <h1 mat-dialog-title style="color:#FFD384">Crear Rol</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="rolForm" class="example-form">
+    <h2>Nombre del Rol:</h2>
+    <input matInput formControlName="rol" type="text"   placeholder="Ex. PowerUser" required>
+      <h1></h1>
+      <mat-error *ngIf="rolForm.get('rol')?.invalid ">Debes ingresar un rol valido</mat-error>
+    </form>
+
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button style=" background-color: #940B92; color: black; margin-top: 2%;" (click)="crearRol()">Crear</button>
+    <button mat-button mat-dialog-close style=" background-color: #FFD384; color: black; margin-top: 2%;">Cerrar</button>
+  </div>
+</div>

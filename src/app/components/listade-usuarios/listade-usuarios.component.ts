@@ -11,6 +11,7 @@ import {DepreciarPoweruserComponent} from "../depreciar-poweruser/depreciar-powe
 import {UsuarioDto} from "../../dto/usuario.dto";
 import { UsuarioListaDto } from 'src/app/dto/usuarioLista.dto';
 import {ActualizarUsuarioComponent} from "../actualizar-usuario/actualizar-usuario.component";
+import {GestionarRolesComponent} from "../gestionar-roles/gestionar-roles.component";
 
 @Component({
   selector: 'app-listade-usuarios',
@@ -72,6 +73,13 @@ export class ListadeUsuariosComponent {
       rol: rol
     };
     this.router.navigate(['/actualizar-usuario', id], { queryParams: queryParams });
+  }
+
+
+  abrirGestionarRoles() {
+
+    this.router.navigate(['/gestionar-roles']);
+
   }
 
 

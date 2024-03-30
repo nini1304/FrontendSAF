@@ -51,6 +51,8 @@ import { ManualPoweruserComponent } from './components/manual-poweruser/manual-p
 import {MatExpansionModule} from "@angular/material/expansion";
 import { ActualizarAdministradorComponent } from './components/actualizar-administrador/actualizar-administrador.component';
 import { GestionarRolesComponent } from './components/gestionar-roles/gestionar-roles.component';
+import { CrearRolComponent } from './components/crear-rol/crear-rol.component';
+
 
 
 
@@ -85,6 +87,7 @@ import { GestionarRolesComponent } from './components/gestionar-roles/gestionar-
     ManualPoweruserComponent,
     ActualizarAdministradorComponent,
     GestionarRolesComponent,
+    CrearRolComponent
 
 
   ],

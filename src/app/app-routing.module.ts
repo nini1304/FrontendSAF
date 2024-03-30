@@ -31,6 +31,8 @@ import {
 import {
   ActualizarAdministradorComponent
 } from "./components/actualizar-administrador/actualizar-administrador.component";
+import {GestionarRolesComponent} from "./components/gestionar-roles/gestionar-roles.component";
+import {CrearRolComponent} from "./components/crear-rol/crear-rol.component";
 
 
 const routes: Routes = [
@@ -44,7 +46,9 @@ const routes: Routes = [
   { path: 'movimientos-poweruser', component: MovimientosPoweruserComponent},
   { path: 'registrar-usuario', component: RegistroUsuarioComponent},
   { path: 'listade-usuarios', component: ListadeUsuariosComponent},
+  { path: 'crear-rol', component: CrearRolComponent},
   { path: 'actualizar-usuario/:id', component: ActualizarUsuarioComponent},
+  { path: 'gestionar-roles', component: GestionarRolesComponent},
   { path: 'manual-poweruser', component: ManualPoweruserComponent},
   { path: 'menu-user', component: MenuUserComponent},
   { path: 'lista-user', component: ListaUserComponent},
