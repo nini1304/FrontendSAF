@@ -78,34 +78,38 @@ export class ActivosService {
 
     return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/registrar?nombre=${nombre}&valor=${valor}&fechaCompra=${fecha}&descripcion=${descripcion}&tipoActivoId=${tipo}&marcaId=${marca}&calle=${calle}&avenida=${avenida}&bloqueId=${bloque}&ciudadId=${ciudad}&personalId=${personal}&estadoId=${estado}&condicionId=${condicion}&estado=true&idEmp=${idemp}&username=${username}`, body);
   }
-  public registrarUsuario(nombre: string, username: string, password: string, empresa: number, rol: number):
+  public registrarUsuario(nombre: string, username: string, password: string,correo:string, rol: number, empresa: number):
     Observable<any> {
     const body = {
       nombre: nombre,
       username: username,
       password: password,
-      empresa: empresa,
-      rol: rol
+      correo:correo,
+      rol: rol,
+      empresa: empresa
+
     };
                           // POST http://localhost:1234/api/v1/usuarios/registrar?nombre=Juan&username=juan.perez&password=1234&idRol=1&idEmpresa=1&estado=true
-    return this.http.post<any>(`${this.BACK_URL}/api/v1/usuarios/registrar?nombre=${nombre}&username=${username}&password=${password}&idRol=${rol}&idEmpresa=${empresa}&estado=true`, body);
+    return this.http.post<any>(`${this.BACK_URL}/api/v1/usuarios/registrar?nombre=${nombre}&username=${username}&password=${password}&correo=${correo}&idRol=${rol}&idEmpresa=${empresa}`, body);
   }
   public actualizarUsuario(
     id: number,
     nombre: string,
     username: string,
     password: string,
-    idRol: number,
+    correo: string,
+    idRol: number | undefined,
   ): Observable<any> {
     const body = {
       nombre: nombre,
       username: username,
       password: password,
+      correo: correo,
       idRol: idRol
     };
     console.log(body);
 
-      return this.http.put<any>(`${this.BACK_URL}/api/v1/usuarios/actualizar/${id}?nombre=${nombre}&username=${username}&password=${password}&idRol=${idRol}`, body);
+      return this.http.put<any>(`${this.BACK_URL}/api/v1/usuarios/actualizar/${id}?nombre=${nombre}&username=${username}&password=${password}&correo=${correo}&idRol=${idRol}`, body);
   }
 
   public actualizarActivo(

@@ -3,5 +3,6 @@ export interface UsuarioListaDto{
     nombre: string;
     username: string;
     password: string;
+    correo: string;
     rolNombre: string;
 }

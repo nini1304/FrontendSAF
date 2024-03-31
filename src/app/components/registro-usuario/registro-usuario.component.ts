@@ -127,29 +127,38 @@ export class RegistroUsuarioComponent {
     }
   }
   guardarDatos() {
-    const idempresa = localStorage.getItem('idempresa');
-    // @ts-ignore
-    const idemp = parseInt(idempresa);
-    console.log('guardar datos')
-    const nombre = this.nuevoUsuarioForm.get('nombre')?.value;
-    const correo = this.nuevoUsuarioForm.get('correo')?.value;
-    const username = this.nuevoUsuarioForm.get('username')?.value;
-    const password = this.nuevoUsuarioForm.get('password')?.value;
-    const rol = this.rolDto.find((rol:RolDto) => rol.rol === this.myControl.value)?.idRol;
-    const bloqueado = false;
+    if (this.nuevoUsuarioForm.valid) {
+      const idempresa = localStorage.getItem('idempresa');
+      // @ts-ignore
+      const idemp = parseInt(idempresa);
+      console.log('guardar datos')
+      const nombre = this.nuevoUsuarioForm.get('nombre')?.value;
+      console.log('nombre',nombre)
+      const correo = this.nuevoUsuarioForm.get('correo')?.value;
+      console.log('correo',correo)
+      const username = this.nuevoUsuarioForm.get('username')?.value;
+      console.log('username',username)
+      const password = this.nuevoUsuarioForm.get('password')?.value;
+      console.log('password',password)
+      const rol = this.rolDto.find((rol:RolDto) => rol.rol === this.nuevoUsuarioForm.get('myControl')?.value)?.idRol;
+      console.log('rol',rol)
 
-    // @ts-ignore
-    this.activoservice.registrarUsuario(nombre, username, password, idemp, rol) .subscribe({
-      next: (data) => {
-        console.log(data);
-        alert('Usuario registrado correctamente');
-        window.location.href = '/listade-usuarios';
+      // @ts-ignore
+      this.activoservice.registrarUsuario(nombre, username, password,correo,rol,idemp) .subscribe({
+        next: (data) => {
+          console.log(data);
+          alert('Usuario registrado correctamente');
+          window.location.href = '/listade-usuarios';
 
-      },error: (error: any) => {
-        console.log(error);
-        alert('Error al registrar usuario');
-      }
-    });
+        },error: (error: any) => {
+          console.log(error);
+          alert('Error al registrar usuario');
+        }
+      });
+    }else {
+      alert('Revise que los campos esten llenados correctamente');
+    }
+
   }
 }
 

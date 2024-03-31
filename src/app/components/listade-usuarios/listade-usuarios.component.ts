@@ -22,7 +22,7 @@ export class ListadeUsuariosComponent {
   nombre = localStorage.getItem('nombre');
   usuariolistaDto: UsuarioListaDto[] = [];
 
-  displayedColumns: string[] = ['idUsuario', 'nombre', 'username', 'idRol','acciones'];
+  displayedColumns: string[] = ['idUsuario', 'nombre', 'username','correo', 'idRol','acciones'];
   dataSource: MatTableDataSource<UsuarioListaDto>;
 
   // dataSource: MatTableDataSource<UserData>;
@@ -64,12 +64,13 @@ export class ListadeUsuariosComponent {
     });
   }
 
-  actualizar(id: number, nombre: string, username: string, password: string ,rol: string) {
+  actualizar(id: number, nombre: string, username: string, password: string ,correo:string,rol: string) {
     console.log(id)
     const queryParams = {
       nombre: nombre,
       username: username,
       password: password,
+      correo:correo,
       rol: rol
     };
     this.router.navigate(['/actualizar-usuario', id], { queryParams: queryParams });

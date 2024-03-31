@@ -36,7 +36,7 @@ export class CrearRolComponent {
 
       });
     }else {
-      alert('Formulario no valido');
+      alert('Revise que los campos esten llenados correctamente');
     }
 
 
