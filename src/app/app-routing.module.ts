@@ -33,6 +33,7 @@ import {
 } from "./components/actualizar-administrador/actualizar-administrador.component";
 import {GestionarRolesComponent} from "./components/gestionar-roles/gestionar-roles.component";
 import {CrearRolComponent} from "./components/crear-rol/crear-rol.component";
+import {RecuperarContrasenaComponent} from "./components/recuperar-contrasena/recuperar-contrasena.component";
 
 
 const routes: Routes = [
@@ -50,6 +51,7 @@ const routes: Routes = [
   { path: 'actualizar-usuario/:id', component: ActualizarUsuarioComponent},
   { path: 'gestionar-roles', component: GestionarRolesComponent},
   { path: 'manual-poweruser', component: ManualPoweruserComponent},
+  { path: 'recuperar-contrasena', component: RecuperarContrasenaComponent},
   { path: 'menu-user', component: MenuUserComponent},
   { path: 'lista-user', component: ListaUserComponent},
   { path: 'menu-admin', component: MenuAdministradorComponent},

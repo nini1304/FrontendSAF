@@ -5,7 +5,7 @@
     <h2>Nombre del Rol:</h2>
     <input matInput formControlName="rol" type="text"   placeholder="Ex. PowerUser" required>
       <h1></h1>
-      <mat-error *ngIf="rolForm.get('rol')?.invalid ">Debes ingresar un rol valido</mat-error>
+      <mat-error *ngIf="rolForm.get('rol')?.hasError('required') ">Debes ingresar un rol valido</mat-error>
     </form>
 
   </div>

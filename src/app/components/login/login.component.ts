@@ -5,6 +5,11 @@ import {ActivosService} from "../../service/activos.service";
 import {map, Observable, startWith} from "rxjs";
 import {EmpresaDto} from "../../dto/empresa.dto";
 import {TipoactivoDto} from "../../dto/tipoactivo.dto";
+import {Router} from "@angular/router";
+import {CrearRolComponent} from "../crear-rol/crear-rol.component";
+import {RecuperarContrasenaComponent} from "../recuperar-contrasena/recuperar-contrasena.component";
+import {MatDialog} from "@angular/material/dialog";
+import {LoginService} from "../../service/login.service";
 
 @Component({
   selector: 'app-login',
@@ -22,8 +27,8 @@ export class LoginComponent {
   filteredOptions: Observable<String[]> | undefined;
   hidePassword = true;
 
-  constructor(private formBuilder: FormBuilder,
-              private fb: FormBuilder, private service: ActivosService) {
+  constructor(private formBuilder: FormBuilder,private router: Router,public dialog: MatDialog,
+              private fb: FormBuilder, private service: ActivosService,private loginService: LoginService) {
     this.loginForm = this.fb.group({
       myControl: [''],
       usuario: new FormControl('', [Validators.required]),
@@ -32,6 +37,7 @@ export class LoginComponent {
 
   }
   ngOnInit() {
+    localStorage.setItem('intentos', '0');
     this.service.getEmpresas().subscribe({
       next: (data: EmpresaDto[]) => {
         console.log(data);
@@ -58,6 +64,15 @@ export class LoginComponent {
 
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
+
+  abrirRecucon(){
+
+    const dialogRef = this.dialog.open(RecuperarContrasenaComponent, {
+      // width: '250px',
+      // data: {descripcion: descripcion, marca: marca, calle: calle, avenida: avenida, bloque: bloque, ciudad: ciudad, personal: personal, estado: estado, condicion: condicion}
+    });
+
+  }
   ingresar() {
     const idempresa = this.empresaDto.find((emp: EmpresaDto) => emp.nombre === this.myControl.value)?.id;
     const usuario = this.loginForm.get('usuario')?.value;
@@ -75,23 +90,46 @@ export class LoginComponent {
           localStorage.setItem('idempresa', this.loginDto.idEmpresa.toString());
           localStorage.setItem('nempresa', this.loginDto.nombreEmpresa);
           localStorage.setItem('logo', this.loginDto.logo);
-          if (this.loginDto.idRol === 1){
+          if (this.loginDto.idRol === 1 && this.loginDto.bloqueado === false){
             window.location.href = '/menu-poweruser';
-          }else if (this.loginDto.idRol === 2){
+          }else if (this.loginDto.idRol === 2 && this.loginDto.bloqueado === false){
             window.location.href = '/menu-user';
 
-          }else if (this.loginDto.idRol === 3) {
+          }else if (this.loginDto.idRol === 3 && this.loginDto.bloqueado === false) {
             window.location.href = '/menu-admin';
-          }else if (this.loginDto.idRol === 4) {
+          }else if (this.loginDto.idRol === 4 && this.loginDto.bloqueado === false) {
             window.location.href = '/menu-encargado';
+          }else{
+            alert("Usuario bloqueado");
+            location.reload();
           }
 
         }
 
       },error: (error: any) => {
         console.log(error);
-        alert("Usuario o contraseña incorrectos/empresa incorrecta");
-        location.reload();
+        let intentos = localStorage.getItem('intentos');
+        intentos = String(Number(intentos) + 1);
+        localStorage.setItem('intentos', intentos);
+        console.log(intentos);
+        let int = localStorage.getItem('intentos');
+        if(int === '3'){
+          this.loginService.bloquearUsuario(usuario).subscribe({
+            next: (data: any) => {
+              console.log(data);
+              alert("Usuario bloqueado");
+              location.reload();
+            },error: (error: any) => {
+              console.log(error);
+              alert('Error al bloquear usuario');
+            }
+
+          });
+        }else{
+          alert("Usuario o contraseña incorrectos/empresa incorrecta");
+          // location.reload();
+        }
+
 
       }
 

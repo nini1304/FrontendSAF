@@ -52,6 +52,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import { ActualizarAdministradorComponent } from './components/actualizar-administrador/actualizar-administrador.component';
 import { GestionarRolesComponent } from './components/gestionar-roles/gestionar-roles.component';
 import { CrearRolComponent } from './components/crear-rol/crear-rol.component';
+import { RecuperarContrasenaComponent } from './components/recuperar-contrasena/recuperar-contrasena.component';
 
 
 
@@ -87,7 +88,8 @@ import { CrearRolComponent } from './components/crear-rol/crear-rol.component';
     ManualPoweruserComponent,
     ActualizarAdministradorComponent,
     GestionarRolesComponent,
-    CrearRolComponent
+    CrearRolComponent,
+    RecuperarContrasenaComponent
 
 
   ],

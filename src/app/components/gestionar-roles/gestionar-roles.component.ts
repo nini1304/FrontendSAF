@@ -85,7 +85,7 @@ export class GestionarRolesComponent {
         // data: {descripcion: descripcion, marca: marca, calle: calle, avenida: avenida, bloque: bloque, ciudad: ciudad, personal: personal, estado: estado, condicion: condicion}
       });
 
-    }
+  }
 
 
 }
