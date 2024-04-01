@@ -82,7 +82,6 @@ export class LoginComponent {
     this.service.login(usuario, contrasenia,idempresa).subscribe({
       next: (data: LoginDto) => {
         console.log(data);
-
         if(data){
           this.loginDto = data;
           localStorage.setItem('idusuario', this.loginDto.idUsuario.toString());

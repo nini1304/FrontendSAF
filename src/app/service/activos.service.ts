@@ -106,14 +106,12 @@ export class ActivosService {
     id: number,
     nombre: string,
     username: string,
-    password: string,
     correo: string,
     idRol: number ,
   ): Observable<any> {
     const params = {
       nombre: nombre,
       username: username,
-      password: password,
       correo: correo,
       idRol: idRol
     };

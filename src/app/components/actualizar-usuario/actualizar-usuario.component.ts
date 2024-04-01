@@ -29,8 +29,6 @@ export class ActualizarUsuarioComponent {
       nombre: new FormControl('', [Validators.required]),
       correo: new FormControl('', [Validators.required]),
       username: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required, Validators.minLength(12), this.validatePassword]),
-      passwordConfirmation: new FormControl('', [Validators.required]),
       myControl: new FormControl('', [Validators.required]),
 
     });
@@ -41,7 +39,6 @@ export class ActualizarUsuarioComponent {
       const id = params['id'];
       const nombre = this.route.snapshot.queryParamMap.get('nombre');
       const username = this.route.snapshot.queryParamMap.get('username');
-      const password = this.route.snapshot.queryParamMap.get('password');
       const correo = this.route.snapshot.queryParamMap.get('correo');
 
       const rol = this.route.snapshot.queryParamMap.get('rol');
@@ -51,7 +48,6 @@ export class ActualizarUsuarioComponent {
         nombre: nombre,
         correo: correo,
         username: username,
-        password: password,
         myControl: rol
       });
     });
@@ -112,9 +108,8 @@ export class ActualizarUsuarioComponent {
         const nombre = this.activoForm.get('nombre')?.value;
         const correo = this.activoForm.get('correo')?.value;
         const username = this.activoForm.get('username')?.value;
-        const password = this.activoForm.get('password')?.value;
         const rol = Number(this.rolDto.find((rol:RolDto) => rol.rol === this.activoForm.get('myControl')?.value)?.idRol);
-        this.activoservice.actualizarUsuario(id, nombre, username, password, correo, rol) .subscribe({
+        this.activoservice.actualizarUsuario(id, nombre, username,correo, rol) .subscribe({
           next: (data) => {
             console.log(data);
             alert('Usuario actualizado correctamente');
