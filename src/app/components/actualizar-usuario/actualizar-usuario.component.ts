@@ -113,7 +113,7 @@ export class ActualizarUsuarioComponent {
         const correo = this.activoForm.get('correo')?.value;
         const username = this.activoForm.get('username')?.value;
         const password = this.activoForm.get('password')?.value;
-        const rol = this.rolDto.find((rol:RolDto) => rol.rol === this.activoForm.get('myControl')?.value)?.idRol;
+        const rol = Number(this.rolDto.find((rol:RolDto) => rol.rol === this.activoForm.get('myControl')?.value)?.idRol);
         this.activoservice.actualizarUsuario(id, nombre, username, password, correo, rol) .subscribe({
           next: (data) => {
             console.log(data);

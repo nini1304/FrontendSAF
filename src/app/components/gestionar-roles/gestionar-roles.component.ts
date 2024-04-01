@@ -69,7 +69,7 @@ export class GestionarRolesComponent {
 
       },error: (error: any) => {
         console.log(error);
-        alert('Error al eliminar rol');
+        alert('Existe al menos un usuario con este rol, no se puede eliminar');
 
 
       }

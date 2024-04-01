@@ -34,6 +34,9 @@ import {
 import {GestionarRolesComponent} from "./components/gestionar-roles/gestionar-roles.component";
 import {CrearRolComponent} from "./components/crear-rol/crear-rol.component";
 import {RecuperarContrasenaComponent} from "./components/recuperar-contrasena/recuperar-contrasena.component";
+import {CcUserComponent} from "./components/cc-user/cc-user.component";
+import {CcAdministradorComponent} from "./components/cc-administrador/cc-administrador.component";
+import {CcEncargadoComponent} from "./components/cc-encargado/cc-encargado.component";
 
 
 const routes: Routes = [
@@ -54,15 +57,18 @@ const routes: Routes = [
   { path: 'recuperar-contrasena', component: RecuperarContrasenaComponent},
   { path: 'menu-user', component: MenuUserComponent},
   { path: 'lista-user', component: ListaUserComponent},
+  { path: 'cc-user', component: CcUserComponent},
   { path: 'menu-admin', component: MenuAdministradorComponent},
   { path: 'registrar-admin', component: RegistrarAdministradorComponent},
   { path: 'lista-admin', component: ListaAdministradorComponent},
   { path: 'actualizar-admin/:id/:nombre/:valor/:descripcion/:calle/:avenida', component:ActualizarAdministradorComponent},
   { path: 'movimientos-admin', component: MovimientosAdministradorComponent},
+  { path: 'cc-admin', component: CcAdministradorComponent},
   { path: 'menu-encargado', component: MenuEncargadoComponent},
   { path: 'lista-encargado', component: ListaEncargadoComponent},
   { path: 'listadepre-encargado/:mes/:anio', component: ListadepreEncargadoComponent},
   { path: 'historialdepre-encargado', component: HistorialdepreEncargadoComponent },
+  { path: 'cc-encargado', component: CcEncargadoComponent},
 
 
 

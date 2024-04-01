@@ -11,21 +11,22 @@ export class LoginService {
   BACK_URL = environment.url;
   constructor(private http: HttpClient) {}
 
-  public verificarCorreo(correo:string): Observable<any> {
+  public verificarCorreo(usuario:string,correo:string): Observable<any> {
     const body = {
+      usuario: usuario,
       correo: correo
 
     }
-    return this.http.post<any>(`${this.BACK_URL}/api/v1/roles/listar`, body);
+    return this.http.post<any>(`${this.BACK_URL}/api/v1/usuarios/verificarCorreo?username=${usuario}&correo=${correo}`, body);
   }
 
-  public enviarCorreo( correoTo:string, contrasena:string): Observable<any> {
+  public enviarCorreo( correoTo:string): Observable<string> {
     const body = {
-      correoTo: correoTo,
-      contrasena: contrasena
+      correoTo: correoTo
+
 
     }
-    return this.http.post<any>(`${this.BACK_URL}/api/v1/roles/listar`, body);
+    return this.http.put<string>(`${this.BACK_URL}/api/v1/usuarios/generarContrasena?correo=${correoTo}`, body);
   }
 
   public bloquearUsuario(usuario:string): Observable<any> {
@@ -33,7 +34,7 @@ export class LoginService {
       usuario: usuario
 
     }
-    return this.http.post<any>(`${this.BACK_URL}/api/v1/roles/listar`, body);
+    return this.http.put<any>(`${this.BACK_URL}/api/v1/usuarios/bloquear?username=${usuario}`, body);
   }
 
 

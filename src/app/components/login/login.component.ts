@@ -26,6 +26,7 @@ export class LoginComponent {
   options: String[] = [];
   filteredOptions: Observable<String[]> | undefined;
   hidePassword = true;
+  flag = false;
 
   constructor(private formBuilder: FormBuilder,private router: Router,public dialog: MatDialog,
               private fb: FormBuilder, private service: ActivosService,private loginService: LoginService) {
@@ -112,16 +113,18 @@ export class LoginComponent {
         intentos = String(Number(intentos) + 1);
         localStorage.setItem('intentos', intentos);
         console.log(intentos);
-        let int = localStorage.getItem('intentos');
-        if(int === '3'){
+        let int = Number(localStorage.getItem('intentos'));
+
+        if(int >= 3){
           this.loginService.bloquearUsuario(usuario).subscribe({
             next: (data: any) => {
               console.log(data);
-              alert("Usuario bloqueado");
-              location.reload();
+
             },error: (error: any) => {
-              console.log(error);
-              alert('Error al bloquear usuario');
+              // console.log(error);
+              // alert('Error al bloquear usuario');
+              alert("Usuario bloqueado");
+              this.flag = true;
             }
 
           });

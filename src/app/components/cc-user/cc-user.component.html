@@ -1,0 +1,91 @@
+<body>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <div class="menu">
+      <mat-icon class="menuitem"> person_pin</mat-icon>Bienvenid@ {{nombre}}
+    </div>
+    <br>
+    <div class="menu">
+      <mat-icon [routerLink]="['/menu-user']" class="menuitem">home</mat-icon>Inicio
+    </div>
+    <br>
+    <div class="menu">
+      <mat-icon [routerLink]="['/lista-user']" class="menuitem">format_list_bulleted</mat-icon>Lista de Activos Fijos
+    </div>
+    <br>
+    <div class="menu">
+      <mat-icon [routerLink]="['/cc-user']" class="menuitem">lock</mat-icon>Cambiar contraseña
+    </div>
+    <br>
+    <div class="menu">
+      <mat-icon (click)="borrarls()" [routerLink]="['']" class="menuitem">exit_to_app</mat-icon>Cerrar Sesión
+    </div>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <div class="icono">
+      <mat-icon (click)="drawer.toggle()">menu</mat-icon>
+    </div>
+    <h1>Cambiar Contraseña</h1>
+    <div class="formulario">
+      <form class="formulario-form"  [formGroup]="cambiarconForm">
+        <div class="form-row">
+          <mat-form-field class="col">
+            <mat-label>Ingrese su antigua contraseña:</mat-label>
+            <input matInput type="{{ hidePassword ? 'password' : 'text' }}" formControlName="antiguapass"  required>
+            <button mat-icon-button matSuffix style="color: black" (click)="togglePasswordVisibility()">
+              <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            <mat-error *ngIf="cambiarconForm.get('antiguapass')?.hasError('required')">
+              La contraseña es requerida.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-row">
+          <mat-form-field class="col">
+            <mat-label>Ingrese su nueva contraseña:</mat-label>
+            <input matInput type="{{ hidePassword1 ? 'password' : 'text' }}" formControlName="nuevapass"  required>
+            <button mat-icon-button matSuffix style="color: black" (click)="togglePasswordVisibility1()">
+              <mat-icon>{{ hidePassword1 ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            <mat-error *ngIf="cambiarconForm.get('nuevapass')?.hasError('required')">
+              La contraseña es requerida.
+            </mat-error>
+            <mat-error *ngIf="cambiarconForm.get('nuevapass')?.hasError('minlength')">
+              La contraseña no puede tener menos de 12 caracteres.
+            </mat-error>
+            <mat-error *ngIf="cambiarconForm.get('nuevapass')?.hasError('invalidPassword')">
+              La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-row">
+          <mat-form-field class="col">
+            <mat-label>Confirme su nueva contraseña:</mat-label>
+            <input matInput type="{{ hidePassword2 ? 'password' : 'text' }}" formControlName="passwordConfirmation"  required>
+            <button mat-icon-button matSuffix style="color: black" (click)="togglePasswordVisibility2()">
+              <mat-icon>{{ hidePassword2 ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            <mat-error *ngIf="cambiarconForm.get('passwordConfirmation')?.hasError('required')">
+              Por favor, repita la contraseña.
+            </mat-error>
+            <mat-error *ngIf="cambiarconForm.hasError('passwordMismatch')">
+              Las contraseñas no coinciden.
+            </mat-error>
+
+          </mat-form-field>
+        </div>
+
+        <div class="boton">
+          <button type="submit" style=" background-color: #FFD384; color: black; margin-top: 2%;" mat-button  >Cambiar</button>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+
+</mat-drawer-container>
+
+
+</body>

@@ -78,19 +78,29 @@ export class ActivosService {
 
     return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/registrar?nombre=${nombre}&valor=${valor}&fechaCompra=${fecha}&descripcion=${descripcion}&tipoActivoId=${tipo}&marcaId=${marca}&calle=${calle}&avenida=${avenida}&bloqueId=${bloque}&ciudadId=${ciudad}&personalId=${personal}&estadoId=${estado}&condicionId=${condicion}&estado=true&idEmp=${idemp}&username=${username}`, body);
   }
+
+  login(usuario: string, contrasenia: string, idemp: number): Observable<any> {
+    const url = `${this.BACK_URL}/api/v1/usuarios/login`;
+    const params = {
+      user: usuario,
+      password: contrasenia,
+      empId: idemp
+    };
+    return this.http.post<any>(url, null, { params: params });
+  }
   public registrarUsuario(nombre: string, username: string, password: string,correo:string, rol: number, empresa: number):
     Observable<any> {
-    const body = {
+    const params = {
       nombre: nombre,
       username: username,
       password: password,
       correo:correo,
-      rol: rol,
-      empresa: empresa
+      idRol: rol,
+      idEmpresa: empresa
 
     };
-                          // POST http://localhost:1234/api/v1/usuarios/registrar?nombre=Juan&username=juan.perez&password=1234&idRol=1&idEmpresa=1&estado=true
-    return this.http.post<any>(`${this.BACK_URL}/api/v1/usuarios/registrar?nombre=${nombre}&username=${username}&password=${password}&correo=${correo}&idRol=${rol}&idEmpresa=${empresa}`, body);
+
+    return this.http.post<any>(`${this.BACK_URL}/api/v1/usuarios/registrar`, null, { params: params });
   }
   public actualizarUsuario(
     id: number,
@@ -98,18 +108,18 @@ export class ActivosService {
     username: string,
     password: string,
     correo: string,
-    idRol: number | undefined,
+    idRol: number ,
   ): Observable<any> {
-    const body = {
+    const params = {
       nombre: nombre,
       username: username,
       password: password,
       correo: correo,
       idRol: idRol
     };
-    console.log(body);
 
-      return this.http.put<any>(`${this.BACK_URL}/api/v1/usuarios/actualizar/${id}?nombre=${nombre}&username=${username}&password=${password}&correo=${correo}&idRol=${idRol}`, body);
+
+      return this.http.put<any>(`${this.BACK_URL}/api/v1/usuarios/actualizar/${id}`, null, { params: params });
   }
 
   public actualizarActivo(
@@ -148,14 +158,7 @@ export class ActivosService {
     console.log(body);
     return this.http.put<any>(`${this.BACK_URL}/api/v1/activos-fijos/actualizar/${id}?nombre=${nombre}&valor=${valor}&fechaCompra=${fecha}&descripcion=${descripcion}&tipoActivoId=${tipo}&marcaId=${marca}&calle=${calle}&avenida=${avenida}&bloqueId=${bloque}&ciudadId=${ciudad}&personalId=${personal}&estadoId=${estado}&condicionId=${condicion}&estado=true&username=${username}`, body);
   }
-  public login(usuario: string, contrasenia: string, idemp:number): Observable<any> {
-    const url = `${this.BACK_URL}/api/v1/usuarios/login?user=${usuario}&password=${contrasenia}&empId=${idemp}`;
-    const body = {
-      usuario: usuario,
-      contrasenia: contrasenia
-    };
-    return this.http.post<any>(url, body);
-  }
+
   public generarReporteE(depreciacion:DepreciacionDto []): Observable<any> {
     return this.http.post<any>(`${this.BACK_URL}/api/v1/activos-fijos/excel?nombreArchivo=activosFijos.xlsx`,depreciacion );
 

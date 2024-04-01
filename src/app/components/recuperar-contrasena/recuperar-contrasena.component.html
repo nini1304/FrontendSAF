@@ -2,15 +2,19 @@
   <h1 mat-dialog-title style="color:#FFD384">Recuperar Contraseña</h1>
   <div mat-dialog-content>
     <form [formGroup]="recuconForm" class="example-form">
+      <h2>Ingrese su usuario:</h2>
+      <input matInput formControlName="usuario" type="text"  required>
+      <h1></h1>
+      <mat-error *ngIf="recuconForm.get('usuario')?.hasError('required') ">Debes ingresar un usuario valido</mat-error>
       <h2>Ingrese su correo:</h2>
-      <input matInput formControlName="correo" type="email"   placeholder="Ex. PowerUser" required>
+      <input matInput formControlName="correo" type="email"  required>
       <h1></h1>
       <mat-error *ngIf="recuconForm.get('correo')?.hasError('required') ">Debes ingresar un correo valido</mat-error>
     </form>
 
   </div>
   <div mat-dialog-actions>
-    <button mat-button style=" background-color: #940B92; color: black; margin-top: 2%;" (click)="verificarCorreo()">Enviar Correo</button>
+    <button mat-button style=" background-color: #940B92; color: black; margin-top: 2%;" (click)="verificarCorreo()">Enviar</button>
     <button mat-button mat-dialog-close style=" background-color: #FFD384; color: black; margin-top: 2%;">Cerrar</button>
   </div>
 

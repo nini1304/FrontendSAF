@@ -53,6 +53,9 @@ import { ActualizarAdministradorComponent } from './components/actualizar-admini
 import { GestionarRolesComponent } from './components/gestionar-roles/gestionar-roles.component';
 import { CrearRolComponent } from './components/crear-rol/crear-rol.component';
 import { RecuperarContrasenaComponent } from './components/recuperar-contrasena/recuperar-contrasena.component';
+import { CcUserComponent } from './components/cc-user/cc-user.component';
+import { CcAdministradorComponent } from './components/cc-administrador/cc-administrador.component';
+import { CcEncargadoComponent } from './components/cc-encargado/cc-encargado.component';
 
 
 
@@ -89,7 +92,10 @@ import { RecuperarContrasenaComponent } from './components/recuperar-contrasena/
     ActualizarAdministradorComponent,
     GestionarRolesComponent,
     CrearRolComponent,
-    RecuperarContrasenaComponent
+    RecuperarContrasenaComponent,
+    CcUserComponent,
+    CcAdministradorComponent,
+    CcEncargadoComponent
 
 
   ],

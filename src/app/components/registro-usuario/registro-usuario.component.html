@@ -71,7 +71,7 @@
           </mat-form-field>
           <mat-form-field class="col">
             <mat-label>Contraseña:</mat-label>
-            <input matInput type="{{ hidePassword ? 'password' : 'text' }}" formControlName="password" matInput required>
+            <input matInput type="{{ hidePassword ? 'password' : 'text' }}" formControlName="password" required>
             <button mat-icon-button matSuffix style="color: black" (click)="togglePasswordVisibility()">
               <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
             </button>
@@ -87,7 +87,7 @@
           </mat-form-field>
           <mat-form-field class="col">
             <mat-label>Confirme su contraseña:</mat-label>
-            <input matInput type="{{ hidePassword2 ? 'password' : 'text' }}" formControlName="passwordConfirmation" matInput required>
+            <input matInput type="{{ hidePassword2 ? 'password' : 'text' }}" formControlName="passwordConfirmation" required>
             <button mat-icon-button matSuffix style="color: black" (click)="togglePasswordVisibility2()">
               <mat-icon>{{ hidePassword2 ? 'visibility_off' : 'visibility' }}</mat-icon>
             </button>

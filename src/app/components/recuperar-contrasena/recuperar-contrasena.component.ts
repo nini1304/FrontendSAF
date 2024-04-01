@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {LoginService} from "../../service/login.service";
 import {Router} from "@angular/router";
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-recuperar-contrasena',
@@ -12,25 +13,12 @@ export class RecuperarContrasenaComponent {
   recuconForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,private router: Router,
-              private fb: FormBuilder,private loginService: LoginService){
+              private fb: FormBuilder,private loginService: LoginService,private dialogRef: MatDialogRef<RecuperarContrasenaComponent>){
     this.recuconForm = this.fb.group({
+      usuario: new FormControl('', [Validators.required]),
       correo: new FormControl('', [Validators.required]),
 
     });
-  }
-
-  generarContrasena(): string {
-    const longitud = 13;
-    const caracteres =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}|:<>?-=[];,./';
-
-    let contrasena = '';
-    for (let i = 0; i < longitud; i++) {
-      const caracterAleatorio = caracteres.charAt(Math.floor(Math.random() * caracteres.length));
-      contrasena += caracterAleatorio;
-    }
-
-    return contrasena;
   }
 
   abrirLogin() {
@@ -42,19 +30,20 @@ export class RecuperarContrasenaComponent {
 
   verificarCorreo(){
     if (this.recuconForm.valid) {
-      this.loginService.verificarCorreo(this.recuconForm.get('correo')?.value).subscribe({
+      this.loginService.verificarCorreo(this.recuconForm.get('usuario')?.value,this.recuconForm.get('correo')?.value).subscribe({
         next: (data) => {
           console.log(data);
           if (data == true){
-            const contrasena = this.generarContrasena();
-            this.loginService.enviarCorreo(this.recuconForm.get('correo')?.value, contrasena).subscribe({
+            this.loginService.enviarCorreo(this.recuconForm.get('correo')?.value).subscribe({
               next: (data) => {
                 console.log(data);
-                alert('Correo enviado correctamente');
-                this.abrirLogin();
-              },error: (error: any) => {
-                console.log(error);
                 alert('Error al enviar correo');
+
+
+              },error: (error: any) => {
+                alert('Su contraseña ha sido enviada a su correo');
+                this.dialogRef.close();
+                location.reload();
 
 
 
@@ -78,7 +67,7 @@ export class RecuperarContrasenaComponent {
 
       });
     }else {
-      alert('Formulario no valido');
+      alert('Revise que los campos esten llenados correctamente');
     }
 
 
