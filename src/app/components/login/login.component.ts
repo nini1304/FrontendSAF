@@ -89,26 +89,53 @@ export class LoginComponent {
           this.loginService.verificarVidaUtil(this.loginDto.idUsuario).subscribe({
             next: (data: VidautilDto) => {
               this.vidaUtil = data;
-              if(!this.vidaUtil.vencido  ){
-                localStorage.setItem('idusuario', this.loginDto.idUsuario.toString());
-                localStorage.setItem('nombre', this.loginDto.nombre);
-                localStorage.setItem('idrol', this.loginDto.idRol.toString());
-                localStorage.setItem('idempresa', this.loginDto.idEmpresa.toString());
-                localStorage.setItem('nempresa', this.loginDto.nombreEmpresa);
-                localStorage.setItem('logo', this.loginDto.logo);
-                if (this.loginDto.idRol === 1 && this.loginDto.bloqueado === false){
-                  window.location.href = '/menu-poweruser';
-                }else if (this.loginDto.idRol === 2 && this.loginDto.bloqueado === false){
-                  window.location.href = '/menu-user';
+              if(!this.vidaUtil.vencido){
+                if(this.vidaUtil.vidaUtil <= 10){
+                  localStorage.setItem('idusuario', this.loginDto.idUsuario.toString());
+                  localStorage.setItem('nombre', this.loginDto.nombre);
+                  localStorage.setItem('idrol', this.loginDto.idRol.toString());
+                  localStorage.setItem('idempresa', this.loginDto.idEmpresa.toString());
+                  localStorage.setItem('nempresa', this.loginDto.nombreEmpresa);
+                  localStorage.setItem('logo', this.loginDto.logo);
+                  if (this.loginDto.idRol === 1 && !this.loginDto.bloqueado){
+                    alert("Su contraseña expirará en "+this.vidaUtil.vidaUtil+" días");
+                    window.location.href = '/menu-poweruser';
+                  }else if (this.loginDto.idRol === 2 && !this.loginDto.bloqueado){
+                    alert("Su contraseña expirará en "+this.vidaUtil.vidaUtil+" días");
+                    window.location.href = '/menu-user';
 
-                }else if (this.loginDto.idRol === 3 && this.loginDto.bloqueado === false) {
-                  window.location.href = '/menu-admin';
-                }else if (this.loginDto.idRol === 4 && this.loginDto.bloqueado === false) {
-                  window.location.href = '/menu-encargado';
+                  }else if (this.loginDto.idRol === 3 && !this.loginDto.bloqueado) {
+                    alert("Su contraseña expirará en "+this.vidaUtil.vidaUtil+" días");
+                    window.location.href = '/menu-admin';
+                  }else if (this.loginDto.idRol === 4 && !this.loginDto.bloqueado) {
+                    alert("Su contraseña expirará en "+this.vidaUtil.vidaUtil+" días");
+                    window.location.href = '/menu-encargado';
+                  }else{
+                    alert("Usuario bloqueado");
+                    location.reload();
+                  }
                 }else{
-                  alert("Usuario bloqueado");
-                  location.reload();
+                  localStorage.setItem('idusuario', this.loginDto.idUsuario.toString());
+                  localStorage.setItem('nombre', this.loginDto.nombre);
+                  localStorage.setItem('idrol', this.loginDto.idRol.toString());
+                  localStorage.setItem('idempresa', this.loginDto.idEmpresa.toString());
+                  localStorage.setItem('nempresa', this.loginDto.nombreEmpresa);
+                  localStorage.setItem('logo', this.loginDto.logo);
+                  if (this.loginDto.idRol === 1 && this.loginDto.bloqueado === false){
+                    window.location.href = '/menu-poweruser';
+                  }else if (this.loginDto.idRol === 2 && this.loginDto.bloqueado === false){
+                    window.location.href = '/menu-user';
+
+                  }else if (this.loginDto.idRol === 3 && this.loginDto.bloqueado === false) {
+                    window.location.href = '/menu-admin';
+                  }else if (this.loginDto.idRol === 4 && this.loginDto.bloqueado === false) {
+                    window.location.href = '/menu-encargado';
+                  }else{
+                    alert("Usuario bloqueado");
+                    location.reload();
+                  }
                 }
+
               }else{
                   alert("Contraseña expirada");
                   this.flag = true;

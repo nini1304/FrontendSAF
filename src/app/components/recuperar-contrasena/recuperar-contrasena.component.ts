@@ -53,7 +53,7 @@ export class RecuperarContrasenaComponent {
 
 
           }else{
-            alert('No existe el correo en la base de datos');
+            alert('Los datos ingresados no coinciden con los registrados en el sistema');
           }
 
 

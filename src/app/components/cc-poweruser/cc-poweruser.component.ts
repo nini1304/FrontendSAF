@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {CcService} from "../../service/cc.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-cc-poweruser',
@@ -16,7 +17,7 @@ export class CcPoweruserComponent {
 
 
   constructor(private formBuilder: FormBuilder,
-              private fb: FormBuilder, private ccservice:CcService) {
+              private fb: FormBuilder, private ccservice:CcService,private router: Router) {
     this.cambiarconForm = this.fb.group({
       antiguapass: new FormControl('', [Validators.required]),
       nuevapass: new FormControl('', [Validators.required, Validators.minLength(12), this.validatePassword]),
@@ -74,23 +75,34 @@ export class CcPoweruserComponent {
     this.hidePassword2 = !this.hidePassword2;
   }
 
-  cambiarContrasena(){
-    let userId = Number(localStorage.getItem('idusuario'));
-    this.ccservice.cambiarContrasena(userId,this.cambiarconForm.get('antiguapass')?.value,this.cambiarconForm.get('passwordConfirmation')?.value).subscribe({
-      next: (data: any) => {
-        if (data){
-          alert('Contraseña cambiada correctamente');
-          location.reload();
-        }else{
-          alert('Esa no es tu contraseña actual');
-        }
-      },
-      error: (error: any) => {
-        console.log(error);
-        alert('La nueva contraseña no puede ser igual a las anteriores que usaste');
-      }
+  abrirlogin() {
 
-    });
+    this.router.navigate(['']);
+
+  }
+
+  cambiarContrasena(){
+    if(this.cambiarconForm.valid){
+      let userId = Number(localStorage.getItem('idusuario'));
+      this.ccservice.cambiarContrasena(userId,this.cambiarconForm.get('antiguapass')?.value,this.cambiarconForm.get('passwordConfirmation')?.value).subscribe({
+        next: (data: any) => {
+          if (data){
+            alert('Contraseña cambiada correctamente');
+            this.abrirlogin();
+          }else{
+            alert('Esa no es tu contraseña actual');
+          }
+        },
+        error: (error: any) => {
+          console.log(error);
+          alert('La nueva contraseña no puede ser igual a las anteriores que usaste');
+        }
+
+      });
+    }else {
+      alert('Revise que los campos esten llenados correctamente');
+    }
+
   }
 
 }
