@@ -10,6 +10,7 @@ import {CrearRolComponent} from "../crear-rol/crear-rol.component";
 import {RecuperarContrasenaComponent} from "../recuperar-contrasena/recuperar-contrasena.component";
 import {MatDialog} from "@angular/material/dialog";
 import {LoginService} from "../../service/login.service";
+import {VidautilDto} from "../../dto/vidautil.dto";
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ import {LoginService} from "../../service/login.service";
 })
 export class LoginComponent {
   loginDto: LoginDto = {} as LoginDto;
+  vidaUtil: VidautilDto = {} as VidautilDto;
   empresaDto: EmpresaDto[] = [];
   loginForm: FormGroup;
   // usuario = new FormControl('', [Validators.required]);
@@ -84,25 +86,42 @@ export class LoginComponent {
         console.log(data);
         if(data){
           this.loginDto = data;
-          localStorage.setItem('idusuario', this.loginDto.idUsuario.toString());
-          localStorage.setItem('nombre', this.loginDto.nombre);
-          localStorage.setItem('idrol', this.loginDto.idRol.toString());
-          localStorage.setItem('idempresa', this.loginDto.idEmpresa.toString());
-          localStorage.setItem('nempresa', this.loginDto.nombreEmpresa);
-          localStorage.setItem('logo', this.loginDto.logo);
-          if (this.loginDto.idRol === 1 && this.loginDto.bloqueado === false){
-            window.location.href = '/menu-poweruser';
-          }else if (this.loginDto.idRol === 2 && this.loginDto.bloqueado === false){
-            window.location.href = '/menu-user';
+          this.loginService.verificarVidaUtil(this.loginDto.idUsuario).subscribe({
+            next: (data: VidautilDto) => {
+              this.vidaUtil = data;
+              if(!this.vidaUtil.vencido  ){
+                localStorage.setItem('idusuario', this.loginDto.idUsuario.toString());
+                localStorage.setItem('nombre', this.loginDto.nombre);
+                localStorage.setItem('idrol', this.loginDto.idRol.toString());
+                localStorage.setItem('idempresa', this.loginDto.idEmpresa.toString());
+                localStorage.setItem('nempresa', this.loginDto.nombreEmpresa);
+                localStorage.setItem('logo', this.loginDto.logo);
+                if (this.loginDto.idRol === 1 && this.loginDto.bloqueado === false){
+                  window.location.href = '/menu-poweruser';
+                }else if (this.loginDto.idRol === 2 && this.loginDto.bloqueado === false){
+                  window.location.href = '/menu-user';
 
-          }else if (this.loginDto.idRol === 3 && this.loginDto.bloqueado === false) {
-            window.location.href = '/menu-admin';
-          }else if (this.loginDto.idRol === 4 && this.loginDto.bloqueado === false) {
-            window.location.href = '/menu-encargado';
-          }else{
-            alert("Usuario bloqueado");
-            location.reload();
-          }
+                }else if (this.loginDto.idRol === 3 && this.loginDto.bloqueado === false) {
+                  window.location.href = '/menu-admin';
+                }else if (this.loginDto.idRol === 4 && this.loginDto.bloqueado === false) {
+                  window.location.href = '/menu-encargado';
+                }else{
+                  alert("Usuario bloqueado");
+                  location.reload();
+                }
+              }else{
+                  alert("Contraseña expirada");
+                  this.flag = true;
+
+
+              }
+
+
+
+            }
+
+          });
+
 
         }
 

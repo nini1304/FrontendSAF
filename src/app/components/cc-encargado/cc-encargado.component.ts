@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {CcService} from "../../service/cc.service";
 
 @Component({
   selector: 'app-cc-encargado',
@@ -15,7 +16,7 @@ export class CcEncargadoComponent {
 
 
   constructor(private formBuilder: FormBuilder,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,private ccservice:CcService) {
     this.cambiarconForm = this.fb.group({
       antiguapass: new FormControl('', [Validators.required]),
       nuevapass: new FormControl('', [Validators.required, Validators.minLength(12), this.validatePassword]),
@@ -71,6 +72,24 @@ export class CcEncargadoComponent {
   }
   togglePasswordVisibility2() {
     this.hidePassword2 = !this.hidePassword2;
+  }
+  cambiarContrasena(){
+    let userId = Number(localStorage.getItem('idusuario'));
+    this.ccservice.cambiarContrasena(userId,this.cambiarconForm.get('antiguapass')?.value,this.cambiarconForm.get('passwordConfirmation')?.value).subscribe({
+      next: (data: any) => {
+        if (data){
+          alert('Contraseña cambiada correctamente');
+          location.reload();
+        }else{
+          alert('Esa no es tu contraseña actual');
+        }
+      },
+      error: (error: any) => {
+        console.log(error);
+        alert('La nueva contraseña no puede ser igual a las anteriores que usaste');
+      }
+
+    });
   }
 
 }

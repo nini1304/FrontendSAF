@@ -54,7 +54,6 @@ export class RecuperarContrasenaComponent {
 
           }else{
             alert('No existe el correo en la base de datos');
-            location.reload();
           }
 
 

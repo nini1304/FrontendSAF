@@ -37,6 +37,7 @@ import {RecuperarContrasenaComponent} from "./components/recuperar-contrasena/re
 import {CcUserComponent} from "./components/cc-user/cc-user.component";
 import {CcAdministradorComponent} from "./components/cc-administrador/cc-administrador.component";
 import {CcEncargadoComponent} from "./components/cc-encargado/cc-encargado.component";
+import {CcPoweruserComponent} from "./components/cc-poweruser/cc-poweruser.component";
 
 
 const routes: Routes = [
@@ -48,6 +49,7 @@ const routes: Routes = [
   { path: 'historialdepre-poweruser', component: HistorialdeprePoweruserComponent },
   { path: 'actualizar-poweruser/:id/:nombre/:valor/:descripcion/:calle/:avenida', component: ActualizarPoweruserComponent},
   { path: 'movimientos-poweruser', component: MovimientosPoweruserComponent},
+  { path: 'cc-poweruser', component: CcPoweruserComponent},
   { path: 'registrar-usuario', component: RegistroUsuarioComponent},
   { path: 'listade-usuarios', component: ListadeUsuariosComponent},
   { path: 'crear-rol', component: CrearRolComponent},

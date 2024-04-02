@@ -56,6 +56,7 @@ import { RecuperarContrasenaComponent } from './components/recuperar-contrasena/
 import { CcUserComponent } from './components/cc-user/cc-user.component';
 import { CcAdministradorComponent } from './components/cc-administrador/cc-administrador.component';
 import { CcEncargadoComponent } from './components/cc-encargado/cc-encargado.component';
+import { CcPoweruserComponent } from './components/cc-poweruser/cc-poweruser.component';
 
 
 
@@ -95,7 +96,8 @@ import { CcEncargadoComponent } from './components/cc-encargado/cc-encargado.com
     RecuperarContrasenaComponent,
     CcUserComponent,
     CcAdministradorComponent,
-    CcEncargadoComponent
+    CcEncargadoComponent,
+    CcPoweruserComponent
 
 
   ],

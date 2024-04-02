@@ -3,11 +3,11 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {CcService} from "../../service/cc.service";
 
 @Component({
-  selector: 'app-cc-administrador',
-  templateUrl: './cc-administrador.component.html',
-  styleUrls: ['./cc-administrador.component.css']
+  selector: 'app-cc-poweruser',
+  templateUrl: './cc-poweruser.component.html',
+  styleUrls: ['./cc-poweruser.component.css']
 })
-export class CcAdministradorComponent {
+export class CcPoweruserComponent {
   nombre = localStorage.getItem('nombre');
   cambiarconForm: FormGroup;
   hidePassword = true;
@@ -16,7 +16,7 @@ export class CcAdministradorComponent {
 
 
   constructor(private formBuilder: FormBuilder,
-              private fb: FormBuilder,private ccservice:CcService) {
+              private fb: FormBuilder, private ccservice:CcService) {
     this.cambiarconForm = this.fb.group({
       antiguapass: new FormControl('', [Validators.required]),
       nuevapass: new FormControl('', [Validators.required, Validators.minLength(12), this.validatePassword]),
@@ -51,7 +51,7 @@ export class CcAdministradorComponent {
 
   passwordMatchValidator(group: FormGroup) {
     console.log('Validating password match');
-    const password = group.get('nuevopass')?.value;
+    const password = group.get('nuevapass')?.value;
     const passwordConfirmation = group.get('passwordConfirmation')?.value;
     console.log('Password:', password);
     console.log('Password Confirmation:', passwordConfirmation);

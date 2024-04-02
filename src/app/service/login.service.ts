@@ -3,6 +3,7 @@ import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {RolDto} from "../dto/rol.dto";
+import {VidautilDto} from "../dto/vidautil.dto";
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,14 @@ export class LoginService {
 
     }
     return this.http.put<any>(`${this.BACK_URL}/api/v1/usuarios/bloquear?username=${usuario}`, body);
+  }
+
+  public verificarVidaUtil(userId:number): Observable<VidautilDto> {
+    const body = {
+      userId: userId
+
+    }
+    return this.http.put<VidautilDto>(`${this.BACK_URL}/api/v1/usuarios/expirada?userId=${userId}`, body);
   }
 
 
