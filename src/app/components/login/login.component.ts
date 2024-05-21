@@ -100,14 +100,14 @@ export class LoginComponent {
                   if (this.loginDto.idRol === 1 && !this.loginDto.bloqueado){
                     alert("Su contraseña expirará en "+this.vidaUtil.vidaUtil+" días");
                     window.location.href = '/menu-poweruser';
-                  }else if (this.loginDto.idRol === 2 && !this.loginDto.bloqueado){
+                  }else if (this.loginDto.idRol === 4 && !this.loginDto.bloqueado){
                     alert("Su contraseña expirará en "+this.vidaUtil.vidaUtil+" días");
                     window.location.href = '/menu-user';
 
-                  }else if (this.loginDto.idRol === 3 && !this.loginDto.bloqueado) {
+                  }else if (this.loginDto.idRol === 2 && !this.loginDto.bloqueado) {
                     alert("Su contraseña expirará en "+this.vidaUtil.vidaUtil+" días");
                     window.location.href = '/menu-admin';
-                  }else if (this.loginDto.idRol === 4 && !this.loginDto.bloqueado) {
+                  }else if (this.loginDto.idRol === 3 && !this.loginDto.bloqueado) {
                     alert("Su contraseña expirará en "+this.vidaUtil.vidaUtil+" días");
                     window.location.href = '/menu-encargado';
                   }else{
@@ -123,12 +123,12 @@ export class LoginComponent {
                   localStorage.setItem('logo', this.loginDto.logo);
                   if (this.loginDto.idRol === 1 && this.loginDto.bloqueado === false){
                     window.location.href = '/menu-poweruser';
-                  }else if (this.loginDto.idRol === 2 && this.loginDto.bloqueado === false){
+                  }else if (this.loginDto.idRol === 4 && this.loginDto.bloqueado === false){
                     window.location.href = '/menu-user';
 
-                  }else if (this.loginDto.idRol === 3 && this.loginDto.bloqueado === false) {
+                  }else if (this.loginDto.idRol === 2 && this.loginDto.bloqueado === false) {
                     window.location.href = '/menu-admin';
-                  }else if (this.loginDto.idRol === 4 && this.loginDto.bloqueado === false) {
+                  }else if (this.loginDto.idRol === 3 && this.loginDto.bloqueado === false) {
                     window.location.href = '/menu-encargado';
                   }else{
                     alert("Usuario bloqueado");
