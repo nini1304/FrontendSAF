@@ -35,10 +35,6 @@ export class ListaPoweruserComponent {
   @ViewChild(MatSort) sort: MatSort | undefined;
 
   constructor(private activoservice: ActivosService, public dialog: MatDialog, private router: Router) {
-    // Create 100 users
-    // const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
-
-    // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.activoslistaDto);
 
   }

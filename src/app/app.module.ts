@@ -57,6 +57,7 @@ import { CcUserComponent } from './components/cc-user/cc-user.component';
 import { CcAdministradorComponent } from './components/cc-administrador/cc-administrador.component';
 import { CcEncargadoComponent } from './components/cc-encargado/cc-encargado.component';
 import { CcPoweruserComponent } from './components/cc-poweruser/cc-poweruser.component';
+import { LogsuPoweruserComponent } from './components/logsu-poweruser/logsu-poweruser.component';
 
 
 
@@ -97,7 +98,8 @@ import { CcPoweruserComponent } from './components/cc-poweruser/cc-poweruser.com
     CcUserComponent,
     CcAdministradorComponent,
     CcEncargadoComponent,
-    CcPoweruserComponent
+    CcPoweruserComponent,
+    LogsuPoweruserComponent
 
 
   ],
