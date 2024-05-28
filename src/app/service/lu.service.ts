@@ -12,7 +12,29 @@ export class LuService {
   constructor(private http: HttpClient) {}
 
   public listarLogsU(): Observable<ResponseLUDto[]> {
-    return this.http.get<ResponseLUDto[]>(`${this.BACK_URL}/api/v1/roles/listar`);
+    return this.http.get<ResponseLUDto[]>(`${this.BACK_URL}/api/v1/usuarios/logUsuarios`);
   }
+
+  public registrarLogout(username:string): Observable<any> {
+    const params = {
+      username: username
+
+    };
+    return this.http.post<any>(`${this.BACK_URL}/api/v1/usuarios/logout`,null,{params:params});
+  }
+
+  public registrarIntentos(username:string, intentos:number): Observable<any> {
+    const params = {
+      user: username,
+      intento: intentos
+
+
+    };
+    return this.http.post<any>(`${this.BACK_URL}/api/v1/usuarios/logIntentoUsuario`,null,{params:params});
+  }
+
+
+
+
 
 }

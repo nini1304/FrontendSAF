@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {CcService} from "../../service/cc.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-cc-encargado',
@@ -16,7 +17,7 @@ export class CcEncargadoComponent {
 
 
   constructor(private formBuilder: FormBuilder,
-              private fb: FormBuilder,private ccservice:CcService) {
+              private fb: FormBuilder,private ccservice:CcService,private router: Router) {
     this.cambiarconForm = this.fb.group({
       antiguapass: new FormControl('', [Validators.required]),
       nuevapass: new FormControl('', [Validators.required, Validators.minLength(12), this.validatePassword]),
@@ -51,7 +52,7 @@ export class CcEncargadoComponent {
 
   passwordMatchValidator(group: FormGroup) {
     console.log('Validating password match');
-    const password = group.get('nuevopass')?.value;
+    const password = group.get('nuevapass')?.value;
     const passwordConfirmation = group.get('passwordConfirmation')?.value;
     console.log('Password:', password);
     console.log('Password Confirmation:', passwordConfirmation);
@@ -73,13 +74,19 @@ export class CcEncargadoComponent {
   togglePasswordVisibility2() {
     this.hidePassword2 = !this.hidePassword2;
   }
+
+  abrirlogin() {
+
+    this.router.navigate(['']);
+
+  }
   cambiarContrasena(){
     let userId = Number(localStorage.getItem('idusuario'));
     this.ccservice.cambiarContrasena(userId,this.cambiarconForm.get('antiguapass')?.value,this.cambiarconForm.get('passwordConfirmation')?.value).subscribe({
       next: (data: any) => {
         if (data){
           alert('Contraseña cambiada correctamente');
-          location.reload();
+          this.abrirlogin();
         }else{
           alert('Esa no es tu contraseña actual');
         }

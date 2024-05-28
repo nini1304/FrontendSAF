@@ -4,6 +4,7 @@ export interface ActivoFijoDto{
   valor: number;
   fechaCompra?: string;
   fechaRegistro?: string;
+  horaRegistro?: string;
   descripcion: string;
   //private Integer porcentajeDepreciacion;
   tipoObjeto: number;

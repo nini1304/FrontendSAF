@@ -3,6 +3,7 @@ export interface ResponseLUDto{
   usuario: string;
   accion: string;
   fecha: string;
+  hora: string;
   ipUsuario: string;
 
 }

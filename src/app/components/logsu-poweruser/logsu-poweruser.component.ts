@@ -15,7 +15,7 @@ import {ActivoslistaDto} from "../../dto/activoslista.dto";
 export class LogsuPoweruserComponent {
   nombre = localStorage.getItem('nombre');
   responseLUDto: ResponseLUDto[] = [];
-  displayedColumns: string[] = ['id', 'usuario', 'accion', 'fecha', 'ip'];
+  displayedColumns: string[] = ['id', 'usuario', 'accion', 'fecha','hora', 'ip'];
   dataSource: MatTableDataSource<ResponseLUDto>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
@@ -46,12 +46,26 @@ export class LogsuPoweruserComponent {
   }
 
   borrarls(){
-    localStorage.clear();
-    if (localStorage.length === 0) {
-      console.log("LocalStorage ha sido limpiado correctamente.");
-    } else {
-      console.log("No se pudo limpiar el LocalStorage.");
-    }
+    // @ts-ignore
+    this.luservice.registrarLogout(this.nombre).subscribe({
+      next: (data: any) => {
+        console.log(data);
+        console.log("Se ha registrado el logout correctamente.");
+        localStorage.clear();
+        if (localStorage.length === 0) {
+          console.log("LocalStorage ha sido limpiado correctamente.");
+        } else {
+          console.log("No se pudo limpiar el LocalStorage.");
+        }
+
+
+      },
+      error: (error: any) => {
+        console.log(error);
+      }
+
+
+    })
   }
 
   applyFilter(event: Event) {

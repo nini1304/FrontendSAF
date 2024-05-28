@@ -11,6 +11,7 @@ import {RecuperarContrasenaComponent} from "../recuperar-contrasena/recuperar-co
 import {MatDialog} from "@angular/material/dialog";
 import {LoginService} from "../../service/login.service";
 import {VidautilDto} from "../../dto/vidautil.dto";
+import {LuService} from "../../service/lu.service";
 
 @Component({
   selector: 'app-login',
@@ -31,7 +32,7 @@ export class LoginComponent {
   flag = false;
 
   constructor(private formBuilder: FormBuilder,private router: Router,public dialog: MatDialog,
-              private fb: FormBuilder, private service: ActivosService,private loginService: LoginService) {
+              private fb: FormBuilder, private service: ActivosService,private loginService: LoginService,private luservice: LuService) {
     this.loginForm = this.fb.group({
       myControl: [''],
       usuario: new FormControl('', [Validators.required]),
@@ -100,14 +101,14 @@ export class LoginComponent {
                   if (this.loginDto.idRol === 1 && !this.loginDto.bloqueado){
                     alert("Su contraseña expirará en "+this.vidaUtil.vidaUtil+" días");
                     window.location.href = '/menu-poweruser';
-                  }else if (this.loginDto.idRol === 4 && !this.loginDto.bloqueado){
+                  }else if (this.loginDto.idRol === 3 && !this.loginDto.bloqueado){
                     alert("Su contraseña expirará en "+this.vidaUtil.vidaUtil+" días");
                     window.location.href = '/menu-user';
 
                   }else if (this.loginDto.idRol === 2 && !this.loginDto.bloqueado) {
                     alert("Su contraseña expirará en "+this.vidaUtil.vidaUtil+" días");
                     window.location.href = '/menu-admin';
-                  }else if (this.loginDto.idRol === 3 && !this.loginDto.bloqueado) {
+                  }else if (this.loginDto.idRol === 4 && !this.loginDto.bloqueado) {
                     alert("Su contraseña expirará en "+this.vidaUtil.vidaUtil+" días");
                     window.location.href = '/menu-encargado';
                   }else{
@@ -123,12 +124,12 @@ export class LoginComponent {
                   localStorage.setItem('logo', this.loginDto.logo);
                   if (this.loginDto.idRol === 1 && this.loginDto.bloqueado === false){
                     window.location.href = '/menu-poweruser';
-                  }else if (this.loginDto.idRol === 4 && this.loginDto.bloqueado === false){
+                  }else if (this.loginDto.idRol === 3 && this.loginDto.bloqueado === false){
                     window.location.href = '/menu-user';
 
                   }else if (this.loginDto.idRol === 2 && this.loginDto.bloqueado === false) {
                     window.location.href = '/menu-admin';
-                  }else if (this.loginDto.idRol === 3 && this.loginDto.bloqueado === false) {
+                  }else if (this.loginDto.idRol === 4 && this.loginDto.bloqueado === false) {
                     window.location.href = '/menu-encargado';
                   }else{
                     alert("Usuario bloqueado");
@@ -159,6 +160,16 @@ export class LoginComponent {
         localStorage.setItem('intentos', intentos);
         console.log(intentos);
         let int = Number(localStorage.getItem('intentos'));
+
+        this.luservice.registrarIntentos(usuario, int).subscribe({
+          next: (data: any) => {
+            console.log(data);
+          },error: (error: any) => {
+            console.log(error);
+          }
+        });
+
+
 
         if(int >= 3){
           this.loginService.bloquearUsuario(usuario).subscribe({

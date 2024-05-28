@@ -39,8 +39,6 @@ export class MovimientosAdministradorComponent {
   }
   async cargarDatos(){
     let respuesta;
-    console.log("PRIMER METODO");
-    //let idProvider:number = parseInt(localStorage.getItem('userId'));
     const idempresa = localStorage.getItem('idempresa');
     // @ts-ignore
     const idemp = parseInt(idempresa);
@@ -64,9 +62,9 @@ export class MovimientosAdministradorComponent {
       console.log("No se pudo limpiar el LocalStorage.");
     }
   }
-  openDialog2(fechaRegistro: string, evento: string, usuario: string):void{
+  openDialog2(fechaRegistro: string,horaRegistro: string, evento: string, usuario: string):void{
     const dialogRef=this.dialog.open(DetallesComponent,{
-      data: {fechaRegistro: fechaRegistro, evento:evento,usuario:usuario}
+      data: {fechaRegistro: fechaRegistro,horaRegistro:horaRegistro, evento:evento,usuario:usuario}
     });
   }
   applyFilter(event: Event) {
