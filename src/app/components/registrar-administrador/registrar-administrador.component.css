@@ -47,6 +47,9 @@ h1{
   gap: 2%;
 
 }
+mat-form-field{
+  margin-top: 2%;
+}
 .boton{
   display: flex;
   justify-content: center;

@@ -58,6 +58,7 @@ import { CcAdministradorComponent } from './components/cc-administrador/cc-admin
 import { CcEncargadoComponent } from './components/cc-encargado/cc-encargado.component';
 import { CcPoweruserComponent } from './components/cc-poweruser/cc-poweruser.component';
 import { LogsuPoweruserComponent } from './components/logsu-poweruser/logsu-poweruser.component';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 
 
@@ -127,6 +128,7 @@ import { LogsuPoweruserComponent } from './components/logsu-poweruser/logsu-powe
         CommonModule,
         MatPaginatorModule,
         MatExpansionModule,
+        MatProgressBarModule
     ],
   providers: [
 

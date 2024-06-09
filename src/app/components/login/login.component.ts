@@ -23,18 +23,16 @@ export class LoginComponent {
   vidaUtil: VidautilDto = {} as VidautilDto;
   empresaDto: EmpresaDto[] = [];
   loginForm: FormGroup;
-  // usuario = new FormControl('', [Validators.required]);
-
-  myControl = new FormControl('');
+  myControl = new FormControl('', [Validators.required]);
   options: String[] = [];
-  filteredOptions: Observable<String[]> | undefined;
   hidePassword = true;
   flag = false;
 
   constructor(private formBuilder: FormBuilder,private router: Router,public dialog: MatDialog,
               private fb: FormBuilder, private service: ActivosService,private loginService: LoginService,private luservice: LuService) {
     this.loginForm = this.fb.group({
-      myControl: [''],
+
+      myControl: this.myControl,
       usuario: new FormControl('', [Validators.required]),
       contrasenia: new FormControl('', [Validators.required]),
     });
@@ -47,15 +45,17 @@ export class LoginComponent {
         console.log(data);
         this.empresaDto = data;
         this.options = this.empresaDto.map(emp => emp.nombre);
-        this.filteredOptions = this.myControl.valueChanges.pipe(
-          startWith(''),
-          map(value => this._filter(value || '')),
-        );
+
+
+
 
       }
 
 
     })
+
+
+
 
   }
 
@@ -63,11 +63,7 @@ export class LoginComponent {
     this.hidePassword = !this.hidePassword;
   }
 
-  private _filter(value: string): String[] {
-    const filterValue = value.toLowerCase();
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
-  }
 
   abrirRecucon(){
 

@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {MatDatepickerInput} from "@angular/material/datepicker";
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {TipoactivoDto} from "../../dto/tipoactivo.dto";
 import {MarcasDto} from "../../dto/marcas.dto";
 import {BloquesDto} from "../../dto/bloques.dto";
@@ -29,46 +29,40 @@ export class RegistrarAdministradorComponent {
   personalDto: PersonalDto[] = [];
   estadosDto: EstadosDto[] = [];
   condicionDto: CondicionDto[] = [];
-
-  myControl = new FormControl('');
   options: String[] = [];
-  filteredOptions: Observable<String[]> | undefined;
-  myControl2 = new FormControl('');
   options2: String[] = [];
-  filteredOptions2: Observable<String[]> | undefined;
-  myControl3 = new FormControl('');
   options3: String[] = [];
-  filteredOptions3: Observable<String[]> | undefined;
-  myControl4 = new FormControl('');
   options4: String[] = [];
-  filteredOptions4: Observable<String[]> | undefined;
-  myControl5 = new FormControl('');
   options5: String[] = [];
-  filteredOptions5: Observable<String[]> | undefined;
-  myControl6 = new FormControl('');
   options6: String[] = [];
-  filteredOptions6: Observable<String[]> | undefined;
-  myControl7 = new FormControl('');
   options7: String[] = [];
-  filteredOptions7: Observable<String[]> | undefined;
+
+  myControl = new FormControl('', [Validators.required]);
+  myControl2 = new FormControl('', [Validators.required]);
+  myControl3 = new FormControl('', [Validators.required]);
+  myControl4 = new FormControl('', [Validators.required]);
+  myControl5 = new FormControl('', [Validators.required]);
+  myControl6 = new FormControl('', [Validators.required]);
+  myControl7 = new FormControl('', [Validators.required]);
 
 
 
   constructor(private formBuilder: FormBuilder, private activoservice: ActivosService,
               private fb: FormBuilder) {
     this.nuevoactivoForm = this.fb.group({
-      nombre: [''],
-      valor: [''],
-      descripcion: [''],
-      calle: [''],
-      avenida: [''],
-      myControl: [''],
-      myControl2: [''],
-      myControl3: [''],
-      myControl4: [''],
-      myControl5: [''],
-      myControl6: [''],
-      myControl7: [''],
+      nombre: new FormControl('', [Validators.required]),
+      valor: new FormControl('', [Validators.required,this.nonNegativeValue]),
+      descripcion: new FormControl('', [Validators.required]),
+      calle: new FormControl('', [Validators.required]),
+      avenida: new FormControl('', [Validators.required]),
+      myControl: this.myControl,
+      myControl2: this.myControl2,
+      myControl3: this.myControl3,
+      myControl4: this.myControl4,
+      myControl5: this.myControl5,
+      myControl6: this.myControl6,
+      myControl7: this.myControl7,
+      purchaseDate: ['', [Validators.required, this.dateNotInFuture]],
 
     });
   }
@@ -81,10 +75,6 @@ export class RegistrarAdministradorComponent {
         console.log(data);
         this.tipoactivoDto = data;
         this.options = this.tipoactivoDto.map(tipo => tipo.nombre);
-        this.filteredOptions = this.myControl.valueChanges.pipe(
-          startWith(''),
-          map(value => this._filter(value || '')),
-        );
 
       }
 
@@ -95,10 +85,6 @@ export class RegistrarAdministradorComponent {
         console.log(data);
         this.marcasDto = data;
         this.options2 = this.marcasDto.map(marca => marca.nombre);
-        this.filteredOptions2 = this.myControl2.valueChanges.pipe(
-          startWith(''),
-          map(value => this._filter2(value || '')),
-        );
 
       }
 
@@ -112,10 +98,7 @@ export class RegistrarAdministradorComponent {
         console.log(data);
         this.bloquesDto = data;
         this.options3 = this.bloquesDto.map(bloque => bloque.nombre);
-        this.filteredOptions3 = this.myControl3.valueChanges.pipe(
-          startWith(''),
-          map(value => this._filter3(value || '')),
-        );
+
 
       }
 
@@ -126,10 +109,7 @@ export class RegistrarAdministradorComponent {
         console.log(data);
         this.ciudadesDto = data;
         this.options4 = this.ciudadesDto.map(ciudad => ciudad.nombre);
-        this.filteredOptions4 = this.myControl4.valueChanges.pipe(
-          startWith(''),
-          map(value => this._filter4(value || '')),
-        );
+
 
       }
 
@@ -140,10 +120,7 @@ export class RegistrarAdministradorComponent {
         console.log(data);
         this.personalDto = data;
         this.options5 = this.personalDto.map(personal => personal.nombre);
-        this.filteredOptions5 = this.myControl5.valueChanges.pipe(
-          startWith(''),
-          map(value => this._filter5(value || '')),
-        );
+
 
       }
 
@@ -154,10 +131,7 @@ export class RegistrarAdministradorComponent {
         console.log(data);
         this.estadosDto = data;
         this.options6 = this.estadosDto.map(estado => estado.nombre);
-        this.filteredOptions6 = this.myControl6.valueChanges.pipe(
-          startWith(''),
-          map(value => this._filter6(value || '')),
-        );
+
 
       }
 
@@ -168,53 +142,13 @@ export class RegistrarAdministradorComponent {
         console.log(data);
         this.condicionDto = data;
         this.options7 = this.condicionDto.map(condicion => condicion.nombre);
-        this.filteredOptions7 = this.myControl7.valueChanges.pipe(
-          startWith(''),
-          map(value => this._filter7(value || '')),
-        );
+
 
       }
 
 
     })
 
-  }
-
-
-  private _filter(value: string): String[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
-  }
-  private _filter2(value: string): String[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options2.filter(option => option.toLowerCase().includes(filterValue));
-  }
-  private _filter3(value: string): String[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options3.filter(option => option.toLowerCase().includes(filterValue));
-  }
-  private _filter4(value: string): String[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options4.filter(option => option.toLowerCase().includes(filterValue));
-  }
-  private _filter5(value: string): String[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options5.filter(option => option.toLowerCase().includes(filterValue));
-  }
-  private _filter6(value: string): String[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options6.filter(option => option.toLowerCase().includes(filterValue));
-  }
-  private _filter7(value: string): String[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options7.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   borrarls(){
@@ -225,43 +159,69 @@ export class RegistrarAdministradorComponent {
       console.log("No se pudo limpiar el LocalStorage.");
     }
   }
+
+  dateNotInFuture(control: AbstractControl): ValidationErrors | null {
+    const inputDate = new Date(control.value);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Reset hours to compare only date parts
+    if (inputDate > today) {
+      return { futureDate: true };
+    }
+    return null;
+  }
+
+  nonNegativeValue(control: AbstractControl): ValidationErrors | null {
+    if (control.value <= 0) {
+      return { negativeValue: true };
+    }
+    return null;
+  }
   guardarDatos() {
-    console.log('guardar datos')
-    const nombre = this.nuevoactivoForm.get('nombre')?.value;
-    const valor = this.nuevoactivoForm.get('valor')?.value;
-    // @ts-ignore
-    const fecha = this.datepickerInput.value;
-    // @ts-ignore
-    const fechaa = fecha.toDateString();
-    const descripcion = this.nuevoactivoForm.get('descripcion')?.value;
-    const tipo = this.tipoactivoDto.find((tipo: TipoactivoDto) => tipo.nombre === this.myControl.value)?.id;
-    const marca = this.marcasDto.find((marca: MarcasDto) => marca.nombre === this.myControl2.value)?.id;
-    const calle = this.nuevoactivoForm.get('calle')?.value;
-    const avenida = this.nuevoactivoForm.get('avenida')?.value;
-    const bloque = this.bloquesDto.find((bloque: BloquesDto) => bloque.nombre === this.myControl3.value)?.id;
-    const ciudad = this.ciudadesDto.find((ciudad: CiudadesDto) => ciudad.nombre === this.myControl4.value)?.id;
-    const personal = this.personalDto.find((personal: PersonalDto) => personal.nombre === this.myControl5.value)?.id;
-    const estado = this.estadosDto.find((estado: EstadosDto) => estado.nombre === this.myControl6.value)?.id;
-    const condicion = this.condicionDto.find((condicion: CondicionDto) => condicion.nombre === this.myControl7.value)?.id;
-    const idempresa = localStorage.getItem('idempresa');
-    // @ts-ignore
-    const idemp = parseInt(idempresa);
-    // @ts-ignore
-    this.activoservice.registrarActivo(nombre, valor, fechaa, descripcion, tipo, marca, calle,avenida,bloque,ciudad, personal, estado, condicion,idemp,this.nombre) .subscribe({
-      next: (data) => {
-        console.log(data);
-        alert('Activo registrado correctamente');
-        window.location.href = '/lista-admin';
+    if (this.nuevoactivoForm.valid) {
+      console.log('guardar datos')
+      const nombre = this.nuevoactivoForm.get('nombre')?.value;
+      const valor = this.nuevoactivoForm.get('valor')?.value;
+      // @ts-ignore
+      const fecha = this.datepickerInput.value;
+      // @ts-ignore
+      const fechaa = fecha.toDateString();
+      const descripcion = this.nuevoactivoForm.get('descripcion')?.value;
+      const tipo = this.tipoactivoDto.find((tipo: TipoactivoDto) => tipo.nombre === this.myControl.value)?.id;
+      const marca = this.marcasDto.find((marca: MarcasDto) => marca.nombre === this.myControl2.value)?.id;
+      const calle = this.nuevoactivoForm.get('calle')?.value;
+      const avenida = this.nuevoactivoForm.get('avenida')?.value;
+      const bloque = this.bloquesDto.find((bloque: BloquesDto) => bloque.nombre === this.myControl3.value)?.id;
+      const ciudad = this.ciudadesDto.find((ciudad: CiudadesDto) => ciudad.nombre === this.myControl4.value)?.id;
+      const personal = this.personalDto.find((personal: PersonalDto) => personal.nombre === this.myControl5.value)?.id;
+      const estado = this.estadosDto.find((estado: EstadosDto) => estado.nombre === this.myControl6.value)?.id;
+      const condicion = this.condicionDto.find((condicion: CondicionDto) => condicion.nombre === this.myControl7.value)?.id;
+      const idempresa = localStorage.getItem('idempresa');
+      // @ts-ignore
+      const idemp = parseInt(idempresa);
+      // @ts-ignore
+      this.activoservice.registrarActivo(nombre, valor, fechaa, descripcion, tipo, marca, calle,avenida,bloque,ciudad, personal, estado, condicion,idemp,this.nombre) .subscribe({
+        next: (data) => {
+          console.log(data);
+          alert('Activo registrado correctamente');
+          window.location.href = '/lista-admin';
 
 
-      },error: (error: any) => {
-        console.log(error);
-        alert('Error al registrar activo');
+        },error: (error: any) => {
+          console.log(error);
+          alert('Error al registrar activo');
 
 
-      }
+        }
 
-    });
+      });
+
+
+    }else {
+      alert('Revise que los campos esten llenados correctamente');
+    }
+
+
+
 
 
   }

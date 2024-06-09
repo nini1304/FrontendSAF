@@ -62,22 +62,35 @@
               El usuario es requerido.
             </mat-error>
           </mat-form-field>
-          <mat-form-field class="col">
-            <mat-label>Contraseña:</mat-label>
-            <input matInput type="{{ hidePassword ? 'password' : 'text' }}" formControlName="password" required>
-            <button mat-icon-button matSuffix style="color: black" (click)="togglePasswordVisibility()">
-              <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
-            </button>
-            <mat-error *ngIf="nuevoUsuarioForm.get('password')?.hasError('required')">
-              La contraseña es requerida.
-            </mat-error>
-            <mat-error *ngIf="nuevoUsuarioForm.get('password')?.hasError('minlength')">
-              La contraseña no puede tener menos de 12 caracteres.
-            </mat-error>
-            <mat-error *ngIf="nuevoUsuarioForm.get('password')?.hasError('invalidPassword')">
-              La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.
-            </mat-error>
-          </mat-form-field>
+
+        </div>
+        <div class="form-row">
+          <div class="contrasena">
+            <mat-form-field class="contrasena-col">
+              <mat-label>Contraseña:</mat-label>
+              <input matInput type="{{ hidePassword ? 'password' : 'text' }}" formControlName="password" required>
+              <button mat-icon-button matSuffix style="color: black" (click)="togglePasswordVisibility()">
+                <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+              </button>
+              <mat-error *ngIf="nuevoUsuarioForm.get('password')?.hasError('required')">
+                La contraseña es requerida.
+              </mat-error>
+              <mat-error *ngIf="nuevoUsuarioForm.get('password')?.hasError('passwordStrength')">
+                La contraseña no cumple con los requisitos mínimos.
+              </mat-error>
+            </mat-form-field>
+            <div class="password-criteria">
+              <mat-progress-bar mode="determinate" [value]="getPasswordStrength()"></mat-progress-bar>
+              <ul>
+                <li [class.valid]="passwordCriteria.minLength">Mínimo 12 caracteres</li>
+                <li [class.valid]="passwordCriteria.hasUpperCase">Al menos una letra mayúscula</li>
+                <li [class.valid]="passwordCriteria.hasNumber">Al menos un número</li>
+                <li [class.valid]="passwordCriteria.hasSpecialChar">Al menos un carácter especial</li>
+                <li [class.valid]="passwordCriteria.isNotTrivial">No debe ser trivial (e.g., Nombre.apellido123)</li>
+              </ul>
+            </div>
+          </div>
+
           <mat-form-field class="col">
             <mat-label>Confirme su contraseña:</mat-label>
             <input matInput type="{{ hidePassword2 ? 'password' : 'text' }}" formControlName="passwordConfirmation" required>
@@ -93,8 +106,6 @@
 
           </mat-form-field>
         </div>
-        <br>
-        <br>
         <h2>Información de Empresa:</h2>
         <div class="form-row">
 

@@ -9,16 +9,14 @@
 
       <mat-form-field class="example-full-width">
         <mat-label>Empresa:</mat-label>
-        <input type="text"
-               aria-label="Number"
-               matInput
-               [formControl]="myControl"
-               [matAutocomplete]="auto">
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option}}
+        <mat-select formControlName="myControl">
+          <mat-option *ngFor="let option of options" [value]="option">
+            {{ option }}
           </mat-option>
-        </mat-autocomplete>
+        </mat-select>
+        <mat-error *ngIf="loginForm.get('myControl')?.hasError('required')">
+          El valor es requerido.
+        </mat-error>
       </mat-form-field>
 
 

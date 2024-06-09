@@ -26,6 +26,13 @@ export class RegistroUsuarioComponent {
   filteredOptions2: Observable<String[]> | undefined;
   hidePassword = true;
   hidePassword2 = true;
+  passwordCriteria = {
+    minLength: false,
+    hasUpperCase: false,
+    hasNumber: false,
+    hasSpecialChar: false,
+    isNotTrivial: false
+  };
 
   constructor(private formBuilder: FormBuilder, private activoservice: ActivosService,
               private fb: FormBuilder) {
@@ -33,11 +40,15 @@ export class RegistroUsuarioComponent {
       nombre: new FormControl('', [Validators.required]),
       correo: new FormControl('', [Validators.required]),
       username: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required, Validators.minLength(12), this.validatePassword]),
+      password: new FormControl('', [Validators.required, this.passwordValidator.bind(this)]),
       passwordConfirmation: new FormControl('', [Validators.required]),
       myControl: new FormControl('', [Validators.required]),
 
     }, { validators: this.passwordMatchValidator });
+
+    this.nuevoUsuarioForm.get('password')?.valueChanges.subscribe(value => {
+      this.evaluatePassword(value);
+    });
   }
 
   ngOnInit() {
@@ -81,6 +92,44 @@ export class RegistroUsuarioComponent {
     this.hidePassword2 = !this.hidePassword2;
   }
 
+  getPasswordStrength() {
+    const criteria = this.passwordCriteria;
+    const fulfilledCriteria = Object.values(criteria).filter(value => value).length;
+    return (fulfilledCriteria / Object.keys(criteria).length) * 100;
+  }
+
+  passwordValidator(control: FormControl) {
+    const value = control.value;
+    if (!value) return null;
+
+    const passwordValid = this.passwordCriteria.minLength &&
+      this.passwordCriteria.hasUpperCase &&
+      this.passwordCriteria.hasNumber &&
+      this.passwordCriteria.hasSpecialChar &&
+      this.passwordCriteria.isNotTrivial;
+
+    return passwordValid ? null : { passwordStrength: true };
+  }
+
+  evaluatePassword(value: string) {
+    if (!value) {
+      // Si el campo está vacío, todas las validaciones deben ser falsas
+      this.passwordCriteria.minLength = false;
+      this.passwordCriteria.hasUpperCase = false;
+      this.passwordCriteria.hasNumber = false;
+      this.passwordCriteria.hasSpecialChar = false;
+      this.passwordCriteria.isNotTrivial = false;
+      return;
+    }
+
+    // Si el campo no está vacío, realizamos las otras validaciones
+    this.passwordCriteria.minLength = value.length >= 12;
+    this.passwordCriteria.hasUpperCase = /[A-Z]/.test(value);
+    this.passwordCriteria.hasNumber = /[0-9]/.test(value);
+    this.passwordCriteria.hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(value);
+    this.passwordCriteria.isNotTrivial = !/^[a-zA-Z]+\.[a-zA-Z]+[0-9]{3,}$/.test(value);
+  }
+
   passwordMatchValidator(group: FormGroup) {
     console.log('Validating password match');
     const password = group.get('password')?.value;
@@ -96,16 +145,7 @@ export class RegistroUsuarioComponent {
     }
   }
 
-  validatePassword(control: any) {
-    const password = control.value;
-    const pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/; // Esta es la expresión regular para validar la contraseña
 
-    if (!pattern.test(password)) {
-      return { 'invalidPassword': true };
-    }
-
-    return null;
-  }
 
   private _filter(value: string): String[] {
     const filterValue = value.toLowerCase();
