@@ -201,9 +201,15 @@ export class RegistrarAdministradorComponent {
       // @ts-ignore
       this.activoservice.registrarActivo(nombre, valor, fechaa, descripcion, tipo, marca, calle,avenida,bloque,ciudad, personal, estado, condicion,idemp,this.nombre) .subscribe({
         next: (data) => {
-          console.log(data);
-          alert('Activo registrado correctamente');
-          window.location.href = '/lista-admin';
+          if(data == true){
+            alert('Este activo ya se encuentra registrado');
+
+          }else{
+            console.log(data);
+            alert('Activo registrado correctamente');
+            window.location.href = '/lista-admin';
+          }
+
 
 
         },error: (error: any) => {
