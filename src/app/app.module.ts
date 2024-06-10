@@ -59,6 +59,9 @@ import { CcEncargadoComponent } from './components/cc-encargado/cc-encargado.com
 import { CcPoweruserComponent } from './components/cc-poweruser/cc-poweruser.component';
 import { LogsuPoweruserComponent } from './components/logsu-poweruser/logsu-poweruser.component';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { RiesgosPoweruserComponent } from './components/riesgos-poweruser/riesgos-poweruser.component';
+import { TrafficLightComponent } from './components/traffic-light/traffic-light.component';
+import { ModalSemaforoComponent } from './components/modal-semaforo/modal-semaforo.component';
 
 
 
@@ -100,7 +103,10 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
     CcAdministradorComponent,
     CcEncargadoComponent,
     CcPoweruserComponent,
-    LogsuPoweruserComponent
+    LogsuPoweruserComponent,
+    RiesgosPoweruserComponent,
+    TrafficLightComponent,
+    ModalSemaforoComponent
 
 
   ],

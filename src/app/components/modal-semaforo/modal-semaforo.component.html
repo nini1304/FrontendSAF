@@ -1,0 +1,15 @@
+<div class="part">
+  <h1 mat-dialog-title>Semaforo</h1>
+  <div mat-dialog-content>
+    <app-traffic-light [value]="currentValue"></app-traffic-light>
+
+    <input type="number" [(ngModel)]="currentValue" placeholder="Enter a value">
+    <button (click)="changeValue(5)">Set to 5 (Red)</button>
+    <button (click)="changeValue(2)">Set to 2 (Green)</button>
+    <button (click)="changeValue(3)">Set to 3 (Orange)</button>
+
+  </div>
+  <div mat-dialog-actions>
+    <button mat-stroked-button mat-button mat-dialog-close  style=" margin-top: 2%;" >Cerrar</button>
+  </div>
+</div>
