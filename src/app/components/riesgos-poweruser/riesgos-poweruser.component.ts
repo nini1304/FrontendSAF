@@ -6,6 +6,7 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 import {MasInformacionComponent} from "../mas-informacion/mas-informacion.component";
 import {MatDialog} from "@angular/material/dialog";
 import {ModalSemaforoComponent} from "../modal-semaforo/modal-semaforo.component";
+import {ModalCrearrComponent} from "../modal-crearr/modal-crearr.component";
 
 
 export interface UserData {
@@ -97,6 +98,13 @@ export class RiesgosPoweruserComponent {
 
   openDialog() : void {
     const dialogRef = this.dialog.open(ModalSemaforoComponent, {
+
+    });
+
+  }
+
+  openDialog2() : void {
+    const dialogRef = this.dialog.open(ModalCrearrComponent, {
 
     });
 

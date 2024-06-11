@@ -47,7 +47,7 @@ export class RegistrarAdministradorComponent {
 
 
 
-  constructor(private formBuilder: FormBuilder, private activoservice: ActivosService,
+  constructor( private activoservice: ActivosService,
               private fb: FormBuilder) {
     this.nuevoactivoForm = this.fb.group({
       nombre: new FormControl('', [Validators.required]),

@@ -62,6 +62,9 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { RiesgosPoweruserComponent } from './components/riesgos-poweruser/riesgos-poweruser.component';
 import { TrafficLightComponent } from './components/traffic-light/traffic-light.component';
 import { ModalSemaforoComponent } from './components/modal-semaforo/modal-semaforo.component';
+import { ModalCrearrComponent } from './components/modal-crearr/modal-crearr.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import { ModalCrearcComponent } from './components/modal-crearc/modal-crearc.component';
 
 
 
@@ -106,36 +109,39 @@ import { ModalSemaforoComponent } from './components/modal-semaforo/modal-semafo
     LogsuPoweruserComponent,
     RiesgosPoweruserComponent,
     TrafficLightComponent,
-    ModalSemaforoComponent
+    ModalSemaforoComponent,
+    ModalCrearrComponent,
+    ModalCrearcComponent
 
 
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatCardModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatSelectModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        FormsModule,
-        MatInputModule,
-        MatDividerModule,
-        MatButtonModule,
-        MatDialogModule,
-        MatAutocompleteModule,
-        HttpClientModule,
-        MatDatepickerModule,
-        MatTableModule,
-        MatSidenavModule,
-        CommonModule,
-        MatPaginatorModule,
-        MatExpansionModule,
-        MatProgressBarModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    FormsModule,
+    MatInputModule,
+    MatDividerModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatAutocompleteModule,
+    HttpClientModule,
+    MatDatepickerModule,
+    MatTableModule,
+    MatSidenavModule,
+    CommonModule,
+    MatPaginatorModule,
+    MatExpansionModule,
+    MatProgressBarModule,
+    MatCheckboxModule
+  ],
   providers: [
 
   ],

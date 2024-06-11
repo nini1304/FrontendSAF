@@ -1,0 +1,69 @@
+<div class="part">
+  <div class="form-header">
+    <h2>Controles</h2>
+  </div>
+  <div mat-dialog-content>
+    <form [formGroup]="controlForm" >
+      <div class="fila">
+        <mat-form-field appearance="fill" class="columna-especial">
+          <mat-label>Controles a Implementar</mat-label>
+          <textarea matInput formControlName="ci"></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill"  class="columna">
+          <mat-label>Tipo</mat-label>
+          <mat-select formControlName="tipo">
+            <mat-option value="P">P</mat-option>
+            <mat-option value="D" >D</mat-option>
+            <mat-option value="C">C</mat-option>
+            <mat-option value="Di">Di</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill"  class="columna">
+          <mat-label>Nivel</mat-label>
+          <mat-select formControlName="nivel">
+            <mat-option value="A">A</mat-option>
+            <mat-option value="S" >S</mat-option>
+            <mat-option value="M">M</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="fila">
+        <mat-form-field appearance="fill"  class="columna">
+          <mat-label>Frecuencia</mat-label>
+          <mat-select formControlName="frecuencia">
+            <mat-option value="D">D</mat-option>
+            <mat-option value="S" >S</mat-option>
+            <mat-option value="M">M</mat-option>
+            <mat-option value="A">A</mat-option>
+            <mat-option value="PT">PT</mat-option>
+            <mat-option value="PE">PE</mat-option>
+            <mat-option value="m">m</mat-option>
+            <mat-option value="s">s</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="columna">
+          <mat-label>Probabilidad</mat-label>
+          <input type="number" matInput formControlName="probabilidad2">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="columna">
+          <mat-label>Impacto</mat-label>
+          <input type="number" matInput formControlName="impacto2">
+        </mat-form-field>
+
+      </div>
+      <div class="fila">
+        <p>Riesgo Residual:</p>
+        <p>Nivel de Riesgo Residual:</p>
+      </div>
+      <div mat-dialog-actions>
+        <button mat-raised-button color="primary" type="submit">Guardar</button>
+        <button mat-button mat-dialog-close class="close-button">Cerrar</button>
+
+      </div>
+    </form>
+  </div>
+</div>

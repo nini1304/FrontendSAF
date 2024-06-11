@@ -81,8 +81,15 @@ h1{
 }
 
 .esc-filter{
+  margin-top: 4%;
   width: 100%;
   display: flex;
+}
+
+.boton{
+  margin-top: 1%;
+  margin-left: 4%;
+  color: white;
 }
 .example-container {
   /*height: 400px;*/

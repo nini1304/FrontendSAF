@@ -1,0 +1,57 @@
+<div class="part">
+  <div class="form-header">
+    <h2>Evaluación de Riesgos</h2>
+    <p>Complete los campos a continuación para evaluar los riesgos.</p>
+  </div>
+  <div mat-dialog-content>
+    <form [formGroup]="riskForm">
+      <div class="fila">
+      <mat-form-field appearance="fill" class="columna">
+        <mat-label>Activo de Información</mat-label>
+        <input matInput formControlName="ai">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill"  class="columna-especial">
+        <mat-label>Amenaza Vulnerabilidad</mat-label>
+        <textarea matInput formControlName="av"></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="columna">
+        <mat-label>Consecuencia</mat-label>
+        <input matInput formControlName="consecuencia">
+      </mat-form-field>
+      </div>
+      <div class="fila">
+      <mat-form-field appearance="fill" class="columna">
+        <mat-label>Probabilidad</mat-label>
+        <input type="number" matInput formControlName="probabilidad1">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="columna">
+        <mat-label>Impacto</mat-label>
+        <input type="number" matInput formControlName="impacto1">
+      </mat-form-field>
+
+        <mat-form-field appearance="fill" class="columna">
+          <mat-label>Tratamiento</mat-label>
+          <input matInput formControlName="tratamiento">
+        </mat-form-field>
+        <div class="checkbox-container">
+          <input type="checkbox" id="agregarControles" formControlName="agregarControles">
+          <label for="agregarControles">Agregar Controles</label>
+        </div>
+      </div>
+      <div class="fila">
+        <p>Riesgo Inherente:</p>
+        <p>Nivel de Riesgo:</p>
+      </div>
+
+      <div mat-dialog-actions>
+
+        <button mat-raised-button color="primary" type="submit" *ngIf="riskForm.get('agregarControles')?.value == false">Guardar</button>
+        <button mat-button mat-dialog-close class="close-button">Cerrar</button>
+        <mat-icon class="siguiente" *ngIf="riskForm.get('agregarControles')?.value" (click)="openDialog()">navigate_next</mat-icon>
+      </div>
+    </form>
+  </div>
+</div>
