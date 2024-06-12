@@ -1,0 +1,9 @@
+.semaforos{
+  display: flex;
+  gap: 4%;
+}
+.semaforo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

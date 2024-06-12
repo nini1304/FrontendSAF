@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 300px;
+  width: 100px;
   height: 100px;
   background-color: #333;
   border-radius: 10px;
@@ -17,14 +17,18 @@
   background-color: grey;
 }
 
-.red {
+.rojo {
   background-color: red;
 }
 
-.green {
-  background-color: green;
+.naranja {
+  background-color: orange;
 }
 
-.orange {
-  background-color: orange;
+.amarillo {
+  background-color: yellow;
+}
+
+.verde {
+  background-color: green;
 }

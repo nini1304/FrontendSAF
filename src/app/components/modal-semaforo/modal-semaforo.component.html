@@ -1,12 +1,19 @@
 <div class="part">
-  <h1 mat-dialog-title>Semaforo</h1>
+  <h1 mat-dialog-title>Semaforos</h1>
   <div mat-dialog-content>
-    <app-traffic-light [value]="currentValue"></app-traffic-light>
+    <div class="semaforos">
+      <div class="semaforo">
+        <p>Antes</p>
+      <app-traffic-light [valor]="valorTermometro1"></app-traffic-light>
+      </div>
+      <mat-icon style="width: 60px; height: 60px; text-align: center; margin-top:30%">arrow_forward</mat-icon>
+      <div class="semaforo">
+        <p>Despues</p>
+      <app-traffic-light [valor]="valorTermometro2"></app-traffic-light>
+      </div>
 
-    <input type="number" [(ngModel)]="currentValue" placeholder="Enter a value">
-    <button (click)="changeValue(5)">Set to 5 (Red)</button>
-    <button (click)="changeValue(2)">Set to 2 (Green)</button>
-    <button (click)="changeValue(3)">Set to 3 (Orange)</button>
+
+    </div>
 
   </div>
   <div mat-dialog-actions>

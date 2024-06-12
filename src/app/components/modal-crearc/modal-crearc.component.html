@@ -8,6 +8,9 @@
         <mat-form-field appearance="fill" class="columna-especial">
           <mat-label>Controles a Implementar</mat-label>
           <textarea matInput formControlName="ci"></textarea>
+          <mat-error *ngIf="controlForm.get('ci')?.hasError('required')">
+            Los controles son requeridos.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill"  class="columna">
@@ -18,6 +21,9 @@
             <mat-option value="C">C</mat-option>
             <mat-option value="Di">Di</mat-option>
           </mat-select>
+          <mat-error *ngIf="controlForm.get('tipo')?.hasError('required')">
+            El tipo es requerido.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill"  class="columna">
@@ -27,6 +33,9 @@
             <mat-option value="S" >S</mat-option>
             <mat-option value="M">M</mat-option>
           </mat-select>
+          <mat-error *ngIf="controlForm.get('nivel')?.hasError('required')">
+            El nivel es requerido.
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="fila">
@@ -42,16 +51,25 @@
             <mat-option value="m">m</mat-option>
             <mat-option value="s">s</mat-option>
           </mat-select>
+          <mat-error *ngIf="controlForm.get('frecuencia')?.hasError('required')">
+            La frecuencia es requerida.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="columna">
           <mat-label>Probabilidad</mat-label>
           <input type="number" matInput formControlName="probabilidad2">
+          <mat-error *ngIf="controlForm.get('probabilidad2')?.hasError('required')">
+            La probabilidad es requerida.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="columna">
           <mat-label>Impacto</mat-label>
           <input type="number" matInput formControlName="impacto2">
+          <mat-error *ngIf="controlForm.get('impacto2')?.hasError('required')">
+            El impacto es requerido.
+          </mat-error>
         </mat-form-field>
 
       </div>

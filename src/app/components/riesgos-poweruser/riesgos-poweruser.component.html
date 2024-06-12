@@ -57,103 +57,108 @@
       <section class="example-container mat-elevation-z8" tabindex="0">
         <table mat-table [dataSource]="dataSource">
 
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+            <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+          </ng-container>
+
           <!-- ID Column -->
           <ng-container matColumnDef="ai">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Activos de Informacion </th>
-            <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.activo}} </td>
           </ng-container>
 
           <!-- Progress Column -->
           <ng-container matColumnDef="av">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Amenazas y Vulnerabilidades </th>
-            <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+            <td mat-cell *matCellDef="let row"> {{row.amenaza}}% </td>
           </ng-container>
 
           <!-- ID Column -->
           <ng-container matColumnDef="consecuencia">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Consecuencia </th>
-            <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.consecuencia}} </td>
           </ng-container>
 
           <!-- Name Column -->
           <ng-container matColumnDef="probabilidad1">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Probabilidad </th>
-            <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.probabilidad}} </td>
           </ng-container>
 
           <!-- Fruit Column -->
           <ng-container matColumnDef="impacto1">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Impacto </th>
-            <td mat-cell *matCellDef="let row"> {{row.fruit}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.impacto}} </td>
           </ng-container>
 
           <!-- ID Column -->
           <ng-container matColumnDef="ri">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Riesgo Inherente </th>
-            <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.riesgoI}} </td>
           </ng-container>
 
           <!-- Progress Column -->
-          <ng-container matColumnDef="nr">
+          <ng-container matColumnDef="nr" >
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Nivel de Riesgo </th>
-            <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+            <td mat-cell *matCellDef="let row" [style.background-color]="validarCampo(row.nivelR)"> {{row.nivelR}} </td>
           </ng-container>
 
           <!-- Name Column -->
           <ng-container matColumnDef="tratamiento">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Tratamiento </th>
-            <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.tratamiento}} </td>
           </ng-container>
 
           <!-- Fruit Column -->
           <ng-container matColumnDef="ci">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Controles a Implementar </th>
-            <td mat-cell *matCellDef="let row"> {{row.fruit}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.control}} </td>
           </ng-container>
 
           <!-- ID Column -->
           <ng-container matColumnDef="tipo">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </th>
-            <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.tipo}} </td>
           </ng-container>
 
           <!-- Progress Column -->
           <ng-container matColumnDef="nivel">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Nivel </th>
-            <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+            <td mat-cell *matCellDef="let row"> {{row.nivel}} </td>
           </ng-container>
 
           <!-- Name Column -->
           <ng-container matColumnDef="frecuencia">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Frecuencia </th>
-            <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.frecuencia}} </td>
           </ng-container>
 
           <!-- Fruit Column -->
           <ng-container matColumnDef="probabilidad2">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Probabilidad </th>
-            <td mat-cell *matCellDef="let row"> {{row.fruit}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.probabilidadR}} </td>
           </ng-container>
 
           <ng-container matColumnDef="impacto2">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Impacto </th>
-            <td mat-cell *matCellDef="let row"> {{row.fruit}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.impactoR}} </td>
           </ng-container>
 
           <!-- Fruit Column -->
           <ng-container matColumnDef="rr">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Riesgo Residual </th>
-            <td mat-cell *matCellDef="let row"> {{row.fruit}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.riesgoResidual}} </td>
           </ng-container>
 
           <ng-container matColumnDef="nrr">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Nivel de Riesgo Residual </th>
-            <td mat-cell *matCellDef="let row"> {{row.fruit}} </td>
+            <td mat-cell *matCellDef="let row" [style.background-color]="validarCampo(row.nivelRR)"> {{row.nivelRR}} </td>
           </ng-container>
           <ng-container matColumnDef="estado">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>
             <td mat-cell *matCellDef="let row">
-              <button mat-raised-button style="background: linear-gradient(to bottom, #17141d, #2c2933); color: white" (click)="openDialog()">Estado</button>
+              <button mat-raised-button style="background: linear-gradient(to bottom, #17141d, #2c2933); color: white" (click)="openDialog(row.nivelR,row.nivelRR)">Estado</button>
             </td>
 
           </ng-container>

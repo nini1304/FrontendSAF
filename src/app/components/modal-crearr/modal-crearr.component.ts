@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ModalSemaforoComponent} from "../modal-semaforo/modal-semaforo.component";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {ModalCrearcComponent} from "../modal-crearc/modal-crearc.component";
@@ -16,12 +16,12 @@ export class ModalCrearrComponent {
 
   constructor(private fb: FormBuilder, public dialog: MatDialog, public d: MatDialog) {
     this.riskForm = this.fb.group({
-      ai: [''],
-      av: [''],
-      consecuencia: [''],
-      probabilidad1: [0],
-      impacto1: [0],
-      tratamiento: ['']
+      ai: new FormControl('', [Validators.required]),
+      av: new FormControl('', [Validators.required]),
+      consecuencia: new FormControl('', [Validators.required]),
+      probabilidad1: new FormControl('', [Validators.required]),
+      impacto1: new FormControl('', [Validators.required]),
+      tratamiento: new FormControl('', [Validators.required]),
     });
   }
 
@@ -55,6 +55,7 @@ export class ModalCrearrComponent {
   }
 
   openDialog() : void {
+    if(this.riskForm.valid){
       this.d.closeAll();
       const ai = this.riskForm.get('ai')!.value;
       const av = this.riskForm.get('av')!.value;
@@ -65,10 +66,14 @@ export class ModalCrearrComponent {
       const nr = this.nivelRiesgo;
       const tratamiento = this.riskForm.get('tratamiento')!.value;
 
-    const dialogRef = this.dialog.open(ModalCrearcComponent, {
-      data: {ai: ai, av: av, consecuencia: consecuencia, probabilidad1: probabilidad1, impacto1: impacto1, ri: ri, nr: nr, tratamiento: tratamiento}
+      const dialogRef = this.dialog.open(ModalCrearcComponent, {
+        data: {ai: ai, av: av, consecuencia: consecuencia, probabilidad1: probabilidad1, impacto1: impacto1, ri: ri, nr: nr, tratamiento: tratamiento}
 
-    });
+      });
+
+    }
+
+
 
 
 

@@ -70,6 +70,7 @@ import { LogappPoweruserComponent } from './components/logapp-poweruser/logapp-p
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -113,7 +114,7 @@ import { LogappPoweruserComponent } from './components/logapp-poweruser/logapp-p
     ModalSemaforoComponent,
     ModalCrearrComponent,
     ModalCrearcComponent,
-    LogappPoweruserComponent
+    LogappPoweruserComponent,
 
 
   ],

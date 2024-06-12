@@ -9,32 +9,50 @@
       <mat-form-field appearance="fill" class="columna">
         <mat-label>Activo de Información</mat-label>
         <input matInput formControlName="ai">
+        <mat-error *ngIf="riskForm.get('ai')?.hasError('required')">
+          El activo es requerido.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill"  class="columna-especial">
-        <mat-label>Amenaza Vulnerabilidad</mat-label>
+        <mat-label>Amenaza/Vulnerabilidad</mat-label>
         <textarea matInput formControlName="av"></textarea>
+        <mat-error *ngIf="riskForm.get('av')?.hasError('required')">
+          Amenaza/Vulnerabiliada es requerida.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="columna">
         <mat-label>Consecuencia</mat-label>
         <input matInput formControlName="consecuencia">
+        <mat-error *ngIf="riskForm.get('consecuencia')?.hasError('required')">
+          La consecuencia es requerida.
+        </mat-error>
       </mat-form-field>
       </div>
       <div class="fila">
       <mat-form-field appearance="fill" class="columna">
         <mat-label>Probabilidad</mat-label>
         <input type="number" matInput formControlName="probabilidad1">
+        <mat-error *ngIf="riskForm.get('probabilidad1')?.hasError('required')">
+          La probabilidad es requerida.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="columna">
         <mat-label>Impacto</mat-label>
         <input type="number" matInput formControlName="impacto1">
+        <mat-error *ngIf="riskForm.get('impacto1')?.hasError('required')">
+          El impacto es requerido.
+        </mat-error>
       </mat-form-field>
 
         <mat-form-field appearance="fill" class="columna">
           <mat-label>Tratamiento</mat-label>
           <input matInput formControlName="tratamiento">
+          <mat-error *ngIf="riskForm.get('tratamiento')?.hasError('required')">
+            El tratamiento es requerido.
+          </mat-error>
         </mat-form-field>
 
       </div>

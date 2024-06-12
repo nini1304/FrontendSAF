@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {CiudadesDto} from "../../dto/ciudades.dto";
 import {map, startWith} from "rxjs";
@@ -17,12 +17,12 @@ export class ModalCrearcComponent {
 
   constructor(private service: RiesgosService,private fb: FormBuilder,public dialogRef: MatDialogRef<ModalCrearcComponent>,@Inject(MAT_DIALOG_DATA) public data: any) {
     this.controlForm = this.fb.group({
-      ci: [''],
-      tipo: [''],
-      nivel: [''],
-      frecuencia: [''],
-      probabilidad2: [0],
-      impacto2: [0]
+      ci: new FormControl('', [Validators.required]),
+      tipo: new FormControl('', [Validators.required]),
+      nivel: new FormControl('', [Validators.required]),
+      frecuencia: new FormControl('', [Validators.required]),
+      probabilidad2: new FormControl('', [Validators.required]),
+      impacto2: new FormControl('', [Validators.required])
     });
     console.log(data);
 
@@ -60,21 +60,25 @@ export class ModalCrearcComponent {
 
   guardarRiesgo(){
 
-    console.log(this.data.ai,this.data.av,this.data.consecuencia,this.data.probabilidad1, this.data.impacto1,this.data.ri,this.data.nr,this.data.tratamiento,this.controlForm.get('ci')?.value,this.controlForm.get('tipo')?.value,this.controlForm.get('nivel')?.value,this.controlForm.get('frecuencia')?.value,this.controlForm.get('probabilidad2')?.value,this.controlForm.get('impacto2')?.value,this.riesgoResidual,this.nivelRiesgoResidual);
+    if(this.controlForm.valid){
+      console.log(this.data.ai,this.data.av,this.data.consecuencia,this.data.probabilidad1, this.data.impacto1,this.data.ri,this.data.nr,this.data.tratamiento,this.controlForm.get('ci')?.value,this.controlForm.get('tipo')?.value,this.controlForm.get('nivel')?.value,this.controlForm.get('frecuencia')?.value,this.controlForm.get('probabilidad2')?.value,this.controlForm.get('impacto2')?.value,this.riesgoResidual,this.nivelRiesgoResidual);
 
 
-    this.service.registrarRiesgo(this.data.ai,this.data.av,this.data.consecuencia,this.data.probabilidad1, this.data.impacto1,this.data.ri,this.data.nr,this.data.tratamiento,this.controlForm.get('ci')?.value,this.controlForm.get('tipo')?.value,this.controlForm.get('nivel')?.value,this.controlForm.get('frecuencia')?.value,this.controlForm.get('probabilidad2')?.value,this.controlForm.get('impacto2')?.value,this.riesgoResidual,this.nivelRiesgoResidual ).subscribe({
+      this.service.registrarRiesgo(this.data.ai,this.data.av,this.data.consecuencia,this.data.probabilidad1, this.data.impacto1,this.data.ri,this.data.nr,this.data.tratamiento,this.controlForm.get('ci')?.value,this.controlForm.get('tipo')?.value,this.controlForm.get('nivel')?.value,this.controlForm.get('frecuencia')?.value,this.controlForm.get('probabilidad2')?.value,this.controlForm.get('impacto2')?.value,this.riesgoResidual,this.nivelRiesgoResidual ).subscribe({
 
-      next: (data) => {
-        if(data){
-          alert("Riesgo registrado correctamente");
-          this.dialogRef.close();
+        next: (data) => {
+          if(data){
+            alert("Riesgo registrado correctamente");
+            this.dialogRef.close();
+          }
+
         }
 
-      }
+
+      })
+    }
 
 
-    })
   }
 
 }

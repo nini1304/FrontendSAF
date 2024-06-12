@@ -7,22 +7,30 @@ import {Component, Input, SimpleChanges} from '@angular/core';
 })
 export class TrafficLightComponent {
 
-  @Input() value: number = 0;
-  state: 'red' | 'green' | 'orange' = 'red';
+  @Input() valor: string | undefined;
+  color: string | undefined;
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['value']) {
-      this.updateState(this.value);
-    }
+  ngOnChanges() {
+    this.actualizarColor();
   }
 
-  updateState(value: number) {
-    if (value === 5) {
-      this.state = 'red';
-    } else if (value === 2) {
-      this.state = 'green';
-    } else {
-      this.state = 'orange'; // Puedes agregar más condiciones según tu necesidad
+  actualizarColor() {
+    switch (this.valor) {
+      case 'Extremo':
+        this.color = 'rojo';
+        break;
+      case 'Alto':
+        this.color = 'naranja';
+        break;
+      case 'Moderado':
+        this.color = 'amarillo';
+        break;
+      case 'Bajo':
+        this.color = 'verde';
+        break;
+      default:
+        this.color = '';
+        break;
     }
   }
 

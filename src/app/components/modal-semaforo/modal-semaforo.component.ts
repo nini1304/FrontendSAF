@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-modal-semaforo',
@@ -6,10 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./modal-semaforo.component.css']
 })
 export class ModalSemaforoComponent {
-  currentValue: number = 0;
+  valorTermometro1 = '';
+  valorTermometro2 = '';
 
-  changeValue(value: number) {
-    this.currentValue = value;
+  constructor(public dialogRef: MatDialogRef<ModalSemaforoComponent>,@Inject(MAT_DIALOG_DATA) public data: any) {
   }
+
+  ngOnInit(): void {
+    this.valorTermometro1 = this.data.nivelR;
+    this.valorTermometro2 = this.data.nivelRR;
+  }
+
+  // cambiarValor(nuevoValor: string) {
+  //   this.valorTermometro = nuevoValor;
+  // }
 
 }

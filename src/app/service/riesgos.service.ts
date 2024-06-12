@@ -50,4 +50,8 @@ export class RiesgosService {
 
     return this.http.post<any>(`${this.BACK_URL}/api/v1/riesgo/registrar`, null, { params });
   }
+
+  public listarRiesgos():Observable<any>{
+    return this.http.get<any>(`${this.BACK_URL}/api/v1/riesgo/list`);
+  }
 }
