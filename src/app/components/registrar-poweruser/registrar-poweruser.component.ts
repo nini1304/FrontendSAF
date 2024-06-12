@@ -1,10 +1,8 @@
 import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {MatDatepicker, MatDatepickerInput} from '@angular/material/datepicker';
-import { MatFormField, MatFormFieldControl } from '@angular/material/form-field';
 import {TipoactivoDto} from "../../dto/tipoactivo.dto";
 import {map, Observable, startWith} from "rxjs";
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {ActivosService} from "../../service/activos.service";
 import {MarcasDto} from "../../dto/marcas.dto";
 import {PersonalDto} from "../../dto/personal.dto";

@@ -104,6 +104,7 @@ export class RiesgosPoweruserComponent {
   }
 
   openDialog2() : void {
+
     const dialogRef = this.dialog.open(ModalCrearrComponent, {
 
     });

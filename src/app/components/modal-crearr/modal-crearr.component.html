@@ -36,21 +36,16 @@
           <mat-label>Tratamiento</mat-label>
           <input matInput formControlName="tratamiento">
         </mat-form-field>
-        <div class="checkbox-container">
-          <input type="checkbox" id="agregarControles" formControlName="agregarControles">
-          <label for="agregarControles">Agregar Controles</label>
-        </div>
+
       </div>
       <div class="fila">
-        <p>Riesgo Inherente:</p>
-        <p>Nivel de Riesgo:</p>
+        <p>Riesgo Inherente: {{ riesgoInherente }}</p>
+        <p>Nivel de Riesgo: {{ nivelRiesgo }}</p>
       </div>
 
       <div mat-dialog-actions>
-
-        <button mat-raised-button color="primary" type="submit" *ngIf="riskForm.get('agregarControles')?.value == false">Guardar</button>
         <button mat-button mat-dialog-close class="close-button">Cerrar</button>
-        <mat-icon class="siguiente" *ngIf="riskForm.get('agregarControles')?.value" (click)="openDialog()">navigate_next</mat-icon>
+        <mat-icon class="siguiente" (click)="openDialog()">navigate_next</mat-icon>
       </div>
     </form>
   </div>

@@ -56,11 +56,11 @@
 
       </div>
       <div class="fila">
-        <p>Riesgo Residual:</p>
-        <p>Nivel de Riesgo Residual:</p>
+        <p>Riesgo Residual: {{ riesgoResidual }}</p>
+        <p>Nivel de Riesgo Residual: {{ nivelRiesgoResidual }}</p>
       </div>
       <div mat-dialog-actions>
-        <button mat-raised-button color="primary" type="submit">Guardar</button>
+        <button mat-raised-button color="primary" type="submit" (click)="guardarRiesgo()">Guardar</button>
         <button mat-button mat-dialog-close class="close-button">Cerrar</button>
 
       </div>
