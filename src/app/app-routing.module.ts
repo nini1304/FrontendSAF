@@ -40,19 +40,15 @@ import {CcEncargadoComponent} from "./components/cc-encargado/cc-encargado.compo
 import {CcPoweruserComponent} from "./components/cc-poweruser/cc-poweruser.component";
 import {LogsuPoweruserComponent} from "./components/logsu-poweruser/logsu-poweruser.component";
 import {RiesgosPoweruserComponent} from "./components/riesgos-poweruser/riesgos-poweruser.component";
+import {LogappPoweruserComponent} from "./components/logapp-poweruser/logapp-poweruser.component";
 
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
   { path: 'menu-poweruser', component: MenuPoweruserComponent},
-  // { path: 'registrar-poweruser', component: RegistrarPoweruserComponent},
-  // { path: 'lista-poweruser', component: ListaPoweruserComponent},
-  // { path: 'listadepre-poweruser/:mes/:anio', component: ListadeprePoweruserComponent},
-  // { path: 'historialdepre-poweruser', component: HistorialdeprePoweruserComponent },
-  // { path: 'actualizar-poweruser/:id/:nombre/:valor/:descripcion/:calle/:avenida', component: ActualizarPoweruserComponent},
-  // { path: 'movimientos-poweruser', component: MovimientosPoweruserComponent},
   { path: 'cc-poweruser', component: CcPoweruserComponent},
   { path: 'logsu-poweruser', component: LogsuPoweruserComponent},
+  { path: 'logapp-poweruser', component: LogappPoweruserComponent},
   { path: 'riesgos-poweruser', component: RiesgosPoweruserComponent},
   { path: 'registrar-usuario', component: RegistroUsuarioComponent},
   { path: 'listade-usuarios', component: ListadeUsuariosComponent},

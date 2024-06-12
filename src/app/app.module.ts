@@ -65,6 +65,7 @@ import { ModalSemaforoComponent } from './components/modal-semaforo/modal-semafo
 import { ModalCrearrComponent } from './components/modal-crearr/modal-crearr.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { ModalCrearcComponent } from './components/modal-crearc/modal-crearc.component';
+import { LogappPoweruserComponent } from './components/logapp-poweruser/logapp-poweruser.component';
 
 
 
@@ -111,7 +112,8 @@ import { ModalCrearcComponent } from './components/modal-crearc/modal-crearc.com
     TrafficLightComponent,
     ModalSemaforoComponent,
     ModalCrearrComponent,
-    ModalCrearcComponent
+    ModalCrearcComponent,
+    LogappPoweruserComponent
 
 
   ],
