@@ -17,7 +17,7 @@ import {CrearRolComponent} from "../crear-rol/crear-rol.component";
 })
 export class GestionarRolesComponent {
   rolDto: RolDto[] = [];
-  displayedColumns: string[] = ['ID', 'Rol','Acciones'];
+  displayedColumns: string[] = ['ID', 'Rol','Funciones','Acciones'];
   dataSource: MatTableDataSource<RolDto>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
@@ -85,6 +85,22 @@ export class GestionarRolesComponent {
         // data: {descripcion: descripcion, marca: marca, calle: calle, avenida: avenida, bloque: bloque, ciudad: ciudad, personal: personal, estado: estado, condicion: condicion}
       });
 
+  }
+
+  funcionesRol(idRol:number): string {
+    if (idRol === 1) {
+      return 'Gestion de Usuarios y Logs';
+
+    }else if(idRol === 2) {
+      return 'Administracion de Activos Fijos';
+    }else if(idRol === 3) {
+      return 'Solo vista de Activos Fijos';
+    }else if(idRol === 4) {
+      return 'Encargado de Depreciacion y Generacion de Reportes';
+
+    }else{
+      return 'Rol no definido';
+    }
   }
 
 

@@ -30,6 +30,11 @@
         <td mat-cell *matCellDef="let row"> {{row.rol}} </td>
       </ng-container>
 
+      <ng-container matColumnDef="Funciones">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Funciones </th>
+        <td mat-cell *matCellDef="let row"> {{funcionesRol(row.idRol)}} </td>
+      </ng-container>
+
 
 
       <ng-container matColumnDef="Acciones">

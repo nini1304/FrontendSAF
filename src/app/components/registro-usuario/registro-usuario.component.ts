@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {MatDatepickerInput} from "@angular/material/datepicker";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {map, Observable, startWith} from "rxjs";
 import {ActivosService} from "../../service/activos.service";
 import {EmpresaDto} from "../../dto/empresa.dto";
@@ -39,7 +39,7 @@ export class RegistroUsuarioComponent {
     this.nuevoUsuarioForm = this.fb.group({
       nombre: new FormControl('', [Validators.required]),
       correo: new FormControl('', [Validators.required]),
-      username: new FormControl('', [Validators.required]),
+      username: ['', [Validators.required, this.usernameFormatValidator]],
       password: new FormControl('', [Validators.required, this.passwordValidator.bind(this)]),
       passwordConfirmation: new FormControl('', [Validators.required]),
       myControl: new FormControl('', [Validators.required]),
@@ -85,6 +85,15 @@ export class RegistroUsuarioComponent {
     })
   }
 
+  usernameFormatValidator(control: FormControl): { [key: string]: boolean } | null {
+    const regex = /^[a-zA-Z]+\.[a-zA-Z]+$/;
+    console.log('Valor del campo username:', control.value); // Agrega este log
+    if (control.value && !regex.test(control.value)) {
+      return { 'invalidUsernameFormat': true };
+    }
+    return null;
+  }
+
   togglePasswordVisibility() {
     this.hidePassword = !this.hidePassword;
   }
@@ -124,10 +133,13 @@ export class RegistroUsuarioComponent {
 
     // Si el campo no está vacío, realizamos las otras validaciones
     this.passwordCriteria.minLength = value.length >= 12;
+    if(this.passwordCriteria.minLength){
+      this.passwordCriteria.isNotTrivial = !/^[a-zA-Z]+\.[a-zA-Z]+[0-9]{3,}$/.test(value);
+    }
     this.passwordCriteria.hasUpperCase = /[A-Z]/.test(value);
     this.passwordCriteria.hasNumber = /[0-9]/.test(value);
     this.passwordCriteria.hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(value);
-    this.passwordCriteria.isNotTrivial = !/^[a-zA-Z]+\.[a-zA-Z]+[0-9]{3,}$/.test(value);
+
   }
 
   passwordMatchValidator(group: FormGroup) {

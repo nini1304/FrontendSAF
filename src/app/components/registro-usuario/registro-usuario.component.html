@@ -69,6 +69,9 @@
             <mat-error *ngIf="nuevoUsuarioForm.get('username')?.hasError('required')">
               El usuario es requerido.
             </mat-error>
+            <mat-error *ngIf="nuevoUsuarioForm.get('username')?.hasError('invalidUsernameFormat')">
+              El formato del usuario debe ser nombre.apellido
+            </mat-error>
           </mat-form-field>
 
         </div>
